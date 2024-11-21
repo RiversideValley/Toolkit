@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit", "Toolki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crimson", "UI\Crimson.csproj", "{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube.UI", "GlowUI\Cube.UI.csproj", "{3A46BE0F-AB80-40EC-955D-2F97CB1BA4F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A46BE0F-AB80-40EC-955D-2F97CB1BA4F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A46BE0F-AB80-40EC-955D-2F97CB1BA4F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A46BE0F-AB80-40EC-955D-2F97CB1BA4F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A46BE0F-AB80-40EC-955D-2F97CB1BA4F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
