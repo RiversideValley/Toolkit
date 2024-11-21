@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Major infrastructure changes are happening to Crimson, `Riverside.Toolkit`, GlowUI and CubeKit and lots of new changes are expected to come to the new 2.0 version of the toolkit. Stay tuned in [Developer Sanctuary](https://dsc.gg/devsanx) for more info!
+
 # 🧰 Crimson
 
 #### The better way to style your apps.
