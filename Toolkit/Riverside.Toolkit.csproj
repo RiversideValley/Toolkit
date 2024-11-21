@@ -11,14 +11,14 @@
 
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Crimson UI</Title>
-    <Authors>Ivirius, Riverside, Errortek, Lamparter</Authors>
+    <Authors>Ivirius, Riverside, Errortek, Lamparter, FireCubeStudios</Authors>
     <PackageProjectUrl>https://ivirius.vercel.app/crimsonui</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/IviriusCommunity/Crimson</RepositoryUrl>
     <Description>The better way to style your apps.</Description>
-    <Copyright>Copyright (c) 2024 Ivirius Community</Copyright>
+    <Copyright>Copyright (c) 2024 Riverside Valley Corporation, FireCubeStudios and Ivirius Community</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>Crimson.png</PackageIcon>
     <PackageTags>style, ivirius, winui3, riverside</PackageTags>
