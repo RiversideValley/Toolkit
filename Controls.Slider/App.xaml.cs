@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace slider
+namespace Riverside.Toolkit.Controls.Slider
 {
     /// <summary>
     /// Interaction logic for App.xaml
