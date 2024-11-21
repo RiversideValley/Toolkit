@@ -4,7 +4,7 @@ using Compositor = Windows.UI.Composition.Compositor;
 using Windows.UI.Composition;
 using ICompositionSupportsSystemBackdrop = Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop;
 
-namespace CubeKit.Flyouts.Transparency
+namespace Riverside.Toolkit.Flyouts.Transparency
 {
     internal class TransparentBackdrop : SystemBackdrop
     {

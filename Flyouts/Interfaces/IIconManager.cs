@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CubeKit.Flyouts.Interfaces
+namespace Riverside.Toolkit.Flyouts.Interfaces
 {
     public interface IIconManager
     {

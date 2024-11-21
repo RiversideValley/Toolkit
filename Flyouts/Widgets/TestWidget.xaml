@@ -1,6 +1,6 @@
 ﻿<winex:WindowEx  
     xmlns:winex="using:WinUIEx"
-    xmlns:flyouts="using:CubeKit.Flyouts"
+    xmlns:flyouts="using:Riverside.Toolkit.Flyouts"
     x:Class="FluentFlyouts3.Flyouts.TestWidget"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

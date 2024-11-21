@@ -1,4 +1,4 @@
-﻿using CubeKit.Flyouts.Helpers;
+﻿using Riverside.Toolkit.Flyouts.Helpers;
 using Microsoft.UI;
 using System.IO;
 using System;
@@ -8,8 +8,8 @@ using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using CubeKit.Flyouts.Interfaces;
-using CubeKit.Flyouts.Transparency;
+using Riverside.Toolkit.Flyouts.Interfaces;
+using Riverside.Toolkit.Flyouts.Transparency;
 using H.NotifyIcon.Core;
 using System.Drawing;
 using Windows.UI.Core;
@@ -18,7 +18,7 @@ using Windows.ApplicationModel;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace CubeKit.Flyouts
+namespace Riverside.Toolkit.Flyouts
 {
     /// <summary>
     /// A flyout window

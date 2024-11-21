@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using Windows.System;
 
-namespace CubeKit.Flyouts.Transparency
+namespace Riverside.Toolkit.Flyouts.Transparency
 {
     public static class WindowsSystemDispatcherQueueHelper
     {

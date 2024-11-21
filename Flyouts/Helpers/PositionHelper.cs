@@ -1,11 +1,11 @@
-﻿using CubeKit.Flyouts.Interfaces;
+﻿using Riverside.Toolkit.Flyouts.Interfaces;
 using Microsoft.UI.Windowing;
 using System;
 using System.Diagnostics;
 using Windows.Graphics;
 using WinUIEx;
 
-namespace CubeKit.Flyouts.Helpers
+namespace Riverside.Toolkit.Flyouts.Helpers
 {
     public class PositionHelper : IPositionHelper
     {

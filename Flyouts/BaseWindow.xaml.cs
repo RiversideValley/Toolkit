@@ -1,4 +1,4 @@
-﻿using CubeKit.Flyouts.Transparency;
+﻿using Riverside.Toolkit.Flyouts.Transparency;
 using Windows.Win32;
 using WinRT.Interop;
 using WinUIEx;
@@ -9,7 +9,7 @@ using Windows.Win32.UI.WindowsAndMessaging;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace CubeKit.Flyouts
+namespace Riverside.Toolkit.Flyouts
 {
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.

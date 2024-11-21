@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CubeKit.Flyouts.Helpers
+namespace Riverside.Toolkit.Flyouts.Helpers
 {
     public static class NativeHelper
     {
