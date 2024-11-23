@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Controls.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archive", "Archive", "{9BD88F7F-F799-4173-B509-1CD67AF9B151}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI", "Riverside.GlowUI\Riverside.GlowUI.csproj", "{B793C5D4-2F66-4A1A-810C-D0E0623B0F45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Materials", "Riverside.Toolkit.Materials\Riverside.Toolkit.Materials.csproj", "{1B5D4052-DA0C-4436-B150-5D928C274018}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,14 @@ Global
 		{98DB44A8-32E5-485E-A900-7CDE1FAE1E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98DB44A8-32E5-485E-A900-7CDE1FAE1E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98DB44A8-32E5-485E-A900-7CDE1FAE1E97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B793C5D4-2F66-4A1A-810C-D0E0623B0F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B793C5D4-2F66-4A1A-810C-D0E0623B0F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B793C5D4-2F66-4A1A-810C-D0E0623B0F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B793C5D4-2F66-4A1A-810C-D0E0623B0F45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B5D4052-DA0C-4436-B150-5D928C274018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B5D4052-DA0C-4436-B150-5D928C274018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B5D4052-DA0C-4436-B150-5D928C274018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B5D4052-DA0C-4436-B150-5D928C274018}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

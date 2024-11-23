@@ -11,7 +11,6 @@
     <None Remove="Controls\Settings\SettingsBlockControl.xaml" />
     <None Remove="Controls\Settings\SettingsDisplayControl.xaml" />
     <None Remove="Controls\Toolkit\DropShadowPanel.xaml" />
-    <None Remove="Materials\BloomView.xaml" />
     <None Remove="Themes\Generic.xaml" />
   </ItemGroup>
 
@@ -36,24 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Styles\CubeUI.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Styles\CubeThemeDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Styles\GlowGradientUI.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Update="Themes\Generic.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -61,12 +42,6 @@
 
   <ItemGroup>
     <Page Update="Controls\Toolkit\DropShadowPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Materials\BloomView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

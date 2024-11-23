@@ -13,7 +13,7 @@ namespace Riverside.Toolkit.Controls.Toolkit
         bool WaitUntilLoaded { get; }
 
         /// <summary>
-        /// This method should return the appropiate alpha mask to be used in the shadow of this control
+        /// This method should return the appropriate alpha mask to be used in the shadow of this control
         /// </summary>
         /// <returns>The alpha mask as a composition brush</returns>
         CompositionBrush GetAlphaMask();
