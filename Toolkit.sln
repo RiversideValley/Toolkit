@@ -7,11 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit", "Toolki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crimson", "UI\Crimson.csproj", "{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.UI", "GlowUI\Riverside.Toolkit.UI.csproj", "{B57AB42D-AE69-49FF-A891-CB419C960E52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit", "GlowUI\Riverside.Toolkit.csproj", "{B57AB42D-AE69-49FF-A891-CB419C960E52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Flyouts", "Flyouts\Riverside.Toolkit.Flyouts.csproj", "{5EE6CCD7-F8A4-48ED-96A9-7450D9493BE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Controls.Slider", "Controls.Slider\Riverside.Toolkit.Controls.Slider.csproj", "{98DB44A8-32E5-485E-A900-7CDE1FAE1E97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Controls.Slider", "Slider\Riverside.Toolkit.Controls.Slider.csproj", "{98DB44A8-32E5-485E-A900-7CDE1FAE1E97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archive", "Archive", "{9BD88F7F-F799-4173-B509-1CD67AF9B151}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B3B72C6-A61F-48B5-8AC4-98B986854D67} = {9BD88F7F-F799-4173-B509-1CD67AF9B151}
+		{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE} = {9BD88F7F-F799-4173-B509-1CD67AF9B151}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D0D23B2-4267-4F5C-8310-FD7B109C257D}
