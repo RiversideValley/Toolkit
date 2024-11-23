@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace CubeKit.UI.Icons
+namespace Riverside.Toolkit.Icons
 {
     /// <summary>
     /// Represents an icon source that uses a Fluent System Icon as its content.

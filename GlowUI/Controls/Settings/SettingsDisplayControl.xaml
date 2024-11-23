@@ -1,8 +1,8 @@
 ﻿<UserControl
-    x:Class="CubeKit.UI.Controls.Settings.SettingsDisplayControl"
+    x:Class="Riverside.Toolkit.Controls.Settings.SettingsDisplayControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:CubeKit.UI.Controls.Settings"
+    xmlns:local="using:Riverside.Toolkit.Controls.Settings"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">

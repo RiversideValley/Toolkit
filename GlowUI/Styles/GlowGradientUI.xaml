@@ -1,13 +1,13 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ToolkitControls="using:CubeKit.UI.Controls.Toolkit"
+    xmlns:ToolkitControls="using:Riverside.Toolkit.Controls.Toolkit"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     xmlns:primitives="using:Microsoft.UI.Xaml.Controls.Primitives"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="ms-appx:///CubeKit.UI/Styles/CubeThemeDictionary.xaml" />
-        <ResourceDictionary Source="ms-appx:///CubeKit.UI/Styles/CubeUI.xaml" />
+        <ResourceDictionary Source="ms-appx:///Riverside.Toolkit/Styles/CubeThemeDictionary.xaml" />
+        <ResourceDictionary Source="ms-appx:///Riverside.Toolkit/Styles/CubeUI.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="ToolbarButton" TargetType="Button">
         <Setter Property="Foreground" Value="{ThemeResource SplitButtonForeground}" />

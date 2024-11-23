@@ -17,7 +17,7 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace CubeKit.UI.Controls.Settings
+namespace Riverside.Toolkit.Controls.Settings
 {
     [ContentProperty(Name = nameof(SettingsActionableElement))]
     public sealed partial class SettingsBlockControl : UserControl

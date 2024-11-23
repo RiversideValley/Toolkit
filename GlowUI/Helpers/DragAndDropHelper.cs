@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 
-namespace CubeKit.UI.Helpers
+namespace Riverside.Toolkit.Helpers
 {
     /// <summary>
     /// Helper methods for adding seamless drag & drop support to different <see cref="ListViewBase"/>

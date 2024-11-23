@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI;
 
-namespace CubeKit.UI.Controls.Toolkit
+namespace Riverside.Toolkit.Controls.Toolkit
 {
     /// <summary>
     /// The <see cref="DropShadowPanel"/> control allows the creation of a DropShadow for any Xaml FrameworkElement in markup

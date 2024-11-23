@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CubeKit.UI.Controls.Toolkit
+namespace Riverside.Toolkit.Controls.Toolkit
 {
     public static class DesignTimeHelpers
     {

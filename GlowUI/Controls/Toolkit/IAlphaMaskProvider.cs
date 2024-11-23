@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Composition;
 
-namespace CubeKit.UI.Controls.Toolkit
+namespace Riverside.Toolkit.Controls.Toolkit
 {
     /// <summary>
     /// Any user control can implement this interface to provide a custom alpha mask to it's parent DropShadowPanel

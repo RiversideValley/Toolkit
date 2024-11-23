@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Data;
 
 #nullable enable
 
-namespace CubeKit.UI.Controls.Settings
+namespace Riverside.Toolkit.Controls.Settings
 {
     /// <summary>
     /// The generic base implementation of a value converter.

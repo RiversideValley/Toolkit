@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CubeKit.UI.Icons
+namespace Riverside.Toolkit.Icons
 {
     /// <summary>
     /// An enum listing all available Fluent System Icon symbols

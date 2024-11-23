@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 
 // The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
 
-namespace CubeKit.UI.Icons
+namespace Riverside.Toolkit.Icons
 {
     /// <summary>
     /// Represents an icon that uses a <see cref="FluentSymbol"/> for its content.
