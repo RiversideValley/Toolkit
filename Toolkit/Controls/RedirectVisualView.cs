@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Markup;
 using System.Numerics;
 
-namespace Crimson.Toolkit.Controls;
+namespace Riverside.Toolkit.Controls;
 
 [ContentProperty(Name = nameof(Child))]
 public partial class RedirectVisualView : Control

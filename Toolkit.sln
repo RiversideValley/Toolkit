@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35309.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit", "Toolkit\Riverside.Toolkit.csproj", "{0B3B72C6-A61F-48B5-8AC4-98B986854D67}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crimson", "UI\Crimson.csproj", "{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit", "GlowUI\Riverside.Toolkit.csproj", "{B57AB42D-AE69-49FF-A891-CB419C960E52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit", "Toolkit\Riverside.Toolkit.csproj", "{B57AB42D-AE69-49FF-A891-CB419C960E52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Flyouts", "Flyouts\Riverside.Toolkit.Flyouts.csproj", "{5EE6CCD7-F8A4-48ED-96A9-7450D9493BE6}"
 EndProject
@@ -15,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Controls.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archive", "Archive", "{9BD88F7F-F799-4173-B509-1CD67AF9B151}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI", "Riverside.GlowUI\Riverside.GlowUI.csproj", "{B793C5D4-2F66-4A1A-810C-D0E0623B0F45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI", "GlowUI\Riverside.GlowUI.csproj", "{B793C5D4-2F66-4A1A-810C-D0E0623B0F45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Materials", "Materials\Riverside.Toolkit.Materials.csproj", "{1B5D4052-DA0C-4436-B150-5D928C274018}"
 EndProject
@@ -25,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0B3B72C6-A61F-48B5-8AC4-98B986854D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B3B72C6-A61F-48B5-8AC4-98B986854D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B3B72C6-A61F-48B5-8AC4-98B986854D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B3B72C6-A61F-48B5-8AC4-98B986854D67}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,7 +52,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0B3B72C6-A61F-48B5-8AC4-98B986854D67} = {9BD88F7F-F799-4173-B509-1CD67AF9B151}
 		{EF6656DE-CE7D-4761-BAC0-B2DD6583EEEE} = {9BD88F7F-F799-4173-B509-1CD67AF9B151}
 		{98DB44A8-32E5-485E-A900-7CDE1FAE1E97} = {9BD88F7F-F799-4173-B509-1CD67AF9B151}
 	EndGlobalSection

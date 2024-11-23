@@ -2,58 +2,47 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RootNamespace>Crimson.Toolkit</RootNamespace>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <RootNamespace>Riverside.Toolkit</RootNamespace>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
-
-    <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
-
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>Crimson UI</Title>
-    <Authors>Ivirius, Riverside, Errortek, Lamparter, FireCubeStudios</Authors>
-    <PackageProjectUrl>https://ivirius.vercel.app/crimsonui</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/IviriusCommunity/Crimson</RepositoryUrl>
-    <Description>The better way to style your apps.</Description>
-    <Copyright>Copyright (c) 2024 Riverside Valley Corporation, FireCubeStudios and Ivirius Community</Copyright>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageIcon>Crimson.png</PackageIcon>
-    <PackageTags>style, ivirius, winui3, riverside</PackageTags>
-    <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-
-    <Version>1.0.6</Version>
-
-    <PackageId>Riverside.Toolkit</PackageId>
+    <UseRidGraph>true</UseRidGraph>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\UI\Assets\Crimson.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+    <None Remove="Controls\Settings\SettingsBlockControl.xaml" />
+    <None Remove="Controls\Settings\SettingsDisplayControl.xaml" />
+    <None Remove="Controls\Toolkit\DropShadowPanel.xaml" />
+    <None Remove="Themes\Generic.xaml" />
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+      <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+      <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
+      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.3" />
+      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" />
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="UserControls\" />
+    <Page Update="Controls\Settings\SettingsDisplayControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
+
   <ItemGroup>
-    <Content Update="Assets\Branding\Ivirius.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Assets\Windows\UserAccountControl.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Page Update="Controls\Settings\SettingsBlockControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Toolkit\DropShadowPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
 </Project>

@@ -8,7 +8,7 @@ using Microsoft.UI.Xaml.Shapes;
 using System.Numerics;
 using Windows.UI;
 
-namespace Crimson.Toolkit.Controls;
+namespace Riverside.Toolkit.Controls;
 
 public partial class OpacityMaskView : RedirectVisualView
 {
