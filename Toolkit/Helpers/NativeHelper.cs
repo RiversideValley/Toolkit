@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Riverside.ComponentModel;
 
 namespace Riverside.Toolkit.Helpers
 {
@@ -19,32 +20,32 @@ namespace Riverside.Toolkit.Helpers
         public const uint GW_HWNDNEXT = 2;
         public const uint GW_CHILD = 5;
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport(Libraries.User32, SetLastError = true)]
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
-        [DllImport("user32.dll")]
+        [DllImport(Libraries.User32)]
         public static extern IntPtr MonitorFromWindow(IntPtr hwnd, uint dwFlags);
 
         [DllImport("shcore.dll")]
         public static extern IntPtr GetScaleFactorForMonitor(IntPtr hwnd, out DeviceScaleFactor dwFlags);
 
-        [DllImport("user32.dll")]
+        [DllImport(Libraries.User32)]
         public static extern IntPtr WindowFromPoint(Point point);
 
-        [DllImport("user32.dll")]
+        [DllImport(Libraries.User32)]
         public static extern int GetWindowRect(IntPtr hWnd, out RECT rect);
 
-        [DllImport("user32.dll")]
+        [DllImport(Libraries.User32)]
         public static extern IntPtr ChildWindowFromPointEx(IntPtr hWndParent, Point point, uint uFlags);
 
-        [DllImport("user32.dll")]
+        [DllImport(Libraries.User32)]
         public static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("user32.dll")]
+        [DllImport(Libraries.User32)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetCursorPos(out Point lpPoint);
 
-        [DllImport("user32.dll")]
+        [DllImport(Libraries.User32)]
         public static extern IntPtr GetWindow(IntPtr hWnd, uint uCmd);
 
         [StructLayout(LayoutKind.Sequential)]
