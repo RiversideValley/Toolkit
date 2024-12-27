@@ -166,7 +166,7 @@ namespace Riverside.Toolkit.Controls
         {
             try
             {
-                TitleBarIcon.Source = new BitmapImage(new Uri($"ms-appx:///{path}"));
+                if (TitleBarIcon is not null) TitleBarIcon.Source = new BitmapImage(new Uri($"ms-appx:///{path}"));
             }
             catch
             {
@@ -208,10 +208,9 @@ namespace Riverside.Toolkit.Controls
                 {
                     if (AccentStrip != null)
                     {
-                        AccentStrip.Visibility = Visibility.Visible;
+                        AccentStrip.Visibility = isWindowFocused == false ? Visibility.Visible : Visibility.Collapsed;
                     }
                     Resources["CaptionForegroundBrush"] = isWindowFocused == false ? new SolidColorBrush(Colors.White) : Application.Current.Resources["AccentTextFillColorDisabledBrush"] as SolidColorBrush;
-                    AccentStrip.Visibility = isWindowFocused == false ? Visibility.Visible : Visibility.Collapsed;
                 }
                 catch { }
             }
@@ -245,14 +244,6 @@ namespace Riverside.Toolkit.Controls
             var x = GET_X_LPARAM(e.Message.LParam);
             var y = GET_Y_LPARAM(e.Message.LParam);
 
-            var closeVisual = CloseButton.TransformToVisual(CurrentWindow.Content);
-            var maximizeRestoreVisual = MaximizeRestoreButton.TransformToVisual(CurrentWindow.Content);
-            var minimizeVisual = MinimizeButton.TransformToVisual(CurrentWindow.Content);
-
-            var minimizeVisualPoint = minimizeVisual.TransformPoint(new Windows.Foundation.Point(0, 0));
-            var maximizeRestoreVisualPoint = maximizeRestoreVisual.TransformPoint(new Windows.Foundation.Point(0, 0));
-            var closeVisualPoint = closeVisual.TransformPoint(new Windows.Foundation.Point(0, 0));
-
             double xMinimizeMin = 0;
             double xMinimizeMax = 0;
 
@@ -269,6 +260,14 @@ namespace Riverside.Toolkit.Controls
             {
                 if (MinimizeButton != null && MaximizeRestoreButton != null && CloseButton != null)
                 {
+                    var closeVisual = CloseButton.TransformToVisual(CurrentWindow.Content);
+                    var maximizeRestoreVisual = MaximizeRestoreButton.TransformToVisual(CurrentWindow.Content);
+                    var minimizeVisual = MinimizeButton.TransformToVisual(CurrentWindow.Content);
+
+                    var minimizeVisualPoint = minimizeVisual.TransformPoint(new Windows.Foundation.Point(0, 0));
+                    var maximizeRestoreVisualPoint = maximizeRestoreVisual.TransformPoint(new Windows.Foundation.Point(0, 0));
+                    var closeVisualPoint = closeVisual.TransformPoint(new Windows.Foundation.Point(0, 0));
+
                     // Gets the X positions from: Window X + Window border + (Window size +/- button size)
                     xMinimizeMin =
                         CurrentWindow.AppWindow.Position.X +
