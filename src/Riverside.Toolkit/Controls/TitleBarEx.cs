@@ -549,6 +549,24 @@ namespace Riverside.Toolkit.Controls
             }
         }
 
+        private void UpdateBrush()
+        {
+            try
+            {
+                if (CloseButton != null && MaximizeRestoreButton != null && MinimizeButton != null && TitleTextBlock != null)
+                {
+                    CloseButton.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
+                    MaximizeRestoreButton.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
+                    MinimizeButton.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
+                    TitleTextBlock.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
         public async void LoadBounds()
         {
             // Make sure the loop doesn't trigger too often
@@ -576,24 +594,6 @@ namespace Riverside.Toolkit.Controls
             catch
             {
                 return;
-            }
-        }
-
-        private void UpdateBrush()
-        {
-            try
-            {
-                if (CloseButton != null && MaximizeRestoreButton != null && MinimizeButton != null && TitleTextBlock != null)
-                {
-                    CloseButton.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
-                    MaximizeRestoreButton.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
-                    MinimizeButton.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
-                    TitleTextBlock.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
-                }
-            }
-            catch
-            {
-
             }
         }
     }
