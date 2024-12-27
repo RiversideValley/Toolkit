@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using Riverside.ComponentModel;
+using Windows.Foundation;
+using WinUIEx;
 
 namespace Riverside.Toolkit.Helpers
 {
@@ -20,68 +18,89 @@ namespace Riverside.Toolkit.Helpers
         public const uint GW_HWNDNEXT = 2;
         public const uint GW_CHILD = 5;
 
-        [DllImport(Libraries.User32, SetLastError = true)]
-        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        public const int HORZRES = 8; // Horizontal width of the display
+        public const int VERTRES = 10; // Vertical height of the display
+        public const int LOGPIXELSX = 88; // Logical pixels/inch in X
 
         [DllImport(Libraries.User32)]
-        public static extern IntPtr MonitorFromWindow(IntPtr hwnd, uint dwFlags);
-
-        [DllImport("shcore.dll")]
-        public static extern IntPtr GetScaleFactorForMonitor(IntPtr hwnd, out DeviceScaleFactor dwFlags);
+        public static extern IntPtr GetDC(IntPtr hWnd);
 
         [DllImport(Libraries.User32)]
-        public static extern IntPtr WindowFromPoint(Point point);
+        public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
 
-        [DllImport(Libraries.User32)]
-        public static extern int GetWindowRect(IntPtr hWnd, out RECT rect);
+        [DllImport(Libraries.GraphicsDeviceInterface)]
+        public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
 
-        [DllImport(Libraries.User32)]
-        public static extern IntPtr ChildWindowFromPointEx(IntPtr hWndParent, Point point, uint uFlags);
+        public static int GET_X_LPARAM(IntPtr lParam) => unchecked((short)(long)lParam);
 
-        [DllImport(Libraries.User32)]
-        public static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+        public static int GET_Y_LPARAM(IntPtr lParam) => unchecked((short)((long)lParam >> 16));
 
-        [DllImport(Libraries.User32)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GetCursorPos(out Point lpPoint);
-
-        [DllImport(Libraries.User32)]
-        public static extern IntPtr GetWindow(IntPtr hWnd, uint uCmd);
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct Point
+        public static class Display
         {
-            public int X;
-            public int Y;
-        }
+            public static double Scale(WindowEx win)
+            {
+                // Get the handle to the current window
+                var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(win);
 
-        public struct RECT
-        {
-            public int Left;
-            public int Top;
-            public int Right;
-            public int Bottom;
-        }
+                // Get the device context for the window
+                var hdc = GetDC(hWnd);
 
-        public enum DeviceScaleFactor
-        {
-            DEVICE_SCALE_FACTOR_INVALID = 0,
-            SCALE_100_PERCENT = 100,
-            SCALE_120_PERCENT = 120,
-            SCALE_125_PERCENT = 125,
-            SCALE_140_PERCENT = 140,
-            SCALE_150_PERCENT = 150,
-            SCALE_160_PERCENT = 160,
-            SCALE_175_PERCENT = 175,
-            SCALE_180_PERCENT = 180,
-            SCALE_200_PERCENT = 200,
-            SCALE_225_PERCENT = 225,
-            SCALE_250_PERCENT = 250,
-            SCALE_300_PERCENT = 300,
-            SCALE_350_PERCENT = 350,
-            SCALE_400_PERCENT = 400,
-            SCALE_450_PERCENT = 450,
-            SCALE_500_PERCENT = 500,
+                // Get the DPI
+                var dpiX = GetDeviceCaps(hdc, LOGPIXELSX);
+
+                // Release the device context
+                _ = ReleaseDC(hWnd, hdc);
+
+                return dpiX / 96.0;
+            }
+
+            public static Rect GetDisplayRect(WindowEx win)
+            {
+                // Get the handle to the current window
+                var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(win);
+
+                // Get the device context for the window
+                var hdc = GetDC(hWnd);
+
+                // Get the width and height of the display
+                var width = GetDeviceCaps(hdc, HORZRES);
+                var height = GetDeviceCaps(hdc, VERTRES);
+
+                // Release the device context
+                _ = ReleaseDC(hWnd, hdc);
+
+                return new Rect()
+                {
+                    X = 0,
+                    Y = 0,
+                    Width = width,
+                    Height = height
+                };
+            }
+
+            public static Rect GetDPIAwareDisplayRect(WindowEx win)
+            {
+                // Get the handle to the current window
+                var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(win);
+
+                // Get the device context for the window
+                var hdc = GetDC(hWnd);
+
+                // Get the width and height of the display
+                var width = GetDeviceCaps(hdc, HORZRES) / Scale(win);
+                var height = GetDeviceCaps(hdc, VERTRES) / Scale(win);
+
+                // Release the device context
+                _ = ReleaseDC(hWnd, hdc);
+
+                return new Rect()
+                {
+                    X = 0,
+                    Y = 0,
+                    Width = width,
+                    Height = height
+                };
+            }
         }
     }
 }
