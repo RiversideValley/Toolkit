@@ -31,7 +31,7 @@ namespace Riverside.Toolkit.Controls
         private WindowMessageMonitor MessageMonitor { get; set; }
         private bool IsWindowFocused { get; set; } = false;
 
-        private double AdditionalHeight { get; set; } = 0;
+        private double additionalHeight { get; set; } = 0;
 
         private SelectedCaptionButton CurrentCaption { get; set; } = SelectedCaptionButton.None;
 
@@ -298,12 +298,12 @@ namespace Riverside.Toolkit.Controls
                     // Gets the Y positions from: Window Y + Window border + (Window size +/- button size)
                     yMin =
                         CurrentWindow.AppWindow.Position.Y +
-                        (AdditionalHeight * Display.Scale(CurrentWindow)) +
+                        (additionalHeight * Display.Scale(CurrentWindow)) +
                         closeVisualPoint.Y + 2 * Display.Scale(CurrentWindow);
 
                     yMax =
                         CurrentWindow.AppWindow.Position.Y +
-                        (AdditionalHeight * Display.Scale(CurrentWindow)) +
+                        (additionalHeight * Display.Scale(CurrentWindow)) +
                         closeVisualPoint.Y + CloseButton.ActualHeight + 2 * Display.Scale(CurrentWindow);
                 }
             }
@@ -523,21 +523,27 @@ namespace Riverside.Toolkit.Controls
 
         public async void CheckMaximization()
         {
-            if (CurrentWindow.Presenter is OverlappedPresenter)
+            if (CurrentWindow.Presenter is OverlappedPresenter presenter)
             {
-                var state = (CurrentWindow.Presenter as OverlappedPresenter).State;
-                if (state == OverlappedPresenterState.Restored)
+                var state = presenter.State;
+                if (state is OverlappedPresenterState.Restored)
                 {
                     await Task.Delay(10);
                     _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                    AdditionalHeight = 0;
+
+                    // Required for window drag region
+                    additionalHeight = 0;
+
                     return;
                 }
-                else if (state == OverlappedPresenterState.Maximized)
+                else if (state is OverlappedPresenterState.Maximized)
                 {
                     await Task.Delay(10);
-                    _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                    AdditionalHeight = 6;
+                    _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Checked", true);
+
+                    // Required for window drag region
+                    additionalHeight = 6;
+
                     return;
                 }
             }
