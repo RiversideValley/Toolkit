@@ -52,7 +52,7 @@
     <PackageReference Include="MSTest.TestFramework" Version="3.7.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Toolkit\Riverside.Toolkit.csproj" />
+    <ProjectReference Include="..\..\src\Riverside.Toolkit\Riverside.Toolkit.csproj" />
   </ItemGroup>
 
   <!-- 
