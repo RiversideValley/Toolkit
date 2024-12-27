@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI", "GlowUI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Materials", "Materials\Riverside.Toolkit.Materials.csproj", "{1B5D4052-DA0C-4436-B150-5D928C274018}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.UnitTest", "Riverside.UnitTest\Riverside.UnitTest.csproj", "{AA9DE28F-049A-4E91-9DC8-9555664FDA4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,12 @@ Global
 		{1B5D4052-DA0C-4436-B150-5D928C274018}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B5D4052-DA0C-4436-B150-5D928C274018}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B5D4052-DA0C-4436-B150-5D928C274018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA9DE28F-049A-4E91-9DC8-9555664FDA4A}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{AA9DE28F-049A-4E91-9DC8-9555664FDA4A}.Debug|Any CPU.Build.0 = Debug|x64
+		{AA9DE28F-049A-4E91-9DC8-9555664FDA4A}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{AA9DE28F-049A-4E91-9DC8-9555664FDA4A}.Release|Any CPU.ActiveCfg = Release|x64
+		{AA9DE28F-049A-4E91-9DC8-9555664FDA4A}.Release|Any CPU.Build.0 = Release|x64
+		{AA9DE28F-049A-4E91-9DC8-9555664FDA4A}.Release|Any CPU.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

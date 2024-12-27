@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<winuiex:WindowEx
+    x:Class="Riverside.UnitTest.UnitTestAppWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Riverside.UnitTest"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:Riverside.Toolkit.Controls"
+    xmlns:winuiex="using:WinUIEx"
+    mc:Ignorable="d"
+    Title="Riverside.UnitTest">
+
+    <Grid>
+        <toolkit:TitleBarEx VerticalAlignment="Top" x:Name="TitleBar"/>
+    </Grid>
+</winuiex:WindowEx>

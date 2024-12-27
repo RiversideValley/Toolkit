@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Riverside.UnitTest (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Riverside.UnitTest (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
