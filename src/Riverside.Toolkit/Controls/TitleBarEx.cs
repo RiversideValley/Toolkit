@@ -551,27 +551,31 @@ namespace Riverside.Toolkit.Controls
 
         public async void LoadBounds()
         {
+            // Make sure the loop doesn't trigger too often
             await Task.Delay(100);
 
             try
             {
-                var appWindow = CurrentWindow.AppWindow;
-                if (appWindow is not null)
+                // If the window has been closed break the loop
+                if (closed) return;
+
+                // Check if every condition is met
+                if (CurrentWindow.AppWindow is not null && !closed && IsAutoDragRegionEnabled)
                 {
-                    var titleBar = appWindow.TitleBar;
                     var rect = new RectInt32(
                         // X pos
                         0,
+
                         // Y pos
                         0, 
+
                         // Width (Scaled window width)
                         (int)(CurrentWindow.Bounds.Width * Display.Scale(CurrentWindow)), 
-                        // Height 
-                        (int)(31 * Display.Scale(CurrentWindow)));
 
-                    RectInt32[] dragRectCollection = [rect];
+                        // Height (Scaled control actual height)
+                        (int)(ActualHeight * Display.Scale(CurrentWindow)));
 
-                    titleBar.SetDragRectangles(dragRectCollection);
+                    CurrentWindow.AppWindow.TitleBar.SetDragRectangles([rect]);
                 }
 
                 LoadBounds();
