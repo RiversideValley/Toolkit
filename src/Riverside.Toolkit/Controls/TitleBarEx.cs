@@ -562,20 +562,13 @@ namespace Riverside.Toolkit.Controls
                 // Check if every condition is met
                 if (CurrentWindow.AppWindow is not null && IsAutoDragRegionEnabled)
                 {
-                    var rect = new RectInt32(
-                        // X pos
-                        0,
+                    // Width (Scaled window width)
+                    var width = (int)(CurrentWindow.Bounds.Width * Display.Scale(CurrentWindow));
 
-                        // Y pos
-                        0, 
+                    // Height (Scaled control actual height)
+                    var height = (int)(ActualHeight * Display.Scale(CurrentWindow));
 
-                        // Width (Scaled window width)
-                        (int)(CurrentWindow.Bounds.Width * Display.Scale(CurrentWindow)), 
-
-                        // Height (Scaled control actual height)
-                        (int)(ActualHeight * Display.Scale(CurrentWindow)));
-
-                    CurrentWindow.AppWindow.TitleBar.SetDragRectangles([rect]);
+                    CurrentWindow.AppWindow.TitleBar.SetDragRectangles([new RectInt32(0, 0, width, height)]);
                 }
 
                 LoadBounds();
