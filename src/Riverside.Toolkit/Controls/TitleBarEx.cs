@@ -16,7 +16,7 @@ using DependencyPropertyGenerator;
 
 namespace Riverside.Toolkit.Controls
 {
-    [DependencyProperty<bool>("IsAutoDragRegionEnabled")]
+    [DependencyProperty<bool>("IsAutoDragRegionEnabled", DefaultValue = true)]
     public partial class TitleBarEx : Control
     {
         private Button CloseButton { get; set; }
@@ -29,11 +29,11 @@ namespace Riverside.Toolkit.Controls
         private WindowEx CurrentWindow { get; set; }
         private Border AccentStrip { get; set; }
         private WindowMessageMonitor MessageMonitor { get; set; }
-        private bool IsWindowFocused { get; set; } = false;
+        private bool isWindowFocused { get; set; } = false;
 
         private double additionalHeight { get; set; } = 0;
 
-        private SelectedCaptionButton CurrentCaption { get; set; } = SelectedCaptionButton.None;
+        private SelectedCaptionButton currentCaption { get; set; } = SelectedCaptionButton.None;
 
         private bool closed;
 
@@ -116,7 +116,7 @@ namespace Riverside.Toolkit.Controls
         {
             if (e.GetCurrentPoint(CurrentWindow.Content).Properties.IsLeftButtonPressed != true)
             {
-                CurrentCaption = SelectedCaptionButton.None;
+                currentCaption = SelectedCaptionButton.None;
             }
         }
 
@@ -124,7 +124,7 @@ namespace Riverside.Toolkit.Controls
         {
             if (e.GetCurrentPoint(CurrentWindow.Content).Properties.IsLeftButtonPressed != true)
             {
-                CurrentCaption = SelectedCaptionButton.None;
+                currentCaption = SelectedCaptionButton.None;
             }
         }
 
@@ -138,7 +138,7 @@ namespace Riverside.Toolkit.Controls
                     {
                         if (e.GetCurrentPoint(CurrentWindow.Content).Properties.IsLeftButtonPressed != true)
                         {
-                            CurrentCaption = SelectedCaptionButton.None;
+                            currentCaption = SelectedCaptionButton.None;
                         }
                     }
                 }
@@ -210,8 +210,8 @@ namespace Riverside.Toolkit.Controls
                     {
                         AccentStrip.Visibility = Visibility.Visible;
                     }
-                    Resources["CaptionForegroundBrush"] = IsWindowFocused == false ? new SolidColorBrush(Colors.White) : Application.Current.Resources["AccentTextFillColorDisabledBrush"] as SolidColorBrush;
-                    AccentStrip.Visibility = IsWindowFocused == false ? Visibility.Visible : Visibility.Collapsed;
+                    Resources["CaptionForegroundBrush"] = isWindowFocused == false ? new SolidColorBrush(Colors.White) : Application.Current.Resources["AccentTextFillColorDisabledBrush"] as SolidColorBrush;
+                    AccentStrip.Visibility = isWindowFocused == false ? Visibility.Visible : Visibility.Collapsed;
                 }
                 catch { }
             }
@@ -223,7 +223,7 @@ namespace Riverside.Toolkit.Controls
                     {
                         AccentStrip.Visibility = Visibility.Collapsed;
                     }
-                    Resources["CaptionForegroundBrush"] = IsWindowFocused == false ? Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush : Application.Current.Resources["TextFillColorDisabledBrush"] as SolidColorBrush;
+                    Resources["CaptionForegroundBrush"] = isWindowFocused == false ? Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush : Application.Current.Resources["TextFillColorDisabledBrush"] as SolidColorBrush;
                 }
                 catch { }
             }
@@ -320,13 +320,13 @@ namespace Riverside.Toolkit.Controls
                         if (wParam == WA_INACTIVE)
                         {
                             // The window has lost focus
-                            IsWindowFocused = true;
+                            isWindowFocused = true;
                             CheckFocus();
                         }
                         else
                         {
                             // The window has gained focus
-                            IsWindowFocused = false;
+                            isWindowFocused = false;
                             CheckFocus();
                         }
                         break;
@@ -338,9 +338,9 @@ namespace Riverside.Toolkit.Controls
                         {
                             e.Handled = true;
                             e.Result = new IntPtr(8);
-                            _ = CurrentCaption == SelectedCaptionButton.Minimize
+                            _ = currentCaption == SelectedCaptionButton.Minimize
                                 ? VisualStateManager.GoToState(MinimizeButton, "Pressed", true)
-                                : CurrentCaption == SelectedCaptionButton.None
+                                : currentCaption == SelectedCaptionButton.None
                                     ? VisualStateManager.GoToState(MinimizeButton, "PointerOver", true)
                                     : VisualStateManager.GoToState(MinimizeButton, "Normal", true);
                             _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
@@ -355,9 +355,9 @@ namespace Riverside.Toolkit.Controls
                             e.Handled = true;
                             e.Result = new IntPtr(9);
                             _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                            _ = CurrentCaption == SelectedCaptionButton.Maximize
+                            _ = currentCaption == SelectedCaptionButton.Maximize
                                 ? VisualStateManager.GoToState(MaximizeRestoreButton, "Pressed", true)
-                                : CurrentCaption == SelectedCaptionButton.None
+                                : currentCaption == SelectedCaptionButton.None
                                     ? VisualStateManager.GoToState(MaximizeRestoreButton, "PointerOver", true)
                                     : VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
                             _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
@@ -372,9 +372,9 @@ namespace Riverside.Toolkit.Controls
                             e.Result = new IntPtr(20);
                             _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
                             _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                            _ = CurrentCaption == SelectedCaptionButton.Close
+                            _ = currentCaption == SelectedCaptionButton.Close
                                 ? VisualStateManager.GoToState(CloseButton, "Pressed", true)
-                                : CurrentCaption == SelectedCaptionButton.None
+                                : currentCaption == SelectedCaptionButton.None
                                     ? VisualStateManager.GoToState(CloseButton, "PointerOver", true)
                                     : VisualStateManager.GoToState(CloseButton, "Normal", true);
                             await Task.Delay(1000);
@@ -403,7 +403,7 @@ namespace Riverside.Toolkit.Controls
                         // Minimize Button
                         if (IsInRect(x, xMinimizeMin, xMinimizeMax, y, yMin, yMax))
                         {
-                            CurrentCaption = SelectedCaptionButton.Minimize;
+                            currentCaption = SelectedCaptionButton.Minimize;
                             _ = VisualStateManager.GoToState(MinimizeButton, "Pressed", true);
                             _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
                             _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
@@ -412,7 +412,7 @@ namespace Riverside.Toolkit.Controls
                         // Maximize Button
                         else if (IsInRect(x, xMaximizeMin, xMaximizeMax, y, yMin, yMax))
                         {
-                            CurrentCaption = SelectedCaptionButton.Maximize;
+                            currentCaption = SelectedCaptionButton.Maximize;
                             _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
                             _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Pressed", true);
                             _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
@@ -421,7 +421,7 @@ namespace Riverside.Toolkit.Controls
                         // Close Button
                         else if (IsInRect(x, xCloseMin, xCloseMax, y, yMin, yMax))
                         {
-                            CurrentCaption = SelectedCaptionButton.Close;
+                            currentCaption = SelectedCaptionButton.Close;
                             _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
                             _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
                             _ = VisualStateManager.GoToState(CloseButton, "Pressed", true);
@@ -430,7 +430,7 @@ namespace Riverside.Toolkit.Controls
                         // Title bar drag area
                         else
                         {
-                            CurrentCaption = SelectedCaptionButton.None;
+                            currentCaption = SelectedCaptionButton.None;
                             _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
                             _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
                             _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
@@ -447,7 +447,7 @@ namespace Riverside.Toolkit.Controls
                         // Minimize Button
                         if (IsInRect(x, xMinimizeMin, xMinimizeMax, y, yMin, yMax))
                         {
-                            if (CurrentCaption == SelectedCaptionButton.Minimize)
+                            if (currentCaption == SelectedCaptionButton.Minimize)
                             {
                                 CurrentWindow.Minimize();
                                 _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
@@ -459,7 +459,7 @@ namespace Riverside.Toolkit.Controls
                         // Maximize Button
                         else if (IsInRect(x, xMaximizeMin, xMaximizeMax, y, yMin, yMax))
                         {
-                            if (CurrentCaption == SelectedCaptionButton.Maximize)
+                            if (currentCaption == SelectedCaptionButton.Maximize)
                             {
                                 RunMaximization();
                             }
@@ -468,7 +468,7 @@ namespace Riverside.Toolkit.Controls
                         // Close Button
                         else if (IsInRect(x, xCloseMin, xCloseMax, y, yMin, yMax))
                         {
-                            if (CurrentCaption == SelectedCaptionButton.Close)
+                            if (currentCaption == SelectedCaptionButton.Close)
                             {
                                 CurrentWindow.Close();
                             }
@@ -480,7 +480,7 @@ namespace Riverside.Toolkit.Controls
 
                         }
 
-                        CurrentCaption = SelectedCaptionButton.None;
+                        currentCaption = SelectedCaptionButton.None;
 
                         MessageMonitor.WindowMessageReceived -= Event;
                         MessageMonitor.Dispose();

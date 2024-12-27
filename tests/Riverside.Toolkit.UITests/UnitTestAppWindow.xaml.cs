@@ -9,6 +9,7 @@ namespace Riverside.Toolkit.UITests
             InitializeComponent();
             TitleBar.InitializeForWindow(this);
             TitleBar.SetWindowIcon("Assets/Rebound.ico");
+            SystemBackdrop = new Microsoft.UI.Xaml.Media.MicaBackdrop();
         }
     }
 }
