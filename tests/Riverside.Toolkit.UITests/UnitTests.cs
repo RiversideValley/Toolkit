@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Riverside.UnitTest
+namespace Riverside.Toolkit.UITests
 {
     [TestClass]
     public class UnitTest1

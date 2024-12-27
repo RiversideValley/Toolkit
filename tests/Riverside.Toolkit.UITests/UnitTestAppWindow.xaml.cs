@@ -1,6 +1,6 @@
 using WinUIEx;
 
-namespace Riverside.UnitTest
+namespace Riverside.Toolkit.UITests
 {
     public sealed partial class UnitTestAppWindow : WindowEx
     {
