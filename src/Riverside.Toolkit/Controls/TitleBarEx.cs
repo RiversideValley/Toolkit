@@ -560,7 +560,7 @@ namespace Riverside.Toolkit.Controls
                 if (closed) return;
 
                 // Check if every condition is met
-                if (CurrentWindow.AppWindow is not null && !closed && IsAutoDragRegionEnabled)
+                if (CurrentWindow.AppWindow is not null && IsAutoDragRegionEnabled)
                 {
                     var rect = new RectInt32(
                         // X pos
