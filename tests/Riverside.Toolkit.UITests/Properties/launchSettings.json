@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "Riverside.UnitTest (Package)": {
+    "Riverside.Toolkit.UITests (Package)": {
       "commandName": "MsixPackage"
     },
-    "Riverside.UnitTest (Unpackaged)": {
+    "Riverside.Toolkit.UITests (Unpackaged)": {
       "commandName": "Project"
     }
   }
