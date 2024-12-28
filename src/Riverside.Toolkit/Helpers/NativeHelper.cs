@@ -22,6 +22,13 @@ namespace Riverside.Toolkit.Helpers
         public const int VERTRES = 10; // Vertical height of the display
         public const int LOGPIXELSX = 88; // Logical pixels/inch in X
 
+        // Virtual key code for the left mouse button
+        public const int VK_LBUTTON = 0x01;
+
+        // Import the GetAsyncKeyState function from user32.dll
+        [DllImport(Libraries.User32)]
+        public static extern short GetAsyncKeyState(int vKey);
+
         [DllImport(Libraries.User32)]
         public static extern IntPtr GetDC(IntPtr hWnd);
 

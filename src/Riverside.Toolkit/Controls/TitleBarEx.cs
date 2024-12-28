@@ -13,10 +13,16 @@ using WinUIEx;
 using WinUIEx.Messaging;
 using static Riverside.Toolkit.Helpers.NativeHelper;
 using DependencyPropertyGenerator;
+using System.Diagnostics;
+using CommunityToolkit.WinUI.UI.Controls;
 
 namespace Riverside.Toolkit.Controls
 {
     [DependencyProperty<bool>("IsAutoDragRegionEnabled", DefaultValue = true)]
+    [DependencyProperty<bool>("IsAccentTitleBarEnabled", DefaultValue = true)]
+    [DependencyProperty<bool>("IsMinimizable", DefaultValue = true)]
+    [DependencyProperty<bool>("IsMaximizable", DefaultValue = true)]
+    [DependencyProperty<bool>("IsClosable", DefaultValue = true)]
     public partial class TitleBarEx : Control
     {
         private Button CloseButton { get; set; }
@@ -30,12 +36,12 @@ namespace Riverside.Toolkit.Controls
         private Border AccentStrip { get; set; }
         private WindowMessageMonitor MessageMonitor { get; set; }
         private bool isWindowFocused { get; set; } = false;
-
+        private bool isMaximized { get; set; } = false;
+        private int buttonDownHeight { get; set; } = 0;
+        private IntPtr lastPos { get; set; }
         private double additionalHeight { get; set; } = 0;
-
         private SelectedCaptionButton currentCaption { get; set; } = SelectedCaptionButton.None;
-
-        private bool closed;
+        private bool closed { get; set; }
 
         public enum SelectedCaptionButton
         {
@@ -57,9 +63,11 @@ namespace Riverside.Toolkit.Controls
             CurrentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
             CurrentWindow.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Collapsed;
 
-            CurrentWindow.Content.PointerMoved += PointerMoved;
-            CurrentWindow.Content.PointerReleased += PointerReleased;
-            CurrentWindow.Content.PointerExited += PointerExited;
+            CurrentWindow.Content.PointerMoved += Content_PointerMoved;
+            CurrentWindow.Content.PointerReleased += Content_PointerReleased;
+            CurrentWindow.Content.PointerExited += Content_PointerExited;
+            CurrentWindow.Content.PointerEntered += Content_PointerEntered;
+            PointerExited += TitleBarEx_PointerExited;
 
             CurrentWindow.WindowStateChanged += CurrentWindow_WindowStateChanged;
 
@@ -68,6 +76,20 @@ namespace Riverside.Toolkit.Controls
             CheckWindow();
             Rehook();
             LoadBounds();
+        }
+
+        private void TitleBarEx_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            // No buttons are selected
+            SwitchState(ButtonsState.None);
+            //(CurrentWindow.Content as Grid).Background = new SolidColorBrush(Colors.Gray);
+        }
+
+        private void Content_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            // No buttons are selected
+            SwitchState(ButtonsState.None);
+            //(CurrentWindow.Content as Grid).Background = new SolidColorBrush(Colors.Gray);
         }
 
         private void CurrentWindow_Closed(object sender, WindowEventArgs args)
@@ -96,6 +118,30 @@ namespace Riverside.Toolkit.Controls
         {
             try
             {
+                if (CurrentWindow is not null)
+                {
+                    CurrentWindow.IsMaximizable = IsMaximizable;
+                    MaximizeRestoreButton.IsEnabled = IsMaximizable;
+                    CurrentWindow.IsMinimizable = IsMinimizable;
+                    MinimizeButton.IsEnabled = IsMinimizable;
+
+                    CloseButton.IsEnabled = IsClosable;
+
+                    CheckMaximization();
+                }
+                if (MinimizeButton is not null && MaximizeRestoreButton is not null)
+                {
+                    if (!IsMinimizable && !IsMaximizable)
+                    {
+                        MinimizeButton.Visibility = MaximizeRestoreButton.Visibility = Visibility.Collapsed;
+                        CloseButton.Style = Resources["CloseSingular"] as Style;
+                    }
+                    else
+                    {
+                        MinimizeButton.Visibility = MaximizeRestoreButton.Visibility = Visibility.Visible;
+                        CloseButton.Style = Resources["Close"] as Style;
+                    }
+                }
                 /*if (WindowTitle != null && CurrentWindow != null)
                 {
                     WindowTitle.Text = CurrentWindow.Title;
@@ -112,31 +158,39 @@ namespace Riverside.Toolkit.Controls
 
         private void CurrentWindow_WindowStateChanged(object sender, WindowState e) => CheckMaximization();
 
-        private void PointerMoved(object sender, PointerRoutedEventArgs e)
+        private void Content_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
-            if (e.GetCurrentPoint(CurrentWindow.Content).Properties.IsLeftButtonPressed != true)
+            // No buttons are selected
+            SwitchState(ButtonsState.None);
+            if (!IsLeftMouseButtonDown())
             {
                 currentCaption = SelectedCaptionButton.None;
             }
         }
 
-        private void PointerReleased(object sender, PointerRoutedEventArgs e)
+        private void Content_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
-            if (e.GetCurrentPoint(CurrentWindow.Content).Properties.IsLeftButtonPressed != true)
+            // No buttons are selected
+            SwitchState(ButtonsState.None);
+            //(CurrentWindow.Content as Grid).Background = new SolidColorBrush(Colors.Green);
+            if (!IsLeftMouseButtonDown())
             {
                 currentCaption = SelectedCaptionButton.None;
             }
         }
 
-        private void PointerExited(object sender, PointerRoutedEventArgs e)
+        private void Content_PointerExited(object sender, PointerRoutedEventArgs e)
         {
+            // No buttons are selected
+            SwitchState(ButtonsState.None);
+            //(CurrentWindow.Content as Grid).Background = new SolidColorBrush(Colors.Blue);
             try
             {
                 if (CurrentWindow != null)
                 {
                     if (CurrentWindow.Content != null)
                     {
-                        if (e.GetCurrentPoint(CurrentWindow.Content).Properties.IsLeftButtonPressed != true)
+                        if (!IsLeftMouseButtonDown())
                         {
                             currentCaption = SelectedCaptionButton.None;
                         }
@@ -166,7 +220,7 @@ namespace Riverside.Toolkit.Controls
         {
             try
             {
-                if (TitleBarIcon is not null) TitleBarIcon.Source = new BitmapImage(new Uri($"ms-appx:///{path}"));
+                if (TitleBarIcon is not null) TitleBarIcon.Source = new BitmapImage(new Uri($"ms-appx:///{path}", UriKind.RelativeOrAbsolute));
             }
             catch
             {
@@ -202,29 +256,15 @@ namespace Riverside.Toolkit.Controls
 
         public void CheckFocus()
         {
-            if (IsAccentColorEnabledForTitleBars() == true)
+            if (IsAccentColorEnabledForTitleBars() && IsAccentTitleBarEnabled)
             {
-                try
-                {
-                    if (AccentStrip != null)
-                    {
-                        AccentStrip.Visibility = isWindowFocused == false ? Visibility.Visible : Visibility.Collapsed;
-                    }
-                    Resources["CaptionForegroundBrush"] = isWindowFocused == false ? new SolidColorBrush(Colors.White) : Application.Current.Resources["AccentTextFillColorDisabledBrush"] as SolidColorBrush;
-                }
-                catch { }
+                if (AccentStrip is not null) AccentStrip.Visibility = isWindowFocused == false ? Visibility.Visible : Visibility.Collapsed;
+                Resources["CaptionForegroundBrush"] = isWindowFocused == false ? new SolidColorBrush(Colors.White) : Application.Current.Resources["AccentTextFillColorDisabledBrush"] as SolidColorBrush;
             }
             else
             {
-                try
-                {
-                    if (AccentStrip != null)
-                    {
-                        AccentStrip.Visibility = Visibility.Collapsed;
-                    }
-                    Resources["CaptionForegroundBrush"] = isWindowFocused == false ? Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush : Application.Current.Resources["TextFillColorDisabledBrush"] as SolidColorBrush;
-                }
-                catch { }
+                if (AccentStrip is not null) AccentStrip.Visibility = Visibility.Collapsed;
+                Resources["CaptionForegroundBrush"] = isWindowFocused == false ? Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush : Application.Current.Resources["TextFillColorDisabledBrush"] as SolidColorBrush;
             }
             UpdateBrush();
         }
@@ -236,13 +276,14 @@ namespace Riverside.Toolkit.Controls
             const int WM_NCLBUTTONDOWN = 0x00A1;
             const int WM_NCHITTEST = 0x0084;
             const int WM_NCLBUTTONUP = 0x00A2;
-            const int WM_NCMOUSELEAVE = 0x02A2;
             const int WM_ACTIVATE = 0x0006;
             const int WA_INACTIVE = 0;
 
             // Gets the pointer's position relative to the screen's edge with DPI scaling applied
             var x = GET_X_LPARAM(e.Message.LParam);
             var y = GET_Y_LPARAM(e.Message.LParam);
+
+            lastPos = e.Message.LParam;
 
             double xMinimizeMin = 0;
             double xMinimizeMax = 0;
@@ -303,13 +344,15 @@ namespace Riverside.Toolkit.Controls
                     yMax =
                         CurrentWindow.AppWindow.Position.Y +
                         (additionalHeight * Display.Scale(CurrentWindow)) +
-                        closeVisualPoint.Y + CloseButton.ActualHeight + 2 * Display.Scale(CurrentWindow);
+                        closeVisualPoint.Y + CloseButton.ActualHeight * Display.Scale(CurrentWindow);
                 }
             }
             catch
             {
                 return;
             }
+
+            if (currentCaption is SelectedCaptionButton.None) buttonDownHeight = 0;
 
             switch (e.Message.MessageId)
             {
@@ -332,107 +375,212 @@ namespace Riverside.Toolkit.Controls
                     }
                 case WM_NCHITTEST:
                     {
+                        e.Handled = true;
+
+                        buttonDownHeight = 15;
+
                         // Minimize Button
-                        if (IsInRect(x, xMinimizeMin, xMinimizeMax, y, yMin, yMax))
+                        if (IsInRect(x, xMinimizeMin, xMinimizeMax, y, yMin, yMax) && MinimizeButton.Visibility == Visibility.Visible)
                         {
-                            e.Handled = true;
-                            e.Result = new IntPtr(8);
-                            _ = currentCaption == SelectedCaptionButton.Minimize
-                                ? VisualStateManager.GoToState(MinimizeButton, "Pressed", true)
-                                : currentCaption == SelectedCaptionButton.None
-                                    ? VisualStateManager.GoToState(MinimizeButton, "PointerOver", true)
-                                    : VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
-                            await Task.Delay(1000);
-                            e.Handled = false;
+                            if (!IsMinimizable)
+                            {
+                                // Cancel every other button
+                                SwitchState(ButtonsState.None);
+
+                                e.Result = new IntPtr(18);
+                                await Task.Delay(1000);
+                                e.Handled = false;
+                            }
+
+                            SwitchState(
+                                // If the current caption is none, select it as usual
+                                currentCaption == SelectedCaptionButton.None ? ButtonsState.MinimizePointerOver : // False state
+
+                                // If the current caption is the button's type, select the button as pressed
+                                currentCaption == SelectedCaptionButton.Minimize ? ButtonsState.MinimizePressed : // False state
+
+                                // Otherwise, this is not the button the user previously selected
+                                ButtonsState.None);
+
+                            if (currentCaption is SelectedCaptionButton.None && IsMinimizable)
+                            {
+                                e.Result = new IntPtr(8);
+                                await Task.Delay(800);
+                                e.Handled = false;
+                            }
                         }
 
                         // Maximize Button
-                        else if (IsInRect(x, xMaximizeMin, xMaximizeMax, y, yMin, yMax))
+                        else if (IsInRect(x, xMaximizeMin, xMaximizeMax, y, yMin, yMax) && MaximizeRestoreButton.Visibility == Visibility.Visible)
                         {
-                            e.Handled = true;
-                            e.Result = new IntPtr(9);
-                            _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                            _ = currentCaption == SelectedCaptionButton.Maximize
-                                ? VisualStateManager.GoToState(MaximizeRestoreButton, "Pressed", true)
-                                : currentCaption == SelectedCaptionButton.None
-                                    ? VisualStateManager.GoToState(MaximizeRestoreButton, "PointerOver", true)
-                                    : VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
-                            await Task.Delay(1000);
-                            e.Handled = false;
+                            if (!IsMaximizable)
+                            {
+                                // Cancel every other button
+                                SwitchState(ButtonsState.None);
+
+                                e.Result = new IntPtr(18);
+                                await Task.Delay(1000);
+                                e.Handled = false;
+                            }
+
+                            SwitchState(
+                                // If the current caption is none, select it as usual
+                                currentCaption == SelectedCaptionButton.None ? ButtonsState.MaximizePointerOver : // False state
+
+                                // If the current caption is the button's type, select the button as pressed
+                                currentCaption == SelectedCaptionButton.Maximize ? ButtonsState.MaximizePressed : // False state
+
+                                // Otherwise, this is not the button the user previously selected
+                                ButtonsState.None);
+
+                            if (currentCaption is SelectedCaptionButton.None && IsMaximizable)
+                            {
+                                e.Result = new IntPtr(9);
+                                await Task.Delay(800);
+                                e.Handled = false;
+                            }
                         }
 
                         // Close Button
                         else if (IsInRect(x, xCloseMin, xCloseMax, y, yMin, yMax))
                         {
-                            e.Handled = true;
-                            e.Result = new IntPtr(20);
-                            _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                            _ = currentCaption == SelectedCaptionButton.Close
-                                ? VisualStateManager.GoToState(CloseButton, "Pressed", true)
-                                : currentCaption == SelectedCaptionButton.None
-                                    ? VisualStateManager.GoToState(CloseButton, "PointerOver", true)
-                                    : VisualStateManager.GoToState(CloseButton, "Normal", true);
-                            await Task.Delay(1000);
-                            e.Handled = false;
+                            if (!IsClosable)
+                            {
+                                // Cancel every other button
+                                SwitchState(ButtonsState.None);
+
+                                e.Result = new IntPtr(18);
+                                await Task.Delay(1000);
+                                e.Handled = false;
+                            }
+
+                            SwitchState(
+                                // If the current caption is none, select it as usual
+                                currentCaption == SelectedCaptionButton.None ? ButtonsState.ClosePointerOver : // False state
+
+                                // If the current caption is the button's type, select the button as pressed
+                                currentCaption == SelectedCaptionButton.Close ? ButtonsState.ClosePressed : // False state
+
+                                // Otherwise, this is not the button the user previously selected
+                                ButtonsState.None);
+
+                            if (currentCaption is SelectedCaptionButton.None && IsClosable)
+                            {
+                                e.Result = new IntPtr(20);
+                                await Task.Delay(800);
+                                e.Handled = false;
+                            }
                         }
 
                         // Title bar drag area
                         else
                         {
-                            e.Handled = true;
                             e.Result = new IntPtr(1);
-                            _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
+
                             e.Handled = false;
+
+                            // No buttons are selected
+                            SwitchState(ButtonsState.None);
+
+                            buttonDownHeight = 0;
+
+                            break;
                         }
+
+                        e.Handled = false;
 
                         break;
                     }
                 case WM_NCLBUTTONDOWN:
                     {
                         e.Handled = true;
-                        e.Result = new IntPtr(1);
-                        e.Handled = false;
+
+                        buttonDownHeight = 5;
 
                         // Minimize Button
-                        if (IsInRect(x, xMinimizeMin, xMinimizeMax, y, yMin, yMax))
+                        if (IsInRect(x, xMinimizeMin, xMinimizeMax, y, yMin, yMax) && IsLeftMouseButtonDown() && MinimizeButton.Visibility == Visibility.Visible)
                         {
+                            if (!IsMinimizable)
+                            {
+                                // Cancel every other button
+                                SwitchState(ButtonsState.None);
+
+                                e.Handled = false;
+                                return;
+                            }
+
                             currentCaption = SelectedCaptionButton.Minimize;
-                            _ = VisualStateManager.GoToState(MinimizeButton, "Pressed", true);
-                            _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
+
+                            SwitchState(
+                                // If the current caption is none, select it as usual
+                                currentCaption == SelectedCaptionButton.None ? ButtonsState.MinimizePointerOver : // False state
+
+                                // If the current caption is the button's type, select the button as pressed
+                                currentCaption == SelectedCaptionButton.Minimize ? ButtonsState.MinimizePressed : // False state
+
+                                // Otherwise, this is not the button the user previously selected
+                                ButtonsState.None);
                         }
 
                         // Maximize Button
-                        else if (IsInRect(x, xMaximizeMin, xMaximizeMax, y, yMin, yMax))
+                        else if (IsInRect(x, xMaximizeMin, xMaximizeMax, y, yMin, yMax) && MaximizeRestoreButton.Visibility == Visibility.Visible)
                         {
+                            if (!IsMaximizable)
+                            {
+                                // Cancel every other button
+                                SwitchState(ButtonsState.None);
+
+                                e.Handled = false;
+                                return;
+                            }
+
                             currentCaption = SelectedCaptionButton.Maximize;
-                            _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Pressed", true);
-                            _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
+
+                            SwitchState(
+                                // If the current caption is none, select it as usual
+                                currentCaption == SelectedCaptionButton.None ? ButtonsState.MaximizePointerOver : // False state
+
+                                // If the current caption is the button's type, select the button as pressed
+                                currentCaption == SelectedCaptionButton.Maximize ? ButtonsState.MaximizePressed : // False state
+
+                                // Otherwise, this is not the button the user previously selected
+                                ButtonsState.None);
                         }
 
                         // Close Button
                         else if (IsInRect(x, xCloseMin, xCloseMax, y, yMin, yMax))
                         {
+                            if (!IsClosable)
+                            {
+                                // Cancel every other button
+                                SwitchState(ButtonsState.None);
+
+                                e.Handled = false;
+                                return;
+                            }
+
                             currentCaption = SelectedCaptionButton.Close;
-                            _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(CloseButton, "Pressed", true);
+
+                            SwitchState(
+                                // If the current caption is none, select it as usual
+                                currentCaption == SelectedCaptionButton.None ? ButtonsState.ClosePointerOver : // False state
+
+                                // If the current caption is the button's type, select the button as pressed
+                                currentCaption == SelectedCaptionButton.Close ? ButtonsState.ClosePressed : // False state
+
+                                // Otherwise, this is not the button the user previously selected
+                                ButtonsState.None);
                         }
 
                         // Title bar drag area
                         else
                         {
                             currentCaption = SelectedCaptionButton.None;
-                            _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                            _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
+
+                            e.Handled = false;
+
+                            // No buttons are selected
+                            SwitchState(ButtonsState.None);
                         }
 
                         break;
@@ -441,58 +589,49 @@ namespace Riverside.Toolkit.Controls
                     {
                         e.Handled = true;
                         e.Result = new IntPtr(1);
-                        e.Handled = false;
-
                         // Minimize Button
                         if (IsInRect(x, xMinimizeMin, xMinimizeMax, y, yMin, yMax))
                         {
-                            if (currentCaption == SelectedCaptionButton.Minimize)
+                            if (!IsMinimizable)
                             {
-                                CurrentWindow.Minimize();
-                                _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                                _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                                _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
+                                e.Handled = false;
+                                return;
                             }
+                            CurrentWindow.Minimize();
+
+                            // No buttons are selected
+                            SwitchState(ButtonsState.None);
                         }
 
                         // Maximize Button
                         else if (IsInRect(x, xMaximizeMin, xMaximizeMax, y, yMin, yMax))
                         {
-                            if (currentCaption == SelectedCaptionButton.Maximize)
+                            if (!IsMaximizable)
                             {
-                                RunMaximization();
+                                e.Handled = false;
+                                return;
                             }
+                            RunMaximization();
+
+                            // No buttons are selected
+                            SwitchState(ButtonsState.None);
                         }
 
                         // Close Button
                         else if (IsInRect(x, xCloseMin, xCloseMax, y, yMin, yMax))
                         {
-                            if (currentCaption == SelectedCaptionButton.Close)
-                            {
-                                CurrentWindow.Close();
-                            }
+                            CurrentWindow.Close();
                         }
 
                         // Title bar drag area
                         else
                         {
-
+                            // No buttons are selected
+                            SwitchState(ButtonsState.None);
                         }
 
                         currentCaption = SelectedCaptionButton.None;
-
-                        MessageMonitor.WindowMessageReceived -= Event;
-                        MessageMonitor.Dispose();
-                        break;
-                    }
-                case WM_NCMOUSELEAVE:
-                    {
-                        e.Handled = true;
-                        e.Result = new IntPtr(1);
                         e.Handled = false;
-                        _ = VisualStateManager.GoToState(MinimizeButton, "Normal", true);
-                        _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
-                        _ = VisualStateManager.GoToState(CloseButton, "Normal", true);
                         break;
                     }
                 default:
@@ -501,18 +640,25 @@ namespace Riverside.Toolkit.Controls
                         break;
                     }
             }
+            if (!IsLeftMouseButtonDown()) currentCaption = SelectedCaptionButton.None;
+        }
+
+        private static bool IsLeftMouseButtonDown()
+        {
+            // The high-order bit indicates if the key is down
+            return (GetAsyncKeyState(VK_LBUTTON) & 0x8000) != 0;
         }
 
         public void RunMaximization()
         {
             var state = (CurrentWindow.Presenter as OverlappedPresenter).State;
-            if (state == OverlappedPresenterState.Restored)
+            if (state is OverlappedPresenterState.Restored)
             {
                 CurrentWindow.Maximize();
                 CheckMaximization();
                 return;
             }
-            else if (state == OverlappedPresenterState.Maximized)
+            else if (state is OverlappedPresenterState.Maximized)
             {
                 CurrentWindow.Restore();
                 CheckMaximization();
@@ -522,35 +668,194 @@ namespace Riverside.Toolkit.Controls
 
         public async void CheckMaximization()
         {
+            var _isMaximized = isMaximized;
             if (CurrentWindow.Presenter is OverlappedPresenter presenter)
             {
-                var state = presenter.State;
-                if (state is OverlappedPresenterState.Restored)
+                switch (presenter.State)
                 {
-                    await Task.Delay(10);
-                    _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
+                    case OverlappedPresenterState.Maximized:
+                        {
+                            await Task.Delay(10);
 
-                    // Required for window drag region
-                    additionalHeight = 0;
+                            // Required for window drag region
+                            additionalHeight = 6;
 
-                    return;
-                }
-                else if (state is OverlappedPresenterState.Maximized)
-                {
-                    await Task.Delay(10);
-                    _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Checked", true);
+                            // Required for NCHITTEST
+                            isMaximized = true;
 
-                    // Required for window drag region
-                    additionalHeight = 6;
+                            if (!_isMaximized) SwitchState(ButtonsState.None);
 
-                    return;
+                            break;
+                        }
+                    case OverlappedPresenterState.Restored:
+                        {
+                            await Task.Delay(10);
+
+                            // Required for window drag region
+                            additionalHeight = 0;
+
+                            // Required for NCHITTEST
+                            isMaximized = false;
+
+                            if (_isMaximized) SwitchState(ButtonsState.None);
+
+                            break;
+                        }
                 }
             }
             else
             {
                 await Task.Delay(10);
-                _ = VisualStateManager.GoToState(MaximizeRestoreButton, "Normal", true);
+
+                // Required for window drag region
+                additionalHeight = 0;
+
+                // Required for NCHITTEST
+                isMaximized = false;
+
                 return;
+            }
+        }
+
+        private enum ButtonsState
+        {
+            None,
+            MinimizePointerOver,
+            MinimizePressed,
+            MaximizePointerOver,
+            MaximizePressed,
+            ClosePointerOver,
+            ClosePressed
+        }
+
+        private void SwitchState(ButtonsState buttonsState)
+        {
+            CheckMaximization();
+
+            string minimizeState = string.Empty;
+            string maximizeState = string.Empty;
+            string closeState = string.Empty;
+
+            switch (buttonsState)
+            {
+                case ButtonsState.None:
+                    {
+                        // Minimize
+                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
+
+                        // Maximize
+                        CheckMaximizeNormalStates();
+
+                        // Close
+                        closeState = IsClosable ? "Normal" : "Disabled";
+                        break;
+                    }
+                case ButtonsState.MinimizePointerOver:
+                    {
+                        // Minimize
+                        minimizeState = IsMinimizable ? "PointerOver" : "Disabled";
+
+                        // Maximize
+                        CheckMaximizeNormalStates();
+
+                        // Close
+                        closeState = IsClosable ? "Normal" : "Disabled";
+                        break;
+                    }
+                case ButtonsState.MinimizePressed:
+                    {
+                        // Minimize
+                        minimizeState = IsMinimizable ? "Pressed" : "Disabled";
+
+                        // Maximize
+                        CheckMaximizeNormalStates();
+
+                        // Close
+                        closeState = IsClosable ? "Normal" : "Disabled";
+                        break;
+                    }
+                case ButtonsState.MaximizePointerOver:
+                    {
+                        // Minimize
+                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
+
+                        // Maximize
+                        CheckMaximizeNormalStates();
+
+                        // Close
+                        closeState = IsClosable ? "Normal" : "Disabled";
+                        break;
+                    }
+                case ButtonsState.MaximizePressed:
+                    {
+                        // Minimize
+                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
+
+                        // Maximize
+                        CheckMaximizeNormalStates();
+
+                        // Close
+                        closeState = IsClosable ? "Normal" : "Disabled";
+                        break;
+                    }
+                case ButtonsState.ClosePointerOver:
+                    {
+                        // Minimize
+                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
+
+                        // Maximize
+                        CheckMaximizeNormalStates();
+
+                        // Close
+                        closeState = IsClosable ? "PointerOver" : "Disabled";
+                        break;
+                    }
+                case ButtonsState.ClosePressed:
+                    {
+                        // Minimize
+                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
+
+                        // Maximize
+                        CheckMaximizeNormalStates();
+
+                        // Close
+                        closeState = IsClosable ? "Pressed" : "Disabled";
+                        break;
+                    }
+            }
+
+            _ = VisualStateManager.GoToState(MinimizeButton, minimizeState, true);
+            _ = VisualStateManager.GoToState(MaximizeRestoreButton, maximizeState, true);
+            _ = VisualStateManager.GoToState(CloseButton, closeState, true);
+
+            void CheckMaximizeNormalStates()
+            {
+                switch (IsMaximizable)
+                {
+                    // Can maximize
+                    case true:
+                        {
+                            maximizeState = isMaximized ? "Checked" : "Normal";
+                            if (buttonsState == ButtonsState.MaximizePointerOver)
+                            {
+                                maximizeState = isMaximized ? "CheckedPointerOver" : "PointerOver";
+                                break;
+                            }
+                            else if (buttonsState == ButtonsState.MaximizePressed)
+                            {
+                                maximizeState = isMaximized ? "CheckedPressed" : "Pressed";
+                                break;
+                            }
+                            break;
+                        }
+
+                    // Can't maximize
+                    case false:
+                        {
+                            maximizeState = isMaximized ? "CheckedDisabled" : "Disabled";
+                            break;
+                        }
+                }
             }
         }
 
@@ -589,7 +894,7 @@ namespace Riverside.Toolkit.Controls
                     var width = (int)(CurrentWindow.Bounds.Width * Display.Scale(CurrentWindow));
 
                     // Height (Scaled control actual height)
-                    var height = (int)(ActualHeight * Display.Scale(CurrentWindow));
+                    var height = (int)((ActualHeight - 10 + buttonDownHeight) * Display.Scale(CurrentWindow));
 
                     CurrentWindow.AppWindow.TitleBar.SetDragRectangles([new RectInt32(0, 0, width, height)]);
                 }
