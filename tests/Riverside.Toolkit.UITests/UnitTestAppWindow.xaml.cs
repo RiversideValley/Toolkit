@@ -12,9 +12,5 @@ namespace Riverside.Toolkit.UITests
             TitleBar.SetWindowIcon(@"Assets/Rebound.ico");
             SystemBackdrop = new Microsoft.UI.Xaml.Media.MicaBackdrop();
         }
-
-        private void Button_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-        {
-        }
     }
 }

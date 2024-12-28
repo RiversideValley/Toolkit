@@ -13,6 +13,10 @@
 
     <Grid>
         <toolkit:TitleBarEx x:Name="TitleBar" VerticalAlignment="Top"/>
-        <Button HorizontalAlignment="Center" Content="Initialize" Click="Button_Click"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ToggleSwitch IsOn="{x:Bind TitleBar.IsMaximizable, Mode=TwoWay}" Header="Maximizable"/>
+            <ToggleSwitch IsOn="{x:Bind TitleBar.IsMinimizable, Mode=TwoWay}" Header="Minimizable"/>
+            <ToggleSwitch IsOn="{x:Bind TitleBar.IsClosable, Mode=TwoWay}" Header="Closable"/>
+        </StackPanel>
     </Grid>
 </winuiex:WindowEx>
