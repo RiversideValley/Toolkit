@@ -17,6 +17,7 @@
             <ToggleSwitch IsOn="{x:Bind TitleBar.IsMaximizable, Mode=TwoWay}" Header="Maximizable"/>
             <ToggleSwitch IsOn="{x:Bind TitleBar.IsMinimizable, Mode=TwoWay}" Header="Minimizable"/>
             <ToggleSwitch IsOn="{x:Bind TitleBar.IsClosable, Mode=TwoWay}" Header="Closable"/>
+            <ToggleSwitch IsOn="{x:Bind TitleBar.UseWinUIEverywhere, Mode=TwoWay}" Header="Always use WinUI"/>
         </StackPanel>
     </Grid>
 </winuiex:WindowEx>
