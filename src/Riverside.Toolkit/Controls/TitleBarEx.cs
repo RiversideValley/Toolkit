@@ -134,12 +134,12 @@ namespace Riverside.Toolkit.Controls
                     if (!IsMinimizable && !IsMaximizable)
                     {
                         MinimizeButton.Visibility = MaximizeRestoreButton.Visibility = Visibility.Collapsed;
-                        CloseButton.Style = Resources["CloseSingular"] as Style;
+                        //CloseButton.Style = Resources["CloseSingular"] as Style;
                     }
                     else
                     {
                         MinimizeButton.Visibility = MaximizeRestoreButton.Visibility = Visibility.Visible;
-                        CloseButton.Style = Resources["Close"] as Style;
+                        //CloseButton.Style = Resources["Close"] as Style;
                     }
                 }
                 /*if (WindowTitle != null && CurrentWindow != null)
