@@ -219,12 +219,18 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionPointerOverBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
+                                        </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionPressed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -246,6 +252,9 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Glyph">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="&#xE923;" />
                                         </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
+                                        </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="CheckedPressed">
@@ -255,6 +264,9 @@
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Glyph">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="&#xE923;" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -318,7 +330,7 @@
                             <Grid.BackgroundTransition>
                                 <BrushTransition Duration="0:0:0.1" />
                             </Grid.BackgroundTransition>
-                            <FontIcon Glyph="&#xE921;" FontSize="10"/>
+                            <FontIcon x:Name="Glyph" Glyph="&#xE921;" FontSize="10"/>
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -334,12 +346,18 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionPointerOverBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
+                                        </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionPressed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -366,13 +384,13 @@
                         <Border x:Name="AccentStrip" Height="30" VerticalAlignment="Top" Background="{ThemeResource SystemAccentColor}" Visibility="Collapsed" />
                         <Image x:Name="TitleBarIcon" Width="16" Margin="8,7" HorizontalAlignment="Left" VerticalAlignment="Top" x:FieldModifier="public"/>
                         <StackPanel Margin="29,7,140,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-                            <TextBlock x:Name="WindowTitle" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" TextTrimming="CharacterEllipsis" Text="Control Panel"/>
-                            <TextBlock FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Foreground="{Binding Foreground, ElementName=WindowTitle}" Opacity="0.5" Text="  -  Rebound 11" TextTrimming="CharacterEllipsis" />
+                            <TextBlock x:Name="TitleTextBlock" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" TextTrimming="CharacterEllipsis" Text="Control Panel"/>
+                            <TextBlock FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Foreground="{Binding CurrentForeground, Mode=OneWay}" Opacity="0.5" Text="  -  Rebound 11" TextTrimming="CharacterEllipsis" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 0, 0, 10">
-                            <Button Width="46" Height="30" x:Name="MinimizeButton" Style="{StaticResource Minimize}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
-                            <ToggleButton Width="46" Height="30" x:Name="MaximizeButton" Style="{StaticResource MaxRes}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
-                            <Button x:Name="CloseButton" Style="{ThemeResource Close}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
+                            <Button Width="46" Height="30" x:Name="MinimizeButton" Foreground="{TemplateBinding CurrentForeground}" Style="{StaticResource Minimize}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
+                            <ToggleButton Width="46" Height="30" x:Name="MaximizeButton" Foreground="{TemplateBinding CurrentForeground}" Style="{StaticResource MaxRes}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
+                            <Button x:Name="CloseButton" Style="{ThemeResource Close}" Foreground="{TemplateBinding CurrentForeground}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
                         </StackPanel>
                     </Grid>
                 </ControlTemplate>

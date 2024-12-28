@@ -23,6 +23,7 @@ namespace Riverside.Toolkit.Controls
     [DependencyProperty<bool>("IsMinimizable", DefaultValue = true)]
     [DependencyProperty<bool>("IsMaximizable", DefaultValue = true)]
     [DependencyProperty<bool>("IsClosable", DefaultValue = true)]
+    [DependencyProperty<SolidColorBrush>("CurrentForeground")]
     public partial class TitleBarEx : Control
     {
         private Button CloseButton { get; set; }
@@ -33,6 +34,7 @@ namespace Riverside.Toolkit.Controls
         private TextBlock SubtitleBlock { get; set; }
         private ImageIcon TitleBarIcon { get; set; }
         private WindowEx CurrentWindow { get; set; }
+        private Application CurrentApp { get; set; }
         private Border AccentStrip { get; set; }
         private WindowMessageMonitor MessageMonitor { get; set; }
         private bool isWindowFocused { get; set; } = false;
@@ -42,6 +44,7 @@ namespace Riverside.Toolkit.Controls
         private double additionalHeight { get; set; } = 0;
         private SelectedCaptionButton currentCaption { get; set; } = SelectedCaptionButton.None;
         private bool closed { get; set; }
+        private bool wasFocused { get; set; } = false;
 
         public enum SelectedCaptionButton
         {
@@ -56,9 +59,10 @@ namespace Riverside.Toolkit.Controls
             DefaultStyleKey = typeof(TitleBarEx);
         }
 
-        public void InitializeForWindow(WindowEx windowEx)
+        public void InitializeForWindow(WindowEx windowEx, Application app)
         {
             CurrentWindow = windowEx;
+            CurrentApp = app;
 
             CurrentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
             CurrentWindow.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Collapsed;
@@ -118,34 +122,30 @@ namespace Riverside.Toolkit.Controls
         {
             try
             {
-                if (CurrentWindow is not null)
+                if (MinimizeButton is not null && MaximizeRestoreButton is not null && CurrentApp is not null && CloseButton is not null)
                 {
-                    CurrentWindow.IsMaximizable = IsMaximizable;
-                    MaximizeRestoreButton.IsEnabled = IsMaximizable;
-                    CurrentWindow.IsMinimizable = IsMinimizable;
-                    MinimizeButton.IsEnabled = IsMinimizable;
+                    if (CurrentWindow is not null)
+                    {
+                        CurrentWindow.IsMaximizable = IsMaximizable;
+                        MaximizeRestoreButton.IsEnabled = IsMaximizable;
+                        CurrentWindow.IsMinimizable = IsMinimizable;
+                        MinimizeButton.IsEnabled = IsMinimizable;
 
-                    CloseButton.IsEnabled = IsClosable;
+                        CloseButton.IsEnabled = IsClosable;
 
-                    CheckMaximization();
-                }
-                if (MinimizeButton is not null && MaximizeRestoreButton is not null)
-                {
+                        CheckMaximization();
+                    }
                     if (!IsMinimizable && !IsMaximizable)
                     {
                         MinimizeButton.Visibility = MaximizeRestoreButton.Visibility = Visibility.Collapsed;
-                        //CloseButton.Style = Resources["CloseSingular"] as Style;
+                        CloseButton.Style = CurrentApp.Resources["CloseSingular"] as Style;
                     }
                     else
                     {
                         MinimizeButton.Visibility = MaximizeRestoreButton.Visibility = Visibility.Visible;
-                        //CloseButton.Style = Resources["Close"] as Style;
+                        CloseButton.Style = CurrentApp.Resources["Close"] as Style;
                     }
                 }
-                /*if (WindowTitle != null && CurrentWindow != null)
-                {
-                    WindowTitle.Text = CurrentWindow.Title;
-                }*/
                 await Task.Delay(50);
                 CheckFocus();
                 CheckWindow();
@@ -220,7 +220,7 @@ namespace Riverside.Toolkit.Controls
         {
             try
             {
-                if (TitleBarIcon is not null) TitleBarIcon.Source = new BitmapImage(new Uri($"ms-appx:///{path}", UriKind.RelativeOrAbsolute));
+                if (TitleBarIcon is not null) TitleBarIcon.Source = new BitmapImage(new Uri($"{AppContext.BaseDirectory}\\{path}", UriKind.RelativeOrAbsolute));
             }
             catch
             {
@@ -256,17 +256,17 @@ namespace Riverside.Toolkit.Controls
 
         public void CheckFocus()
         {
+            if (TitleTextBlock is null) return;
             if (IsAccentColorEnabledForTitleBars() && IsAccentTitleBarEnabled)
             {
-                if (AccentStrip is not null) AccentStrip.Visibility = isWindowFocused == false ? Visibility.Visible : Visibility.Collapsed;
-                Resources["CaptionForegroundBrush"] = isWindowFocused == false ? new SolidColorBrush(Colors.White) : Application.Current.Resources["AccentTextFillColorDisabledBrush"] as SolidColorBrush;
+                if (AccentStrip is not null) AccentStrip.Visibility = !isWindowFocused ? Visibility.Visible : Visibility.Collapsed;
+                CurrentApp.Resources["CaptionForegroundBrush"] = TitleTextBlock.Foreground = CurrentForeground = !isWindowFocused ? new SolidColorBrush(Colors.White) : CurrentApp.Resources["AccentTextFillColorDisabledBrush"] as SolidColorBrush;
             }
             else
             {
                 if (AccentStrip is not null) AccentStrip.Visibility = Visibility.Collapsed;
-                Resources["CaptionForegroundBrush"] = isWindowFocused == false ? Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush : Application.Current.Resources["TextFillColorDisabledBrush"] as SolidColorBrush;
+                CurrentApp.Resources["CaptionForegroundBrush"] = TitleTextBlock.Foreground = CurrentForeground = !isWindowFocused ? CurrentApp.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush : CurrentApp.Resources["TextFillColorDisabledBrush"] as SolidColorBrush;
             }
-            UpdateBrush();
         }
 
         private async void Event(object sender, WindowMessageEventArgs e)
@@ -377,7 +377,7 @@ namespace Riverside.Toolkit.Controls
                     {
                         e.Handled = true;
 
-                        buttonDownHeight = 15;
+                        buttonDownHeight = 25;
 
                         // Minimize Button
                         if (IsInRect(x, xMinimizeMin, xMinimizeMax, y, yMin, yMax) && MinimizeButton.Visibility == Visibility.Visible)
@@ -481,6 +481,8 @@ namespace Riverside.Toolkit.Controls
 
                             // No buttons are selected
                             SwitchState(ButtonsState.None);
+
+                            await Task.Delay(20);
 
                             buttonDownHeight = 0;
 
@@ -668,6 +670,8 @@ namespace Riverside.Toolkit.Controls
 
         public async void CheckMaximization()
         {
+            if (closed) return;
+
             var _isMaximized = isMaximized;
             if (CurrentWindow.Presenter is OverlappedPresenter presenter)
             {
@@ -856,24 +860,6 @@ namespace Riverside.Toolkit.Controls
                             break;
                         }
                 }
-            }
-        }
-
-        private void UpdateBrush()
-        {
-            try
-            {
-                if (CloseButton != null && MaximizeRestoreButton != null && MinimizeButton != null && TitleTextBlock != null)
-                {
-                    CloseButton.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
-                    MaximizeRestoreButton.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
-                    MinimizeButton.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
-                    TitleTextBlock.Foreground = Resources["CaptionForegroundBrush"] as SolidColorBrush;
-                }
-            }
-            catch
-            {
-
             }
         }
 

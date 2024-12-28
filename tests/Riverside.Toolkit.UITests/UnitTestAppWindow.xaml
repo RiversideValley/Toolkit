@@ -12,7 +12,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <toolkit:TitleBarEx x:Name="TitleBar" VerticalAlignment="Top" IsMaximizable="False" IsMinimizable="False"/>
+        <toolkit:TitleBarEx x:Name="TitleBar" VerticalAlignment="Top"/>
         <Button HorizontalAlignment="Center" Content="Initialize" Click="Button_Click"/>
     </Grid>
 </winuiex:WindowEx>
