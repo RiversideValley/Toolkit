@@ -24,7 +24,6 @@
     </Style>
 
     <Style x:Key="Close" TargetType="Button">
-        <Setter Property="Foreground" Value="{ThemeResource CaptionForegroundBrush}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="{ThemeResource SplitButtonBorderThemeThickness}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
@@ -99,7 +98,6 @@
         </Setter>
     </Style>
     <Style x:Key="CloseSingular" TargetType="Button">
-        <Setter Property="Foreground" Value="{ThemeResource CaptionForegroundBrush}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="{ThemeResource SplitButtonBorderThemeThickness}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
@@ -174,7 +172,6 @@
         </Setter>
     </Style>
     <Style x:Key="MaxRes" TargetType="ToggleButton">
-        <Setter Property="Foreground" Value="{ThemeResource CaptionForegroundBrush}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="{ThemeResource SplitButtonBorderThemeThickness}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
@@ -220,7 +217,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionPointerOverBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionForegroundInteract}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -230,7 +227,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionPressed}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionForegroundInteract}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -253,7 +250,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="&#xE923;" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionForegroundInteract}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -266,7 +263,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="&#xE923;" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionForegroundInteract}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -292,7 +289,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <SolidColorBrush x:Key="CaptionForegroundBrush" Color="#FFFFFF" />
     <SolidColorBrush x:Key="CaptionDefaultBrush" Color="#00AAAAAA" />
     <SolidColorBrush x:Key="CaptionPointerOverBrush" Color="#20AAAAAA" />
     <SolidColorBrush x:Key="CaptionPressedBrush" Color="{ThemeResource CaptionPressed}" />
@@ -301,7 +297,6 @@
     <SolidColorBrush x:Key="CaptionClosePointerOverBrush" Color="#c42b1c" />
     <Color x:Key="CaptionClosePressed">#DDc32b1b</Color>
     <Style x:Key="Minimize" TargetType="Button">
-        <Setter Property="Foreground" Value="{ThemeResource CaptionForegroundBrush}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="{ThemeResource SplitButtonBorderThemeThickness}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
@@ -347,7 +342,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionPointerOverBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionForegroundInteract}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -357,7 +352,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionPressed}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Glyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextFillColorPrimary}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CaptionForegroundInteract}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -384,13 +379,21 @@
                         <Border x:Name="AccentStrip" Height="30" VerticalAlignment="Top" Background="{ThemeResource SystemAccentColor}" Visibility="Collapsed" />
                         <Image x:Name="TitleBarIcon" Width="16" Margin="8,7" HorizontalAlignment="Left" VerticalAlignment="Top" x:FieldModifier="public"/>
                         <StackPanel Margin="29,7,140,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-                            <TextBlock x:Name="TitleTextBlock" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" TextTrimming="CharacterEllipsis" Text="Control Panel"/>
-                            <TextBlock FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Foreground="{Binding CurrentForeground, Mode=OneWay}" Opacity="0.5" Text="  -  Rebound 11" TextTrimming="CharacterEllipsis" />
+                            <TextBlock x:Name="TitleTextBlock" FontFamily="Segoe UI" Foreground="{TemplateBinding CurrentForeground}" FontSize="12" FontWeight="Normal" TextTrimming="CharacterEllipsis" Text="{TemplateBinding Title}"/>
+                            <TextBlock FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Foreground="{TemplateBinding CurrentForeground}" Opacity="0.5" Text="{TemplateBinding Subtitle}" TextTrimming="CharacterEllipsis" />
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 0, 0, 10">
-                            <Button Width="46" Height="30" x:Name="MinimizeButton" Foreground="{TemplateBinding CurrentForeground}" Style="{StaticResource Minimize}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <Button Width="46" Height="30" x:Name="MinimizeButton" Foreground="{TemplateBinding CurrentForeground}" Style="{StaticResource Minimize}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="Minimize" Placement="Bottom"/>
+                                </ToolTipService.ToolTip>
+                            </Button>
                             <ToggleButton Width="46" Height="30" x:Name="MaximizeButton" Foreground="{TemplateBinding CurrentForeground}" Style="{StaticResource MaxRes}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
-                            <Button x:Name="CloseButton" Style="{ThemeResource Close}" Foreground="{TemplateBinding CurrentForeground}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
+                            <Button x:Name="CloseButton" Style="{ThemeResource Close}" Foreground="{TemplateBinding CurrentForeground}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="Close" Placement="Bottom"/>
+                                </ToolTipService.ToolTip>
+                            </Button>
                         </StackPanel>
                     </Grid>
                 </ControlTemplate>

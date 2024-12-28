@@ -11,8 +11,8 @@
     Title="CubeKit Tests"
     mc:Ignorable="d">
 
-    <Grid>
-        <toolkit:TitleBarEx x:Name="TitleBar" VerticalAlignment="Top"/>
+    <Grid Background="#00010101">
+        <toolkit:TitleBarEx x:Name="TitleBar" VerticalAlignment="Top" Title="Test app" Subtitle="  -  Preview"/>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <ToggleSwitch IsOn="{x:Bind TitleBar.IsMaximizable, Mode=TwoWay}" Header="Maximizable"/>
             <ToggleSwitch IsOn="{x:Bind TitleBar.IsMinimizable, Mode=TwoWay}" Header="Minimizable"/>
