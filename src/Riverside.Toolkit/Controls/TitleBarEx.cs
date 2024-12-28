@@ -263,14 +263,12 @@ namespace Riverside.Toolkit.Controls
             {
                 if (AccentStrip is not null) AccentStrip.Visibility = !isWindowFocused ? Visibility.Visible : Visibility.Collapsed;
                 CurrentForeground = !isWindowFocused ? new SolidColorBrush(Colors.White) : CurrentApp.Resources["AccentTextFillColorDisabledBrush"] as SolidColorBrush;
-                CurrentApp.Resources.Remove("CaptionForegroundInteract");
                 CurrentApp.Resources["CaptionForegroundInteract"] = !isWindowFocused ? Colors.White : ((SolidColorBrush)CurrentApp.Resources["TextFillColorPrimaryBrush"]).Color;
             }
             else
             {
                 if (AccentStrip is not null) AccentStrip.Visibility = Visibility.Collapsed;
                 CurrentForeground = !isWindowFocused ? CurrentApp.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush : CurrentApp.Resources["TextFillColorDisabledBrush"] as SolidColorBrush;
-                CurrentApp.Resources.Remove("CaptionForegroundInteract");
                 CurrentApp.Resources["CaptionForegroundInteract"] = ((SolidColorBrush)CurrentApp.Resources["TextFillColorPrimaryBrush"]).Color;
             }
         }
