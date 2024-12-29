@@ -18,6 +18,6 @@
             <ToggleSwitch IsOn="{x:Bind TitleBar.IsClosable, Mode=TwoWay}" Header="Closable"/>
             <ToggleSwitch IsOn="{x:Bind TitleBar.UseWinUIEverywhere, Mode=TwoWay}" Header="Always use WinUI"/>
         </StackPanel>
-        <toolkit:TitleBarEx x:Name="TitleBar" VerticalAlignment="Top" Title="Test app"/>
+        <toolkit:TitleBarEx x:Name="TitleBar" VerticalAlignment="Top" Title="Test app" MemorizeWindowPosition="True"/>
     </Grid>
 </winuiex:WindowEx>

@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Windowing;
+﻿using DependencyPropertyGenerator;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Controls;
@@ -8,16 +9,11 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
 using System.Threading.Tasks;
-using Windows.Graphics;
+using Windows.UI;
 using WinUIEx;
 using WinUIEx.Messaging;
 using static Riverside.Toolkit.Helpers.NativeHelper;
-using DependencyPropertyGenerator;
-using System.Diagnostics;
-using CommunityToolkit.WinUI.UI.Controls;
-using System.Linq;
-using System.Diagnostics.Metrics;
-using Windows.UI;
+using Microsoft.Windows.Storage;
 
 namespace Riverside.Toolkit.Controls
 {
@@ -27,16 +23,17 @@ namespace Riverside.Toolkit.Controls
     [DependencyProperty<bool>("IsMaximizable", DefaultValue = true)]
     [DependencyProperty<bool>("IsClosable", DefaultValue = true)]
     [DependencyProperty<bool>("UseWinUIEverywhere", DefaultValue = false)]
+    [DependencyProperty<bool>("MemorizeWindowPosition", DefaultValue = false)]
     [DependencyProperty<Color>("CaptionForegroundInteract")]
     [DependencyProperty<SolidColorBrush>("CurrentForeground")]
-    [DependencyProperty<string>("Title")]
+    [DependencyProperty<string>("Title", DefaultValue = "Window Title")]
     [DependencyProperty<string>("Subtitle")]
+    [DependencyProperty<string>("WindowTag", DefaultValue = "Main")]
     public partial class TitleBarEx : Control
     {
         private Button CloseButton { get; set; }
         private ToggleButton MaximizeRestoreButton { get; set; }
         private Button MinimizeButton { get; set; }
-        private Button HelpButton { get; set; }
         private TextBlock TitleTextBlock { get; set; }
         private TextBlock SubtitleBlock { get; set; }
         private ImageIcon TitleBarIcon { get; set; }
@@ -47,7 +44,6 @@ namespace Riverside.Toolkit.Controls
         private bool isWindowFocused { get; set; } = false;
         private bool isMaximized { get; set; } = false;
         private int buttonDownHeight { get; set; } = 0;
-        private IntPtr lastPos { get; set; }
         private double additionalHeight { get; set; } = 0;
         private SelectedCaptionButton currentCaption { get; set; } = SelectedCaptionButton.None;
         private bool closed { get; set; }
@@ -58,6 +54,80 @@ namespace Riverside.Toolkit.Controls
             Minimize = 1,
             Maximize = 2,
             Close = 3
+        }
+
+        public bool AllowSizeCheck = false;
+
+        public T GetValue<T>(string key)
+        {
+            try
+            {
+                var userSettings = ApplicationData.GetDefault();
+                return (T)userSettings.LocalSettings.Values[key];
+            }
+            catch
+            {
+                return default;
+            }
+        }
+
+        public void SetValue<T>(string key, T newValue)
+        {
+            try
+            {
+                var userSettings = ApplicationData.GetDefault();
+                userSettings.LocalSettings.Values[key] = newValue;
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        public async void CheckWindowProperties()
+        {
+            if (!MemorizeWindowPosition) return;
+
+            AllowSizeCheck = false;
+
+            if (GetValue<object>($"{WindowTag}PositionX") != null)
+            {
+                if (GetValue<object>($"{WindowTag}Maximized") is bool and true)
+                {
+                    CurrentWindow.MoveAndResize(
+                        GetValue<double>($"{WindowTag}PositionX"),
+                        GetValue<double>($"{WindowTag}PositionY"),
+                        GetValue<double>($"{WindowTag}Width"),
+                        GetValue<double>($"{WindowTag}Height"));
+
+                    await Task.Delay(10);
+
+                    CurrentWindow.Maximize();
+                }
+                else
+                {
+                    CurrentWindow.MoveAndResize(
+                        GetValue<double>($"{WindowTag}PositionX"),
+                        GetValue<double>($"{WindowTag}PositionY"),
+                        GetValue<double>($"{WindowTag}Width"),
+                        GetValue<double>($"{WindowTag}Height"));
+                }
+            }
+            if (GetValue<object>($"{WindowTag}Maximized") != null)
+            {
+                if (GetValue<bool>($"{WindowTag}Maximized") == true)
+                {
+                    CurrentWindow.Maximize();
+                }
+                else
+                {
+
+                }
+            }
+
+            AllowSizeCheck = true;
+
+            CheckMaximization();
         }
 
         public TitleBarEx()
@@ -83,6 +153,7 @@ namespace Riverside.Toolkit.Controls
 
             CurrentWindow.Closed += CurrentWindow_Closed;
 
+            CheckWindowProperties();
             CheckWindow();
             Rehook();
             LoadBounds();
@@ -112,7 +183,6 @@ namespace Riverside.Toolkit.Controls
             CloseButton = GetTemplateChild("CloseButton") as Button;
             MaximizeRestoreButton = GetTemplateChild("MaximizeButton") as ToggleButton;
             MinimizeButton = GetTemplateChild("MinimizeButton") as Button;
-            //HelpButton = GetTemplateChild("HelpButton") as Button;
             TitleTextBlock = GetTemplateChild("TitleTextBlock") as TextBlock;
             SubtitleBlock = GetTemplateChild("SubtitleTextBlock") as TextBlock;
             TitleBarIcon = GetTemplateChild("TitleBarIcon") as ImageIcon;
@@ -286,8 +356,6 @@ namespace Riverside.Toolkit.Controls
             // Gets the pointer's position relative to the screen's edge with DPI scaling applied
             var x = GET_X_LPARAM(e.Message.LParam);
             var y = GET_Y_LPARAM(e.Message.LParam);
-
-            lastPos = e.Message.LParam;
 
             double xMinimizeMin = 0;
             double xMinimizeMax = 0;
@@ -701,7 +769,7 @@ namespace Riverside.Toolkit.Controls
 
         public async void CheckMaximization()
         {
-            if (closed) return;
+            if (closed || !AllowSizeCheck) return;
 
             var _isMaximized = isMaximized;
             if (CurrentWindow.Presenter is OverlappedPresenter presenter)
@@ -710,6 +778,8 @@ namespace Riverside.Toolkit.Controls
                 {
                     case OverlappedPresenterState.Maximized:
                         {
+                            if (MemorizeWindowPosition) SetValue($"{WindowTag}Maximized", true);
+
                             await Task.Delay(10);
 
                             // Required for window drag region
@@ -724,6 +794,15 @@ namespace Riverside.Toolkit.Controls
                         }
                     case OverlappedPresenterState.Restored:
                         {
+                            if (MemorizeWindowPosition)
+                            {
+                                SetValue($"{WindowTag}Maximized", false);
+                                SetValue<double>($"{WindowTag}PositionX", CurrentWindow.AppWindow.Position.X);
+                                SetValue<double>($"{WindowTag}PositionY", CurrentWindow.AppWindow.Position.Y);
+                                SetValue<double>($"{WindowTag}Width", CurrentWindow.AppWindow.Size.Width);
+                                SetValue<double>($"{WindowTag}Height", CurrentWindow.AppWindow.Size.Height);
+                            }
+
                             await Task.Delay(10);
 
                             // Required for window drag region
@@ -740,6 +819,8 @@ namespace Riverside.Toolkit.Controls
             }
             else
             {
+                if (MemorizeWindowPosition) SetValue($"{WindowTag}Maximized", true);
+
                 await Task.Delay(10);
 
                 // Required for window drag region
@@ -932,8 +1013,6 @@ namespace Riverside.Toolkit.Controls
                 // If the window has been closed break the loop
                 if (closed) return;
 
-                var collection = GetButtonInteractionArea().Item1;
-
                 // Check if every condition is met
                 if (CurrentWindow.AppWindow is not null && IsAutoDragRegionEnabled)
                 {
@@ -944,11 +1023,10 @@ namespace Riverside.Toolkit.Controls
                     var height = (int)((ActualHeight + buttonDownHeight) * Display.Scale(CurrentWindow));
 
                     CurrentWindow.AppWindow.TitleBar.SetDragRectangles([new(0, 0, width, height)]);
-                    //CurrentWindow.AppWindow.TitleBar.SetDragRectangles(collection.Concat(new RectInt32(0, 0, width, height).Subtract(GetButtonInteractionArea().Item2)).ToArray());
                 }
                 else
                 {
-                    //CurrentWindow.AppWindow.TitleBar.SetDragRectangles(collection);
+
                 }
 
                 LoadBounds();
@@ -957,173 +1035,6 @@ namespace Riverside.Toolkit.Controls
             {
                 return;
             }
-        }
-
-        public (RectInt32[], RectInt32) GetButtonInteractionArea()
-        {
-            var collection = new RectInt32[0];
-
-            double xMin = 0;
-            double yMin = 0;
-            double xMax = 0;
-            double yMax = 0;
-
-            double xMinimizeMin = 0;
-            double xMinimizeMax = 0;
-            double xMaximizeMin = 0;
-            double xMaximizeMax = 0;
-            double xCloseMin = 0;
-            double xCloseMax = 0;
-
-            double yMinimizeMin = 0;
-            double yMinimizeMax = 0;
-            double yMaximizeMin = 0;
-            double yMaximizeMax = 0;
-            double yCloseMin = 0;
-            double yCloseMax = 0;
-
-            try
-            {
-                if (MinimizeButton != null && MaximizeRestoreButton != null && CloseButton != null)
-                {
-                    var closeVisual = CloseButton.TransformToVisual(CurrentWindow.Content);
-                    var maximizeRestoreVisual = MaximizeRestoreButton.TransformToVisual(CurrentWindow.Content);
-                    var minimizeVisual = MinimizeButton.TransformToVisual(CurrentWindow.Content);
-
-                    var minimizeVisualPoint = minimizeVisual.TransformPoint(new Windows.Foundation.Point(0, 0));
-                    var maximizeRestoreVisualPoint = maximizeRestoreVisual.TransformPoint(new Windows.Foundation.Point(0, 0));
-                    var closeVisualPoint = closeVisual.TransformPoint(new Windows.Foundation.Point(0, 0));
-
-                    // Gets the X positions from: Window X + Window border + (Window size +/- button size)
-                    xMinimizeMin =
-                        CurrentWindow.AppWindow.Position.X +
-                        (7 * Display.Scale(CurrentWindow)) +
-                        minimizeVisualPoint.X * Display.Scale(CurrentWindow);
-                    xMinimizeMax =
-                        CurrentWindow.AppWindow.Position.X +
-                        (7 * Display.Scale(CurrentWindow)) +
-                        (minimizeVisualPoint.X + MinimizeButton.ActualWidth) * Display.Scale(CurrentWindow);
-                    xMaximizeMin =
-                        CurrentWindow.AppWindow.Position.X +
-                        (7 * Display.Scale(CurrentWindow)) +
-                        maximizeRestoreVisualPoint.X * Display.Scale(CurrentWindow);
-                    xMaximizeMax =
-                        CurrentWindow.AppWindow.Position.X +
-                        (7 * Display.Scale(CurrentWindow)) +
-                        (maximizeRestoreVisualPoint.X + MaximizeRestoreButton.ActualWidth) * Display.Scale(CurrentWindow);
-                    xCloseMin =
-                    CurrentWindow.AppWindow.Position.X +
-                        (7 * Display.Scale(CurrentWindow)) +
-                        closeVisualPoint.X * Display.Scale(CurrentWindow);
-                    xCloseMax =
-                        CurrentWindow.AppWindow.Position.X +
-                        (7 * Display.Scale(CurrentWindow)) +
-                        (closeVisualPoint.X + CloseButton.ActualWidth) * Display.Scale(CurrentWindow);
-
-                    // Gets the Y positions from: Window Y + Window border + (Window size +/- button size)
-                    yMinimizeMin =
-                        CurrentWindow.AppWindow.Position.Y +
-                        (additionalHeight * Display.Scale(CurrentWindow)) +
-                        minimizeVisualPoint.Y + 2 * Display.Scale(CurrentWindow);
-
-                    yMinimizeMax =
-                        CurrentWindow.AppWindow.Position.Y +
-                        (additionalHeight * Display.Scale(CurrentWindow)) +
-                        minimizeVisualPoint.Y + MinimizeButton.ActualHeight * Display.Scale(CurrentWindow);
-                    yMaximizeMin =
-                        CurrentWindow.AppWindow.Position.Y +
-                        (additionalHeight * Display.Scale(CurrentWindow)) +
-                        maximizeRestoreVisualPoint.Y + 2 * Display.Scale(CurrentWindow);
-
-                    yMaximizeMax =
-                        CurrentWindow.AppWindow.Position.Y +
-                        (additionalHeight * Display.Scale(CurrentWindow)) +
-                        maximizeRestoreVisualPoint.Y + MaximizeRestoreButton.ActualHeight * Display.Scale(CurrentWindow);
-                    yCloseMin =
-                        CurrentWindow.AppWindow.Position.Y +
-                        (additionalHeight * Display.Scale(CurrentWindow)) +
-                        closeVisualPoint.Y + 2 * Display.Scale(CurrentWindow);
-
-                    yCloseMax =
-                        CurrentWindow.AppWindow.Position.Y +
-                        (additionalHeight * Display.Scale(CurrentWindow)) +
-                        closeVisualPoint.Y + CloseButton.ActualHeight * Display.Scale(CurrentWindow);
-                }
-            }
-            catch
-            {
-
-            }
-
-            if (UseWinUIEverywhere)
-            {
-                collection = [new RectInt32(
-                    (int)(xMaximizeMin * Display.Scale(CurrentWindow)), 
-                    (int)(yMaximizeMin * Display.Scale(CurrentWindow)), 
-                    (int)((xMaximizeMax + buttonDownHeight) * Display.Scale(CurrentWindow)), 
-                    (int)((yMaximizeMax + buttonDownHeight) * Display.Scale(CurrentWindow)))];
-
-                xMin = xMaximizeMin;
-                yMin = yMaximizeMin;
-                xMax = xMaximizeMax;
-                yMax = yMaximizeMax;
-            }
-            else
-            {
-                collection = [
-                new RectInt32(
-                    (int)(xMinimizeMin * Display.Scale(CurrentWindow)),
-                    (int)(yMinimizeMin * Display.Scale(CurrentWindow)),
-                    (int)((xMinimizeMax + buttonDownHeight) * Display.Scale(CurrentWindow)),
-                    (int)((yMinimizeMax + buttonDownHeight) * Display.Scale(CurrentWindow))),
-                new RectInt32(
-                    (int)(xMaximizeMin * Display.Scale(CurrentWindow)),
-                    (int)(yMaximizeMin * Display.Scale(CurrentWindow)),
-                    (int)((xMaximizeMax + buttonDownHeight) * Display.Scale(CurrentWindow)),
-                    (int)((yMaximizeMax + buttonDownHeight) * Display.Scale(CurrentWindow))),
-                new RectInt32(
-                    (int)(xCloseMin * Display.Scale(CurrentWindow)),
-                    (int)(yCloseMin * Display.Scale(CurrentWindow)),
-                    (int)((xCloseMax + buttonDownHeight) * Display.Scale(CurrentWindow)),
-                    (int)((yCloseMax + buttonDownHeight) * Display.Scale(CurrentWindow)))];
-
-                xMin = Minimum(xMinimizeMin, xMaximizeMin, xCloseMin);
-                yMin = Minimum(yMinimizeMin, yMaximizeMin, yCloseMin);
-                xMax = Maximum(xMinimizeMax, xMaximizeMax, xCloseMax);
-                yMax = Maximum(yMinimizeMax, yMaximizeMax, yCloseMax);
-            }
-
-            return (collection, new RectInt32((int)xMin, (int)yMin, (int)xMax, (int)yMax));
-        }
-
-        private double Minimum(params double[] items)
-        {
-            double min = double.MaxValue;
-
-            foreach (double d in items)
-            {
-                if (d < min)
-                {
-                    min = d;
-                }
-            }
-
-            return min;
-        }
-
-        private double Maximum(params double[] items)
-        {
-            double max = double.MinValue;
-
-            foreach (double d in items)
-            {
-                if (d > max)
-                {
-                    max = d;
-                }
-            }
-
-            return max;
         }
     }
 }
