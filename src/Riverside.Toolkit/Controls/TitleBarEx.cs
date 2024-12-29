@@ -14,6 +14,7 @@ using WinUIEx;
 using WinUIEx.Messaging;
 using static Riverside.Toolkit.Helpers.NativeHelper;
 using Microsoft.Windows.Storage;
+using System.Diagnostics;
 
 namespace Riverside.Toolkit.Controls
 {
@@ -499,7 +500,7 @@ namespace Riverside.Toolkit.Controls
 
                             if (currentCaption is SelectedCaptionButton.None && IsMinimizable)
                             {
-                                e.Result = new IntPtr(UseWinUIEverywhere ? 18 : 8);
+                                e.Result = new IntPtr(8);
                                 await Task.Delay(800);
                                 e.Handled = false;
                             }
@@ -561,7 +562,7 @@ namespace Riverside.Toolkit.Controls
 
                             if (currentCaption is SelectedCaptionButton.None && IsClosable)
                             {
-                                e.Result = new IntPtr(UseWinUIEverywhere ? 18 : 20);
+                                e.Result = new IntPtr(20);
                                 await Task.Delay(800);
                                 e.Handled = false;
                             }
@@ -695,7 +696,6 @@ namespace Riverside.Toolkit.Controls
                                 e.Handled = false;
                                 return;
                             }
-                            CurrentWindow.Minimize();
 
                             // No buttons are selected
                             SwitchState(ButtonsState.None);
@@ -709,7 +709,6 @@ namespace Riverside.Toolkit.Controls
                                 e.Handled = false;
                                 return;
                             }
-                            RunMaximization();
 
                             // No buttons are selected
                             SwitchState(ButtonsState.None);
@@ -718,7 +717,11 @@ namespace Riverside.Toolkit.Controls
                         // Close Button
                         else if (IsInRect(x, xCloseMin, xCloseMax, y, yCloseMin, yCloseMax) && currentCaption is SelectedCaptionButton.Close)
                         {
-                            CurrentWindow.Close();
+                            if (!IsClosable)
+                            {
+                                e.Handled = false;
+                                return;
+                            }
                         }
 
                         // Title bar drag area
@@ -848,6 +851,8 @@ namespace Riverside.Toolkit.Controls
         {
             CheckMaximization();
 
+            if (CloseButton is null || MaximizeRestoreButton is null || MinimizeButton is null) return;
+
             string minimizeState = string.Empty;
             string maximizeState = string.Empty;
             string closeState = string.Empty;
@@ -943,10 +948,6 @@ namespace Riverside.Toolkit.Controls
                     }
             }
 
-            _ = VisualStateManager.GoToState(MinimizeButton, minimizeState, true);
-            _ = VisualStateManager.GoToState(MaximizeRestoreButton, maximizeState, true);
-            _ = VisualStateManager.GoToState(CloseButton, closeState, true);
-
             if (UseWinUIEverywhere)
             {
                 switch (buttonsState)
@@ -971,6 +972,10 @@ namespace Riverside.Toolkit.Controls
                         }
                 }
             }
+
+            _ = VisualStateManager.GoToState(MinimizeButton, minimizeState, true);
+            _ = VisualStateManager.GoToState(MaximizeRestoreButton, maximizeState, true);
+            _ = VisualStateManager.GoToState(CloseButton, closeState, true);
 
             void CheckMaximizeNormalStates()
             {
