@@ -1,14 +1,16 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
 
+#nullable enable
+
 namespace Riverside.Toolkit.Controls.TitleBar
 {
     public partial class TitleBarEx
     {
-        protected void SwitchState(ButtonsState buttonsState)
+        protected async void SwitchState(ButtonsState buttonsState)
         {
             // Required for maximize button states
-            CheckMaximization();
+            await CheckMaximization();
 
             // If the buttons don't exist return
             if (CloseButton is null || MaximizeRestoreButton is null || MinimizeButton is null) return;
@@ -88,37 +90,29 @@ namespace Riverside.Toolkit.Controls.TitleBar
                     }
             }
 
-            CheckMaximizeNormalStates();
+            // Check the maximize state separately
+            if (buttonsState is not (ButtonsState.MaximizePointerOver or ButtonsState.MaximizePressed))
+                maximizeState =
+                    // Is maximizable
+                    IsMaximizable ? isMaximized ? "Checked" : "Normal" :
+
+                    // Is not maximizable
+                    isMaximized ? "CheckedDisabled" : "Disabled";
 
             // Handle WinUI tooltips
-            if (UseWinUIEverywhere) HandleTooltips(buttonsState);
+            if (UseWinUIEverywhere)
+            {
+                var minimizeTooltip = (ToolTip)ToolTipService.GetToolTip(MinimizeButton);
+                var closeTooltip = (ToolTip)ToolTipService.GetToolTip(CloseButton);
+
+                minimizeTooltip.IsOpen = buttonsState == ButtonsState.MinimizePointerOver;
+                closeTooltip.IsOpen = buttonsState == ButtonsState.ClosePointerOver;
+            }
 
             // Apply the visual states based on the calculated states
             _ = VisualStateManager.GoToState(MinimizeButton, minimizeState, true);
             _ = VisualStateManager.GoToState(MaximizeRestoreButton, maximizeState, true);
             _ = VisualStateManager.GoToState(CloseButton, closeState, true);
-
-            // Local method to check the maximize state
-            void CheckMaximizeNormalStates()
-            {
-                if (buttonsState is not (ButtonsState.MaximizePointerOver or ButtonsState.MaximizePressed))
-                    maximizeState =
-                        // Is maximizable
-                        IsMaximizable ? isMaximized ? "Checked" : "Normal" :
-
-                        // Is not maximizable
-                        isMaximized ? "CheckedDisabled" : "Disabled";
-            }
-
-            // Local method to handle tooltips for WinUI
-            void HandleTooltips(ButtonsState buttonsState)
-            {
-                var minimizeTooltip = ToolTipService.GetToolTip(MinimizeButton) as ToolTip;
-                var closeTooltip = ToolTipService.GetToolTip(CloseButton) as ToolTip;
-
-                minimizeTooltip.IsOpen = buttonsState == ButtonsState.MinimizePointerOver;
-                closeTooltip.IsOpen = buttonsState == ButtonsState.ClosePointerOver;
-            }
         }
     }
 }

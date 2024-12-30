@@ -6,61 +6,24 @@ using Windows.Foundation;
 using WinUIEx.Messaging;
 using static Riverside.Toolkit.Helpers.NativeHelper;
 
+#nullable enable
+
 namespace Riverside.Toolkit.Controls.TitleBar
 {
     public partial class TitleBarEx : Control
     {
-        // Window messages
+        // Check if the cursor's coordinates are inside the specified rect
+        public static bool IsInRect(double x, double y, Rect? rect) => rect?.Left <= x && x <= rect?.Right && rect?.Top <= y && y <= rect?.Bottom;
 
-        // Non client left button down
-        private const int WM_NCLBUTTONDOWN = 0x00A1;
-        // Non client hit test
-        private const int WM_NCHITTEST = 0x0084;
-        // Non client left button up
-        private const int WM_NCLBUTTONUP = 0x00A2;
-        // Non client right button up
-        private const int WM_NCRBUTTONUP = 0x00A5;
-        // Non client left button double click
-        private const int WM_NCLBUTTONDBLCLK = 0x00A3;
-        // Activate
-        private const int WM_ACTIVATE = 0x0006;
-
-        // NCHITTEST response
-
-        // Hit test minimize button
-        private const int HTMINBUTTON = 8;
-        // Hit test maximize button
-        private const int HTMAXBUTTON = 9;
-        // Hit test close button
-        private const int HTCLOSE = 20;
-        // Hit test border (for no interaction)
-        private const int HTBORDER = 18;
-        // Title bar
-        private const int HTCAPTION = 2;
-
-        // Window frame
-
-        // Window frame width
-        private const int WND_FRAME_LEFT = 7;
-        // Top window frame (it goes up by 6px when maximized because of how Windows works)
-        // 6 pixels instead of 7 because one is still there for some reason (the rest are above the pixel grid when the window is maximized)
-        private const int WND_FRAME_TOP_MAXIMIZED = 7;
-        // Top window frame (not maximized)
-        private const int WND_FRAME_TOP_NORMAL = 1;
-
-        // Others
-
-        // Activate (inactive)
-        private const int WA_INACTIVE = 0;
-
-        public static bool IsInRect(double x, double y, Rect rect) => rect.Left <= x && x <= rect.Right && rect.Top <= y && y <= rect.Bottom;
-
-        private Rect GetButtonBounds(FrameworkElement button, double windowFrameTop)
+        // Get bounds for a button using visuals
+        private Rect? GetButtonBounds(FrameworkElement button, double windowFrameTop)
         {
             // Get visuals
-            var visual = button.TransformToVisual(CurrentWindow.Content);
+            var visual = button.TransformToVisual(CurrentWindow?.Content);
             var visualPoint = visual.TransformPoint(new Point(0, 0));
             double scale = Display.Scale(CurrentWindow);
+
+            if (CurrentWindow is null) return null;
 
             // Create a Rect for the button bounds with scaled positions
             double x = CurrentWindow.AppWindow.Position.X + (WND_FRAME_LEFT * scale) + visualPoint.X * scale;
@@ -71,11 +34,24 @@ namespace Riverside.Toolkit.Controls.TitleBar
             return new Rect(x, y, width, height);
         }
 
+        // Attach the WndProc onto the window
+        private void AttachWndProc()
+        {
+            if (CurrentWindow is not null) messageMonitor ??= new WindowMessageMonitor(CurrentWindow);
+            if (messageMonitor is null) return;
+            messageMonitor.WindowMessageReceived -= WndProc;
+            messageMonitor.WindowMessageReceived += WndProc;
+        }
+
         // WndProc for responding to messages with the correct values
-        private async void WndProc(object sender, WindowMessageEventArgs e)
+        private async void WndProc(object? sender, WindowMessageEventArgs e)
         {
             // If the window is closed stop responding to window messages
-            if (closed) return;
+            if (closed && messageMonitor is not null)
+            {
+                messageMonitor.WindowMessageReceived -= WndProc;
+                return;
+            }
 
             // Gets the pointer's position relative to the screen's edge with DPI scaling applied
             var x = GetXFromLParam(e.Message.LParam);
@@ -84,9 +60,9 @@ namespace Riverside.Toolkit.Controls.TitleBar
             double scale = Display.Scale(CurrentWindow);
 
             // Rectangles for button bounds
-            Rect minimizeBounds = new();
-            Rect maximizeBounds = new();
-            Rect closeBounds = new();
+            Rect? minimizeBounds = new();
+            Rect? maximizeBounds = new();
+            Rect? closeBounds = new();
 
             try
             {
@@ -104,20 +80,23 @@ namespace Riverside.Toolkit.Controls.TitleBar
             }
 
             // If there's no button selected don't extend drag region for checks
-            if (currentCaption is SelectedCaptionButton.None) buttonDownHeight = 0;
+            if (CurrentCaption is SelectedCaptionButton.None) buttonDownHeight = 0;
 
             switch (e.Message.MessageId)
             {
+                // Window activate
                 case WM_ACTIVATE:
                     {
                         var wParam = e.Message.WParam.ToUInt32();
 
                         // Update focus state
                         isWindowFocused = wParam is not WA_INACTIVE;
-                        CheckFocus();
+                        UpdateWindowBrushes();
 
                         break;
                     }
+
+                // Hit test on the non-client area
                 case WM_NCHITTEST:
                     {
                         e.Handled = true;
@@ -126,7 +105,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
                         else buttonDownHeight = 0;
 
                         // Minimize Button
-                        if (IsInRect(x, y, minimizeBounds) && MinimizeButton.Visibility == Visibility.Visible)
+                        if (IsInRect(x, y, minimizeBounds) && MinimizeButton?.Visibility == Visibility.Visible)
                         {
                             // If the button is disabled return border
                             if (!IsMinimizable)
@@ -139,14 +118,14 @@ namespace Riverside.Toolkit.Controls.TitleBar
                             UpdateNonClientHitTestButtonState(SelectedCaptionButton.Minimize, ButtonsState.MinimizePointerOver, ButtonsState.MinimizePressed);
 
                             // Check if the current caption is correct
-                            if (currentCaption is SelectedCaptionButton.None)
+                            if (CurrentCaption is SelectedCaptionButton.None)
                             {
                                 await RespondToHitTest(HTMINBUTTON);
                             }
                         }
 
                         // Maximize Button
-                        else if (IsInRect(x, y, maximizeBounds) && MaximizeRestoreButton.Visibility == Visibility.Visible)
+                        else if (IsInRect(x, y, maximizeBounds) && MaximizeRestoreButton?.Visibility == Visibility.Visible)
                         {
                             // If the button is disabled return border
                             if (!IsMaximizable)
@@ -159,7 +138,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
                             UpdateNonClientHitTestButtonState(SelectedCaptionButton.Maximize, ButtonsState.MaximizePointerOver, ButtonsState.MaximizePressed);
 
                             // Check if the current caption is correct
-                            if (currentCaption is SelectedCaptionButton.None)
+                            if (CurrentCaption is SelectedCaptionButton.None)
                             {
                                 await RespondToHitTest(HTMAXBUTTON);
                             }
@@ -179,7 +158,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
                             UpdateNonClientHitTestButtonState(SelectedCaptionButton.Close, ButtonsState.ClosePointerOver, ButtonsState.ClosePressed);
 
                             // Check if the current caption is correct
-                            if (currentCaption is SelectedCaptionButton.None)
+                            if (CurrentCaption is SelectedCaptionButton.None)
                             {
                                 await RespondToHitTest(HTCLOSE);
                             }
@@ -196,6 +175,8 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                         break;
                     }
+
+                // Left-click down on the non-client area
                 case WM_NCLBUTTONDOWN:
                     {
                         e.Handled = true;
@@ -204,26 +185,26 @@ namespace Riverside.Toolkit.Controls.TitleBar
                         else buttonDownHeight = 0;
 
                         // Minimize Button
-                        if (IsInRect(x, y, minimizeBounds) && MinimizeButton.Visibility == Visibility.Visible)
+                        if (IsInRect(x, y, minimizeBounds) && MinimizeButton?.Visibility == Visibility.Visible)
                         {
                             // If the button is disabled return border
                             if (!IsMinimizable) CancelButtonDown();
 
                             // Update selected button
-                            currentCaption = SelectedCaptionButton.Minimize;
+                            CurrentCaption = SelectedCaptionButton.Minimize;
 
                             // Update state with the corresponding checks
                             UpdateNonClientHitTestButtonState(SelectedCaptionButton.Minimize, ButtonsState.MinimizePointerOver, ButtonsState.MinimizePressed);
                         }
 
                         // Maximize Button
-                        else if (IsInRect(x, y, maximizeBounds) && MaximizeRestoreButton.Visibility == Visibility.Visible)
+                        else if (IsInRect(x, y, maximizeBounds) && MaximizeRestoreButton?.Visibility == Visibility.Visible)
                         {
                             // If the button is disabled return border
                             if (!IsMaximizable) CancelButtonDown();
 
                             // Update selected button
-                            currentCaption = SelectedCaptionButton.Maximize;
+                            CurrentCaption = SelectedCaptionButton.Maximize;
 
                             // Update state with the corresponding checks
                             UpdateNonClientHitTestButtonState(SelectedCaptionButton.Maximize, ButtonsState.MaximizePointerOver, ButtonsState.MaximizePressed);
@@ -236,7 +217,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
                             if (!IsClosable) CancelButtonDown();
 
                             // Update selected button
-                            currentCaption = SelectedCaptionButton.Close;
+                            CurrentCaption = SelectedCaptionButton.Close;
 
                             // Update state with the corresponding checks
                             UpdateNonClientHitTestButtonState(SelectedCaptionButton.Close, ButtonsState.ClosePointerOver, ButtonsState.ClosePressed);
@@ -245,7 +226,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
                         // Title bar drag area
                         else
                         {
-                            currentCaption = SelectedCaptionButton.None;
+                            CurrentCaption = SelectedCaptionButton.None;
 
                             e.Handled = false;
 
@@ -255,93 +236,55 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                         break;
                     }
+
+                // Right-click on the non-client area
                 case WM_NCRBUTTONUP:
                     {
-                        if (!UseWinUIEverywhere || IsInRect(x, y, minimizeBounds) || IsInRect(x, y, maximizeBounds) || IsInRect(x, y, closeBounds)) return;
+                        // Show custom right-click menu if not using WinUI everywhere or clicking on a button
+                        if (!UseWinUIEverywhere || IsInRect(x, y, minimizeBounds) || IsInRect(x, y, maximizeBounds) || IsInRect(x, y, closeBounds) || CurrentWindow is null)
+                            return;
 
                         e.Handled = true;
 
-                        CustomRightClickFlyout.ShowAt(this, new Microsoft.UI.Xaml.Controls.Primitives.FlyoutShowOptions()
+                        // Show the custom right-click flyout at the appropriate position
+                        CustomRightClickFlyout?.ShowAt(this, new Microsoft.UI.Xaml.Controls.Primitives.FlyoutShowOptions()
                         {
-                            Position = new Point(x - CurrentWindow.AppWindow.Position.X - WND_FRAME_LEFT * scale, y - CurrentWindow.AppWindow.Position.Y - additionalHeight * scale)
+                            Position = new Point(x - CurrentWindow.AppWindow.Position.X - WND_FRAME_LEFT * scale,
+                                                 y - CurrentWindow.AppWindow.Position.Y - additionalHeight * scale)
                         });
 
                         break;
                     }
+
+                // Double-click on the non-client area (title bar)
                 case WM_NCLBUTTONDBLCLK:
                     {
+                        // Prevent action if the window is maximizable
                         e.Handled = !IsMaximizable;
                         break;
                     }
+
+                // Left-click up on the non-client area
                 case WM_NCLBUTTONUP:
                     {
-                        e.Handled = true;
-                        e.Result = new IntPtr(1);
-                        // Minimize Button
-                        if (IsInRect(x, y, minimizeBounds) && currentCaption is SelectedCaptionButton.Minimize)
-                        {
-                            if (!IsMinimizable)
-                            {
-                                e.Handled = false;
-                                return;
-                            }
-
-                            // No buttons are selected
-                            SwitchState(ButtonsState.None);
-                        }
-
-                        // Maximize Button
-                        else if (IsInRect(x, y, maximizeBounds) && currentCaption is SelectedCaptionButton.Maximize)
-                        {
-                            if (!IsMaximizable)
-                            {
-                                e.Handled = false;
-                                return;
-                            }
-
-                            // No buttons are selected
-                            SwitchState(ButtonsState.None);
-                        }
-
-                        // Close Button
-                        else if (IsInRect(x, y, closeBounds) && currentCaption is SelectedCaptionButton.Close)
-                        {
-                            if (!IsClosable)
-                            {
-                                e.Handled = false;
-                                return;
-                            }
-                        }
-
-                        // Title bar drag area
-                        else
-                        {
-                            // No buttons are selected
-                            SwitchState(ButtonsState.None);
-                        }
-
-                        currentCaption = SelectedCaptionButton.None;
-                        e.Handled = false;
-                        break;
-                    }
-                default:
-                    {
-                        e.Handled = false;
+                        // Reset the button states when no buttons are selected
+                        SwitchState(ButtonsState.None);
+                        CurrentCaption = SelectedCaptionButton.None;
                         break;
                     }
             }
 
             // Check if the left mouse button has been released in the meantime
-            currentCaption = IsLeftMouseButtonDown() ? currentCaption : SelectedCaptionButton.None;
+            CurrentCaption = IsLeftMouseButtonDown() ? CurrentCaption : SelectedCaptionButton.None;
 
             void UpdateNonClientHitTestButtonState(SelectedCaptionButton button, ButtonsState pointerOver, ButtonsState pressed)
             {
                 SwitchState(
                     // If the current caption is none, select it as usual
-                    currentCaption == SelectedCaptionButton.None ? pointerOver : // False state
+                    CurrentCaption == SelectedCaptionButton.None ? pointerOver : // False state
 
                     // If the current caption is the button's type, select the button as pressed
-                    currentCaption == button ? pressed : // False state
+                    CurrentCaption == button ? pressed : // False state
 
                     // Otherwise, this is not the button the user previously selected
                     ButtonsState.None);
