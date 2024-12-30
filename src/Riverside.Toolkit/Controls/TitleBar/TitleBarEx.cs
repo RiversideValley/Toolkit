@@ -17,15 +17,16 @@ namespace Riverside.Toolkit.Controls.TitleBar
 {
     public partial class TitleBarEx : Control
     {
-        protected Button CloseButton { get; set; }
-        protected ToggleButton MaximizeRestoreButton { get; set; }
-        protected Button MinimizeButton { get; set; }
-        protected TextBlock TitleTextBlock { get; set; }
-        protected ImageIcon TitleBarIcon { get; set; }
-        protected WindowEx CurrentWindow { get; set; }
-        protected Application CurrentApp { get; set; }
-        protected Border AccentStrip { get; set; }
-        protected MenuFlyout CustomRightClickFlyout { get; set; }
+        protected Button CloseButton { get; private set; }
+        protected ToggleButton MaximizeRestoreButton { get; private set; }
+        protected Button MinimizeButton { get; private set; }
+        protected TextBlock TitleTextBlock { get; private set; }
+        protected ImageIcon TitleBarIcon { get; private set; }
+        protected WindowEx CurrentWindow { get; private set; }
+        protected Application CurrentApp { get; private set; }
+        protected Border AccentStrip { get; private set; }
+        protected MenuFlyout CustomRightClickFlyout { get; private set; }
+
         private WindowMessageMonitor messageMonitor;
         private bool isWindowFocused = false;
         private bool isMaximized = false;
@@ -72,22 +73,23 @@ namespace Riverside.Toolkit.Controls.TitleBar
                 if (GetValue<object>($"{WindowTag}Maximized") is bool and true)
                 {
                     CurrentWindow.MoveAndResize(
-                        GetValue<double>($"{WindowTag}PositionX"),
-                        GetValue<double>($"{WindowTag}PositionY"),
-                        GetValue<double>($"{WindowTag}Width"),
-                        GetValue<double>($"{WindowTag}Height"));
+                        GetValue<double>($"{WindowTag}PositionX") / Display.Scale(CurrentWindow),
+                        GetValue<double>($"{WindowTag}PositionY") / Display.Scale(CurrentWindow),
+                        GetValue<double>($"{WindowTag}Width") / Display.Scale(CurrentWindow),
+                        GetValue<double>($"{WindowTag}Height") / Display.Scale(CurrentWindow));
 
                     await Task.Delay(10);
 
                     CurrentWindow.Maximize();
+                    isMaximized = true;
                 }
                 else
                 {
                     CurrentWindow.MoveAndResize(
-                        GetValue<double>($"{WindowTag}PositionX"),
-                        GetValue<double>($"{WindowTag}PositionY"),
-                        GetValue<double>($"{WindowTag}Width"),
-                        GetValue<double>($"{WindowTag}Height"));
+                        GetValue<double>($"{WindowTag}PositionX") / Display.Scale(CurrentWindow),
+                        GetValue<double>($"{WindowTag}PositionY") / Display.Scale(CurrentWindow),
+                        GetValue<double>($"{WindowTag}Width") / Display.Scale(CurrentWindow),
+                        GetValue<double>($"{WindowTag}Height") / Display.Scale(CurrentWindow));
                 }
             }
             if (GetValue<object>($"{WindowTag}Maximized") != null)
@@ -95,6 +97,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
                 if (GetValue<bool>($"{WindowTag}Maximized") == true)
                 {
                     CurrentWindow.Maximize();
+                    isMaximized = true;
                 }
                 else
                 {
@@ -104,7 +107,9 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
             allowSizeCheck = true;
 
-            CheckMaximization();
+            await Task.Delay(200);
+
+            SwitchState(ButtonsState.None);
         }
 
         public TitleBarEx()
@@ -150,7 +155,8 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
         private void CurrentWindow_Closed(object sender, WindowEventArgs args)
         {
-            closed = true;
+            args.Handled = !IsClosable;
+            closed = IsClosable;
         }
 
         protected override void OnApplyTemplate()
@@ -164,6 +170,12 @@ namespace Riverside.Toolkit.Controls.TitleBar
             TitleBarIcon = GetTemplateChild("TitleBarIcon") as ImageIcon;
             AccentStrip = GetTemplateChild("AccentStrip") as Border;
             CustomRightClickFlyout = GetTemplateChild("CustomRightClickFlyout") as MenuFlyout;
+            (GetTemplateChild("MaximizeContextMenuItem") as MenuFlyoutItem).Click += MaximizeContextMenu_Click;
+            (GetTemplateChild("SizeContextMenuItem") as MenuFlyoutItem).Click += SizeContextMenu_Click;
+            (GetTemplateChild("MoveContextMenuItem") as MenuFlyoutItem).Click += MoveContextMenu_Click;
+            (GetTemplateChild("MinimizeContextMenuItem") as MenuFlyoutItem).Click += MinimizeContextMenu_Click;
+            (GetTemplateChild("CloseContextMenuItem") as MenuFlyoutItem).Click += CloseContextMenu_Click;
+            (GetTemplateChild("RestoreContextMenuItem") as MenuFlyoutItem).Click += RestoreContextMenu_Click;
         }
 
         public const string AccentRegistryKeyPath = @"Software\Microsoft\Windows\DWM";
@@ -173,6 +185,10 @@ namespace Riverside.Toolkit.Controls.TitleBar
         {
             try
             {
+                CanMaximize = !isMaximized && IsMaximizable;
+                CanMove = !isMaximized;
+                CanSize = !isMaximized && CurrentWindow.IsResizable;
+                CanRestore = isMaximized && IsMaximizable;
                 if (MinimizeButton is not null && MaximizeRestoreButton is not null && CurrentApp is not null && CloseButton is not null)
                 {
                     if (CurrentWindow is not null)
@@ -388,201 +404,6 @@ namespace Riverside.Toolkit.Controls.TitleBar
                 // Required for NCHITTEST
                 isMaximized = false;
 
-                return;
-            }
-        }
-
-        protected void SwitchState(ButtonsState buttonsState)
-        {
-            CheckMaximization();
-
-            if (CloseButton is null || MaximizeRestoreButton is null || MinimizeButton is null) return;
-
-            string minimizeState = string.Empty;
-            string maximizeState = string.Empty;
-            string closeState = string.Empty;
-
-            switch (buttonsState)
-            {
-                case ButtonsState.None:
-                    {
-                        // Minimize
-                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
-
-                        // Maximize
-                        CheckMaximizeNormalStates();
-
-                        // Close
-                        closeState = IsClosable ? "Normal" : "Disabled";
-
-                        break;
-                    }
-                case ButtonsState.MinimizePointerOver:
-                    {
-                        // Minimize
-                        minimizeState = IsMinimizable ? "PointerOver" : "Disabled";
-
-                        // Maximize
-                        CheckMaximizeNormalStates();
-
-                        // Close
-                        closeState = IsClosable ? "Normal" : "Disabled";
-
-                        break;
-                    }
-                case ButtonsState.MinimizePressed:
-                    {
-                        // Minimize
-                        minimizeState = IsMinimizable ? "Pressed" : "Disabled";
-
-                        // Maximize
-                        CheckMaximizeNormalStates();
-
-                        // Close
-                        closeState = IsClosable ? "Normal" : "Disabled";
-
-                        break;
-                    }
-                case ButtonsState.MaximizePointerOver:
-                    {
-                        // Minimize
-                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
-
-                        // Maximize
-                        CheckMaximizeNormalStates();
-
-                        // Close
-                        closeState = IsClosable ? "Normal" : "Disabled";
-                        break;
-                    }
-                case ButtonsState.MaximizePressed:
-                    {
-                        // Minimize
-                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
-
-                        // Maximize
-                        CheckMaximizeNormalStates();
-
-                        // Close
-                        closeState = IsClosable ? "Normal" : "Disabled";
-                        break;
-                    }
-                case ButtonsState.ClosePointerOver:
-                    {
-                        // Minimize
-                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
-
-                        // Maximize
-                        CheckMaximizeNormalStates();
-
-                        // Close
-                        closeState = IsClosable ? "PointerOver" : "Disabled";
-                        break;
-                    }
-                case ButtonsState.ClosePressed:
-                    {
-                        // Minimize
-                        minimizeState = IsMinimizable ? "Normal" : "Disabled";
-
-                        // Maximize
-                        CheckMaximizeNormalStates();
-
-                        // Close
-                        closeState = IsClosable ? "Pressed" : "Disabled";
-                        break;
-                    }
-            }
-
-            if (UseWinUIEverywhere)
-            {
-                switch (buttonsState)
-                {
-                    case ButtonsState.MinimizePointerOver:
-                        {
-                            (ToolTipService.GetToolTip(MinimizeButton) as ToolTip).IsOpen = true;
-                            (ToolTipService.GetToolTip(CloseButton) as ToolTip).IsOpen = false;
-                            break;
-                        }
-                    case ButtonsState.ClosePointerOver:
-                        {
-                            (ToolTipService.GetToolTip(MinimizeButton) as ToolTip).IsOpen = false;
-                            (ToolTipService.GetToolTip(CloseButton) as ToolTip).IsOpen = true;
-                            break;
-                        }
-                    default:
-                        {
-                            (ToolTipService.GetToolTip(MinimizeButton) as ToolTip).IsOpen = false;
-                            (ToolTipService.GetToolTip(CloseButton) as ToolTip).IsOpen = false;
-                            break;
-                        }
-                }
-            }
-
-            _ = VisualStateManager.GoToState(MinimizeButton, minimizeState, true);
-            _ = VisualStateManager.GoToState(MaximizeRestoreButton, maximizeState, true);
-            _ = VisualStateManager.GoToState(CloseButton, closeState, true);
-
-            void CheckMaximizeNormalStates()
-            {
-                switch (IsMaximizable)
-                {
-                    // Can maximize
-                    case true:
-                        {
-                            maximizeState = isMaximized ? "Checked" : "Normal";
-                            if (buttonsState == ButtonsState.MaximizePointerOver)
-                            {
-                                maximizeState = isMaximized ? "CheckedPointerOver" : "PointerOver";
-                                break;
-                            }
-                            else if (buttonsState == ButtonsState.MaximizePressed)
-                            {
-                                maximizeState = isMaximized ? "CheckedPressed" : "Pressed";
-                                break;
-                            }
-                            break;
-                        }
-
-                    // Can't maximize
-                    case false:
-                        {
-                            maximizeState = isMaximized ? "CheckedDisabled" : "Disabled";
-                            break;
-                        }
-                }
-            }
-        }
-
-        private async void LoadBounds()
-        {
-            // Make sure the loop doesn't trigger too often
-            await Task.Delay(100);
-
-            try
-            {
-                // If the window has been closed break the loop
-                if (closed) return;
-
-                // Check if every condition is met
-                if (CurrentWindow.AppWindow is not null && IsAutoDragRegionEnabled)
-                {
-                    // Width (Scaled window width)
-                    var width = (int)(CurrentWindow.Bounds.Width * Display.Scale(CurrentWindow));
-
-                    // Height (Scaled control actual height)
-                    var height = (int)((ActualHeight + buttonDownHeight) * Display.Scale(CurrentWindow));
-
-                    CurrentWindow.AppWindow.TitleBar.SetDragRectangles([new(0, 0, width, height)]);
-                }
-                else
-                {
-
-                }
-
-                LoadBounds();
-            }
-            catch
-            {
                 return;
             }
         }

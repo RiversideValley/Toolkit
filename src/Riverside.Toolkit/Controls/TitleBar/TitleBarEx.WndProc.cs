@@ -20,6 +20,8 @@ namespace Riverside.Toolkit.Controls.TitleBar
         private const int WM_NCLBUTTONUP = 0x00A2;
         // Non client right button up
         private const int WM_NCRBUTTONUP = 0x00A5;
+        // Non client left button double click
+        private const int WM_NCLBUTTONDBLCLK = 0x00A3;
         // Activate
         private const int WM_ACTIVATE = 0x0006;
 
@@ -202,80 +204,42 @@ namespace Riverside.Toolkit.Controls.TitleBar
                         else buttonDownHeight = 0;
 
                         // Minimize Button
-                        if (IsInRect(x, y, minimizeBounds) && IsLeftMouseButtonDown() && MinimizeButton.Visibility == Visibility.Visible)
+                        if (IsInRect(x, y, minimizeBounds) && MinimizeButton.Visibility == Visibility.Visible)
                         {
-                            if (!IsMinimizable)
-                            {
-                                // Cancel every other button
-                                SwitchState(ButtonsState.None);
+                            // If the button is disabled return border
+                            if (!IsMinimizable) CancelButtonDown();
 
-                                e.Handled = false;
-                                return;
-                            }
-
+                            // Update selected button
                             currentCaption = SelectedCaptionButton.Minimize;
 
-                            SwitchState(
-                                // If the current caption is none, select it as usual
-                                currentCaption == SelectedCaptionButton.None ? ButtonsState.MinimizePointerOver : // False state
-
-                                // If the current caption is the button's type, select the button as pressed
-                                currentCaption == SelectedCaptionButton.Minimize ? ButtonsState.MinimizePressed : // False state
-
-                                // Otherwise, this is not the button the user previously selected
-                                ButtonsState.None);
-
-                            ToolTipService.SetToolTip(MinimizeButton, null);
+                            // Update state with the corresponding checks
+                            UpdateNonClientHitTestButtonState(SelectedCaptionButton.Minimize, ButtonsState.MinimizePointerOver, ButtonsState.MinimizePressed);
                         }
 
                         // Maximize Button
                         else if (IsInRect(x, y, maximizeBounds) && MaximizeRestoreButton.Visibility == Visibility.Visible)
                         {
-                            if (!IsMaximizable)
-                            {
-                                // Cancel every other button
-                                SwitchState(ButtonsState.None);
+                            // If the button is disabled return border
+                            if (!IsMaximizable) CancelButtonDown();
 
-                                e.Handled = false;
-                                return;
-                            }
-
+                            // Update selected button
                             currentCaption = SelectedCaptionButton.Maximize;
 
-                            SwitchState(
-                                // If the current caption is none, select it as usual
-                                currentCaption == SelectedCaptionButton.None ? ButtonsState.MaximizePointerOver : // False state
-
-                                // If the current caption is the button's type, select the button as pressed
-                                currentCaption == SelectedCaptionButton.Maximize ? ButtonsState.MaximizePressed : // False state
-
-                                // Otherwise, this is not the button the user previously selected
-                                ButtonsState.None);
+                            // Update state with the corresponding checks
+                            UpdateNonClientHitTestButtonState(SelectedCaptionButton.Maximize, ButtonsState.MaximizePointerOver, ButtonsState.MaximizePressed);
                         }
 
                         // Close Button
                         else if (IsInRect(x, y, closeBounds))
                         {
-                            if (!IsClosable)
-                            {
-                                // Cancel every other button
-                                SwitchState(ButtonsState.None);
+                            // If the button is disabled return border
+                            if (!IsClosable) CancelButtonDown();
 
-                                e.Handled = false;
-                                return;
-                            }
-
+                            // Update selected button
                             currentCaption = SelectedCaptionButton.Close;
 
-                            SwitchState(
-                                // If the current caption is none, select it as usual
-                                currentCaption == SelectedCaptionButton.None ? ButtonsState.ClosePointerOver : // False state
-
-                                // If the current caption is the button's type, select the button as pressed
-                                currentCaption == SelectedCaptionButton.Close ? ButtonsState.ClosePressed : // False state
-
-                                // Otherwise, this is not the button the user previously selected
-                                ButtonsState.None);
+                            // Update state with the corresponding checks
+                            UpdateNonClientHitTestButtonState(SelectedCaptionButton.Close, ButtonsState.ClosePointerOver, ButtonsState.ClosePressed);
                         }
 
                         // Title bar drag area
@@ -302,6 +266,11 @@ namespace Riverside.Toolkit.Controls.TitleBar
                             Position = new Point(x - CurrentWindow.AppWindow.Position.X - WND_FRAME_LEFT * scale, y - CurrentWindow.AppWindow.Position.Y - additionalHeight * scale)
                         });
 
+                        break;
+                    }
+                case WM_NCLBUTTONDBLCLK:
+                    {
+                        e.Handled = !IsMaximizable;
                         break;
                     }
                 case WM_NCLBUTTONUP:
@@ -376,6 +345,15 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                     // Otherwise, this is not the button the user previously selected
                     ButtonsState.None);
+            }
+
+            void CancelButtonDown()
+            {
+                // Cancel every other button
+                SwitchState(ButtonsState.None);
+
+                e.Handled = false;
+                return;
             }
 
             async Task CancelHitTest()

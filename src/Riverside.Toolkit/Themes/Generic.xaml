@@ -382,12 +382,40 @@
                         <Button Visibility="Collapsed">
                             <Button.Flyout>
                                 <MenuFlyout x:Name="CustomRightClickFlyout">
-                                    <MenuFlyoutItem Text="Close"/>
-                                    <MenuFlyoutItem Text="Close"/>
-                                    <MenuFlyoutItem Text="Close"/>
-                                    <MenuFlyoutItem Text="Close"/>
-                                    <MenuFlyoutItem Text="Close"/>
-                                    <MenuFlyoutItem Text="Close"/>
+                                    <MenuFlyoutItem Text="Restore" IsEnabled="{TemplateBinding CanRestore}" x:Name="RestoreContextMenuItem">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph=" &#xE923; "/>
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem Text="Move" IsEnabled="{TemplateBinding CanMove}" x:Name="MoveContextMenuItem">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE7C2;"/>
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem Text="Size" IsEnabled="{TemplateBinding CanSize}" x:Name="SizeContextMenuItem">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE740;"/>
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem Text="Minimize" IsEnabled="{TemplateBinding IsMinimizable}" x:Name="MinimizeContextMenuItem">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph=" &#xE921; "/>
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem Text="Maximize" IsEnabled="{TemplateBinding CanMaximize}" x:Name="MaximizeContextMenuItem">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph=" &#xE922; "/>
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutSeparator/>
+                                    <MenuFlyoutItem Text="Close" IsEnabled="{TemplateBinding IsClosable}" x:Name="CloseContextMenuItem">
+                                        <MenuFlyoutItem.KeyboardAccelerators>
+                                            <KeyboardAccelerator Key="F4" Modifiers="Menu" IsEnabled="False"/>
+                                        </MenuFlyoutItem.KeyboardAccelerators>
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph=" &#xE8BB; "/>
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
                                 </MenuFlyout>
                             </Button.Flyout>
                         </Button>
