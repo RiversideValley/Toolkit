@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Riverside.Toolkit.UITests"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:Riverside.Toolkit.Controls"
+    xmlns:toolkit="using:Riverside.Toolkit.Controls.TitleBar"
     xmlns:winuiex="using:WinUIEx"
     Title="CubeKit Tests"
     mc:Ignorable="d">
