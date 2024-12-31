@@ -1,7 +1,6 @@
 ﻿using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml;
 using WinUIEx;
-using System.Diagnostics;
 
 #nullable enable
 
