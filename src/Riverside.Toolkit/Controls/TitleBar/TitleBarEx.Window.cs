@@ -11,6 +11,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.IO;
+using System.Diagnostics;
 
 #nullable enable
 
@@ -80,22 +81,22 @@ namespace Riverside.Toolkit.Controls.TitleBar
             }
         }
 
-        private async Task CheckMaximization()
+        bool wasMaximized = false;
+
+        private void CheckMaximization()
         {
             if (closed || !allowSizeCheck) return;
-
-            var wasMaximized = isMaximized;
 
             if (CurrentWindow?.Presenter is OverlappedPresenter presenter)
             {
                 switch (presenter.State)
                 {
                     case OverlappedPresenterState.Maximized:
-                        HandleMaximizedState(wasMaximized);
+                        HandleMaximizedState();
                         break;
 
                     case OverlappedPresenterState.Restored:
-                        await HandleRestoredState(wasMaximized);
+                        HandleRestoredState();
                         break;
                 }
             }
@@ -104,19 +105,21 @@ namespace Riverside.Toolkit.Controls.TitleBar
                 HandleUnknownState();
             }
 
+            wasMaximized = isMaximized;
+
             // Local method to handle the maximized state
-            void HandleMaximizedState(bool previousState)
+            void HandleMaximizedState()
             {
                 if (MemorizeWindowPosition) SetValue($"{WindowTag}Maximized", true);
 
                 additionalHeight = WND_FRAME_TOP_MAXIMIZED; // Required for window drag region
                 isMaximized = true; // Required for NCHITTEST
 
-                if (!previousState) SwitchState(ButtonsState.None);
+                if (wasMaximized != isMaximized) SwitchState(ButtonsState.None);
             }
 
             // Local method to handle the restored state
-            async Task HandleRestoredState(bool previousState)
+            void HandleRestoredState()
             {
                 if (MemorizeWindowPosition)
                 {
@@ -127,12 +130,14 @@ namespace Riverside.Toolkit.Controls.TitleBar
                     SetValue<double>($"{WindowTag}Height", CurrentWindow.AppWindow.Size.Height);
                 }
 
-                await Task.Delay(10);
-
                 additionalHeight = WND_FRAME_TOP_NORMAL; // Required for window drag region
                 isMaximized = false; // Required for NCHITTEST
 
-                if (previousState) SwitchState(ButtonsState.None);
+                if (wasMaximized != isMaximized)
+                {
+                    if (IsLeftMouseButtonDown()) MoveCursorUp();
+                    SwitchState(ButtonsState.None);
+                }
             }
 
             // Local method to handle unknown presenter states
@@ -171,7 +176,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
                         CloseButton.IsEnabled = IsClosable;
                     }
 
-                    await CheckMaximization();
+                    CheckMaximization();
 
                     // Update button visibility and styles
                     SetButtonVisibility(

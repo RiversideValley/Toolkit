@@ -7,13 +7,10 @@ namespace Riverside.Toolkit.Controls.TitleBar
 {
     public partial class TitleBarEx
     {
-        protected async void SwitchState(ButtonsState buttonsState)
+        protected void SwitchState(ButtonsState buttonsState)
         {
-            // Required for maximize button states
-            await CheckMaximization();
-
             // If the buttons don't exist return
-            if (CloseButton is null || MaximizeRestoreButton is null || MinimizeButton is null) return;
+            if (CloseButton is null || MaximizeRestoreButton is null || MinimizeButton is null || closed) return;
 
             // Default states
             string minimizeState = IsMinimizable ? "Normal" : "Disabled";

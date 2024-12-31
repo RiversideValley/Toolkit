@@ -1,6 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml;
 using WinUIEx;
+using System.Diagnostics;
 
 #nullable enable
 
@@ -12,7 +13,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
         private void Content_PointerEntered(object sender, PointerRoutedEventArgs e) => SwitchState(ButtonsState.None);
 
-        private async void CurrentWindow_WindowStateChanged(object? sender, WindowState e) => await CheckMaximization();
+        private void CurrentWindow_WindowStateChanged(object? sender, WindowState e) => CheckMaximization();
 
         private void CurrentWindow_Closed(object sender, WindowEventArgs args)
         {

@@ -107,10 +107,13 @@ namespace Riverside.Toolkit.Controls.TitleBar
                 // Hit test on the non-client area
                 case WM_NCHITTEST:
                     {
+                        // Pointer down hit test
                         if (IsLeftMouseButtonDown())
                         {
+                            // Extend drag area
                             buttonDownHeight = 25;
 
+                            // Minimize
                             if (IsInMinButton() && CurrentCaption is SelectedCaptionButton.Minimize or SelectedCaptionButton.None)
                             {
                                 CurrentCaption = SelectedCaptionButton.Minimize;
@@ -121,6 +124,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
                                 args.Handled = true;
                             }
 
+                            // Maximize
                             if (IsInMaxButton() && CurrentCaption is SelectedCaptionButton.Maximize or SelectedCaptionButton.None)
                             {
                                 CurrentCaption = SelectedCaptionButton.Maximize;
@@ -131,6 +135,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
                                 args.Handled = true;
                             }
 
+                            // Close
                             if (IsInCloseButton() && CurrentCaption is SelectedCaptionButton.Close or SelectedCaptionButton.None)
                             {
                                 CurrentCaption = SelectedCaptionButton.Close;
@@ -141,12 +146,18 @@ namespace Riverside.Toolkit.Controls.TitleBar
                                 args.Handled = true;
                             }
                         }
+
+                        // Pointer up hit test
                         else
                         {
+                            // Restore drag area
                             buttonDownHeight = 0;
 
+                            // Minimize
+                            if (IsInMinButton() && CurrentCaption != SelectedCaptionButton.Minimize) CurrentCaption = SelectedCaptionButton.None;
                             if (IsInMinButton() && CurrentCaption == SelectedCaptionButton.Minimize)
                             {
+                                // Minimize
                                 VisualStateManager.GoToState(MinimizeButton, IsMaximizable ? "Normal" : "Disabled", true);
                                 await Task.Delay(5);
                                 CurrentWindow?.Minimize();
@@ -155,9 +166,12 @@ namespace Riverside.Toolkit.Controls.TitleBar
                                 return;
                             }
 
+                            // Maximize
+                            if (IsInMaxButton() && CurrentCaption != SelectedCaptionButton.Maximize) CurrentCaption = SelectedCaptionButton.None;
                             if (IsInMaxButton() && CurrentCaption == SelectedCaptionButton.Maximize)
                             {
-                                await CheckMaximization();
+                                // Maximize
+                                CheckMaximization();
                                 if (isMaximized) CurrentWindow?.Restore();
                                 else CurrentWindow?.Maximize();
                                 CurrentCaption = SelectedCaptionButton.None;
@@ -165,16 +179,31 @@ namespace Riverside.Toolkit.Controls.TitleBar
                                 return;
                             }
 
+                            // Close
+                            if (IsInCloseButton() && CurrentCaption != SelectedCaptionButton.Close) CurrentCaption = SelectedCaptionButton.None;
                             if (IsInCloseButton() && CurrentCaption == SelectedCaptionButton.Close)
                             {
+                                // Close
                                 CurrentCaption = SelectedCaptionButton.None;
                                 args.Handled = true;
                                 CurrentWindow?.Close();
-                                SwitchState(ButtonsState.None);
                             }
+
+                            // Handle hit test
                             args.Handled = true;
+
+                            // Logic for pressing the left mouse button, moving the pointer to a different button, and releasing it there
+                            if (CurrentCaption == SelectedCaptionButton.None && previousButtonDown == true)
+                            {
+                                // Update state
+                                previousButtonDown = IsLeftMouseButtonDown();
+
+                                // Prevent action
+                                return;
+                            }
                         }
 
+                        // Update state
                         previousButtonDown = IsLeftMouseButtonDown();
 
                         // Minimize Button
@@ -241,6 +270,8 @@ namespace Riverside.Toolkit.Controls.TitleBar
                         }
 
                         SwitchState(ButtonsState.None);
+
+                        args.Handled = false;
 
                         return;
                     }
