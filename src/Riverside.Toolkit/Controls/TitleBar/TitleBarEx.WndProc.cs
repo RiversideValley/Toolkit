@@ -117,6 +117,8 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                                 // Update state with the corresponding checks
                                 UpdateNonClientHitTestButtonState(SelectedCaptionButton.Minimize, ButtonsState.MinimizePointerOver, ButtonsState.MinimizePressed);
+
+                                args.Handled = true;
                             }
 
                             if (IsInMaxButton() && CurrentCaption is SelectedCaptionButton.Maximize or SelectedCaptionButton.None)
@@ -125,6 +127,8 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                                 // Update state with the corresponding checks
                                 UpdateNonClientHitTestButtonState(SelectedCaptionButton.Maximize, ButtonsState.MaximizePointerOver, ButtonsState.MaximizePressed);
+
+                                args.Handled = true;
                             }
 
                             if (IsInCloseButton() && CurrentCaption is SelectedCaptionButton.Close or SelectedCaptionButton.None)
@@ -133,9 +137,9 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                                 // Update state with the corresponding checks
                                 UpdateNonClientHitTestButtonState(SelectedCaptionButton.Close, ButtonsState.ClosePointerOver, ButtonsState.ClosePressed);
-                            }
 
-                            args.Handled = true;
+                                args.Handled = true;
+                            }
                         }
                         else
                         {
@@ -163,13 +167,12 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                             if (IsInCloseButton() && CurrentCaption == SelectedCaptionButton.Close)
                             {
+                                CurrentCaption = SelectedCaptionButton.None;
+                                args.Handled = true;
                                 CurrentWindow?.Close();
                                 SwitchState(ButtonsState.None);
                             }
-
-                            CurrentCaption = SelectedCaptionButton.None;
                             args.Handled = true;
-
                         }
 
                         previousButtonDown = IsLeftMouseButtonDown();
