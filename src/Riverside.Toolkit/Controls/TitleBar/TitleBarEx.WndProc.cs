@@ -154,7 +154,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                             // Minimize
                             if (IsInMinButton() && CurrentCaption != SelectedCaptionButton.Minimize) CurrentCaption = SelectedCaptionButton.None;
-                            if (IsInMinButton() && CurrentCaption == SelectedCaptionButton.Minimize)
+                            if (IsInMinButton() && CurrentCaption == SelectedCaptionButton.Minimize && IsMinimizable)
                             {
                                 // Minimize
                                 VisualStateManager.GoToState(MinimizeButton, IsMaximizable ? "Normal" : "Disabled", true);
@@ -167,7 +167,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                             // Maximize
                             if (IsInMaxButton() && CurrentCaption != SelectedCaptionButton.Maximize) CurrentCaption = SelectedCaptionButton.None;
-                            if (IsInMaxButton() && CurrentCaption == SelectedCaptionButton.Maximize)
+                            if (IsInMaxButton() && CurrentCaption == SelectedCaptionButton.Maximize && IsMaximizable)
                             {
                                 // Maximize
                                 CheckMaximization();
@@ -180,7 +180,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                             // Close
                             if (IsInCloseButton() && CurrentCaption != SelectedCaptionButton.Close) CurrentCaption = SelectedCaptionButton.None;
-                            if (IsInCloseButton() && CurrentCaption == SelectedCaptionButton.Close)
+                            if (IsInCloseButton() && CurrentCaption == SelectedCaptionButton.Close && IsClosable)
                             {
                                 // Close
                                 CurrentCaption = SelectedCaptionButton.None;
