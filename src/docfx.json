@@ -1,0 +1,44 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "**/*.csproj",
+            "**/*.cs"
+          ],
+          "src": "."
+        }
+      ],
+      "dest": "obj/api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "README.md",
+          "**/*.md"
+        ]
+      },
+      {
+        "files": [
+          "**/*.yml"
+        ],
+        "src": "obj/api"
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "**/images/**"
+        ]
+      }
+    ],
+    "dest": "docs",
+    "globalMetadata": {
+      "_enableSearch": true,
+      "_disableContribution": true
+    }
+  }
+}
