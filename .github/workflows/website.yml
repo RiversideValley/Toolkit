@@ -24,7 +24,7 @@ jobs:
   publish-docs:
     name: Publish
     environment:
-      name: Deployments
+      name: Docs
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: windows-latest
     steps:
