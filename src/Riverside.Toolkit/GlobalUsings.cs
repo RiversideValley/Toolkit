@@ -15,6 +15,7 @@ global using SystemIO = global::System.IO;
 // WinUI
 #if WinUI
 global using global::Microsoft;
+global using global::Microsoft.UI;
 global using global::Microsoft.UI.Xaml;
 global using global::Microsoft.UI.Xaml.Controls;
 global using global::Microsoft.UI.Xaml.Data;
@@ -27,9 +28,11 @@ global using global::Microsoft.UI.Xaml.Documents;
 global using global::Microsoft.UI.Xaml.Hosting;
 global using global::Microsoft.UI.Xaml.Media.Animation;
 global using global::Microsoft.UI.Xaml.Shapes;
+global using global::Microsoft.UI.Xaml.Controls.Primitives;
 #endif
 #if UWP
 global using global::Windows;
+global using global::Windows.UI;
 global using global::Windows.UI.Xaml;
 global using global::Windows.UI.Xaml.Controls;
 global using global::Windows.UI.Xaml.Data;
@@ -42,6 +45,7 @@ global using global::Windows.UI.Xaml.Documents;
 global using global::Windows.UI.Xaml.Hosting;
 global using global::Windows.UI.Xaml.Media.Animation;
 global using global::Windows.UI.Xaml.Shapes;
+global using global::Windows.UI.Xaml.Controls.Primitives;
 #endif
 
 // CommunityToolkit
