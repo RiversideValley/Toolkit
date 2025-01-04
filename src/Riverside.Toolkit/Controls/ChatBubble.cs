@@ -2,18 +2,24 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System.ComponentModel;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Riverside.Toolkit.Controls
 {
+    /// <summary>
+    /// Represents a custom ChatBubble control.
+    /// </summary>
     public sealed class ChatBubble : Control
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChatBubble"/> class.
+        /// </summary>
         public ChatBubble()
         {
             this.DefaultStyleKey = typeof(ChatBubble);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="Text"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty TextProperty =
         DependencyProperty.Register(
         "Text", // The name of the property
@@ -22,6 +28,9 @@ namespace Riverside.Toolkit.Controls
         new PropertyMetadata("Text") // Default value
         );
 
+        /// <summary>
+        /// Gets or sets the text in the ChatBubble.
+        /// </summary>
         [Browsable(true)]
         [Category("Common")]
         [Description("The text in the ChatBubble")]

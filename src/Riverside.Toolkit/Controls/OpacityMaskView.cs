@@ -10,8 +10,14 @@ using Windows.UI;
 
 namespace Riverside.Toolkit.Controls;
 
+/// <summary>
+/// A custom control that provides an opacity mask view.
+/// </summary>
 public partial class OpacityMaskView : RedirectVisualView
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="OpacityMaskView"/> class.
+    /// </summary>
     public OpacityMaskView()
     {
         opacityMaskHost = new Rectangle();
@@ -39,15 +45,26 @@ public partial class OpacityMaskView : RedirectVisualView
     private CompositionSurfaceBrush opacityMaskVisualBrush;
     private CompositionMaskBrush maskBrush;
 
+    /// <summary>
+    /// Gets or sets the opacity mask brush.
+    /// </summary>
     public Brush OpacityMask
     {
         get { return (Brush)GetValue(OpacityMaskProperty); }
         set { SetValue(OpacityMaskProperty, value); }
     }
 
+    /// <summary>
+    /// Identifies the <see cref="OpacityMask"/> dependency property.
+    /// </summary>
     public static readonly DependencyProperty OpacityMaskProperty =
         DependencyProperty.Register("OpacityMask", typeof(Brush), typeof(OpacityMaskView), new PropertyMetadata(new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)), OnOpacityMaskPropertyChanged));
 
+    /// <summary>
+    /// Called when the <see cref="OpacityMask"/> property changes.
+    /// </summary>
+    /// <param name="d">The dependency object.</param>
+    /// <param name="e">The event data.</param>
     private static void OnOpacityMaskPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         if (d is OpacityMaskView sender && !Equals(e.NewValue, e.OldValue))
@@ -63,6 +80,9 @@ public partial class OpacityMaskView : RedirectVisualView
         }
     }
 
+    /// <summary>
+    /// Detaches the visuals from the control.
+    /// </summary>
     protected override void OnDetachVisuals()
     {
         base.OnDetachVisuals();
@@ -84,6 +104,9 @@ public partial class OpacityMaskView : RedirectVisualView
         }
     }
 
+    /// <summary>
+    /// Attaches the visuals to the control.
+    /// </summary>
     protected override void OnAttachVisuals()
     {
         base.OnAttachVisuals();
@@ -105,6 +128,9 @@ public partial class OpacityMaskView : RedirectVisualView
         }
     }
 
+    /// <summary>
+    /// Updates the size of the control.
+    /// </summary>
     protected override void OnUpdateSize()
     {
         base.OnUpdateSize();

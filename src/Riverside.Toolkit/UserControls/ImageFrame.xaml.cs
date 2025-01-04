@@ -2,18 +2,24 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System.ComponentModel;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Riverside.Toolkit.UserControls
 {
+    /// <summary>
+    /// A UserControl that represents an ImageFrame.
+    /// </summary>
     public sealed partial class ImageFrame : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImageFrame"/> class.
+        /// </summary>
         public ImageFrame()
         {
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Identifies the <see cref="Source"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty SourceProperty =
         DependencyProperty.Register(
         "Source", // The name of the property
@@ -22,6 +28,9 @@ namespace Riverside.Toolkit.UserControls
         new PropertyMetadata(null) // Default value
         );
 
+        /// <summary>
+        /// Gets or sets the source of the content of the ImageFrame.
+        /// </summary>
         [Browsable(true)]
         [Category("Common")]
         [Description("The source of the content of the ImageFrame")]
