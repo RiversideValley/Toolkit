@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿#if WinUI
+using System.Threading.Tasks;
 using static Riverside.Toolkit.Helpers.NativeHelper;
 using Windows.Graphics;
 using System;
@@ -348,3 +349,4 @@ namespace Riverside.Toolkit.Controls.TitleBar
         public static extern bool PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
     }
 }
+#endif

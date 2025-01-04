@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿#if WinUI
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
 
 #nullable enable
@@ -113,3 +114,4 @@ namespace Riverside.Toolkit.Controls.TitleBar
         }
     }
 }
+#endif

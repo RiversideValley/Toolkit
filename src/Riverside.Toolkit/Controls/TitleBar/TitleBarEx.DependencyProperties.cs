@@ -1,4 +1,5 @@
-﻿using DependencyPropertyGenerator;
+﻿#if WinUI
+using DependencyPropertyGenerator;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using System;
@@ -88,3 +89,4 @@ namespace Riverside.Toolkit.Controls.TitleBar
         }
     }
 }
+#endif
