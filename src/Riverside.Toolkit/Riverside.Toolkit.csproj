@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net9.0-windows10.0.26100.0;net8.0-windows10.0.19041.0</TargetFrameworks>
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
@@ -24,8 +24,12 @@
 		<!-- UWP Dependencies -->
 	</ItemGroup>
 
-	<!-- Unsafe -->
+	<!-- Miscellaneous -->
 	<PropertyGroup Condition=" '$(Alloy)' == 'WinUI' ">
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Alloy)' == 'UWP' ">
+		<!-- Explicitly specify the UWP property since it can *sometimes* cause errors saying it is not even though it is-->
+		<UseUwp>True</UseUwp>
 	</PropertyGroup>
 </Project>
