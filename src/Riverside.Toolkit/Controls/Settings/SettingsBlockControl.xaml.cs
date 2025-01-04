@@ -1,4 +1,5 @@
-﻿// To learn more about WinUI, the WinUI project structure,
+﻿#if WinUI
+// To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Riverside.Toolkit.Controls.Settings
@@ -100,8 +101,6 @@ namespace Riverside.Toolkit.Controls.Settings
         {
             Click?.Invoke(this, e);
         }
-
-#if WinUI // For some UNKNOWN reason, this is not compatible with Alloy's automatic *.UI.Xaml binder, so it needs to be explicitly referenced :(
         private void Expander_Expanding(Microsoft.UI.Xaml.Controls.Expander sender, Microsoft.UI.Xaml.Controls.ExpanderExpandingEventArgs args)
         {
             Click?.Invoke(this, new RoutedEventArgs());
@@ -111,17 +110,20 @@ namespace Riverside.Toolkit.Controls.Settings
         {
             Click?.Invoke(this, new RoutedEventArgs());
         }
-#endif
-#if UWP
-        private void Expander_Expanding(Windows.UI.Xaml.Controls.Expander sender, Windows.UI.Xaml.Controls.ExpanderExpandingEventArgs args)
-        {
-            Click?.Invoke(this, new RoutedEventArgs());
-        }
 
-        private void Expander_Collapsed(Windows.UI.Xaml.Controls.Expander sender, Windows.UI.Xaml.Controls.ExpanderCollapsedEventArgs args)
-        {
-            Click?.Invoke(this, new RoutedEventArgs());
-        }
-#endif
+        /*
+        #if UWP // For some UNKNOWN reason, this is not compatible with Alloy's automatic *.UI.Xaml binder, so it needs to be explicitly referenced :(
+                private void Expander_Expanding(Windows.UI.Xaml.Controls.Expander sender, Windows.UI.Xaml.Controls.ExpanderExpandingEventArgs args)
+                {
+                    Click?.Invoke(this, new RoutedEventArgs());
+                }
+
+                private void Expander_Collapsed(Windows.UI.Xaml.Controls.Expander sender, Windows.UI.Xaml.Controls.ExpanderCollapsedEventArgs args)
+                {
+                    Click?.Invoke(this, new RoutedEventArgs());
+                }
+        #endif
+        */
     }
 }
+#endif
