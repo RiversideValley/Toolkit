@@ -1,8 +1,4 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Data;
-using System;
-
-namespace Riverside.Toolkit.Converters
+﻿namespace Riverside.Toolkit.Converters
 {
     /// <summary>
     /// Converts a boolean value to a Visibility value.

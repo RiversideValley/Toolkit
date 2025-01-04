@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Riverside.Toolkit.Controls.Toolkit
+﻿namespace Riverside.Toolkit.Controls.Toolkit
 {
     public static class DesignTimeHelpers
     {

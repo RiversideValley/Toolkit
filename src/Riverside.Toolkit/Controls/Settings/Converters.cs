@@ -1,8 +1,4 @@
-﻿using System;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Data;
-
-#nullable enable
+﻿#nullable enable
 
 namespace Riverside.Toolkit.Controls.Settings
 {
