@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Windowing;
+﻿using CommunityToolkit.WinUI.UI.Helpers;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -13,6 +14,9 @@ namespace Riverside.Toolkit.Controls.TitleBar
     {
         // The window
         protected WindowEx? CurrentWindow { get; private set; }
+
+        // Theme listener
+        private ThemeListener ThemeListener { get; set; } = new ThemeListener();
 
         // UI controls
         protected Button? CloseButton { get; private set; }
@@ -69,23 +73,31 @@ namespace Riverside.Toolkit.Controls.TitleBar
             CurrentWindow.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Collapsed;
 
             // Attach pointer events
-            var content = CurrentWindow.Content;
+            var content = (FrameworkElement)CurrentWindow.Content;
             content.PointerMoved += CheckMouseButtonDownPointerEvent;
             content.PointerReleased += CheckMouseButtonDownPointerEvent;
             content.PointerExited += CheckMouseButtonDownPointerEvent;
-
             content.PointerEntered += SwitchButtonStatePointerEvent;
             PointerExited += SwitchButtonStatePointerEvent;
 
             // Attach window events
             CurrentWindow.WindowStateChanged += CurrentWindow_WindowStateChanged;
             CurrentWindow.Closed += CurrentWindow_Closed;
+            CurrentWindow.SizeChanged += CurrentWindow_SizeChanged;
+            CurrentWindow.PositionChanged += CurrentWindow_PositionChanged;
+
+            // Attach load events
+            content.Loaded += ContentLoaded;
+
+            // Attach theme listener event
+            ThemeListener.ThemeChanged += ThemeListener_ThemeChanged;
 
             // Initialize window properties and behaviors
             UpdateWindowSizeAndPosition();
             UpdateWindowProperties();
             AttachWndProc();
             LoadDragRegion();
+            InvokeChecks();
         }
     }
 }

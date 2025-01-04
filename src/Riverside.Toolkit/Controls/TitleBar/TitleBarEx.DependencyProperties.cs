@@ -13,17 +13,19 @@ namespace Riverside.Toolkit.Controls.TitleBar
     [DependencyProperty<string>("Title", DefaultValue = "Window Title")]
     [DependencyProperty<string>("Subtitle")]
     [DependencyProperty<string>("WindowTag", DefaultValue = "Main")]
-    [DependencyProperty<bool>("IsAutoDragRegionEnabled", DefaultValue = true)]
-    [DependencyProperty<bool>("IsAccentTitleBarEnabled", DefaultValue = true)]
-    [DependencyProperty<bool>("IsMinimizable", DefaultValue = true)]
-    [DependencyProperty<bool>("IsMaximizable", DefaultValue = true)]
-    [DependencyProperty<bool>("IsClosable", DefaultValue = true)]
-    [DependencyProperty<bool>("UseWinUIEverywhere", DefaultValue = false)]
-    [DependencyProperty<bool>("MemorizeWindowPosition", DefaultValue = false)]
+    [DependencyProperty<bool>("IsAutoDragRegionEnabled", DefaultValue = true, OnChanged = "OnTitleBarPropertyChanged")]
+    [DependencyProperty<bool>("IsAccentTitleBarEnabled", DefaultValue = true, OnChanged = "OnTitleBarPropertyChanged")]
+    [DependencyProperty<bool>("IsMinimizable", DefaultValue = true, OnChanged = "OnTitleBarPropertyChanged")]
+    [DependencyProperty<bool>("IsMaximizable", DefaultValue = true, OnChanged = "OnTitleBarPropertyChanged")]
+    [DependencyProperty<bool>("IsClosable", DefaultValue = true, OnChanged = "OnTitleBarPropertyChanged")]
+    [DependencyProperty<bool>("UseWinUIEverywhere", DefaultValue = false, OnChanged = "OnTitleBarPropertyChanged")]
+    [DependencyProperty<bool>("MemorizeWindowPosition", DefaultValue = false, OnChanged = "OnTitleBarPropertyChanged")]
 
     // Required for style
     [DependencyProperty<Color>("CaptionForegroundInteract")]
     [DependencyProperty<SolidColorBrush>("CurrentForeground")]
+    [DependencyProperty<string>("CloseButtonRegularStyleKey", DefaultValue = "Close")]
+    [DependencyProperty<string>("CloseButtonSingularStyleKey", DefaultValue = "CloseSingular")]
 
     // Required for WinUI system menu
     [DependencyProperty<bool>("CanMaximize", IsReadOnly = true)]
@@ -40,6 +42,8 @@ namespace Riverside.Toolkit.Controls.TitleBar
         public event EventHandler<RoutedEventArgs>? MinimizeClick;
         public event EventHandler<RoutedEventArgs>? CloseClick;
         public event EventHandler<RoutedEventArgs>? RestoreClick;
+
+        private void OnTitleBarPropertyChanged(bool oldValue, bool newValue) => InvokeChecks();
 
         private void MaximizeContextMenu_Click(object sender, RoutedEventArgs e)
         {

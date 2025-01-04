@@ -18,11 +18,15 @@ namespace Riverside.Toolkit.Controls.TitleBar
 {
     public partial class TitleBarEx
     {
-        private async void LoadDragRegion()
+        private void InvokeChecks()
         {
-            // Make sure the loop doesn't trigger too often
-            await Task.Delay(100);
+            UpdateWindowProperties();
+            CheckMaximization();
+            LoadDragRegion();
+        }
 
+        private void LoadDragRegion()
+        {
             try
             {
                 // If the window has been closed, break the loop
@@ -40,14 +44,9 @@ namespace Riverside.Toolkit.Controls.TitleBar
                     // Set the drag region for the window's title bar
                     CurrentWindow.AppWindow.TitleBar.SetDragRectangles([new RectInt32(0, 0, width, height)]);
                 }
-
-                // Recursive call to keep updating bounds
-                LoadDragRegion();
             }
             catch
             {
-                // Silent catch to ensure the recursive loop continues
-                LoadDragRegion();
                 return;
             }
         }
@@ -148,7 +147,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
             }
         }
 
-        public async void UpdateWindowProperties()
+        public void UpdateWindowProperties()
         {
             try
             {
@@ -191,16 +190,11 @@ namespace Riverside.Toolkit.Controls.TitleBar
                         !IsMinimizable && !IsMaximizable ?
 
                         // If yes, change the style of the close button
-                        "CloseSingular" :
+                        CloseButtonSingularStyleKey :
 
                         // If not, restore the original close button style
-                        "Close");
+                        CloseButtonRegularStyleKey);
                 }
-
-                // Repeat
-                await Task.Delay(50);
-                UpdateWindowBrushes();
-                UpdateWindowProperties();
             }
             catch
             {
@@ -208,7 +202,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
             }
 
             // Local method to update button visibility and style
-            void SetButtonVisibility(Visibility visibility, string closeStyleKey)
+            void SetButtonVisibility(Visibility visibility, string? closeStyleKey)
             {
                 MinimizeButton.Visibility = MaximizeRestoreButton.Visibility = visibility;
                 CloseButton.Style = Application.Current.Resources[closeStyleKey] as Style;

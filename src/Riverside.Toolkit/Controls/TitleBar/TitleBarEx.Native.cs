@@ -1,8 +1,6 @@
 ﻿using Riverside.ComponentModel;
 using System;
-using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
-using static Riverside.Toolkit.Helpers.NativeHelper;
 
 #nullable enable
 
@@ -29,33 +27,14 @@ namespace Riverside.Toolkit.Controls.TitleBar
         private const int WND_FRAME_TOP_MAXIMIZED = 7;     // Top window frame (it goes up by 6px when maximized because of how Windows works)
         private const int WND_FRAME_TOP_NORMAL = 1;        // Top window frame (not maximized)
 
-        // Mouse events
-        private const uint MOUSEEVENTF_LEFTDOWN = 0x0002;  // Left button down
-        private const uint MOUSEEVENTF_LEFTUP = 0x0004;    // Left button up
-
         // Others
         private const int WA_INACTIVE = 0;                 // Activate (inactive)
         private const int VK_LBUTTON = 0x01;               // Virtual key code for the left mouse button
-        private const uint INPUT_MOUSE = 0;                // Mouse input
-        private const int DWMWA_EXTENDED_FRAME_BOUNDS = 9; // DWM Window Attribute extended frame bounds
 
         private static bool IsLeftMouseButtonDown()
         {
             // The high-order bit indicates if the key is down
             return (GetAsyncKeyState(VK_LBUTTON) & 0x8000) != 0;
-        }
-
-        // Structs
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct MOUSEINPUT
-        {
-            public int dx;
-            public int dy;
-            public uint mouseData;
-            public uint dwFlags;
-            public uint time;
-            public IntPtr dwExtraInfo;
         }
 
         // Native methods
