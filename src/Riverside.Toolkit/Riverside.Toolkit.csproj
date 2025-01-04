@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net9.0-windows10.0.26100.0;net8.0-windows10.0.19041.0</TargetFrameworks>
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
@@ -22,6 +22,7 @@
 	</ItemGroup>
 	<ItemGroup Condition=" '$(Alloy)' == 'UWP' ">
 		<!-- UWP Dependencies -->
+		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
 	</ItemGroup>
 
 	<!-- Miscellaneous -->
