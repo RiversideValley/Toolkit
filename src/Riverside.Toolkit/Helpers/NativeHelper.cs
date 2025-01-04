@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 using Riverside.ComponentModel;
 using Windows.Foundation;
-using WinUIEx;
 
 #nullable enable
 
@@ -77,7 +76,7 @@ namespace Riverside.Toolkit.Helpers
             /// </summary>
             /// <param name="win">The window for which to get the scale factor.</param>
             /// <returns>The scale factor of the display.</returns>
-            public static double Scale(WindowEx? win)
+            public static double Scale(Window? win)
             {
                 // Get the handle to the current window
                 var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(win);
@@ -99,7 +98,7 @@ namespace Riverside.Toolkit.Helpers
             /// </summary>
             /// <param name="win">The window for which to get the display rectangle.</param>
             /// <returns>The rectangle representing the display area.</returns>
-            public static Rect GetDisplayRect(WindowEx win)
+            public static Rect GetDisplayRect(Window win)
             {
                 // Get the handle to the current window
                 var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(win);
@@ -128,7 +127,7 @@ namespace Riverside.Toolkit.Helpers
             /// </summary>
             /// <param name="win">The window for which to get the DPI-aware display rectangle.</param>
             /// <returns>The rectangle representing the DPI-aware display area.</returns>
-            public static Rect GetDPIAwareDisplayRect(WindowEx win)
+            public static Rect GetDPIAwareDisplayRect(Window win)
             {
                 // Get the handle to the current window
                 var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(win);
