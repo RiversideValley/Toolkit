@@ -1,8 +1,4 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
-
-// The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
+﻿// The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
 
 namespace Riverside.Toolkit.Icons
 {
@@ -69,7 +65,7 @@ namespace Riverside.Toolkit.Icons
         public static PathIcon GetPathIcon(FluentSymbol symbol)
         {
             return new PathIcon {
-                Data = (Geometry)Microsoft.UI.Xaml.Markup.XamlBindingHelper.ConvertValue(typeof(Geometry), GetPathData(symbol)),
+                Data = (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), GetPathData(symbol)),
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center
             };
@@ -91,7 +87,7 @@ namespace Riverside.Toolkit.Icons
         {
             if (AllFluentIcons.TryGetValue(symbol, out string pathData))
             {
-                return (Geometry)Microsoft.UI.Xaml.Markup.XamlBindingHelper.ConvertValue(typeof(Geometry), pathData);
+                return (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), pathData);
             }
             else
             {
