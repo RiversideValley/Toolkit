@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.WinUI.UI.Helpers;
+﻿#if WinUI
+using CommunityToolkit.WinUI.UI.Helpers;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -101,3 +102,4 @@ namespace Riverside.Toolkit.Controls.TitleBar
         }
     }
 }
+#endif

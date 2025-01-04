@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿#if WinUI
+using Microsoft.UI.Xaml;
 using Microsoft.Windows.Storage;
 using System;
 
@@ -45,3 +46,4 @@ namespace Riverside.Toolkit.Controls.TitleBar
         }
     }
 }
+#endif

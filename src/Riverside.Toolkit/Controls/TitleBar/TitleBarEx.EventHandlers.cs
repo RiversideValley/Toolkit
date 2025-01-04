@@ -1,4 +1,5 @@
-﻿using WinUIEx;
+﻿#if WinUI
+using WinUIEx;
 using CommunityToolkit.WinUI.UI.Helpers;
 
 #nullable enable
@@ -44,3 +45,4 @@ namespace Riverside.Toolkit.Controls.TitleBar
         }
     }
 }
+#endif

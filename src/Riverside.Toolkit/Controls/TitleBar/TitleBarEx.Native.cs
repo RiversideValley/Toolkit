@@ -1,4 +1,5 @@
-﻿using Riverside.ComponentModel;
+﻿#if WinUI
+using Riverside.ComponentModel;
 using System;
 using System.Runtime.InteropServices;
 
@@ -43,3 +44,4 @@ namespace Riverside.Toolkit.Controls.TitleBar
         public static extern short GetAsyncKeyState(int vKey);
     }
 }
+#endif
