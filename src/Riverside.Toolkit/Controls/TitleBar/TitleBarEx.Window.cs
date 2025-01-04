@@ -134,7 +134,6 @@ namespace Riverside.Toolkit.Controls.TitleBar
 
                 if (wasMaximized != isMaximized)
                 {
-                    if (IsLeftMouseButtonDown()) MoveCursorUp();
                     SwitchState(ButtonsState.None);
                 }
             }
