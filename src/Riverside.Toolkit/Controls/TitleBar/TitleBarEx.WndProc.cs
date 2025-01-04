@@ -112,6 +112,8 @@ namespace Riverside.Toolkit.Controls.TitleBar
                             // Extend drag area
                             buttonDownHeight = 25;
 
+                            InvokeChecks();
+
                             // Minimize
                             if (IsInMinButton() && CurrentCaption is SelectedCaptionButton.Minimize or SelectedCaptionButton.None)
                             {
@@ -151,6 +153,8 @@ namespace Riverside.Toolkit.Controls.TitleBar
                         {
                             // Restore drag area
                             buttonDownHeight = 0;
+
+                            InvokeChecks();
 
                             // Minimize
                             if (IsInMinButton() && CurrentCaption != SelectedCaptionButton.Minimize) CurrentCaption = SelectedCaptionButton.None;
