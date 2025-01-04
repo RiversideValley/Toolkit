@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml;
-using WinUIEx;
+﻿using WinUIEx;
 using CommunityToolkit.WinUI.UI.Helpers;
 
 #nullable enable
