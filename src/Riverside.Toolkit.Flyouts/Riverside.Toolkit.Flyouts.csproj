@@ -13,38 +13,33 @@
     <None Remove="TransparentWindow.xaml" />
     <None Remove="Widgets\TestWidget.xaml" />
   </ItemGroup>
-
   <ItemGroup>
-      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
-      <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
-      <PackageReference Include="H.NotifyIcon" Version="2.0.108" />
-      <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.2-beta">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230502000" />
-      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
-      <PackageReference Include="WinUIEx" Version="2.2.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Media" />
+    <PackageReference Include="H.NotifyIcon" />
+    <PackageReference Include="Microsoft.Windows.CsWin32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
+    <PackageReference Include="WinUIEx" />
   </ItemGroup>
-
   <ItemGroup>
     <Page Update="DesktopWidgetWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-
   <ItemGroup>
     <Page Update="TransparentWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-
   <ItemGroup>
     <Page Update="FlyoutWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-
   <ItemGroup>
     <Page Update="BaseWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
