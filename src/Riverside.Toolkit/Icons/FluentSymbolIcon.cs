@@ -64,7 +64,8 @@ namespace Riverside.Toolkit.Icons
         /// </summary>
         public static PathIcon GetPathIcon(FluentSymbol symbol)
         {
-            return new PathIcon {
+            return new PathIcon
+            {
                 Data = (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), GetPathData(symbol)),
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center

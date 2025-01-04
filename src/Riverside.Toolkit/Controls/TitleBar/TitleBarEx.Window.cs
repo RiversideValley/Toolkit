@@ -71,7 +71,7 @@ namespace Riverside.Toolkit.Controls.TitleBar
             try
             {
                 // Set the window icon
-                string iconPath = Path.Combine(AppContext.BaseDirectory, path);
+                string iconPath = System.IO.Path.Combine(AppContext.BaseDirectory, path);
                 CurrentWindow?.SetIcon(iconPath);
             }
             catch

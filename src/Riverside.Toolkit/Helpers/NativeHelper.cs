@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Riverside.ComponentModel;
 using System.Runtime.InteropServices;
-using Riverside.ComponentModel;
 using Windows.Foundation;
 
 #nullable enable

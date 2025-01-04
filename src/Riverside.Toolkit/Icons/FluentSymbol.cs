@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Riverside.Toolkit.Icons
+﻿namespace Riverside.Toolkit.Icons
 {
     /// <summary>
     /// An enum listing all available Fluent System Icon symbols

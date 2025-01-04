@@ -1,11 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Riverside.Toolkit.Icons;
-using System;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-// The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
+﻿// The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
 
 namespace Riverside.Toolkit.Controls.Buttons
 {
@@ -33,10 +26,10 @@ namespace Riverside.Toolkit.Controls.Buttons
 
         private async void TileButton_Loaded(object sender, RoutedEventArgs e)
         {
-         /*   AnimatingBorder.BorderBrush = (IsEnabled ? Application.Current.Resources["AccentRadialGradientBrush"] : Application.Current.Resources["RedRadialGradientBrush"]) as Brush;
-            VisualStateManager.GoToState(this, "PointerOver", true);
-            await Task.Delay(500);
-            VisualStateManager.GoToState(this, "Normal", true);*/
+            /*   AnimatingBorder.BorderBrush = (IsEnabled ? Application.Current.Resources["AccentRadialGradientBrush"] : Application.Current.Resources["RedRadialGradientBrush"]) as Brush;
+               VisualStateManager.GoToState(this, "PointerOver", true);
+               await Task.Delay(500);
+               VisualStateManager.GoToState(this, "Normal", true);*/
         }
     }
 }
