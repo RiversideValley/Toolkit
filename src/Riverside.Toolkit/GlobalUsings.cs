@@ -26,6 +26,7 @@ global using global::Microsoft.UI.Composition;
 global using global::Microsoft.UI.Xaml.Documents;
 global using global::Microsoft.UI.Xaml.Hosting;
 global using global::Microsoft.UI.Xaml.Media.Animation;
+global using global::Microsoft.UI.Xaml.Shapes;
 #endif
 #if UWP
 global using global::Windows;
@@ -40,6 +41,7 @@ global using global::Windows.UI.Composition;
 global using global::Windows.UI.Xaml.Documents;
 global using global::Windows.UI.Xaml.Hosting;
 global using global::Windows.UI.Xaml.Media.Animation;
+global using global::Windows.UI.Xaml.Shapes;
 #endif
 
 // CommunityToolkit
