@@ -5,6 +5,36 @@
 		<UseRidGraph>true</UseRidGraph>
 	</PropertyGroup>
 	<Import Project="..\..\eng\alloy\src\Riverside.Alloy\Riverside.Alloy.props" />
+	
+	<!-- Themes and XBF compilation issue temporary fixes -->
+	<ItemGroup Condition=" '$(Alloy)' == 'UWP' ">
+		<!-- Removes the Generic.xaml during UWP build as the TitleBarEx control is not available on that platform -->
+		<Page Remove="Themes\Generic.xaml" />
+		<Resource Remove="Themes\Generic.xaml" />
+
+		<!-- Removes the UserControls folder during UWP build as the removal of Generic.xaml causes issues with these -->
+		<Compile Remove="UserControls\**" />
+		<EmbeddedResource Remove="UserControls\**" />
+		<None Remove="UserControls\**" />
+		<Page Remove="UserControls\**" />
+		<PRIResource Remove="UserControls\**" />
+		<Resource Remove="UserControls\GroupBox.xaml" />
+		<Resource Remove="UserControls\ImageFrame.xaml" />
+		<Resource Remove="UserControls\Buttons\TileButton.xaml" />
+		<Resource Remove="UserControls\DropShadowPanel.xaml" />
+	</ItemGroup>
+	<ItemGroup Condition=" '$(Alloy)' == 'WinUI' ">
+		<Folder Include="Themes\" />
+		<Resource Include="Themes\Generic.xaml" />
+
+		<EmbeddedResource Include="UserControls\**" />
+		<None Include="UserControls\**" />
+		<PRIResource Include="UserControls\**" />
+		<Resource Include="UserControls\GroupBox.xaml" />
+		<Resource Include="UserControls\ImageFrame.xaml" />
+		<Resource Include="UserControls\Buttons\TileButton.xaml" />
+		<Resource Include="UserControls\DropShadowPanel.xaml" />
+	</ItemGroup>
 
 	<!-- Dependencies -->
 	<ItemGroup>
@@ -30,7 +60,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Alloy)' == 'UWP' ">
-		<!-- Explicitly specify the UWP property since it can *sometimes* cause errors saying it is not even though it is-->
+		<!-- Explicitly specify the UWP property since it can *sometimes* cause errors saying it is not even though it is -->
 		<UseUwp>True</UseUwp>
 	</PropertyGroup>
 </Project>
