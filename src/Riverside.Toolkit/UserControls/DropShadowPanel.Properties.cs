@@ -1,6 +1,7 @@
 ﻿using Windows.UI;
+using Riverside.Toolkit.Controls.Toolkit;
 
-namespace Riverside.Toolkit.Controls.Toolkit
+namespace Riverside.Toolkit.UserControls
 {
     /// <summary>
     /// The <see cref="DropShadowPanel"/> control allows the creation of a DropShadow for any Xaml FrameworkElement in markup
