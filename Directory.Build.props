@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\AdditionalFiles.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\CurrentVersion.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" />
 	<PropertyGroup>

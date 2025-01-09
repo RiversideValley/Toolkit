@@ -25,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{ECDCDFAD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eng", "eng", "{CED2FD51-11BB-4E91-959E-47BF1B8C87FC}"
 	ProjectSection(SolutionItems) = preProject
+		eng\AdditionalFiles.props = eng\AdditionalFiles.props
 		eng\CurrentVersion.props = eng\CurrentVersion.props
 		Directory.Build.props = Directory.Build.props
 		eng\PackageMetadata.props = eng\PackageMetadata.props
@@ -85,5 +86,8 @@ Global
 		{D088F44C-13F2-420E-95F9-105FA1AC49A8} = {58CE73C0-AA7E-43B7-AD2E-B66182029009}
 		{3A31D3ED-B0A5-4023-9E49-7E5F809094D5} = {ECDCDFAD-F6D7-4A50-9EA1-B50C7DC6DFC7}
 		{73088968-5905-EC93-25F9-FACA42E0814D} = {CED2FD51-11BB-4E91-959E-47BF1B8C87FC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {524016A6-E08B-4DAE-AE79-520996BA0E65}
 	EndGlobalSection
 EndGlobal
