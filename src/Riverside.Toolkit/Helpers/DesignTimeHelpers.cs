@@ -1,5 +1,9 @@
-﻿namespace Riverside.Toolkit.Controls.Toolkit;
+﻿namespace Riverside.Toolkit.Helpers;
 
+/// <summary>
+/// Provides helper methods for design-time functionality.
+/// </summary>
+[Obsolete("Riverside.Toolkit.Helpers.DesignTimeHelpers is obsolete, use CommunityToolkit.WinUI.Helpers.DesignTimeHelpers instead.", UrlFormat = "https://github.com/CommunityToolkit/Windows/blob/main/components/Helpers/src/DesignTimeHelpers.cs")]
 public static class DesignTimeHelpers
 {
     private static readonly Lazy<bool> designModeEnabled = new(InitializeDesignerMode);
@@ -9,17 +13,17 @@ public static class DesignTimeHelpers
     /// <summary>
     /// Gets a value indicating whether app is running in the Legacy Designer
     /// </summary>
-    public static bool IsRunningInLegacyDesignerMode => DesignTimeHelpers.designModeEnabled.Value && !DesignTimeHelpers.designMode2Enabled.Value;
+    public static bool IsRunningInLegacyDesignerMode => designModeEnabled.Value && !designMode2Enabled.Value;
 
     /// <summary>
     /// Gets a value indicating whether app is running in the Enhanced Designer
     /// </summary>
-    public static bool IsRunningInEnhancedDesignerMode => DesignTimeHelpers.designModeEnabled.Value && DesignTimeHelpers.designMode2Enabled.Value;
+    public static bool IsRunningInEnhancedDesignerMode => designModeEnabled.Value && designMode2Enabled.Value;
 
     /// <summary>
     /// Gets a value indicating whether app is not running in the Designer
     /// </summary>
-    public static bool IsRunningInApplicationRuntimeMode => !DesignTimeHelpers.designModeEnabled.Value;
+    public static bool IsRunningInApplicationRuntimeMode => !designModeEnabled.Value;
 
     // Private initializer
     private static bool InitializeDesignerMode() => Windows.ApplicationModel.DesignMode.DesignModeEnabled;
