@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <Import Project="$(MSBuildThisFileDirectory)\eng\CurrentVersion.props" />
-  <Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" />
-  <PropertyGroup>
-    <RootDirectory Condition=" '$(RootDirectory)' == '' ">$(MSBuildThisFileDirectory)</RootDirectory>
-    <SourceDirectory Condition=" '$(SourceDirectory)' == '' ">$(MSBuildThisFileDirectory)src</SourceDirectory>
-    <BuildDirectory Condition=" '$(BuildDirectory)' == '' ">$(RootDirectory)eng</BuildDirectory>
-    <RepositoryFilesDirectory Condition=" '$(RepositoryFilesDirectory)' == '' ">$(RootDirectory).github</RepositoryFilesDirectory>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\CurrentVersion.props" />
+	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" />
+	<PropertyGroup>
+		<RootDirectory Condition=" '$(RootDirectory)' == '' ">$(MSBuildThisFileDirectory)</RootDirectory>
+		<SourceDirectory Condition=" '$(SourceDirectory)' == '' ">$(MSBuildThisFileDirectory)src</SourceDirectory>
+		<BuildDirectory Condition=" '$(BuildDirectory)' == '' ">$(RootDirectory)eng</BuildDirectory>
+		<RepositoryFilesDirectory Condition=" '$(RepositoryFilesDirectory)' == '' ">$(RootDirectory).github</RepositoryFilesDirectory>
 
-    <Product>Rosetta</Product>
-    <Company>Riverside Valley Corporation</Company>
-    <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</AssemblyVersion>
-    <InformationalVersion>$(Product), Version=$(MajorVersion).$(MinorVersion).$(MicroVersion), Channel=$(ReleaseLevel)</InformationalVersion>
+		<Product>Rosetta</Product>
+		<Company>Riverside Valley Corporation</Company>
+		<AssemblyVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</AssemblyVersion>
+		<InformationalVersion>$(Product), Version=$(MajorVersion).$(MinorVersion).$(MicroVersion), Channel=$(ReleaseLevel)</InformationalVersion>
 
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
-    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 
-    <DisplayVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</DisplayVersion>
-    <DisplayVersion Condition="'$(ReleaseLevel)' != 'final'">$(DisplayVersion)-$(ReleaseLevel)$(BetaVersion)</DisplayVersion>
-    <Version>$(DisplayVersion)</Version>
-  </PropertyGroup>
+		<DisplayVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</DisplayVersion>
+		<DisplayVersion Condition="'$(ReleaseLevel)' != 'final'">$(DisplayVersion)-$(ReleaseLevel)$(BetaVersion)</DisplayVersion>
+		<Version>$(DisplayVersion)</Version>
+	</PropertyGroup>
 
-  <!-- Deterministic build -->
-  <PropertyGroup Condition="'$(TF_BUILD)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
+	<!-- Deterministic build -->
+	<PropertyGroup Condition="'$(TF_BUILD)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
 </Project>
