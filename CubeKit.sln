@@ -27,7 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eng", "eng", "{CED2FD51-11B
 	ProjectSection(SolutionItems) = preProject
 		eng\AdditionalFiles.props = eng\AdditionalFiles.props
 		eng\CurrentVersion.props = eng\CurrentVersion.props
-		Directory.Build.props = Directory.Build.props
 		eng\PackageMetadata.props = eng\PackageMetadata.props
 	EndProjectSection
 EndProject
