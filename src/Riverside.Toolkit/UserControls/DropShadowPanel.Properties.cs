@@ -1,5 +1,5 @@
-﻿using Windows.UI;
-using Riverside.Toolkit.Controls.Toolkit;
+﻿using Riverside.Toolkit.Controls.Toolkit;
+using Windows.UI;
 
 namespace Riverside.Toolkit.UserControls
 {
