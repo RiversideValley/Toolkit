@@ -156,13 +156,13 @@ public partial class DropShadowPanel : ContentControl
             return;
         }
 
-        if (Content != null && IsMasked)
+        if (this.Content != null && this.IsMasked)
         {
             CompositionBrush mask = null;
 
             // We check for IAlphaMaskProvider first, to ensure that we use the custom
             // alpha mask even if Content happens to extend any of the other classes
-            if (Content is IAlphaMaskProvider maskedControl)
+            if (this.Content is IAlphaMaskProvider maskedControl)
             {
                 if (maskedControl.WaitUntilLoaded && maskedControl is FrameworkElement element && !element.IsLoaded)
                 {
@@ -173,17 +173,17 @@ public partial class DropShadowPanel : ContentControl
                     mask = maskedControl.GetAlphaMask();
                 }
             }
-            else if (Content is Image)
+            else if (this.Content is Image)
             {
-                mask = ((Image)Content).GetAlphaMask();
+                mask = ((Image)this.Content).GetAlphaMask();
             }
-            else if (Content is Shape)
+            else if (this.Content is Shape)
             {
-                mask = ((Shape)Content).GetAlphaMask();
+                mask = ((Shape)this.Content).GetAlphaMask();
             }
-            else if (Content is TextBlock)
+            else if (this.Content is TextBlock)
             {
-                mask = ((TextBlock)Content).GetAlphaMask();
+                mask = ((TextBlock)this.Content).GetAlphaMask();
             }
 
             _dropShadow.Mask = mask;
@@ -216,8 +216,8 @@ public partial class DropShadowPanel : ContentControl
     {
         if (_shadowVisual != null)
         {
-            Vector2 newSize = new Vector2(0, 0);
-            if (Content is FrameworkElement contentFE)
+            var newSize = new Vector2(0, 0);
+            if (this.Content is FrameworkElement contentFE)
             {
                 newSize = new Vector2((float)contentFE.ActualWidth, (float)contentFE.ActualHeight);
             }

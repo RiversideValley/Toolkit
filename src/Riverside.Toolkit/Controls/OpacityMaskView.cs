@@ -30,26 +30,26 @@ public partial class OpacityMaskView : RedirectVisualView
 
         maskBrush = compositor.CreateMaskBrush();
         maskBrush.Mask = opacityMaskVisualBrush;
-        maskBrush.Source = ChildVisualBrush;
+        maskBrush.Source = this.ChildVisualBrush;
 
-        RootVisual.Brush = maskBrush;
+        this.RootVisual.Brush = maskBrush;
     }
 
-    private Rectangle opacityMaskHost;
+    private readonly Rectangle opacityMaskHost;
 
-    private Compositor compositor;
+    private readonly Compositor compositor;
 
-    private CompositionVisualSurface opacityMaskVisualSurface;
-    private CompositionSurfaceBrush opacityMaskVisualBrush;
-    private CompositionMaskBrush maskBrush;
+    private readonly CompositionVisualSurface opacityMaskVisualSurface;
+    private readonly CompositionSurfaceBrush opacityMaskVisualBrush;
+    private readonly CompositionMaskBrush maskBrush;
 
     /// <summary>
     /// Gets or sets the opacity mask brush.
     /// </summary>
     public Brush OpacityMask
     {
-        get { return (Brush)GetValue(OpacityMaskProperty); }
-        set { SetValue(OpacityMaskProperty, value); }
+        get => (Brush)GetValue(OpacityMaskProperty);
+        set => SetValue(OpacityMaskProperty, value);
     }
 
     /// <summary>
@@ -67,14 +67,7 @@ public partial class OpacityMaskView : RedirectVisualView
     {
         if (d is OpacityMaskView sender && !Equals(e.NewValue, e.OldValue))
         {
-            if (sender.RedirectVisualAttached)
-            {
-                sender.opacityMaskHost.Fill = e.NewValue as Brush;
-            }
-            else
-            {
-                sender.opacityMaskHost.Fill = null;
-            }
+            sender.opacityMaskHost.Fill = sender.RedirectVisualAttached ? e.NewValue as Brush : null;
         }
     }
 
@@ -85,7 +78,7 @@ public partial class OpacityMaskView : RedirectVisualView
     {
         base.OnDetachVisuals();
 
-        if (LayoutRoot != null)
+        if (this.LayoutRoot != null)
         {
             if (opacityMaskHost != null)
             {
@@ -94,10 +87,10 @@ public partial class OpacityMaskView : RedirectVisualView
 
             opacityMaskVisualSurface.SourceVisual = null;
 
-            if (OpacityMaskContainer != null)
+            if (this.OpacityMaskContainer != null)
             {
-                OpacityMaskContainer.Visibility = Visibility.Collapsed;
-                OpacityMaskContainer.Children.Remove(opacityMaskHost);
+                this.OpacityMaskContainer.Visibility = Visibility.Collapsed;
+                _ = this.OpacityMaskContainer.Children.Remove(opacityMaskHost);
             }
         }
     }
@@ -109,19 +102,19 @@ public partial class OpacityMaskView : RedirectVisualView
     {
         base.OnAttachVisuals();
 
-        if (LayoutRoot != null)
+        if (this.LayoutRoot != null)
         {
             if (opacityMaskHost != null)
             {
-                opacityMaskHost.Fill = OpacityMask;
+                opacityMaskHost.Fill = this.OpacityMask;
                 opacityMaskVisualSurface.SourceVisual = ElementCompositionPreview.GetElementVisual(opacityMaskHost);
             }
 
-            if (OpacityMaskContainer != null)
+            if (this.OpacityMaskContainer != null)
             {
-                OpacityMaskContainer.Visibility = Visibility.Visible;
-                ElementCompositionPreview.GetElementVisual(OpacityMaskContainer).IsVisible = false;
-                OpacityMaskContainer.Children.Add(opacityMaskHost);
+                this.OpacityMaskContainer.Visibility = Visibility.Visible;
+                ElementCompositionPreview.GetElementVisual(this.OpacityMaskContainer).IsVisible = false;
+                this.OpacityMaskContainer.Children.Add(opacityMaskHost);
             }
         }
     }
@@ -133,15 +126,15 @@ public partial class OpacityMaskView : RedirectVisualView
     {
         base.OnUpdateSize();
 
-        if (RedirectVisualAttached && LayoutRoot != null)
+        if (this.RedirectVisualAttached && this.LayoutRoot != null)
         {
             if (opacityMaskHost != null)
             {
-                opacityMaskHost.Width = LayoutRoot.ActualWidth;
-                opacityMaskHost.Height = LayoutRoot.ActualHeight;
+                opacityMaskHost.Width = this.LayoutRoot.ActualWidth;
+                opacityMaskHost.Height = this.LayoutRoot.ActualHeight;
             }
 
-            opacityMaskVisualSurface.SourceSize = new Vector2((float)LayoutRoot.ActualWidth, (float)LayoutRoot.ActualHeight);
+            opacityMaskVisualSurface.SourceSize = new Vector2((float)this.LayoutRoot.ActualWidth, (float)this.LayoutRoot.ActualHeight);
         }
     }
 }

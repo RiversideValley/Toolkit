@@ -4,114 +4,115 @@ using Microsoft.UI.Xaml.Controls;
 
 #nullable enable
 
-namespace Riverside.Toolkit.Controls.TitleBar
+namespace Riverside.Toolkit.Controls.TitleBar;
+
+public partial class TitleBarEx
 {
-    public partial class TitleBarEx
+    protected void SwitchState(ButtonsState buttonsState)
     {
-        protected void SwitchState(ButtonsState buttonsState)
+        // If the buttons don't exist return
+        if (this.CloseButton is null || this.MaximizeRestoreButton is null || this.MinimizeButton is null || closed) return;
+
+        // Default states
+        string minimizeState = this.IsMinimizable ? "Normal" : "Disabled";
+        string maximizeState = this.IsMaximizable ? isMaximized ? "Checked" : "Normal" : isMaximized ? "CheckedDisabled" : "Disabled";
+        string closeState = this.IsClosable ? "Normal" : "Disabled";
+
+        // Switch based on button states
+        switch (buttonsState)
         {
-            // If the buttons don't exist return
-            if (CloseButton is null || MaximizeRestoreButton is null || MinimizeButton is null || closed) return;
+            // Minimize button
+            case ButtonsState.MinimizePointerOver or ButtonsState.MinimizePressed:
+                {
+                    minimizeState =
+                        // Check if button action is allowed
+                        this.IsMinimizable ?
 
-            // Default states
-            string minimizeState = IsMinimizable ? "Normal" : "Disabled";
-            string maximizeState = IsMaximizable ? isMaximized ? "Checked" : "Normal" : isMaximized ? "CheckedDisabled" : "Disabled";
-            string closeState = IsClosable ? "Normal" : "Disabled";
+                        // Button action is allowed
+                        (buttonsState == ButtonsState.MinimizePointerOver ?
 
-            // Switch based on button states
-            switch (buttonsState)
-            {
-                // Minimize button
-                case ButtonsState.MinimizePointerOver or ButtonsState.MinimizePressed:
-                    {
-                        minimizeState =
-                            // Check if button action is allowed
-                            IsMinimizable ?
+                        // Pointer is over
+                        "PointerOver" :
 
-                            // Button action is allowed
-                            (buttonsState == ButtonsState.MinimizePointerOver ?
+                        // Pointer is pressed
+                        "Pressed") :
 
-                            // Pointer is over
-                            "PointerOver" :
+                        // Button action is not allowed
+                        "Disabled";
 
-                            // Pointer is pressed
-                            "Pressed") :
+                    break;
+                }
 
-                            // Button action is not allowed
-                            "Disabled";
+            // Maximize button
+            case ButtonsState.MaximizePointerOver or ButtonsState.MaximizePressed:
+                {
+                    maximizeState =
+                        // Check if button action is allowed
+                        this.IsMaximizable ?
 
-                        break;
-                    }
+                        // Button action is allowed
+                        buttonsState == ButtonsState.MaximizePointerOver
 
-                // Maximize button
-                case ButtonsState.MaximizePointerOver or ButtonsState.MaximizePressed:
-                    {
-                        maximizeState =
-                            // Check if button action is allowed
-                            IsMaximizable ?
+                        // Pointer is over
+                        ? (isMaximized ? "CheckedPointerOver" : "PointerOver")
 
-                            // Button action is allowed
-                            buttonsState == ButtonsState.MaximizePointerOver
+                        // Pointer is pressed
+                        : (isMaximized ? "CheckedPressed" : "Pressed") :
 
-                            // Pointer is over
-                            ? (isMaximized ? "CheckedPointerOver" : "PointerOver")
+                        // Button action is not allowed
+                        isMaximized ? "CheckedDisabled" : "Disabled";
 
-                            // Pointer is pressed
-                            : (isMaximized ? "CheckedPressed" : "Pressed") :
+                    break;
+                }
 
-                            // Button action is not allowed
-                            isMaximized ? "CheckedDisabled" : "Disabled";
+            // Close button
+            case ButtonsState.ClosePointerOver or ButtonsState.ClosePressed:
+                {
+                    closeState =
+                        // Check if button action is allowed
+                        this.IsClosable ?
 
-                        break;
-                    }
+                        // Button action is allowed
+                        (buttonsState == ButtonsState.ClosePointerOver ?
 
-                // Close button
-                case ButtonsState.ClosePointerOver or ButtonsState.ClosePressed:
-                    {
-                        closeState =
-                            // Check if button action is allowed
-                            IsClosable ?
+                        // Pointer is over
+                        "PointerOver" :
 
-                            // Button action is allowed
-                            (buttonsState == ButtonsState.ClosePointerOver ?
+                        // Pointer is pressed
+                        "Pressed") :
 
-                            // Pointer is over
-                            "PointerOver" :
+                        // Button action is not allowed
+                        "Disabled";
 
-                            // Pointer is pressed
-                            "Pressed") :
-
-                            // Button action is not allowed
-                            "Disabled";
-
-                        break;
-                    }
-            }
-
-            // Check the maximize state separately
-            if (buttonsState is not (ButtonsState.MaximizePointerOver or ButtonsState.MaximizePressed))
-                maximizeState =
-                    // Is maximizable
-                    IsMaximizable ? isMaximized ? "Checked" : "Normal" :
-
-                    // Is not maximizable
-                    isMaximized ? "CheckedDisabled" : "Disabled";
-
-            // Handle WinUI tooltips
-            if (UseWinUIEverywhere)
-            {
-                var minimizeTooltip = (ToolTip)ToolTipService.GetToolTip(MinimizeButton);
-                var closeTooltip = (ToolTip)ToolTipService.GetToolTip(CloseButton);
-
-                minimizeTooltip.IsOpen = buttonsState == ButtonsState.MinimizePointerOver;
-                closeTooltip.IsOpen = buttonsState == ButtonsState.ClosePointerOver;
-            }
-
-            // Apply the visual states based on the calculated states
-            _ = VisualStateManager.GoToState(MinimizeButton, minimizeState, true);
-            _ = VisualStateManager.GoToState(MaximizeRestoreButton, maximizeState, true);
-            _ = VisualStateManager.GoToState(CloseButton, closeState, true);
+                    break;
+                }
         }
+
+        // Check the maximize state separately
+        if (buttonsState is not (ButtonsState.MaximizePointerOver or ButtonsState.MaximizePressed))
+        {
+            maximizeState =
+                // Is maximizable
+                this.IsMaximizable ? isMaximized ? "Checked" : "Normal" :
+
+                // Is not maximizable
+                isMaximized ? "CheckedDisabled" : "Disabled";
+        }
+
+        // Handle WinUI tooltips
+        if (this.UseWinUIEverywhere)
+        {
+            var minimizeTooltip = (ToolTip)ToolTipService.GetToolTip(this.MinimizeButton);
+            var closeTooltip = (ToolTip)ToolTipService.GetToolTip(this.CloseButton);
+
+            minimizeTooltip.IsOpen = buttonsState == ButtonsState.MinimizePointerOver;
+            closeTooltip.IsOpen = buttonsState == ButtonsState.ClosePointerOver;
+        }
+
+        // Apply the visual states based on the calculated states
+        _ = VisualStateManager.GoToState(this.MinimizeButton, minimizeState, true);
+        _ = VisualStateManager.GoToState(this.MaximizeRestoreButton, maximizeState, true);
+        _ = VisualStateManager.GoToState(this.CloseButton, closeState, true);
     }
 }
 #endif

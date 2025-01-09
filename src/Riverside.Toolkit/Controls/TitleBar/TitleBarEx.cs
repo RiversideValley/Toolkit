@@ -9,97 +9,96 @@ using WinUIEx.Messaging;
 
 #nullable enable
 
-namespace Riverside.Toolkit.Controls.TitleBar
+namespace Riverside.Toolkit.Controls.TitleBar;
+
+public partial class TitleBarEx : Control
 {
-    public partial class TitleBarEx : Control
+    // The window
+    protected WindowEx? CurrentWindow { get; private set; }
+
+    // Theme listener
+    private ThemeListener ThemeListener { get; set; } = new ThemeListener();
+
+    // UI controls
+    protected Button? CloseButton { get; private set; }
+    protected ToggleButton? MaximizeRestoreButton { get; private set; }
+    protected Button? MinimizeButton { get; private set; }
+    protected TextBlock? TitleTextBlock { get; private set; }
+    protected Image? TitleBarIcon { get; private set; }
+    protected Border? AccentStrip { get; private set; }
+    protected MenuFlyout? CustomRightClickFlyout { get; private set; }
+
+    // Local variables
+    protected SelectedCaptionButton CurrentCaption { get; private set; } = SelectedCaptionButton.None;
+    private WindowMessageMonitor? messageMonitor;
+    private bool isWindowFocused = false;
+    private bool isMaximized = false;
+    private int buttonDownHeight = 0;
+    private double additionalHeight = 0;
+    private bool closed = false;
+    private bool allowSizeCheck = false;
+
+    public TitleBarEx()
     {
-        // The window
-        protected WindowEx? CurrentWindow { get; private set; }
+        this.DefaultStyleKey = typeof(TitleBarEx);
+    }
 
-        // Theme listener
-        private ThemeListener ThemeListener { get; set; } = new ThemeListener();
+    protected override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
 
-        // UI controls
-        protected Button? CloseButton { get; private set; }
-        protected ToggleButton? MaximizeRestoreButton { get; private set; }
-        protected Button? MinimizeButton { get; private set; }
-        protected TextBlock? TitleTextBlock { get; private set; }
-        protected Image? TitleBarIcon { get; private set; }
-        protected Border? AccentStrip { get; private set; }
-        protected MenuFlyout? CustomRightClickFlyout { get; private set; }
+        // Using GetTemplateChild<T> to safely retrieve template children and cast them
+        this.CloseButton = GetTemplateChild<Button>("CloseButton");
+        this.MaximizeRestoreButton = GetTemplateChild<ToggleButton>("MaximizeButton");
+        this.MinimizeButton = GetTemplateChild<Button>("MinimizeButton");
+        this.TitleTextBlock = GetTemplateChild<TextBlock>("TitleTextBlock");
+        this.TitleBarIcon = GetTemplateChild<Image>("TitleBarIcon");
+        this.AccentStrip = GetTemplateChild<Border>("AccentStrip");
+        this.CustomRightClickFlyout = GetTemplateChild<MenuFlyout>("CustomRightClickFlyout");
 
-        // Local variables
-        protected SelectedCaptionButton CurrentCaption { get; private set; } = SelectedCaptionButton.None;
-        private WindowMessageMonitor? messageMonitor;
-        private bool isWindowFocused = false;
-        private bool isMaximized = false;
-        private int buttonDownHeight = 0;
-        private double additionalHeight = 0;
-        private bool closed = false;
-        private bool allowSizeCheck = false;
+        // Using GetTemplateChild<T> to safely retrieve template children and cast them, then subscribe to events
+        GetTemplateChild<MenuFlyoutItem>("MaximizeContextMenuItem").Click += MaximizeContextMenu_Click;
+        GetTemplateChild<MenuFlyoutItem>("SizeContextMenuItem").Click += SizeContextMenu_Click;
+        GetTemplateChild<MenuFlyoutItem>("MoveContextMenuItem").Click += MoveContextMenu_Click;
+        GetTemplateChild<MenuFlyoutItem>("MinimizeContextMenuItem").Click += MinimizeContextMenu_Click;
+        GetTemplateChild<MenuFlyoutItem>("CloseContextMenuItem").Click += CloseContextMenu_Click;
+        GetTemplateChild<MenuFlyoutItem>("RestoreContextMenuItem").Click += RestoreContextMenu_Click;
+    }
 
-        public TitleBarEx()
-        {
-            DefaultStyleKey = typeof(TitleBarEx);
-        }
+    public void InitializeForWindow(WindowEx windowEx, Application app)
+    {
+        this.CurrentWindow = windowEx;
 
-        protected override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
+        // Configure title bar
+        this.CurrentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
+        this.CurrentWindow.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Collapsed;
 
-            // Using GetTemplateChild<T> to safely retrieve template children and cast them
-            CloseButton = GetTemplateChild<Button>("CloseButton");
-            MaximizeRestoreButton = GetTemplateChild<ToggleButton>("MaximizeButton");
-            MinimizeButton = GetTemplateChild<Button>("MinimizeButton");
-            TitleTextBlock = GetTemplateChild<TextBlock>("TitleTextBlock");
-            TitleBarIcon = GetTemplateChild<Image>("TitleBarIcon");
-            AccentStrip = GetTemplateChild<Border>("AccentStrip");
-            CustomRightClickFlyout = GetTemplateChild<MenuFlyout>("CustomRightClickFlyout");
+        // Attach pointer events
+        var content = (FrameworkElement)this.CurrentWindow.Content;
+        content.PointerMoved += CheckMouseButtonDownPointerEvent;
+        content.PointerReleased += CheckMouseButtonDownPointerEvent;
+        content.PointerExited += CheckMouseButtonDownPointerEvent;
+        content.PointerEntered += SwitchButtonStatePointerEvent;
+        PointerExited += SwitchButtonStatePointerEvent;
 
-            // Using GetTemplateChild<T> to safely retrieve template children and cast them, then subscribe to events
-            GetTemplateChild<MenuFlyoutItem>("MaximizeContextMenuItem").Click += MaximizeContextMenu_Click;
-            GetTemplateChild<MenuFlyoutItem>("SizeContextMenuItem").Click += SizeContextMenu_Click;
-            GetTemplateChild<MenuFlyoutItem>("MoveContextMenuItem").Click += MoveContextMenu_Click;
-            GetTemplateChild<MenuFlyoutItem>("MinimizeContextMenuItem").Click += MinimizeContextMenu_Click;
-            GetTemplateChild<MenuFlyoutItem>("CloseContextMenuItem").Click += CloseContextMenu_Click;
-            GetTemplateChild<MenuFlyoutItem>("RestoreContextMenuItem").Click += RestoreContextMenu_Click;
-        }
+        // Attach window events
+        this.CurrentWindow.WindowStateChanged += CurrentWindow_WindowStateChanged;
+        this.CurrentWindow.Closed += CurrentWindow_Closed;
+        this.CurrentWindow.SizeChanged += CurrentWindow_SizeChanged;
+        this.CurrentWindow.PositionChanged += CurrentWindow_PositionChanged;
 
-        public void InitializeForWindow(WindowEx windowEx, Application app)
-        {
-            CurrentWindow = windowEx;
+        // Attach load events
+        content.Loaded += ContentLoaded;
 
-            // Configure title bar
-            CurrentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
-            CurrentWindow.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Collapsed;
+        // Attach theme listener event
+        this.ThemeListener.ThemeChanged += ThemeListener_ThemeChanged;
 
-            // Attach pointer events
-            var content = (FrameworkElement)CurrentWindow.Content;
-            content.PointerMoved += CheckMouseButtonDownPointerEvent;
-            content.PointerReleased += CheckMouseButtonDownPointerEvent;
-            content.PointerExited += CheckMouseButtonDownPointerEvent;
-            content.PointerEntered += SwitchButtonStatePointerEvent;
-            PointerExited += SwitchButtonStatePointerEvent;
-
-            // Attach window events
-            CurrentWindow.WindowStateChanged += CurrentWindow_WindowStateChanged;
-            CurrentWindow.Closed += CurrentWindow_Closed;
-            CurrentWindow.SizeChanged += CurrentWindow_SizeChanged;
-            CurrentWindow.PositionChanged += CurrentWindow_PositionChanged;
-
-            // Attach load events
-            content.Loaded += ContentLoaded;
-
-            // Attach theme listener event
-            ThemeListener.ThemeChanged += ThemeListener_ThemeChanged;
-
-            // Initialize window properties and behaviors
-            UpdateWindowSizeAndPosition();
-            UpdateWindowProperties();
-            AttachWndProc();
-            LoadDragRegion();
-            InvokeChecks();
-        }
+        // Initialize window properties and behaviors
+        UpdateWindowSizeAndPosition();
+        UpdateWindowProperties();
+        AttachWndProc();
+        LoadDragRegion();
+        InvokeChecks();
     }
 }
 #endif

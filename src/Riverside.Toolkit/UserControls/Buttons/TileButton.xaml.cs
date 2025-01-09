@@ -1,35 +1,28 @@
 ﻿// The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
 
-namespace Riverside.Toolkit.Controls.Buttons
+namespace Riverside.Toolkit.Controls.Buttons;
+
+public partial class TileButton : Button
 {
-    public partial class TileButton : Button
+    protected Border AnimatingBorder => (Border)GetTemplateChild("AnimatingBorder");
+
+    protected UIElement Root => (UIElement)GetTemplateChild("RootGrid");
+
+    public TileButton()
     {
-        protected Border AnimatingBorder
-        {
-            get { return (Border)GetTemplateChild("AnimatingBorder"); }
-        }
+        this.DefaultStyleKey = typeof(TileButton);
+        Loaded += TileButton_Loaded;
+    }
 
-        protected UIElement Root
-        {
-            get { return (UIElement)GetTemplateChild("RootGrid"); }
-        }
+    public void StartPulse() => VisualStateManager.GoToState(this, "PointerOver", true);
 
-        public TileButton()
-        {
-            this.DefaultStyleKey = typeof(TileButton);
-            this.Loaded += TileButton_Loaded;
-        }
+    public void StopPulse() => VisualStateManager.GoToState(this, "Normal", true);
 
-        public void StartPulse() => VisualStateManager.GoToState(this, "PointerOver", true);
-
-        public void StopPulse() => VisualStateManager.GoToState(this, "Normal", true);
-
-        private async void TileButton_Loaded(object sender, RoutedEventArgs e)
-        {
-            /*   AnimatingBorder.BorderBrush = (IsEnabled ? Application.Current.Resources["AccentRadialGradientBrush"] : Application.Current.Resources["RedRadialGradientBrush"]) as Brush;
-               VisualStateManager.GoToState(this, "PointerOver", true);
-               await Task.Delay(500);
-               VisualStateManager.GoToState(this, "Normal", true);*/
-        }
+    private void TileButton_Loaded(object sender, RoutedEventArgs e)
+    {
+        /*   AnimatingBorder.BorderBrush = (IsEnabled ? Application.Current.Resources["AccentRadialGradientBrush"] : Application.Current.Resources["RedRadialGradientBrush"]) as Brush;
+           VisualStateManager.GoToState(this, "PointerOver", true);
+           await Task.Delay(500);
+           VisualStateManager.GoToState(this, "Normal", true);*/
     }
 }

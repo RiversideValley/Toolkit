@@ -5,45 +5,42 @@ using System;
 
 #nullable enable
 
-namespace Riverside.Toolkit.Controls.TitleBar
+namespace Riverside.Toolkit.Controls.TitleBar;
+
+public partial class TitleBarEx
 {
-    public partial class TitleBarEx
+    private static T? GetValue<T>(string key)
     {
-        private static T? GetValue<T>(string key)
+        try
         {
-            try
-            {
-                var userSettings = ApplicationData.GetDefault();
-                return (T)userSettings.LocalSettings.Values[key];
-            }
-            catch
-            {
-                return default;
-            }
+            var userSettings = ApplicationData.GetDefault();
+            return (T)userSettings.LocalSettings.Values[key];
         }
+        catch
+        {
+            return default;
+        }
+    }
 
-        private static void SetValue<T>(string key, T newValue)
+    private static void SetValue<T>(string key, T newValue)
+    {
+        try
         {
-            try
-            {
-                var userSettings = ApplicationData.GetDefault();
-                userSettings.LocalSettings.Values[key] = newValue;
-            }
-            catch
-            {
-                return;
-            }
+            var userSettings = ApplicationData.GetDefault();
+            userSettings.LocalSettings.Values[key] = newValue;
         }
+        catch
+        {
+            return;
+        }
+    }
 
-        private T GetTemplateChild<T>(string name) where T : DependencyObject
-        {
-            var child = GetTemplateChild(name);
-            if (child is T typedChild)
-            {
-                return typedChild;
-            }
-            throw new InvalidOperationException($"The template child '{name}' is not of type {typeof(T).FullName}.");
-        }
+    private T GetTemplateChild<T>(string name) where T : DependencyObject
+    {
+        DependencyObject child = GetTemplateChild(name);
+        return child is T typedChild
+            ? typedChild
+            : throw new InvalidOperationException($"The template child '{name}' is not of type {typeof(T).FullName}.");
     }
 }
 #endif
