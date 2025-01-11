@@ -74,4 +74,18 @@ If you have a new idea for CubeKit, please write a [feature request](https://git
 
 ---
 
+| Package | Latest | Description |
+|--------|--------|--------|
+| `Riverside.Toolkit` | | The main aggregate package for CubeKit. |
+| `Riverside.Toolkit.Flyouts` | | Flyouts manifest package from Fluent Flyouts 3 (obsolete) |
+| `Riverside.Toolkit.Controls` | | Controls and user controls from CubeKit. |
+| `Riverside.Toolkit.Converters` | | Converters from CubeKit to reduce need for writing them in your own apps (part of the [One Toolkit](https://github.com/RiversideValley/Toolkit/discussions/22) effort) |
+| `Riverside.Toolkit.Helpers` | | A [collection of useful static helpers](https://riversidevalley.github.io/Toolkit/api/Riverside.Toolkit.Helpers.html) for building modern apps. Shared with the `Riverside.Extensions` package. |
+| `Riverside.Toolkit.Icons` | | A collection of [resources for using fluent icons](https://riversidevalley.github.io/Toolkit/api/Riverside.Toolkit.Icons.html) in WinUI/UWP apps. It is obsolete now but still kept as it is used by GlowUI. |
+| `Riverside.GlowUI` | | The GlowUI styles package. |
+| `Riverside.GlowUI.Materials` | | Materials for use in GlowUI apps such as [Bloom](https://riversidevalley.github.io/Toolkit/api/Riverside.GlowUI.Materials.BloomView.html) and [Aurora](https://riversidevalley.github.io/Toolkit/api/Riverside.GlowUI.Materials.AuroraLite.html). |
+| `Riverside.Extensions` | | This package previously contained runtime agnostic helpers that are now part of the main toolkit package. This namespace is now used for rewrites of other packages and helpers. |
+
+---
+
 ![GlowUI Economy](https://github.com/user-attachments/assets/f7603612-fc65-41d0-b169-eaca51434b42)
