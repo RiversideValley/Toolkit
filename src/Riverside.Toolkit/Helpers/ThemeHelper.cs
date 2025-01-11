@@ -7,7 +7,7 @@ using Windows.Storage;
 using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml;
 
-namespace Cube.UI.Helpers
+namespace Riverside.Toolkit.Helpers
 {
     public class ThemeHelper
     {

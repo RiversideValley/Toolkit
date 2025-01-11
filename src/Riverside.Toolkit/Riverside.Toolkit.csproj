@@ -5,35 +5,27 @@
 		<UseRidGraph>true</UseRidGraph>
 	</PropertyGroup>
 	<Import Project="..\..\eng\alloy\src\Riverside.Alloy\Riverside.Alloy.props" />
+	<Import Project="..\..\eng\xaml\DesignTimeBuild.props" />
 	
 	<!-- Themes and XBF compilation issue temporary fixes -->
-	<ItemGroup Condition=" '$(Alloy)' == 'UWP' ">
-		<!-- Removes the Generic.xaml during UWP build as the TitleBarEx control is not available on that platform -->
-		<Page Remove="Themes\Generic.xaml" />
-		<Resource Remove="Themes\Generic.xaml" />
-
+	<ItemGroup>
 		<!-- Removes the UserControls folder during UWP build as the removal of Generic.xaml causes issues with these -->
+		<Compile Remove="Brushes\**" />
 		<Compile Remove="UserControls\**" />
+		<EmbeddedResource Remove="Brushes\**" />
 		<EmbeddedResource Remove="UserControls\**" />
+		<None Remove="Brushes\**" />
 		<None Remove="UserControls\**" />
+		<Page Remove="Brushes\**" />
 		<Page Remove="UserControls\**" />
+		<PRIResource Remove="Brushes\**" />
 		<PRIResource Remove="UserControls\**" />
-		<Resource Remove="UserControls\GroupBox.xaml" />
-		<Resource Remove="UserControls\ImageFrame.xaml" />
-		<Resource Remove="UserControls\Buttons\TileButton.xaml" />
-		<Resource Remove="UserControls\DropShadowPanel.xaml" />
+		<Resource Remove="UserControls\**" />
 	</ItemGroup>
-	<ItemGroup Condition=" '$(Alloy)' == 'WinUI' ">
-		<Folder Include="Themes\" />
-		<Resource Include="Themes\Generic.xaml" />
-
-		<EmbeddedResource Include="UserControls\**" />
-		<None Include="UserControls\**" />
-		<PRIResource Include="UserControls\**" />
-		<Resource Include="UserControls\GroupBox.xaml" />
-		<Resource Include="UserControls\ImageFrame.xaml" />
-		<Resource Include="UserControls\Buttons\TileButton.xaml" />
-		<Resource Include="UserControls\DropShadowPanel.xaml" />
+	<ItemGroup>
+	  <Resource Remove="Brushes\ApplicationBrushes.xaml" />
+	  <Resource Remove="Brushes\MicaBrushes.xaml" />
+	  <Resource Remove="Brushes\StyleBrushes.xaml" />
 	</ItemGroup>
 
 	<!-- Dependencies -->
@@ -53,6 +45,9 @@
 	<ItemGroup Condition=" '$(Alloy)' == 'UWP' ">
 		<!-- UWP Dependencies -->
 		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Controls\Toolkit\" />
 	</ItemGroup>
 
 	<!-- Miscellaneous -->

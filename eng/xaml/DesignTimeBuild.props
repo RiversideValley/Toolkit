@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This MSBuild properties file fixes issues with UWP and WinUI links. -->
+<!-- This is a really messy file and is *hand-written*, attached to no generator of any kind.
+     Kids, don't put user controls in a toolkit. Just don't.
+-->
+<Project>
+	<Import Project="ConstantLocations.props" />
+	<!-- Generic.xaml issues -->
+	<ItemGroup>
+		<Page Include="$(GenericXAML)">
+			<Link>$(GenericXAML_Target)</Link>
+		</Page>
+		<Resource Include="$(GenericXAML)">
+			<Link>$(GenericXAML_Target)</Link>
+		</Resource>
+	</ItemGroup>
+
+	<!-- UserControl partial definitions -->
+	<ItemGroup>
+		<!-- UserControls\DropShadowPanel -->
+		<Page Include="$(UserControls_DropShadowPanel_XAML)">
+			<Link>$(UserControls_DropShadowPanel_XAML_Target)</Link>
+		</Page>
+		<Resource Include="$(UserControls_DropShadowPanel_XAML)">
+			<Link>$(UserControls_DropShadowPanel_XAML_Target)</Link>
+		</Resource>
+		<Compile Include="$(UserControls_DropShadowPanel)">
+			<Link>$(UserControls_DropShadowPanel_Target)</Link>
+		</Compile>
+		<Compile Include="$(UserControls_DropShadowPanel_Properties)">
+			<Link>$(UserControls_DropShadowPanel_Properties_Target)</Link>
+		</Compile>
+
+		<!-- UserControls\GroupBox -->
+		<Page Include="$(UserControls_GroupBox_XAML)">
+			<Link>$(UserControls_GroupBox_XAML_Target)</Link>
+		</Page>
+		<Resource Include="$(UserControls_GroupBox_XAML)">
+			<Link>$(UserControls_GroupBox_XAML_Target)</Link>
+		</Resource>
+		<Compile Include="$(UserControls_GroupBox)">
+			<Link>$(UserControls_GroupBox_Target)</Link>
+		</Compile>
+
+		<!-- UserControls\ImageFrame -->
+		<Page Include="$(UserControls_ImageFrame_XAML)">
+			<Link>$(UserControls_ImageFrame_XAML_Target)</Link>
+		</Page>
+		<Resource Include="$(UserControls_ImageFrame_XAML)">
+			<Link>$(UserControls_ImageFrame_XAML_Target)</Link>
+		</Resource>
+		<Compile Include="$(UserControls_ImageFrame)">
+			<Link>$(UserControls_ImageFrame_Target)</Link>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<!-- UserControls\Buttons\TileButton -->
+		<Page Include="$(UserControls_Buttons_TileButton_XAML)">
+			<Link>$(UserControls_Buttons_TileButton_Target)</Link>
+		</Page>
+		<Resource Include="$(UserControls_Buttons_TileButton_XAML)">
+			<Link>$(UserControls_Buttons_TileButton_Target)</Link>
+		</Resource>
+		<Compile Include="$(UserControls_Buttons_TileButton)">
+			<Link>$(UserControls_Buttons_TileButton_Target)</Link>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<!-- UserControls\Glow\GlowBall -->
+		<Page Include="$(UserControls_Glow_GlowBall_XAML)">
+			<Link>$(UserControls_Glow_GlowBall_Target)</Link>
+		</Page>
+		<Resource Include="$(UserControls_Glow_GlowBall_XAML)">
+			<Link>$(UserControls_Glow_GlowBall_Target)</Link>
+		</Resource>
+		<Compile Include="$(UserControls_Glow_GlowBall)">
+			<Link>$(UserControls_Glow_GlowBall_Target)</Link>
+		</Compile>
+		
+		<!-- UserControls\Glow\GlowLine -->
+		<Page Include="$(UserControls_Glow_GlowLine_XAML)">
+			<Link>$(UserControls_Glow_GlowLine_Target)</Link>
+		</Page>
+		<Resource Include="$(UserControls_Glow_GlowLine_XAML)">
+			<Link>$(UserControls_Glow_GlowLine_Target)</Link>
+		</Resource>
+		<Compile Include="$(UserControls_Glow_GlowLine)">
+			<Link>$(UserControls_Glow_GlowLine_Target)</Link>
+		</Compile>
+	</ItemGroup>
+</Project>

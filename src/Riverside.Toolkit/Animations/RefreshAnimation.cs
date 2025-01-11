@@ -1,13 +1,14 @@
+#if WinUI
+
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Windows.Graphics;
 using Windows.UI;
-using Windows.UI.Composition;
 using Microsoft.Graphics.Canvas.Geometry;
 using Microsoft.UI.Xaml.Controls;
 
-namespace Cube.UI.Animations
+namespace Riverside.Toolkit.Animations
 {
     public sealed class RefreshAnimation : IAnimatedVisualSource
     {
@@ -267,3 +268,5 @@ namespace Cube.UI.Animations
         }
     }
 }
+
+#endif

@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if UWP
+
+using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +9,8 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 
-namespace Cube.UI.Services
+namespace Riverside.Toolkit.Services
 {
     public static class WindowService
     {
@@ -42,7 +42,7 @@ namespace Cube.UI.Services
             // For example, when the title bar is invoked in full screen mode.
             coreTitleBar.IsVisibleChanged += CoreTitleBar_IsVisibleChanged;
 
-            //Register a handler for when the window changes focus
+            // Register a handler for when the window changes focus
             Window.Current.Activated += Current_Activated;
         }
 
@@ -70,7 +70,7 @@ namespace Cube.UI.Services
             SolidColorBrush defaultForegroundBrush = (SolidColorBrush)Application.Current.Resources["TextFillColorPrimaryBrush"];
             SolidColorBrush inactiveForegroundBrush = (SolidColorBrush)Application.Current.Resources["TextFillColorDisabledBrush"];
 
-            if (e.WindowActivationState == Windows.UI.Core.CoreWindowActivationState.Deactivated)
+            if (e.WindowActivationState is Windows.UI.Core.CoreWindowActivationState.Deactivated)
             {
                 AppTitle.Foreground = inactiveForegroundBrush;
             }
@@ -81,3 +81,5 @@ namespace Cube.UI.Services
         }
     }
 }
+
+#endif

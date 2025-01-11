@@ -8,6 +8,7 @@
 		<SourceDirectory Condition=" '$(SourceDirectory)' == '' ">$(MSBuildThisFileDirectory)src</SourceDirectory>
 		<BuildDirectory Condition=" '$(BuildDirectory)' == '' ">$(RootDirectory)eng</BuildDirectory>
 		<RepositoryFilesDirectory Condition=" '$(RepositoryFilesDirectory)' == '' ">$(RootDirectory).github</RepositoryFilesDirectory>
+		<ToolkitDirectory Condition=" '$(ToolkitDirectory)' == '' ">$(SourceDirectory)\Riverside.Toolkit</ToolkitDirectory>
 
 		<Product>Rosetta</Product>
 		<Company>Riverside Valley Corporation</Company>

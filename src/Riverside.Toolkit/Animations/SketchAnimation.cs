@@ -1,3 +1,5 @@
+#if WinUI
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +9,9 @@ using Microsoft.UI.Xaml.Controls;
 using System.Numerics;
 using Windows.Graphics;
 using Windows.UI;
-using Windows.UI.Composition;
 using Microsoft.Graphics.Canvas.Geometry;
 
-namespace Cube.UI.Animations
+namespace Riverside.Toolkit.Animations
 {
     public sealed class SketchAnimation : IAnimatedVisualSource2
     {
@@ -493,3 +494,5 @@ namespace Cube.UI.Animations
         }
     }
 }
+
+#endif

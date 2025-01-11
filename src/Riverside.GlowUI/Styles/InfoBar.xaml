@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Icons="using:Cube.UI.Icons"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
-    xmlns:glow="using:Cube.UI.Controls.Glow"
+    xmlns:glow="using:Riverside.Toolkit.UserControls.Glow"
     xmlns:primitives="using:Microsoft.UI.Xaml.Controls.Primitives">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Cube.UI/Buttons/Buttons.xaml" />
