@@ -5,27 +5,15 @@
 		<UseRidGraph>true</UseRidGraph>
 	</PropertyGroup>
 	<Import Project="..\..\eng\alloy\src\Riverside.Alloy\Riverside.Alloy.props" />
-	<Import Project="..\..\eng\xaml\DesignTimeBuild.props" />
 	
 	<!-- Themes and XBF compilation issue temporary fixes -->
 	<ItemGroup>
-		<!-- Removes the UserControls folder during UWP build as the removal of Generic.xaml causes issues with these -->
-		<Compile Remove="Brushes\**" />
-		<Compile Remove="UserControls\**" />
-		<EmbeddedResource Remove="Brushes\**" />
-		<EmbeddedResource Remove="UserControls\**" />
-		<None Remove="Brushes\**" />
-		<None Remove="UserControls\**" />
-		<Page Remove="Brushes\**" />
-		<Page Remove="UserControls\**" />
-		<PRIResource Remove="Brushes\**" />
-		<PRIResource Remove="UserControls\**" />
-		<Resource Remove="UserControls\**" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Resource Remove="Brushes\ApplicationBrushes.xaml" />
-	  <Resource Remove="Brushes\MicaBrushes.xaml" />
-	  <Resource Remove="Brushes\StyleBrushes.xaml" />
+	  <Compile Remove="Brushes\**" />
+	  <EmbeddedResource Remove="Brushes\**" />
+	  <None Remove="Brushes\**" />
+	  <Page Remove="Brushes\**" />
+	  <PRIResource Remove="Brushes\**" />
+	  <Resource Remove="Brushes\**" />
 	</ItemGroup>
 
 	<!-- Dependencies -->
@@ -45,9 +33,6 @@
 	<ItemGroup Condition=" '$(Alloy)' == 'UWP' ">
 		<!-- UWP Dependencies -->
 		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Controls\Toolkit\" />
 	</ItemGroup>
 
 	<!-- Miscellaneous -->
