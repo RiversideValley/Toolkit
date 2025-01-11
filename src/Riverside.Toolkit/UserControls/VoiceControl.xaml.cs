@@ -1,4 +1,4 @@
-﻿using Cube.UI.Helpers;
+﻿using Riverside.Toolkit.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace Cube.UI.Controls
+namespace Riverside.Toolkit.UserControls
 {
     public sealed partial class VoiceControl : UserControl
     {

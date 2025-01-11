@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
 
-namespace Cube.UI.Helpers
+namespace Riverside.Toolkit.Helpers
 {
     public class ColorHelper
     {

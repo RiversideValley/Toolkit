@@ -1,7 +1,7 @@
-﻿namespace Riverside.Toolkit.Controls.Toolkit;
+﻿namespace Riverside.Toolkit.Controls;
 
 /// <summary>
-/// Any user control can implement this interface to provide a custom alpha mask to it's parent <see cref="UserControls.DropShadowPanel"/>
+/// Any user control can implement this interface to provide a custom alpha mask to its parent <see cref="Riverside.Toolkit.UserControls.DropShadowPanel"/>
 /// </summary>
 public interface IAlphaMaskProvider
 {

@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace Cube.UI.Controls.Glow
+namespace Riverside.Toolkit.UserControls.Glow
 {
 	public sealed partial class GlowLine : UserControl
 	{

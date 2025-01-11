@@ -1,23 +1,25 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Riverside.Toolkit.Icons" xmlns:local2="using:Riverside.Toolkit.Controls.TitleBar">
+    xmlns:local="using:Riverside.Toolkit.Icons"
+    xmlns:local2="using:Riverside.Toolkit.Controls.TitleBar">
 
     <Style TargetType="local:FluentSymbolIcon">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:FluentSymbolIcon">
-                    <PathIcon x:Name="IconDisplay"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              Foreground="{TemplateBinding Foreground}"
-                              Width="{TemplateBinding Width}"
-                              Height="{TemplateBinding Height}"
-                              MaxWidth="{TemplateBinding MaxWidth}"
-                              MaxHeight="{TemplateBinding MaxHeight}"
-                              MinWidth="{TemplateBinding MinWidth}"
-                              MinHeight="{TemplateBinding MinHeight}"
-                              Margin="{TemplateBinding Margin}"/>
+                    <PathIcon
+                        x:Name="IconDisplay"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        MinWidth="{TemplateBinding MinWidth}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        MaxWidth="{TemplateBinding MaxWidth}"
+                        MaxHeight="{TemplateBinding MaxHeight}"
+                        Margin="{TemplateBinding Margin}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Foreground="{TemplateBinding Foreground}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -33,8 +35,8 @@
         <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
         <Setter Property="FocusVisualMargin" Value="-3" />
         <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Width" Value="46"/>
-        <Setter Property="Height" Value="31"/>
+        <Setter Property="Width" Value="46" />
+        <Setter Property="Height" Value="31" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -44,16 +46,19 @@
                         </Grid.BackgroundTransition>
 
                         <Grid
-                                    x:Name="ContentPresenter"
-                                    Padding="0"
-                                    AutomationProperties.AccessibilityView="Raw"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="0"
-                                    CornerRadius="0">
+                            x:Name="ContentPresenter"
+                            Padding="0"
+                            AutomationProperties.AccessibilityView="Raw"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0"
+                            CornerRadius="0">
                             <Grid.BackgroundTransition>
                                 <BrushTransition Duration="0:0:0.1" />
                             </Grid.BackgroundTransition>
-                            <FontIcon x:Name="Glyph" Glyph="&#xE8BB;" FontSize="10"/>
+                            <FontIcon
+                                x:Name="Glyph"
+                                FontSize="10"
+                                Glyph="&#xE8BB;" />
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -107,8 +112,8 @@
         <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
         <Setter Property="FocusVisualMargin" Value="-3" />
         <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Width" Value="31"/>
-        <Setter Property="Height" Value="31"/>
+        <Setter Property="Width" Value="31" />
+        <Setter Property="Height" Value="31" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -118,16 +123,19 @@
                         </Grid.BackgroundTransition>
 
                         <Grid
-                                    x:Name="ContentPresenter"
-                                    Padding="0"
-                                    AutomationProperties.AccessibilityView="Raw"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="0"
-                                    CornerRadius="0">
+                            x:Name="ContentPresenter"
+                            Padding="0"
+                            AutomationProperties.AccessibilityView="Raw"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0"
+                            CornerRadius="0">
                             <Grid.BackgroundTransition>
                                 <BrushTransition Duration="0:0:0.1" />
                             </Grid.BackgroundTransition>
-                            <FontIcon x:Name="Glyph" Glyph="&#xE8BB;" FontSize="10"/>
+                            <FontIcon
+                                x:Name="Glyph"
+                                FontSize="10"
+                                Glyph="&#xE8BB;" />
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -181,8 +189,8 @@
         <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
         <Setter Property="FocusVisualMargin" Value="-3" />
         <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Width" Value="46"/>
-        <Setter Property="Height" Value="31"/>
+        <Setter Property="Width" Value="46" />
+        <Setter Property="Height" Value="31" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
@@ -192,16 +200,19 @@
                         </Grid.BackgroundTransition>
 
                         <Grid
-                                    x:Name="ContentPresenter"
-                                    Padding="0"
-                                    AutomationProperties.AccessibilityView="Raw"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="0"
-                                    CornerRadius="0">
+                            x:Name="ContentPresenter"
+                            Padding="0"
+                            AutomationProperties.AccessibilityView="Raw"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0"
+                            CornerRadius="0">
                             <Grid.BackgroundTransition>
                                 <BrushTransition Duration="0:0:0.1" />
                             </Grid.BackgroundTransition>
-                            <FontIcon x:Name="Glyph" Glyph="&#xE922;" FontSize="10"/>
+                            <FontIcon
+                                x:Name="Glyph"
+                                FontSize="10"
+                                Glyph="&#xE922;" />
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -308,8 +319,8 @@
         <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
         <Setter Property="FocusVisualMargin" Value="-3" />
         <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Width" Value="46"/>
-        <Setter Property="Height" Value="31"/>
+        <Setter Property="Width" Value="46" />
+        <Setter Property="Height" Value="31" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -319,16 +330,19 @@
                         </Grid.BackgroundTransition>
 
                         <Grid
-                                    x:Name="ContentPresenter"
-                                    Padding="0"
-                                    AutomationProperties.AccessibilityView="Raw"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="0"
-                                    CornerRadius="0">
+                            x:Name="ContentPresenter"
+                            Padding="0"
+                            AutomationProperties.AccessibilityView="Raw"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0"
+                            CornerRadius="0">
                             <Grid.BackgroundTransition>
                                 <BrushTransition Duration="0:0:0.1" />
                             </Grid.BackgroundTransition>
-                            <FontIcon x:Name="Glyph" Glyph="&#xE921;" FontSize="10"/>
+                            <FontIcon
+                                x:Name="Glyph"
+                                FontSize="10"
+                                Glyph="&#xE921;" />
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -366,78 +380,6 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style TargetType="local2:TitleBarEx">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local2:TitleBarEx">
-                    <Grid
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Button Visibility="Collapsed">
-                            <Button.Flyout>
-                                <MenuFlyout x:Name="CustomRightClickFlyout">
-                                    <MenuFlyoutItem Text="Restore" IsEnabled="{TemplateBinding CanRestore}" x:Name="RestoreContextMenuItem">
-                                        <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph=" &#xE923; "/>
-                                        </MenuFlyoutItem.Icon>
-                                    </MenuFlyoutItem>
-                                    <MenuFlyoutItem Text="Move" IsEnabled="{TemplateBinding CanMove}" x:Name="MoveContextMenuItem">
-                                        <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="&#xE7C2;"/>
-                                        </MenuFlyoutItem.Icon>
-                                    </MenuFlyoutItem>
-                                    <MenuFlyoutItem Text="Size" IsEnabled="{TemplateBinding CanSize}" x:Name="SizeContextMenuItem">
-                                        <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="&#xE740;"/>
-                                        </MenuFlyoutItem.Icon>
-                                    </MenuFlyoutItem>
-                                    <MenuFlyoutItem Text="Minimize" IsEnabled="{TemplateBinding IsMinimizable}" x:Name="MinimizeContextMenuItem">
-                                        <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph=" &#xE921; "/>
-                                        </MenuFlyoutItem.Icon>
-                                    </MenuFlyoutItem>
-                                    <MenuFlyoutItem Text="Maximize" IsEnabled="{TemplateBinding CanMaximize}" x:Name="MaximizeContextMenuItem">
-                                        <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph=" &#xE922; "/>
-                                        </MenuFlyoutItem.Icon>
-                                    </MenuFlyoutItem>
-                                    <MenuFlyoutSeparator/>
-                                    <MenuFlyoutItem Text="Close" IsEnabled="{TemplateBinding IsClosable}" x:Name="CloseContextMenuItem">
-                                        <MenuFlyoutItem.KeyboardAccelerators>
-                                            <KeyboardAccelerator Key="F4" Modifiers="Menu" IsEnabled="False"/>
-                                        </MenuFlyoutItem.KeyboardAccelerators>
-                                        <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph=" &#xE8BB; "/>
-                                        </MenuFlyoutItem.Icon>
-                                    </MenuFlyoutItem>
-                                </MenuFlyout>
-                            </Button.Flyout>
-                        </Button>
-                        <Border x:Name="AccentStrip" Height="31" VerticalAlignment="Top" Background="{ThemeResource SystemAccentColor}" Visibility="Collapsed" />
-                        <Image x:Name="TitleBarIcon" Width="16" Margin="8,7" HorizontalAlignment="Left" VerticalAlignment="Top" x:FieldModifier="public"/>
-                        <StackPanel Margin="29,7,140,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-                            <TextBlock x:Name="TitleTextBlock" FontFamily="Segoe UI" Foreground="{TemplateBinding CurrentForeground}" FontSize="12" FontWeight="Normal" TextTrimming="CharacterEllipsis" Text="{TemplateBinding Title}"/>
-                            <TextBlock FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" Foreground="{TemplateBinding CurrentForeground}" Opacity="0.5" Text="{TemplateBinding Subtitle}" TextTrimming="CharacterEllipsis" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                            <Button x:Name="MinimizeButton" Foreground="{TemplateBinding CurrentForeground}" Style="{StaticResource Minimize}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False">
-                                <ToolTipService.ToolTip>
-                                    <ToolTip Content="Minimize" Placement="Bottom"/>
-                                </ToolTipService.ToolTip>
-                            </Button>
-                            <ToggleButton x:Name="MaximizeButton" Foreground="{TemplateBinding CurrentForeground}" Style="{StaticResource MaxRes}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False"/>
-                            <Button x:Name="CloseButton" Style="{ThemeResource Close}" Foreground="{TemplateBinding CurrentForeground}" IsHitTestVisible="False" IsFocusEngagementEnabled="False" IsTabStop="False">
-                                <ToolTipService.ToolTip>
-                                    <ToolTip Content="Close" Placement="Bottom"/>
-                                </ToolTipService.ToolTip>
-                            </Button>
-                        </StackPanel>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

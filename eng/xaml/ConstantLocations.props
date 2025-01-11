@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+<!-- Constants -->
+	<Import Project="..\..\eng\alloy\src\Riverside.Alloy\Riverside.Alloy.props" />
+	<!-- Constants for directories and config -->
+	<PropertyGroup>
+		<ThemeDirectory>$(ToolkitDirectory)\Themes</ThemeDirectory>
+		<UCDirectory>$(ToolkitDirectory)\UserControls</UCDirectory>
+		<UCDirectory_Glow>$(UCDirectory)\Glow</UCDirectory_Glow>
+		<UCDirectory_Buttons>$(UCDirectory)\Buttons</UCDirectory_Buttons>
+		<UCAlternative>$(Alloy)</UCAlternative>
+	</PropertyGroup>
+	
+<!-- Generic theme -->
+	<!-- Riverside.Toolkit.Themes -->
+	<PropertyGroup>
+		<GenericXAML>$(ThemeDirectory)\Generic.$(UCAlternative).xaml</GenericXAML>
+	</PropertyGroup>
+
+<!-- UserControls-->
+	<!-- Riverside.Toolkit.UserControls -->
+	<PropertyGroup>
+		<UserControls_DropShadowPanel>$(UCDirectory)\DropShadowPanel.$(UCAlternative).cs</UserControls_DropShadowPanel>
+		<UserControls_DropShadowPanel_XAML>$(UCDirectory)\DropShadowPanel.$(UCAlternative).xaml.cs</UserControls_DropShadowPanel_XAML>
+		<UserControls_DropShadowPanel_Properties>$(UCDirectory)\DropShadowPanel.$(UCAlternative).Properties.cs</UserControls_DropShadowPanel_Properties>
+		
+		<UserControls_GroupBox>$(UCDirectory)\GroupBox.$(UCAlternative).xaml.cs</UserControls_GroupBox>
+		<UserControls_GroupBox_XAML>$(UCDirectory)\GroupBox.$(UCAlternative).xaml</UserControls_GroupBox_XAML>
+		
+		<UserControls_ImageFrame>$(UCDirectory)\DropShadowPanel.$(UCAlternative).xaml.cs</UserControls_ImageFrame>
+		<UserControls_ImageFrame_XAML>$(UCDirectory)\DropShadowPanel.$(UCAlternative).xaml</UserControls_ImageFrame_XAML>
+	</PropertyGroup>
+	<!-- Riverside.Toolkit.UserControls.Buttons -->
+	<PropertyGroup>
+		<UserControls_Buttons_TileButton>$(UCDirectory_Buttons)\TileButton.$(UCAlternative).xaml.cs</UserControls_Buttons_TileButton>
+		<UserControls_Buttons_TileButton_XAML>$(UCDirectory_Buttons)\TileButton.$(UCAlternative).xaml</UserControls_Buttons_TileButton_XAML>
+	</PropertyGroup>
+	<!-- Riverside.Toolkit.UserControls.Glow -->
+	<PropertyGroup>
+		<UserControls_Glow_GlowBall>$(UCDirectory_Glow)\GlowBall.$(UCAlternative).xaml.cs</UserControls_Glow_GlowBall>
+		<UserControls_Glow_GlowBall_XAML>$(UCDirectory_Glow)\GlowBall.$(UCAlternative).xaml</UserControls_Glow_GlowBall_XAML>
+		<UserControls_Glow_GlowLine>$(UCDirectory_Glow)\GlowLine.$(UCAlternative).xaml.cs</UserControls_Glow_GlowLine>
+		<UserControls_Glow_GlowLine_XAML>$(UCDirectory_Glow)\GlowLine.$(UCAlternative).xaml</UserControls_Glow_GlowLine_XAML>
+	</PropertyGroup>
+
+<!-- Targets -->
+	<!-- Riverside.Toolkit.UserControls -->
+	<PropertyGroup>
+		<UserControls_DropShadowPanel_Target>$(UCDirectory)\DropShadowPanel.cs</UserControls_DropShadowPanel_Target>
+		<UserControls_DropShadowPanel_XAML_Target>$(UCDirectory)\DropShadowPanel.xaml.cs</UserControls_DropShadowPanel_XAML_Target>
+		<UserControls_DropShadowPanel_Properties_Target>$(UCDirectory)\DropShadowPanel.Properties.cs</UserControls_DropShadowPanel_Properties_Target>
+
+		<UserControls_GroupBox_Target>$(UCDirectory)\GroupBox.xaml.cs</UserControls_GroupBox_Target>
+		<UserControls_GroupBox_XAML_Target>$(UCDirectory)\GroupBox.xaml</UserControls_GroupBox_XAML_Target>
+
+		<UserControls_ImageFrame_Target>$(UCDirectory)\DropShadowPanel.xaml.cs</UserControls_ImageFrame_Target>
+		<UserControls_ImageFrame_XAML_Target>$(UCDirectory)\DropShadowPanel.xaml</UserControls_ImageFrame_XAML_Target>
+	</PropertyGroup>
+	<!-- Riverside.Toolkit.UserControls.Buttons -->
+	<PropertyGroup>
+		<UserControls_Buttons_TileButton_Target>$(UCDirectory_Buttons)\TileButton.xaml.cs</UserControls_Buttons_TileButton_Target>
+		<UserControls_Buttons_TileButton_XAML_Target>$(UCDirectory_Buttons)\TileButton.xaml</UserControls_Buttons_TileButton_XAML_Target>
+	</PropertyGroup>
+	<!-- Riverside.Toolkit.UserControls.Glow -->
+	<PropertyGroup>
+		<UserControls_Glow_GlowBall_Target>$(UCDirectory_Glow)\GlowBall.xaml.cs</UserControls_Glow_GlowBall_Target>
+		<UserControls_Glow_GlowBall_XAML_Target>$(UCDirectory_Glow)\GlowBall.xaml</UserControls_Glow_GlowBall_XAML_Target>
+		<UserControls_Glow_GlowLine_Target>$(UCDirectory_Glow)\GlowLine.xaml.cs</UserControls_Glow_GlowLine_Target>
+		<UserControls_Glow_GlowLine_XAML_Target>$(UCDirectory_Glow)\GlowLine.xaml</UserControls_Glow_GlowLine_XAML_Target>
+	</PropertyGroup>
+	<!-- Riverside.Toolkit.Themes -->
+	<PropertyGroup>
+		<GenericXAML_Target>$(ThemeDirectory)\Generic.xaml</GenericXAML_Target>
+	</PropertyGroup>
+</Project>

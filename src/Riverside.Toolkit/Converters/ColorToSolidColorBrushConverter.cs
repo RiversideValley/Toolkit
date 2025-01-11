@@ -1,9 +1,8 @@
 ﻿using System;
 using Windows.UI;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
 
-namespace Cube.UI.Converters
+namespace Riverside.Toolkit.Converters
 {
     public class ColorToSolidColorBrushConverter : IValueConverter
     {
