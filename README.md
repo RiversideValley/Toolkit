@@ -1,52 +1,77 @@
 > [!IMPORTANT]
-> Major infrastructure changes are happening to Crimson, `Riverside.Toolkit`, GlowUI and CubeKit and lots of new changes are expected to come to the new 2.0 version of the toolkit. Stay tuned in [Developer Sanctuary](https://dsc.gg/devsanx) for more info!
+> CubeKit is a new era for the previous CrimsonUI, GlowUI and Toolkit options.
+> The second version of CubeKit (formerly Crimson Toolkit) brings together all your favourite toolkits into one repository, with styles from GlowUI and Crimson and useful controls and utilities.
 
-# 🧰 Crimson
+![GlowUI Economy](https://github.com/user-attachments/assets/ed1298b0-03b6-4d2d-bf7d-abe5fcc4c039)
 
-#### The better way to style your apps.
+<p align="center">
+    <a href='https://nuget.org/packages/Riverside.Toolkit'>
+      <img src='https://github.com/Rise-Software/Rise-Media-Player/assets/74561130/3d7edcaf-26d8-4453-a751-29b851721abd' alt='Get it from Microsoft' />
+    </a>
+    <a href='https://github.com/RiversideValley/Toolkit/releases/latest'>
+      <img src='https://github.com/Rise-Software/Rise-Media-Player/assets/74561130/60deb402-0c8e-4579-80e6-69cb7b19cd43' alt='Get it from GitHub' />
+    </a>
+</p>
 
 ---
 
-### 🤔 What is Crimson?
+Introducing **CubeKit**, the **ultimate** toolkit for building modern apps on .NET. **CubeKit** is a set of **versatile, platform-agnostic APIs** that enable you to build apps for **multiple platforms** using .NET.
+Using a custom multi-target solution called Alloy, it exposes APIs that are suited to the project you install the aggregate package on, allowing you to **build apps for UWP, WinUI and .NET Core.**
 
-Crimson is the best way to style your WinUI apps with pretty styles and useful controls that allow for creating professional but appealing apps that will delight users.
+**CubeKit** is the new name for its various predecessors including **CrimsonUI** (now merged with GlowUI), **GlowUI** (GlowUI is still used to refer to the styles, but it is included as part of CubeKit as a whole), **Crimson Toolkit** and **`Riverside.Toolkit`**.
+It is built using custom tooling to target all versions of .NET.
 
-> CrimsonUI is a dynamic UI library designed for UWP and Windows App SDK. Rooted in WinUI and influenced by FireCube's GlowUI, CrimsonUI seamlessly blends default WinUI elements with glowing, shiny components. Immerse yourself in stunning animations, ensuring a very smooth and beautiful user experience. Elevate your app's visual appeal with the elegance of CrimsonUI.
+---
 
-## 🎨 `Crimson.UI`
+## Using CubeKit
 
-<!--
-> [!NOTE]
-> Requires `CommunityToolkit.WinUI.UI.Controls` for WinAppSdk and `CommunityToolkit.UWP.UI.Controls` for UWP support.
--->
+> NuGet is a standard package manager for .NET applications which is built into Visual Studio. When you open solution in Visual Studio, choose the *Tools* menu > *NuGet Package Manager* > *Manage NuGet packages for solution…* 
 
-Crimson UI is the original, primary component of the Crimson project and contains styles and themes for building resplendent, glowing apps.
-Originally based on [@FireCube](https://github.com/firecubestudios)'s GlowUI, CrimsonUI provides the consumer with shiny, glowing UI elements that makes crafting a beautiful UI satisfying.
+You can install all recommended helpers and controls using the [aggregate package](https://nuget.org/packages/Riverside.Toolkit) which automatically installs all the appropriate helpers for your target platform (.NET Core, WinUI and UWP .NET 9).
+You can see examples of using APIs on the [documentation](https://riversidevalley.github.io/Toolkit) page.
 
-In order to install CrimsonUI, add the [CrimsonUI  NuGet package](https://nuget.org/packages/Crimson) to your app. This will allow you to make the best use of its controls and update it easily.
-Symbols for CrimsonUI are also available on the NuGet Gallery server and are generated on build.
+The root namespace for CubeKit is as follows:
+- `Riverside.Toolkit.*`: Main CubeKit components and helpers
+- `Riverside.GlowUI.*`: Related to styles and GlowUI
+- `Riverside.Extensions.*`: Various collections of .NET helpers and rewrites
 
-In order to consume CrimsonUI in your app, add the following line to your WinUI3 or UWP app's `App.xaml` file:
-```xaml
-   <Application.Resources>
-       <ResourceDictionary>
-           <ResourceDictionary.MergedDictionaries>
-               <ResourceDictionary Source="ms-appx:///Crimson/Styles.xaml" />
-           </ResourceDictionary.MergedDictionaries>
-       </ResourceDictionary>
-   </Application.Resources>
+CubeKit also contains controls from WCT 7.x that didn't make it to 8.x, such as `DropShadowPanel`.
+
+### Building from source
+
+It's recommended to read [Sergio's blog post on UWP .NET 9](https://devblogs.microsoft.com/ifdef-windows/preview-uwp-support-for-dotnet-9-native-aot/) to make yourself familiar with UWP .NET 9 NativeAOT and the limitations.
+
+#### 1. Prerequisites
+
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) with the following individual components:
+    - Windows SDK
+    - UWP build tools
+    - WinUI development workload
+    - .NET SDK
+    - [Preview Windows SDK bundle](https://aka.ms/preview-uwp-support-for-dotnet9-windows-sdk)
+- Git for Windows
+
+#### 2. Clone the repository
+
+```ps
+git clone https://github.com/RiversideValley/Toolkit
 ```
 
-### 🔳 Easily blending in
+This will create a local copy of the repository.
 
-> CrimsonUI controls are designed to integrate flawlessly with Windows applications, providing a seamless user interface experience. They feature rest brushes that are meticulously crafted to match the standard WinUI controls, ensuring a consistent and harmonious visual integration. This design philosophy allows for a cohesive user experience, where the CrimsonUI elements blend naturally with the native components of the Windows environment. The controls are built with attention to detail, aiming to enhance the aesthetics and functionality of applications while maintaining a familiar look and feel that users trust. With CrimsonUI, developers can elevate their application's interface, making it not only visually appealing but also intuitively usable, leveraging the robustness of Windows' native UI elements.
+#### 3. Build the project
 
-### 🌠 Simply beautiful
+To build CubeKit for development, open the `CubeKit.sln` item in Visual Studio. Right-click on the project you want to build and press 'Build'.
 
-> CrimsonUI’s design leverages the visual appeal of glowing panels and accent color gradients to create a dynamic 3D appearance, reminiscent of a neon glow. This effect adds depth and a touch of modernity to the user interface, ensuring that applications not only function well but also stand out with a contemporary, eye-catching aesthetic. The use of gradients and light effects in CrimsonUI controls helps to bring interfaces to life, making them more engaging and visually stimulating for users.
+## Contributing
 
-## 🧰 `Crimson.Toolkit`
+We're always looking for a helping hand, [look for open issues here](https://github.com/RiversideValley/Toolkit/issues) or create a [fork of the repo](https://github.com/RiversideValley/Toolkit/fork) to try or build new features.
+Even just improving our docs and samples for existing components here, or adding new tests can be a huge help!
 
-This repository also contains the Crimson Toolkit, a large toolkit containing various helpers, controls and other libraries, similar to the Microsoft [Community Toolkit](https://github.com/CommunityToolkit). It was merged from the original `Ivirius.UI.Controls` library and `Riverside.Toolkit`, and is published on NuGet under the latter's name.
+Check out our [documentation](https://riversidevalley.github.io/Toolkit) page to learn more about the project and how to contribute to it.
 
-The Crimson Toolkit is the newer part of the Crimson ecosystem. It contains tools such as helpers, controls, branding assets and various other useful tools to build pixel-perfect apps.
+If you have a new idea for CubeKit, please write a [feature request](https://github.com/RiversideValley/Toolkit/issues/new?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen&template=feature_request.yml)! However if your idea is quite large and requires extra tracking, please [start a discussion](https://github.com/RiversideValley/Toolkit/discussions/new?category=ideas)! Any ideas for APIs, controls and styling suggestions are appreciated. No contribution is too big or too small.
+
+---
+
+![GlowUI Economy](https://github.com/user-attachments/assets/f7603612-fc65-41d0-b169-eaca51434b42)
