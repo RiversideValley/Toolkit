@@ -88,4 +88,12 @@ If you have a new idea for CubeKit, please write a [feature request](https://git
 
 ---
 
+CubeKit is used in many production apps, including **[United Sets](https://apps.microsoft.com/detail/9N7CWZ3L5RWL), [Protecc](https://apps.microsoft.com/detail/9PJX91M06TZS), [Clippy](https://apps.microsoft.com/detail/9NWK37S35V5T), [Flowboard](https://apps.microsoft.com/detail/9PB20HCH5XN2), [Darksky](https://apps.microsoft.com/detail/9NP22DTFSCTS) and way more!**
+
+| United Sets | Protecc | Flowboard |
+|--------|--------|--------|
+| ![image](https://github.com/user-attachments/assets/a5925938-3b21-4848-842d-ca58aa574e08) | ![image](https://github.com/user-attachments/assets/23bde4df-0a92-43ea-9589-9c30b39c7f12) | ![image](https://github.com/user-attachments/assets/fd4c20bb-325b-422b-9ff9-d6f29a3c7b67) |
+
+---
+
 ![GlowUI Economy](https://github.com/user-attachments/assets/f7603612-fc65-41d0-b169-eaca51434b42)
