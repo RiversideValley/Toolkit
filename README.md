@@ -53,7 +53,7 @@ It's recommended to read [Sergio's blog post on UWP .NET 9](https://devblogs.mic
 
 #### 2. Clone the repository
 
-```ps
+```
 git clone https://github.com/RiversideValley/Toolkit
 ```
 
