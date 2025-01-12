@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Controls.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI.Materials", "src\Riverside.GlowUI.Materials\Riverside.GlowUI.Materials.csproj", "{E19D0B9E-25D9-49BD-8F1B-D3DA0C9C80D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit", "src\Riverside.Toolkit\Riverside.Toolkit.csproj", "{DA7D22DD-A7F2-4F5A-9EA4-1B5BC66717EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.WinUI", "src\Riverside.Toolkit.WinUI\Riverside.Toolkit.WinUI.csproj", "{DA7D22DD-A7F2-4F5A-9EA4-1B5BC66717EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Flyouts", "src\Riverside.Toolkit.Flyouts\Riverside.Toolkit.Flyouts.csproj", "{D088F44C-13F2-420E-95F9-105FA1AC49A8}"
 EndProject
