@@ -4,22 +4,6 @@
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
 		<UseRidGraph>true</UseRidGraph>
 	</PropertyGroup>
-	<Import Project="..\..\eng\alloy\src\Riverside.Alloy\Riverside.Alloy.props" />
-	
-	<!-- Themes and XBF compilation issue temporary fixes -->
-	<ItemGroup>
-		<Compile Remove="Brushes\**" />
-		<EmbeddedResource Remove="Brushes\**" />
-		<None Remove="Brushes\**" />
-		<Page Remove="Brushes\**" />
-		<PRIResource Remove="Brushes\**" />
-		<Resource Remove="Brushes\**" />
-	</ItemGroup>
-
-	<ItemGroup Condition=" '$(Alloy)' == 'UWP' ">
-		<Page Remove="Themes\Generic.xaml" />
-		<Resource Remove="Themes\Generic.xaml" />
-	</ItemGroup>
 
 	<!-- Dependencies -->
 	<ItemGroup>
