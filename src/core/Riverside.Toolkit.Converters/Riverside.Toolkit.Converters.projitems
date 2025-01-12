@@ -9,5 +9,12 @@
     <Import_RootNamespace>Riverside.Toolkit.Converters</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BooleanToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ColorToSolidColorBrushConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Converters.xaml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
 </Project>

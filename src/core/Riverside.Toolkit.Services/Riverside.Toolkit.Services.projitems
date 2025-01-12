@@ -9,5 +9,6 @@
     <Import_RootNamespace>Riverside.Toolkit.Services</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)WindowService.cs" />
   </ItemGroup>
 </Project>

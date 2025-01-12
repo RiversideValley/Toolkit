@@ -9,5 +9,7 @@
     <Import_RootNamespace>Riverside.Toolkit.Animations</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)RefreshAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SketchAnimation.cs" />
   </ItemGroup>
 </Project>
