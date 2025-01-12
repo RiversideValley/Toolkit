@@ -18,7 +18,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="$(SourceDirectory)\Riverside.Toolkit\Assets\PackageLogo.png">
+		<Content Include="$(BuildDirectory)\PackageLogo.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
@@ -31,7 +31,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="$(SourceDirectory)\Riverside.Toolkit\Assets\PackageLogo.png">
+		<None Update="$(BuildDirectory)\PackageLogo.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
