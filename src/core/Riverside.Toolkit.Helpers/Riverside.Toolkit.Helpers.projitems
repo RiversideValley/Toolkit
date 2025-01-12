@@ -9,5 +9,10 @@
     <Import_RootNamespace>Riverside.Toolkit.Helpers</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ColorHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DesignTimeHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DragAndDropHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NativeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeHelper.cs" />
   </ItemGroup>
 </Project>
