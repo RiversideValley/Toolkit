@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\Riverside.Toolkit._CoreExample\Riverside.Toolkit._CoreExample.projitems" Label="Shared" />
+	<Import Project="$(RootDirectory)\CustomBuild.targets" />
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>Riverside.Toolkit._PlatformExample.WinUI</RootNamespace>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+	  <DefineConstants>$(DefineConstants);THIS_IS_WINUI</DefineConstants>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,19 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<!-- Define the project paths -->
+		<CoreProject>Riverside.Toolkit._CoreExample.shproj</CoreProject>
+		<UwpProject>Riverside.Toolkit._PlatformExample.Uwp.csproj</UwpProject>
+		<WinUIProject>Riverside.Toolkit._PlatformExample.WinUI.csproj</WinUIProject>
+	</PropertyGroup>
+
+	<Target Name="CustomBuild" DependsOnTargets="Build">
+		<!-- Build the shared core project -->
+		<MSBuild Projects="$(CoreProject)" Targets="Build" />
+
+		<!-- Build the UWP project -->
+		<MSBuild Projects="$(UwpProject)" Targets="Build" />
+
+		<!-- Build the WinUI project -->
+		<MSBuild Projects="$(WinUIProject)" Targets="Build" />
+	</Target>
+</Project>

@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35424.110
@@ -77,6 +76,17 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.WinUI.Icons", "src\platforms\Riverside.Toolkit.WinUI.Icons\Riverside.Toolkit.WinUI.Icons.csproj", "{81666F0E-D457-4634-84BB-20DF6D4CCFF4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.WinUI.Services", "src\platforms\Riverside.Toolkit.WinUI.Services\Riverside.Toolkit.WinUI.Services.csproj", "{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Riverside.Toolkit._CoreExample", "tests\dceng\Riverside.Toolkit._CoreExample\Riverside.Toolkit._CoreExample.shproj", "{E3DB86C6-A0FE-499A-BA73-7472372CFFF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit._PlatformExample.WinUI", "tests\dceng\Riverside.Toolkit._PlatformExample.WinUI\Riverside.Toolkit._PlatformExample.WinUI.csproj", "{917B1FBD-3555-43B3-80B8-224456C3DA05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit._PlatformExample.Uwp", "tests\dceng\Riverside.Toolkit._PlatformExample.Uwp\Riverside.Toolkit._PlatformExample.Uwp.csproj", "{464F70AC-1760-4711-B205-26ACE0CAB5AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dceng", "dceng", "{46853A28-64A3-4189-A4C3-40F0CCD1F9F5}"
+	ProjectSection(SolutionItems) = preProject
+		CustomBuild.targets = CustomBuild.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -174,6 +184,14 @@ Global
 		{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917B1FBD-3555-43B3-80B8-224456C3DA05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917B1FBD-3555-43B3-80B8-224456C3DA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917B1FBD-3555-43B3-80B8-224456C3DA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917B1FBD-3555-43B3-80B8-224456C3DA05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{464F70AC-1760-4711-B205-26ACE0CAB5AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464F70AC-1760-4711-B205-26ACE0CAB5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464F70AC-1760-4711-B205-26ACE0CAB5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{464F70AC-1760-4711-B205-26ACE0CAB5AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -210,6 +228,10 @@ Global
 		{245D1074-ABD4-456C-95D8-6C5F06CB6C9E} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{81666F0E-D457-4634-84BB-20DF6D4CCFF4} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1} = {AA619411-1D80-4167-9BB6-84534B676BEB}
+		{E3DB86C6-A0FE-499A-BA73-7472372CFFF8} = {46853A28-64A3-4189-A4C3-40F0CCD1F9F5}
+		{917B1FBD-3555-43B3-80B8-224456C3DA05} = {46853A28-64A3-4189-A4C3-40F0CCD1F9F5}
+		{464F70AC-1760-4711-B205-26ACE0CAB5AD} = {46853A28-64A3-4189-A4C3-40F0CCD1F9F5}
+		{46853A28-64A3-4189-A4C3-40F0CCD1F9F5} = {ECDCDFAD-F6D7-4A50-9EA1-B50C7DC6DFC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {524016A6-E08B-4DAE-AE79-520996BA0E65}
@@ -221,6 +243,8 @@ Global
 		src\core\Riverside.Toolkit.Icons\Riverside.Toolkit.Icons.projitems*{7f5b70dd-156b-4126-9463-39ab04b696ea}*SharedItemsImports = 13
 		src\core\Riverside.Toolkit.Converters\Riverside.Toolkit.Converters.projitems*{8dad09c9-fe74-41aa-8dfd-a0eef93469ad}*SharedItemsImports = 13
 		src\core\Riverside.Toolkit.Helpers\Riverside.Toolkit.Helpers.projitems*{8ebaea2a-405d-4f0f-adca-cea72d53a527}*SharedItemsImports = 13
+		tests\dceng\Riverside.Toolkit._CoreExample\Riverside.Toolkit._CoreExample.projitems*{917b1fbd-3555-43b3-80b8-224456c3da05}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.Brushes\Riverside.Toolkit.Brushes.projitems*{bcdc11ec-a933-4b7b-829b-58af5aa5dd14}*SharedItemsImports = 13
+		tests\dceng\Riverside.Toolkit._CoreExample\Riverside.Toolkit._CoreExample.projitems*{e3db86c6-a0fe-499a-ba73-7472372cfff8}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
