@@ -1,0 +1,8 @@
+<Project>
+	<PropertyGroup>
+		<!-- Check if the project name contains specific keywords -->
+		<IsUwpProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('Uwp')) ">true</IsUwpProject>
+		<IsWinUIProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('WinUI')) ">true</IsWinUIProject>
+		<IsNetCoreProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('NETCore')) ">true</IsNetCoreProject>
+	</PropertyGroup>
+</Project>
