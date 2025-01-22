@@ -5,4 +5,44 @@
 		<IsWinUIProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('WinUI')) ">true</IsWinUIProject>
 		<IsNetCoreProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('NETCore')) ">true</IsNetCoreProject>
 	</PropertyGroup>
+
+	<!-- .NET Core specific properties -->
+	<PropertyGroup Condition="'$(IsNetCoreProject)' == 'true'">
+		<DefineConstants>$(DefineConstants);NETCore</DefineConstants>
+		
+		<!-- .NET Core project -->
+		<TargetFrameworks>net8.0;net9.0;netstandard2.1</TargetFrameworks>
+	</PropertyGroup>
+	<!-- WinUI specific properties -->
+	<PropertyGroup Condition="'$(IsWinUIProject)' == 'true'">
+		<DefineConstants>$(DefineConstants);UAP;WinUI;HAS_WINUI</DefineConstants>
+
+		<!-- WinUI project -->
+		<TargetFrameworks>net8.0-windows10.0.19041.0;net9.0-windows10.0.26100.0</TargetFrameworks>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+		<UseWinUI>true</UseWinUI>
+		
+		<!-- AOT -->
+		<PublishAot>true</PublishAot>
+		<IsAotCompatible>true</IsAotCompatible>
+		<PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
+		<PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(IsWinUIProject)' == 'true'">
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
+	</ItemGroup>
+	<!-- UWP specific properties -->
+	<PropertyGroup Condition="'$(IsUwpProject)' == 'true'">
+		<DefineConstants>$(DefineConstants);UAP;UWP;HAS_UWP</DefineConstants>
+
+		<!-- UWP project -->
+		<TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+		<UseUwp>true</UseUwp>
+		<UseUwpTools>true</UseUwpTools>
+		<IsAotCompatible>true</IsAotCompatible>
+		<DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
+	</PropertyGroup>
 </Project>
