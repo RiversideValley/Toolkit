@@ -3,6 +3,7 @@
 	<Import Project="$(MSBuildThisFileDirectory)\eng\AdditionalFiles.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\CurrentVersion.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" />
+	<Import Project="$(MSBuildThisFileDirectory)\eng\Tooling.props"/>
 	<PropertyGroup>
 		<RootDirectory Condition=" '$(RootDirectory)' == '' ">$(MSBuildThisFileDirectory)</RootDirectory>
 		<SourceDirectory Condition=" '$(SourceDirectory)' == '' ">$(MSBuildThisFileDirectory)src</SourceDirectory>
