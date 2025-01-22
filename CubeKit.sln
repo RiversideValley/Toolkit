@@ -28,6 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eng", "eng", "{CED2FD51-11B
 		eng\AdditionalFiles.props = eng\AdditionalFiles.props
 		eng\CurrentVersion.props = eng\CurrentVersion.props
 		eng\PackageMetadata.props = eng\PackageMetadata.props
+		eng\Tooling.props = eng\Tooling.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Alloy", "eng\alloy\src\Riverside.Alloy\Riverside.Alloy.csproj", "{73088968-5905-EC93-25F9-FACA42E0814D}"
