@@ -53,7 +53,7 @@
     <PackageReference Include="MSTest.TestFramework" Version="3.7.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Riverside.Toolkit\Riverside.Toolkit.WinUI.csproj" />
+    <ProjectReference Include="..\..\src\platforms\Riverside.Toolkit.WinUI.Controls\Riverside.Toolkit.WinUI.Controls.csproj" />
   </ItemGroup>
 
   <!-- 
