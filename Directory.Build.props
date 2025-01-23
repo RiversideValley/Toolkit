@@ -4,6 +4,7 @@
 	<Import Project="$(MSBuildThisFileDirectory)\eng\CurrentVersion.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\Tooling.props"/>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\SharedCodeMapping.props"/>
 	<PropertyGroup>
 		<RootDirectory Condition=" '$(RootDirectory)' == '' ">$(MSBuildThisFileDirectory)</RootDirectory>
 		<SourceDirectory Condition=" '$(SourceDirectory)' == '' ">$(MSBuildThisFileDirectory)src</SourceDirectory>
@@ -24,10 +25,16 @@
 		<DisplayVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</DisplayVersion>
 		<DisplayVersion Condition="'$(ReleaseLevel)' != 'final'">$(DisplayVersion)-$(ReleaseLevel)$(BetaVersion)</DisplayVersion>
 		<Version>$(DisplayVersion)</Version>
+
+		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<!-- Deterministic build -->
 	<PropertyGroup Condition="'$(TF_BUILD)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="$(BuildDirectory)\GlobalUsings.cs" />
+	</ItemGroup>
 </Project>
