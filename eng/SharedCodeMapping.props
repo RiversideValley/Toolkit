@@ -10,5 +10,5 @@
   </PropertyGroup>
 
     <!-- Conditionally include shared project references based on the base project name -->
-    <Import Project="$(MSBuildThisFileDirectory)\..\src\core\$(BaseProjectName)\$(BaseProjectName).projitems" Label="Shared" />
+    <Import Project="$(MSBuildThisFileDirectory)\..\src\core\$(BaseProjectName)\$(BaseProjectName).projitems" Label="Shared" Condition="Exists('$(MSBuildThisFileDirectory)\..\src\core\$(BaseProjectName)\$(BaseProjectName).projitems')" />
 </Project>
