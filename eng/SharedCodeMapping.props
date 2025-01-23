@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <!-- Define the base path for shared projects -->
+    <SharedProjectsBasePath>$(SharedDirectory)</SharedProjectsBasePath>
+
+    <!-- Get the project name without the NETCore, WinUI, or Uwp keyword -->
+    <BaseProjectName Condition="$(MSBuildProjectName.Contains('NETCore'))">$(MSBuildProjectName.Replace('.NETCore', ''))</BaseProjectName>
+    <BaseProjectName Condition="$(MSBuildProjectName.Contains('WinUI'))">$(MSBuildProjectName.Replace('.WinUI', ''))</BaseProjectName>
+    <BaseProjectName Condition="$(MSBuildProjectName.Contains('Uwp'))">$(MSBuildProjectName.Replace('.Uwp', ''))</BaseProjectName>
+  </PropertyGroup>
+
+    <!-- Conditionally include shared project references based on the base project name -->
+    <Import Project="$(MSBuildThisFileDirectory)\..\src\core\$(BaseProjectName)\$(BaseProjectName).projitems" Label="Shared" />
+</Project>
