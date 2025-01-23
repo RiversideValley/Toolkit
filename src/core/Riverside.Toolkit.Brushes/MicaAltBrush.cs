@@ -5,10 +5,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.ApplicationModel;
-using Windows.UI;
-using Windows.UI.Composition;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
 
 namespace Cube.UI.Brushes
 {
@@ -166,7 +162,9 @@ namespace Cube.UI.Brushes
             CompositionEffectBrush micaEffectBrush = compositor.CreateEffectFactory(colorBlendEffect).CreateBrush();
             //var blurredWallpaperBackdropBrush = (ICompositorWithBlurredWallpaperBackdropBrush)((object)compositor); // Code for < 22000 SDK
             //micaEffectBrush.SetSourceParameter("BlurredWallpaperBackdrop", blurredWallpaperBackdropBrush.TryCreateBlurredWallpaperBackdropBrush());
+#if UWP
             micaEffectBrush.SetSourceParameter("BlurredWallpaperBackdrop", compositor.TryCreateBlurredWallpaperBackdropBrush());
+#endif
 
             return micaEffectBrush;
         }
