@@ -1,5 +1,5 @@
 ﻿#if WinUI
-using CommunityToolkit.WinUI.UI.Helpers;
+using CommunityToolkit.WinUI.Helpers;
 using WinUIEx;
 
 #nullable enable
