@@ -23,6 +23,8 @@ global using global::Microsoft.UI.Xaml.Hosting;
 global using global::Microsoft.UI.Xaml.Media.Animation;
 global using global::Microsoft.UI.Xaml.Shapes;
 global using global::Microsoft.UI.Xaml.Controls.Primitives;
+
+global using global::Windows.UI;
 #endif
 #if UWP
 global using global::Windows;
