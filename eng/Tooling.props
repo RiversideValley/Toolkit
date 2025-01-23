@@ -14,6 +14,16 @@
 		<PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
 	</PropertyGroup>
 
+	<!-- Dependencies -->
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="DependencyPropertyGenerator" Version="1.4.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Riverside.ComponentModel" Version="0.3.1" />
+	</ItemGroup>
+
 	<!-- .NET Core specific properties -->
 	<PropertyGroup Condition="'$(IsNetCoreProject)' == 'true'">
 		<DefineConstants>$(DefineConstants);NETCore</DefineConstants>
@@ -49,4 +59,7 @@
 		<DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
 		<IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
+	<ItemGroup Condition="'$(IsUwpProject)' == 'true' ">
+		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
+	</ItemGroup>
 </Project>
