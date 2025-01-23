@@ -1,5 +1,4 @@
 ﻿#if WinUI
-using CommunityToolkit.WinUI.Helpers;
 using WinUIEx;
 
 #nullable enable
@@ -27,8 +26,6 @@ public partial class TitleBarEx
     private void CurrentWindow_PositionChanged(object? sender, Windows.Graphics.PointInt32 e) => InvokeChecks();
 
     private void CurrentWindow_SizeChanged(object sender, WindowSizeChangedEventArgs args) => InvokeChecks();
-
-    private void ThemeListener_ThemeChanged(ThemeListener sender) => InvokeChecks();
 
     private void CurrentWindow_Closed(object sender, WindowEventArgs args)
     {

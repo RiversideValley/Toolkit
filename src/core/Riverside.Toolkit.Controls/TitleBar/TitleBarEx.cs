@@ -1,5 +1,4 @@
 ﻿#if WinUI
-using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -15,9 +14,6 @@ public partial class TitleBarEx : Control
 {
     // The window
     protected WindowEx? CurrentWindow { get; private set; }
-
-    // Theme listener
-    private ThemeListener ThemeListener { get; set; } = new ThemeListener();
 
     // UI controls
     protected Button? CloseButton { get; private set; }
@@ -89,9 +85,6 @@ public partial class TitleBarEx : Control
 
         // Attach load events
         content.Loaded += ContentLoaded;
-
-        // Attach theme listener event
-        this.ThemeListener.ThemeChanged += ThemeListener_ThemeChanged;
 
         // Initialize window properties and behaviors
         UpdateWindowSizeAndPosition();
