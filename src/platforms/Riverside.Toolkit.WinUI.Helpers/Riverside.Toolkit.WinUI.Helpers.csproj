@@ -1,5 +1,2 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <PackageReference Include="Riverside.ComponentModel" Version="0.3.1" />
-  </ItemGroup>
 </Project>
