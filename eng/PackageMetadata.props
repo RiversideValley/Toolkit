@@ -20,7 +20,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="$(RootDirectory)\README.md">
+		<None Include="$(SourceDirectory)\README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
