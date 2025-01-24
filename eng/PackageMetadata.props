@@ -20,12 +20,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="$(BuildDirectory)\PackageLogo.png">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Include="$(RootDirectory)\README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
@@ -33,9 +27,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="$(BuildDirectory)\PackageLogo.png">
+		<Content Include="$(BuildDirectory)\PackageLogo.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
-		</None>
+		</Content>
 	</ItemGroup>
 </Project>
