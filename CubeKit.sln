@@ -70,6 +70,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.WinUI.Ico
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.WinUI.Services", "src\platforms\Riverside.Toolkit.WinUI.Services\Riverside.Toolkit.WinUI.Services.csproj", "{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Flyouts", "src\Riverside.Toolkit.Flyouts\Riverside.Toolkit.Flyouts.csproj", "{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -146,6 +148,10 @@ Global
 		{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,6 +183,7 @@ Global
 		{245D1074-ABD4-456C-95D8-6C5F06CB6C9E} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{81666F0E-D457-4634-84BB-20DF6D4CCFF4} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1} = {AA619411-1D80-4167-9BB6-84534B676BEB}
+		{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8} = {58CE73C0-AA7E-43B7-AD2E-B66182029009}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {524016A6-E08B-4DAE-AE79-520996BA0E65}
