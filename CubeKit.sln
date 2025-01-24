@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35424.110
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI", "src\Riverside.GlowUI\Riverside.GlowUI.csproj", "{39D58D51-829F-4259-BD22-E65BFFB7D7A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI", "dev\Riverside.GlowUI\Riverside.GlowUI.csproj", "{39D58D51-829F-4259-BD22-E65BFFB7D7A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI.Materials", "src\Riverside.GlowUI.Materials\Riverside.GlowUI.Materials.csproj", "{E19D0B9E-25D9-49BD-8F1B-D3DA0C9C80D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI.Materials", "dev\Riverside.GlowUI.Materials\Riverside.GlowUI.Materials.csproj", "{E19D0B9E-25D9-49BD-8F1B-D3DA0C9C80D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.UITests", "tests\Riverside.Toolkit.UITests\Riverside.Toolkit.UITests.csproj", "{3A31D3ED-B0A5-4023-9E49-7E5F809094D5}"
 EndProject
@@ -70,7 +70,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.WinUI.Ico
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.WinUI.Services", "src\platforms\Riverside.Toolkit.WinUI.Services\Riverside.Toolkit.WinUI.Services.csproj", "{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Flyouts", "src\Riverside.Toolkit.Flyouts\Riverside.Toolkit.Flyouts.csproj", "{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Flyouts", "dev\Riverside.Toolkit.Flyouts\Riverside.Toolkit.Flyouts.csproj", "{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev", "dev", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,8 +159,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{39D58D51-829F-4259-BD22-E65BFFB7D7A1} = {58CE73C0-AA7E-43B7-AD2E-B66182029009}
-		{E19D0B9E-25D9-49BD-8F1B-D3DA0C9C80D9} = {58CE73C0-AA7E-43B7-AD2E-B66182029009}
+		{39D58D51-829F-4259-BD22-E65BFFB7D7A1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{E19D0B9E-25D9-49BD-8F1B-D3DA0C9C80D9} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{3A31D3ED-B0A5-4023-9E49-7E5F809094D5} = {ECDCDFAD-F6D7-4A50-9EA1-B50C7DC6DFC7}
 		{73088968-5905-EC93-25F9-FACA42E0814D} = {CED2FD51-11BB-4E91-959E-47BF1B8C87FC}
 		{19B394FA-B98D-48A5-8F1E-B26A9C8B5D02} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
@@ -183,7 +185,7 @@ Global
 		{245D1074-ABD4-456C-95D8-6C5F06CB6C9E} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{81666F0E-D457-4634-84BB-20DF6D4CCFF4} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{5D3784A7-CC3B-43FE-8AF3-8C996ADBC4E1} = {AA619411-1D80-4167-9BB6-84534B676BEB}
-		{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8} = {58CE73C0-AA7E-43B7-AD2E-B66182029009}
+		{B1BBC377-DAE1-4638-5A7A-2AB159EE8BB8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {524016A6-E08B-4DAE-AE79-520996BA0E65}
