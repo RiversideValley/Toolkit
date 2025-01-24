@@ -1,4 +1,0 @@
-[submodule "eng/alloy"]
-	path = eng/alloy
-	url = https://github.com/Lamparter/Alloy
-	branch = main
