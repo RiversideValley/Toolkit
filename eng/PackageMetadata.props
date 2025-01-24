@@ -15,6 +15,8 @@
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+		<PackageIcon>PackageLogo.png</PackageIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
