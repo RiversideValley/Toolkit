@@ -13,7 +13,7 @@
 		<ToolkitDirectory Condition=" '$(ToolkitDirectory)' == '' ">$(SourceDirectory)\platforms</ToolkitDirectory>
 		<SharedDirectory Condition=" '$(SharedDirectory)' == '' ">$(SourceDirectory)\core</SharedDirectory>
 
-		<Product>Rosetta</Product>
+		<Product>CubeKit</Product>
 		<Company>Riverside Valley Corporation</Company>
 		<AssemblyVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</AssemblyVersion>
 		<InformationalVersion>$(Product), Version=$(MajorVersion).$(MinorVersion).$(MicroVersion), Channel=$(ReleaseLevel)</InformationalVersion>
