@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-windows10.0.22621.0;net9.0-windows10.0.26100.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
 	</PropertyGroup>
 </Project>
