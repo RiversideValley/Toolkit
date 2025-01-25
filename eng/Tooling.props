@@ -31,7 +31,7 @@
 		<DefineConstants>$(DefineConstants);NETCore</DefineConstants>
 		
 		<!-- .NET Core project -->
-		<TargetFrameworks>net8.0;net9.0;netstandard2.1</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0;netstandard2.1;netstandard2.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<!-- WinUI specific properties -->
