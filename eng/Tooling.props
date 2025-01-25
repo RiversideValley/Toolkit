@@ -30,6 +30,7 @@
 		
 		<!-- .NET Core project -->
 		<TargetFrameworks>net8.0;net9.0;netstandard2.1</TargetFrameworks>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<!-- WinUI specific properties -->
 	<PropertyGroup Condition="'$(IsWinUIProject)' == 'true'">
