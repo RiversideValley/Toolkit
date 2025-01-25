@@ -4,6 +4,8 @@
 		<IsUwpProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('Uwp')) ">true</IsUwpProject>
 		<IsWinUIProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('WinUI')) ">true</IsWinUIProject>
 		<IsNetCoreProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('NETCore')) ">true</IsNetCoreProject>
+
+		<IsExtensionsProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('Extensions')) ">true</IsExtensionsProject>
 	</PropertyGroup>
 
 	<!-- AOT -->
