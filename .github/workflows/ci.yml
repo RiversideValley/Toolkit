@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '*.md'
+  pull_request:
+    paths-ignore:
+      - '*.md'
+
+# The run name, either 'CubeKit PR Validation' if via a PR, or just 'CubeKit CI' if activated another way.
+run-name: ${{ github.event_name == 'pull_request' && 'CubeKit PR Validation' || 'CubeKit CI' }}
+
+# Environment variables. No values should be hardcoded, they should all be accessible as an environment variable.
+env:
+  # MSBuild file locations
+  WORKING_DIR: ${{ github.workspace }}
+  SOLUTION_PATH: '${{ github.workspace }}\CubeKit.sln'
+  HEAD_PROJECTS_DIR: '${{ github.workspace }}\src\platforms'
+  HEAD_EXTENSIONS_DIR: '${{ github.workspace }}\src\extensions'
+  # Build configurations and tests
+  AUTOMATED_TESTS_ARCHITECTURE: 'x64'
+  AUTOMATED_TESTS_CONFIGURATION: 'Release'
+  # AUTOMATED_TESTS_PROJECT_DIR: '${{ github.workspace }}\tests\Files.InteractionTests'
+  # AUTOMATED_TESTS_PROJECT_PATH: '${{ github.workspace }}\tests\Files.InteractionTests\Files.InteractionTests.csproj'
+  # AUTOMATED_TESTS_ASSEMBLY_DIR: '${{ github.workspace }}\artifacts\TestsAssembly'
+  ARTIFACTS_STAGING_DIR:  '${{ github.workspace }}\artifacts'
+
+# Runner jobs
+jobs:
+  # This is a simple workflow that checks the formatting of XAML.
+  # XAML is not used in many places in CubeKit, but ensuring that
+  # it is formatted is imperative nonetheless.
+  # TODO: Migrate this to a separate workflow in another repository
+  check-formatting:
+    name: Check Formatting
+
+    if: github.repository_owner == 'RiversideValley'
+
+    runs-on: windows-latest
+
+    steps:
+
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v4
+
+    - name: Install XamlStyler.Console
+      run: 'dotnet tool install --global XamlStyler.Console'
+
+    - name: Check XAML formatting
+      id: check-step
+      run: |
+        $changedFiles = (git diff --diff-filter=d --name-only HEAD~1) -split "\n" | Where-Object {$_ -like "*.xaml"}
+        foreach ($file in $changedFiles)
+        {
+          xstyler -p -l None -f $file
+          if ($LASTEXITCODE -ne 0)
+          {
+            echo "::error file=$file::Format check failed"
+          }
+        }
+      continue-on-error: true
+    
+    - name: Fail if necessary
+      if: steps.check-step.outcome == 'failure'
+      run: exit 1
+
+  build:
+    name: Build
+
+    if: github.repository_owner == 'RiversideValley'
+
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        configuration: [Debug, Release]
+        platform: [Any CPU]
+    env:
+      CONFIGURATION: ${{ matrix.configuration }}
+      ARCHITECTURE: ${{ matrix.platform }}
+      SLN_CONFIG_VALUE: ${{ matrix.configuration }}|${{ matrix.platform }}
+
+    steps:
+
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.x
+
+    - name: Restore NuGet
+      shell: pwsh
+      run: 'nuget restore $env:SOLUTION_PATH'
+
+    - name: Restore project
+      shell: pwsh
+      run: |
+        msbuild $env:SOLUTION_PATH `
+          -t:Restore `
+          -p:Platform=$env:ARCHITECTURE `
+          -p:Configuration=$env:CONFIGURATION
+
+    - name: Build CubeKit
+      run: |
+        msbuild `
+          $env:PACKAGE_PROJECT_PATH `
+          -t:Build `
+          -clp:ErrorsOnly `
+          -p:Configuration=$env:CONFIGURATION `
+          -p:Platform=$env:ARCHITECTURE
