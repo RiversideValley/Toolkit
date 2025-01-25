@@ -86,6 +86,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Extensions.WinUI"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Extensions.Primitives", "src\extensions\Riverside.Extensions.Primitives\Riverside.Extensions.Primitives.csproj", "{FF7718E4-E0C6-4803-A502-6E7ADF2392B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Extensions.PInvoke", "src\extensions\Riverside.Extensions.PInvoke\Riverside.Extensions.PInvoke.csproj", "{5AB57E49-B230-445F-83E6-0B1B05580286}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -182,6 +184,10 @@ Global
 		{FF7718E4-E0C6-4803-A502-6E7ADF2392B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF7718E4-E0C6-4803-A502-6E7ADF2392B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF7718E4-E0C6-4803-A502-6E7ADF2392B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AB57E49-B230-445F-83E6-0B1B05580286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AB57E49-B230-445F-83E6-0B1B05580286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AB57E49-B230-445F-83E6-0B1B05580286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB57E49-B230-445F-83E6-0B1B05580286}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -220,6 +226,7 @@ Global
 		{3F4D5A40-9934-4518-BAB1-C3EBB1D434CB} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{1F1BAB82-B6C3-46D1-920E-D41FD775D4C7} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{FF7718E4-E0C6-4803-A502-6E7ADF2392B2} = {91BB25A0-AA77-4B6C-A101-2717467BA888}
+		{5AB57E49-B230-445F-83E6-0B1B05580286} = {91BB25A0-AA77-4B6C-A101-2717467BA888}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {524016A6-E08B-4DAE-AE79-520996BA0E65}
