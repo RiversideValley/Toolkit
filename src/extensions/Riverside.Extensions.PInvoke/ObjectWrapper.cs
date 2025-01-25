@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Riverside.ComponentModel
+namespace Riverside.Extensions.PInvoke
 {
     /// <summary>
     /// A wrapper class for COM objects to ensure proper disposal.

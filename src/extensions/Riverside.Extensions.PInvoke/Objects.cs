@@ -1,4 +1,4 @@
-﻿namespace Riverside.ComponentModel
+﻿namespace Riverside.Extensions.PInvoke
 {
     public static class Objects
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Riverside.ComponentModel
+namespace Riverside.Extensions.PInvoke
 {
     /// <summary>
     /// A static helper class for handling COM errors.

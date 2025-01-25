@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace Riverside.ComponentModel
+namespace Riverside.Extensions.PInvoke
 {
     /// <summary>
     /// Provides utility methods for COM interop.
