@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35424.110
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -73,7 +73,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev", "dev", "{2E2D7A71-B62
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extensions", "extensions", "{91BB25A0-AA77-4B6C-A101-2717467BA888}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Riverside.Extensions.WinUI", "src\extensions\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.shproj", "{A33F78A1-9797-47F2-A93E-BA1963E3C0BD}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Riverside.Extensions.WinUI", "src\core\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.shproj", "{A33F78A1-9797-47F2-A93E-BA1963E3C0BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Extensions.Versioning", "src\extensions\Riverside.Extensions.Versioning\Riverside.Extensions.Versioning.csproj", "{1846753E-E9A5-43C1-9BD5-75E96FAA7273}"
 EndProject
