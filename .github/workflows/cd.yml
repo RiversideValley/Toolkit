@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: Publish
     runs-on: windows-latest
     environment: NuGet
     strategy:
@@ -47,7 +48,7 @@ jobs:
       run: |
         msbuild "$env:SOLUTION_PATH" `
         -t:Build `
-        -p:Platform=$env:PLATFORM `
+        -p:Platform=$env:ARCHITECTURE `
         -p:Configuration=$env:CONFIGURATION
 
     - name: Package CubeKit
