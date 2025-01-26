@@ -3,7 +3,6 @@
 #if WINDOWS10_0_18362_0_OR_GREATER
 
 using System.Numerics;
-using Windows.UI;
 
 namespace Riverside.Toolkit.Controls;
 
