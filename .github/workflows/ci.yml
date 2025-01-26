@@ -115,7 +115,7 @@ jobs:
     - name: Build CubeKit
       run: |
         msbuild `
-          $env:PACKAGE_PROJECT_PATH `
+          $env:SOLUTION_PATH `
           -t:Build `
           -clp:ErrorsOnly `
           -p:Configuration=$env:CONFIGURATION `
