@@ -5,6 +5,14 @@
 		<PackageReference Include="Riverside.ComponentModel" Version="0.3.1" />
 	</ItemGroup>
 
+	<!-- UWP or WinUI -->
+	<ItemGroup Condition="'$(IsUapProject)' == 'true'">
+		<PackageReference Include="CommunityToolkit.Labs.WinUI.DependencyPropertyGenerator" Version="0.1.250109-pull-624.2010">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
 	<!-- UWP-->
 	<ItemGroup Condition="'$(IsUwpProject)' == 'true' ">
 		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
