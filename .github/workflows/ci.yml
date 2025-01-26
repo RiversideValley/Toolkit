@@ -119,4 +119,5 @@ jobs:
           -t:Build `
           -clp:ErrorsOnly `
           -p:Configuration=$env:CONFIGURATION `
-          -p:Platform=$env:ARCHITECTURE
+          -p:Platform=$env:ARCHITECTURE `
+          -p:GITHUB_ACTIONS=true
