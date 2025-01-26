@@ -1,4 +1,4 @@
-﻿namespace Cube.UI.Brushes;
+namespace Riverside.Toolkit.Brushes;
 
 public enum BackdropKind
 {
