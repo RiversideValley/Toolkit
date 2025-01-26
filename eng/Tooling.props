@@ -4,6 +4,8 @@
 		<IsUwpProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('Uwp')) ">true</IsUwpProject>
 		<IsWinUIProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('WinUI')) ">true</IsWinUIProject>
 		<IsNetCoreProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('NETCore')) ">true</IsNetCoreProject>
+
+		<IsUapProject Condition=" '$(IsWinUIProject)' == 'true' or '$(IsUwpProject)' == 'true' ">true</IsUapProject>
 	</PropertyGroup>
 
 	<!-- AOT -->
@@ -13,12 +15,6 @@
 		<PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
 		<PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
 	</PropertyGroup>
-
-	<!-- Dependencies -->
-	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="Riverside.ComponentModel" Version="0.3.1" />
-	</ItemGroup>
 
 	<!-- .NET Core specific properties -->
 	<PropertyGroup Condition="'$(IsNetCoreProject)' == 'true'">
@@ -39,16 +35,6 @@
 		<UseWinUI>true</UseWinUI>
 		<IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(IsWinUIProject)' == 'true'">
-		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
-		<PackageReference Include="WinUIEx" Version="2.5.1" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.3.1" />
-		<PackageReference Include="DependencyPropertyGenerator" Version="1.4.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
 	<!-- UWP specific properties -->
 	<PropertyGroup Condition="'$(IsUwpProject)' == 'true'">
 		<DefineConstants>$(DefineConstants);UAP;UWP;HAS_UWP</DefineConstants>
@@ -61,12 +47,4 @@
 		<DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
 		<IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(IsUwpProject)' == 'true' ">
-		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
-		<PackageReference Include="Win2D.uwp" Version="1.28.1" />
-		<PackageReference Include="DependencyPropertyGenerator" Version="1.4.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
 </Project>

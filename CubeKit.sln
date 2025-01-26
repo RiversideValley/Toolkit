@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eng", "eng", "{CED2FD51-11B
 	ProjectSection(SolutionItems) = preProject
 		eng\AdditionalFiles.props = eng\AdditionalFiles.props
 		eng\CurrentVersion.props = eng\CurrentVersion.props
+		eng\Dependencies.props = eng\Dependencies.props
 		eng\GlobalUsings.cs = eng\GlobalUsings.cs
 		eng\PackageLogo.png = eng\PackageLogo.png
 		eng\PackageMetadata.props = eng\PackageMetadata.props
