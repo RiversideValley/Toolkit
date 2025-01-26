@@ -2,13 +2,12 @@
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace Riverside.GlowUI.Materials
+namespace Riverside.GlowUI.Materials;
+
+public sealed partial class AuroraLite : UserControl
 {
-    public sealed partial class AuroraLite : UserControl
+    public AuroraLite()
     {
-        public AuroraLite()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

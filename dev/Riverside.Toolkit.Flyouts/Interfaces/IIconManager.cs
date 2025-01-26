@@ -1,13 +1,12 @@
 ﻿using H.NotifyIcon.Core;
 
-namespace Riverside.Toolkit.Flyouts.Interfaces
+namespace Riverside.Toolkit.Flyouts.Interfaces;
+
+public interface IIconManager
 {
-    public interface IIconManager
-    {
-        public TrayIcon FlyoutIcon { get; set; }
+    public TrayIcon FlyoutIcon { get; set; }
 
-        public bool Initialize();
+    public bool Initialize();
 
-        public void Dispose();
-    }
+    public void Dispose();
 }

@@ -1,7 +1,6 @@
-﻿namespace Riverside.Toolkit.Flyouts.Interfaces
-{
-    public interface IFlyoutWindow
-    {
+﻿namespace Riverside.Toolkit.Flyouts.Interfaces;
 
-    }
+public interface IFlyoutWindow
+{
+
 }

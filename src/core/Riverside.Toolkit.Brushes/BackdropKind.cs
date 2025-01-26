@@ -1,9 +1,8 @@
-﻿namespace Cube.UI.Brushes
+﻿namespace Cube.UI.Brushes;
+
+public enum BackdropKind
 {
-    public enum BackdropKind
-    {
-        Base = 0,
-        BaseAlt = 1,
-        Custom = 2
-    }
+    Base = 0,
+    BaseAlt = 1,
+    Custom = 2
 }

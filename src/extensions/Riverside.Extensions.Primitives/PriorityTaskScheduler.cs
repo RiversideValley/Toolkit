@@ -1,72 +1,71 @@
 ﻿using System.Collections.Concurrent;
 
-namespace Riverside.Extensions
+namespace Riverside.Extensions;
+
+/// <summary>
+/// Provides a priority-based task scheduler to control the execution of tasks based on their priority.
+/// </summary>
+public class PriorityTaskScheduler(int maxConcurrentTasks)
 {
+    private readonly ConcurrentDictionary<int, Queue<Func<Task>>> _taskQueues = new();
+    private readonly SemaphoreSlim _semaphore = new(maxConcurrentTasks, maxConcurrentTasks);
+    private readonly object _lock = new();
+
     /// <summary>
-    /// Provides a priority-based task scheduler to control the execution of tasks based on their priority.
+    /// Enqueues a task with the specified priority.
     /// </summary>
-    public class PriorityTaskScheduler(int maxConcurrentTasks)
+    /// <param name="task">The task to enqueue.</param>
+    /// <param name="priority">The priority of the task.</param>
+    public void EnqueueTask(Func<Task> task, int priority)
     {
-        private readonly ConcurrentDictionary<int, Queue<Func<Task>>> _taskQueues = new();
-        private readonly SemaphoreSlim _semaphore = new(maxConcurrentTasks, maxConcurrentTasks);
-        private readonly object _lock = new();
-
-        /// <summary>
-        /// Enqueues a task with the specified priority.
-        /// </summary>
-        /// <param name="task">The task to enqueue.</param>
-        /// <param name="priority">The priority of the task.</param>
-        public void EnqueueTask(Func<Task> task, int priority)
+        lock (_lock)
         {
-            lock (_lock)
+            if (!_taskQueues.ContainsKey(priority))
             {
-                if (!_taskQueues.ContainsKey(priority))
-                {
-                    _taskQueues[priority] = new Queue<Func<Task>>();
-                }
-
-                _taskQueues[priority].Enqueue(task);
+                _taskQueues[priority] = new Queue<Func<Task>>();
             }
 
-            _ = Task.Run(ProcessTasks);
+            _taskQueues[priority].Enqueue(task);
         }
 
-        /// <summary>
-        /// Processes the tasks in the queue based on their priority.
-        /// </summary>
-        private async Task ProcessTasks()
+        _ = Task.Run(ProcessTasks);
+    }
+
+    /// <summary>
+    /// Processes the tasks in the queue based on their priority.
+    /// </summary>
+    private async Task ProcessTasks()
+    {
+        await _semaphore.WaitAsync();
+
+        try
         {
-            await _semaphore.WaitAsync();
+            Func<Task> taskToExecute = null;
 
-            try
+            lock (_lock)
             {
-                Func<Task> taskToExecute = null;
-
-                lock (_lock)
+                foreach (int priority in _taskQueues.Keys.OrderByDescending(p => p))
                 {
-                    foreach (int priority in _taskQueues.Keys.OrderByDescending(p => p))
+                    if (_taskQueues[priority].Count > 0)
                     {
-                        if (_taskQueues[priority].Count > 0)
+                        taskToExecute = _taskQueues[priority].Dequeue();
+                        if (_taskQueues[priority].Count == 0)
                         {
-                            taskToExecute = _taskQueues[priority].Dequeue();
-                            if (_taskQueues[priority].Count == 0)
-                            {
-                                _ = _taskQueues.TryRemove(priority, out _);
-                            }
-                            break;
+                            _ = _taskQueues.TryRemove(priority, out _);
                         }
+                        break;
                     }
                 }
+            }
 
-                if (taskToExecute != null)
-                {
-                    await taskToExecute();
-                }
-            }
-            finally
+            if (taskToExecute != null)
             {
-                _ = _semaphore.Release();
+                await taskToExecute();
             }
+        }
+        finally
+        {
+            _ = _semaphore.Release();
         }
     }
 }

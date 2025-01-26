@@ -1,7 +1,6 @@
-﻿namespace Riverside.Toolkit.Flyouts.Interfaces
+﻿namespace Riverside.Toolkit.Flyouts.Interfaces;
+
+public interface IPositionHelper
 {
-    public interface IPositionHelper
-    {
-        void Positionflyout(BaseWindow Flyout);
-    }
+    void Positionflyout(BaseWindow Flyout);
 }
