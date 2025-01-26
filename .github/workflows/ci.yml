@@ -120,4 +120,5 @@ jobs:
           -clp:ErrorsOnly `
           -p:Configuration=$env:CONFIGURATION `
           -p:Platform=$env:ARCHITECTURE `
-          -p:GITHUB_ACTIONS=true
+          -p:GITHUB_ACTIONS=true `
+          -p:ExcludeProjects="Riverside.GlowUI*"
