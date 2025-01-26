@@ -46,10 +46,12 @@ public struct Version : IEquatable<Version>, IComparable<Version>
         return obj is Version other && Equals(other);
     }
 
+#if !NETSTANDARD2_0
     public override readonly int GetHashCode()
     {
         return HashCode.Combine(Major, Minor, Patch, PreRelease, BuildMetadata);
     }
+#endif
 
     public readonly int CompareTo(Version other)
     {
