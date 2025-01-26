@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cube.UI.Brushes
+namespace Riverside.Toolkit.Brushes
 {
     public enum BackdropKind
     {

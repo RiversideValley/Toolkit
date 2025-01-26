@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.ApplicationModel;
 
-namespace Cube.UI.Brushes
+namespace Riverside.Toolkit.Brushes
 {
     public class MicaAltBrush : XamlCompositionBrushBase, INotifyPropertyChanged
     {
