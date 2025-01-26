@@ -1,10 +1,10 @@
 ﻿using Riverside.Toolkit.Flyouts.Transparency;
 using Windows.Win32;
+using Windows.Win32.Foundation;
+using Windows.Win32.UI.WindowsAndMessaging;
 using WinRT.Interop;
 using WinUIEx;
 using WinUIEx.Messaging;
-using Windows.Win32.Foundation;
-using Windows.Win32.UI.WindowsAndMessaging;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.

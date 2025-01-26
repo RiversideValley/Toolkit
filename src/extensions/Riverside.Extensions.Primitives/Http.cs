@@ -1,11 +1,7 @@
 ﻿using Riverside.Extensions.Circuits;
 using Riverside.Extensions.Policies;
 using Riverside.Extensions.RateLimiters;
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Riverside.Extensions
 {

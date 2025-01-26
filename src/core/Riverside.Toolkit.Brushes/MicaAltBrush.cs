@@ -1,8 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.Graphics.Canvas.Effects;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Microsoft.Graphics.Canvas.Effects;
 using System.Runtime.CompilerServices;
 using Windows.ApplicationModel;
 

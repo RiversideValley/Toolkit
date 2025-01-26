@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Riverside.Extensions.Policies
+﻿namespace Riverside.Extensions.Policies
 {
     /// <summary>
     /// Provides a timeout policy to handle operations that exceed a specified time limit.

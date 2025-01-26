@@ -1,8 +1,5 @@
-﻿using Riverside.Toolkit.Flyouts.Interfaces;
-using Microsoft.UI.Windowing;
-using System;
-using System.Diagnostics;
-using Windows.Graphics;
+﻿using Microsoft.UI.Windowing;
+using Riverside.Toolkit.Flyouts.Interfaces;
 using WinUIEx;
 
 namespace Riverside.Toolkit.Flyouts.Helpers
@@ -18,8 +15,8 @@ namespace Riverside.Toolkit.Flyouts.Helpers
             double W = Flyout.Width;
             double H = Flyout.Height;
 
-            Flyout.MoveAndResize((DisplayWidth / 1.17 ) - (W / 2), (DisplayHeight / 1.17) - (H / 2), W, H);
-        //    Flyout.MoveAndResize(DisplayWidth - W , DisplayHeight - H , Flyout.Width, Flyout.Height);
+            Flyout.MoveAndResize((DisplayWidth / 1.17) - (W / 2), (DisplayHeight / 1.17) - (H / 2), W, H);
+            //    Flyout.MoveAndResize(DisplayWidth - W , DisplayHeight - H , Flyout.Width, Flyout.Height);
         }
 
         private double GetScale()

@@ -58,9 +58,9 @@ namespace Riverside.Toolkit.Services
 
             // Ensure the custom title bar does not overlap window caption controls
             Thickness currMargin = AppTitleBar.Margin;
-			//  AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
-			AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, currMargin.Right, currMargin.Bottom);
-		}
+            //  AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
+            AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, currMargin.Right, currMargin.Bottom);
+        }
 
         private static void CoreTitleBar_IsVisibleChanged(CoreApplicationViewTitleBar sender, object args) => AppTitleBar.Visibility = sender.IsVisible ? Visibility.Visible : Visibility.Collapsed;
 

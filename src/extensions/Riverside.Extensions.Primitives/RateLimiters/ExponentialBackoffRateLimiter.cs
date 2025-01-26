@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Riverside.Extensions.RateLimiters
+﻿namespace Riverside.Extensions.RateLimiters
 {
     /// <summary>
     /// Provides an exponential backoff rate limiter to control the rate of operations.

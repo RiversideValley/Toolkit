@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Riverside.Extensions
+﻿namespace Riverside.Extensions
 {
     /// <summary>
     /// Provides a bulkhead isolation mechanism to limit the number of concurrent requests.

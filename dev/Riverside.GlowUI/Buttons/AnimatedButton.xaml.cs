@@ -1,12 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 
 namespace Cube.UI.Buttons
 {
@@ -21,7 +14,7 @@ namespace Cube.UI.Buttons
             set
             {
                 SetProperty(ref icon, value);
-                if(Player is not null)
+                if (Player is not null)
                     Player.Source = value;
             }
         }

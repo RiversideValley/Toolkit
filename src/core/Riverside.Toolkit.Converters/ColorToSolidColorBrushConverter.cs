@@ -1,8 +1,4 @@
-﻿using System;
-using Windows.UI;
-using Windows.UI.Xaml.Data;
-
-namespace Riverside.Toolkit.Converters
+﻿namespace Riverside.Toolkit.Converters
 {
     public class ColorToSolidColorBrushConverter : IValueConverter
     {

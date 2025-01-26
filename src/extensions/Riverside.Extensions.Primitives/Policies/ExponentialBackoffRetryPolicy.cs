@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Riverside.Extensions.Policies
+﻿namespace Riverside.Extensions.Policies
 {
     /// <summary>
     /// Provides a retry policy with exponential backoff to handle transient failures.

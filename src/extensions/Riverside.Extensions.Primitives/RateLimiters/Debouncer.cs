@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Riverside.Extensions.RateLimiters
+﻿namespace Riverside.Extensions.RateLimiters
 {
     /// <summary>
     /// Provides a debouncing mechanism to limit the rate at which an action is executed.

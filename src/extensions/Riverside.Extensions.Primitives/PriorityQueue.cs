@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Riverside.Extensions
+﻿namespace Riverside.Extensions
 {
     /// <summary>
     /// Represents a priority queue where elements are dequeued based on their priority.

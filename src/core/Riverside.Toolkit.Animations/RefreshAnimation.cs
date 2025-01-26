@@ -1,12 +1,12 @@
 #if WinUI
 
+using Microsoft.Graphics.Canvas.Geometry;
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Windows.Graphics;
 using Windows.UI;
-using Microsoft.Graphics.Canvas.Geometry;
-using Microsoft.UI.Xaml.Controls;
 
 namespace Riverside.Toolkit.Animations
 {

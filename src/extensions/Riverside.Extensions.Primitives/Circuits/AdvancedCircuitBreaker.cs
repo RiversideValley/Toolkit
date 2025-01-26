@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Riverside.Extensions.Circuits
+﻿namespace Riverside.Extensions.Circuits
 {
     /// <summary>
     /// Represents an advanced circuit breaker that can be used to protect resources from being overwhelmed.

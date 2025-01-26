@@ -1,20 +1,10 @@
-﻿using Riverside.Toolkit.Flyouts.Helpers;
+﻿using H.NotifyIcon.Core;
 using Microsoft.UI;
-using System.IO;
-using System;
-using WinUIEx;
-using Microsoft.UI.Xaml.Input;
-using CommunityToolkit.Mvvm;
-using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Riverside.Toolkit.Flyouts.Interfaces;
-using Riverside.Toolkit.Flyouts.Transparency;
-using H.NotifyIcon.Core;
-using System.Drawing;
-using Windows.UI.Core;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using Windows.ApplicationModel;
+using Riverside.Toolkit.Flyouts.Helpers;
+using Riverside.Toolkit.Flyouts.Interfaces;
+using WinUIEx;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -26,7 +16,7 @@ namespace Riverside.Toolkit.Flyouts
     public partial class FlyoutWindow : BaseWindow, IFlyoutWindow
     {
         public IPositionHelper FlyoutPositionHelper = new PositionHelper();
-      
+
 
         public FlyoutWindow()
         {
@@ -43,7 +33,7 @@ namespace Riverside.Toolkit.Flyouts
 
         private void MessageWindow_MouseEventReceived(object sender, MessageWindow.MouseEventReceivedEventArgs e)
         {
-            if(e.MouseEvent is MouseEvent.IconLeftMouseUp)
+            if (e.MouseEvent is MouseEvent.IconLeftMouseUp)
             {
                 this.Show();
                 this.BringToFront();
@@ -54,14 +44,14 @@ namespace Riverside.Toolkit.Flyouts
 
         private void Flyout_Activated(object sender, Microsoft.UI.Xaml.WindowActivatedEventArgs args)
         {
-          //  if (args.WindowActivationState == WindowActivationState.Deactivated)
-               // this.Hide();
+            //  if (args.WindowActivationState == WindowActivationState.Deactivated)
+            // this.Hide();
         }
 
         private void Flyout_Closed(object sender, object e)
         {
             FlyoutBase.ShowAttachedFlyout(FlyoutGrid);
-           // this.Hide();
+            // this.Hide();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

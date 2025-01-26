@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Riverside.Extensions
+﻿namespace Riverside.Extensions
 {
     /// <summary>
     /// Provides a weighted round-robin scheduler to distribute load based on weights.

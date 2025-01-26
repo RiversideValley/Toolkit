@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.UI.Xaml.Media;
+﻿using Microsoft.UI.Xaml.Media;
 using Compositor = Windows.UI.Composition.Compositor;
-using Windows.UI.Composition;
 using ICompositionSupportsSystemBackdrop = Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop;
 
 namespace Riverside.Toolkit.Flyouts.Transparency
