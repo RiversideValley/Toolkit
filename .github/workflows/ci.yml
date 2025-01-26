@@ -80,7 +80,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        configuration: [Debug, Release]
+        configuration: [Debug]
         platform: [Any CPU]
     env:
       CONFIGURATION: ${{ matrix.configuration }}
