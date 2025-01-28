@@ -1,7 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml.Controls;
+﻿#if WinUI
 
-namespace Cube.UI.Buttons;
+using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace Riverside.Toolkit.Controls.Buttons;
 
 [INotifyPropertyChanged]
 public partial class AnimatedButton : Button
@@ -34,3 +35,4 @@ public partial class AnimatedButton : Button
             Player.Source = AnimatedIcon;
     }
 }
+#endif

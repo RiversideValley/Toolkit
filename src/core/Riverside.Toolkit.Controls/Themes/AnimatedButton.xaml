@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ToolkitControls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:buttons="using:Cube.UI.Buttons"
+    xmlns:ToolkitControls="using:Riverside.Toolkit.Controls"
+    xmlns:buttons="using:Riverside.Toolkit.Controls.Buttons"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls">
     <Style TargetType="buttons:AnimatedButton">
         <Setter Property="Foreground" Value="{ThemeResource SplitButtonForeground}" />

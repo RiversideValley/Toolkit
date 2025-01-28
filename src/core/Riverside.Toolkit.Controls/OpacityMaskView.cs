@@ -3,13 +3,14 @@
 #if WINDOWS10_0_18362_0_OR_GREATER
 
 using System.Numerics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Riverside.Toolkit.Controls;
 
 /// <summary>
 /// A custom control that provides an opacity mask view.
 /// </summary>
-[System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "A compiler #if block was used to disable this call site on versions prior to 10.0.18362.0 so this warning is unnecessary.")]
+[SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "A compiler #if block was used to disable this call site on versions prior to 10.0.18362.0 so this warning is unnecessary.")]
 public partial class OpacityMaskView : RedirectVisualView
 {
     /// <summary>

@@ -2,7 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ToolkitControls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:buttons="using:Cube.UI.Buttons">
+    xmlns:buttons="using:Riverside.Toolkit.UserControls.Buttons">
     <Style TargetType="buttons:FlyoutButton">
         <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
         <Setter Property="Foreground" Value="{ThemeResource ToggleButtonForeground}" />
@@ -27,7 +27,7 @@
                         CornerRadius="4">
                         <ContentPresenter
                             x:Name="ContentPresenter"
-                            Margin="0, 0, 0, 2"
+                            Margin="0,0,0,2"
                             Padding="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"

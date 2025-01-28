@@ -1,6 +1,8 @@
-﻿// The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
+﻿#if WinUI
 
-namespace Cube.UI.Buttons;
+using Riverside.Toolkit.Animations;
+
+namespace Riverside.Toolkit.Controls.Buttons;
 
 public partial class RefreshButton : AnimatedButton
 {
@@ -46,3 +48,4 @@ public partial class RefreshButton : AnimatedButton
         }
     }
 }
+#endif
