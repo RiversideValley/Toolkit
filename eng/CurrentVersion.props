@@ -6,6 +6,6 @@
         <MicroVersion>0</MicroVersion>
         <ReleaseLevel>beta</ReleaseLevel>
 
-        <BetaVersion Condition="'$(ReleaseLevel)' !='final'">4</BetaVersion>
+        <BetaVersion Condition="'$(ReleaseLevel)' !='final'">5</BetaVersion>
     </PropertyGroup>
 </Project>
