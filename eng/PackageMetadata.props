@@ -27,10 +27,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="$(BuildDirectory)\PackageLogo.png">
+		<None Include="$(BuildDirectory)\PackageLogo.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
-		</Content>
+		</None>
 	</ItemGroup>
 </Project>
