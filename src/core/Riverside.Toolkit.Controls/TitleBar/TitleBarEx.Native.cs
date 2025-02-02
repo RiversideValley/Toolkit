@@ -1,5 +1,5 @@
 ﻿#if WinUI
-using Riverside.ComponentModel;
+using Riverside.Extensions.PInvoke;
 using System;
 using System.Runtime.InteropServices;
 

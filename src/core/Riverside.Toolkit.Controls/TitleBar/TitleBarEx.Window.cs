@@ -4,7 +4,7 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
-using Riverside.ComponentModel;
+using Riverside.Extensions.PInvoke;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;

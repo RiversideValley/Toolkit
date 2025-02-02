@@ -1,4 +1,4 @@
-﻿using Riverside.ComponentModel;
+﻿using Riverside.Extensions.PInvoke;
 using System.Runtime.InteropServices;
 using Windows.Foundation;
 
