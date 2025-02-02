@@ -15,13 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)BloomView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)AuroraLite.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Bloom.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
