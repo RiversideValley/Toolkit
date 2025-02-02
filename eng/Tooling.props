@@ -17,7 +17,6 @@
 	<!-- Dependencies -->
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="Riverside.ComponentModel" Version="0.3.1" />
 		<ProjectReference Include="$(SourceDirectory)\extensions\Riverside.Extensions.PInvoke\Riverside.Extensions.PInvoke.csproj" Condition="'$(Configuration)' == 'Debug' and '$(MSBuildProjectName)' != 'Riverside.Extensions.PInvoke'" />
 		<PackageReference Include="Riverside.Extensions.PInvoke" Version="$(Version)" Condition="'$(Configuration)' == 'Release'  and '$(MSBuildProjectName)' != 'Riverside.Extensions.PInvoke'"/>
 	</ItemGroup>
