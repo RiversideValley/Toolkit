@@ -9,9 +9,15 @@
     <Import_RootNamespace>Riverside.Toolkit.Controls</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Buttons\AnimatedButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Buttons\FlyoutButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Buttons\RefreshButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Buttons\TileButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ChatBubble.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CommandLink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DropShadowPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DropShadowPanel.Properties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IAlphaMaskProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OpacityMaskView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RedirectVisualView.cs" />
@@ -26,5 +32,41 @@
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Registry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Window.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.WndProc.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\AnimatedButton.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Buttons.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\DropShadowPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\FlyoutButton.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\RefreshButton.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\TileButton.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ToolbarButtons.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

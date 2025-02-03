@@ -2,7 +2,7 @@
 
 // The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
 
-namespace Cube.UI.Buttons;
+namespace Riverside.Toolkit.Controls.Buttons;
 
 [INotifyPropertyChanged]
 public partial class FlyoutButton : ToggleButton

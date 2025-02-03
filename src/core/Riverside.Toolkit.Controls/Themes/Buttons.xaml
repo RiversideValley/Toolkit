@@ -4,8 +4,8 @@
     xmlns:ToolkitControls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
-    xmlns:icons="using:Cube.UI.Icons"
-    xmlns:swiftlottie="using:Cube.UI.Animations">
+    xmlns:icons="using:Riverside.Toolkit.Icons"
+    xmlns:swiftlottie="using:Riverside.Toolkit.Animations">
     <Style x:Key="CloseButton" TargetType="Button">
         <Setter Property="Foreground" Value="{ThemeResource SplitButtonForeground}" />
         <Setter Property="BorderBrush" Value="Transparent" />
@@ -39,7 +39,7 @@
                             ContentTransitions="{TemplateBinding ContentTransitions}"
                             CornerRadius="4" />
                         <icons:FluentSymbolIcon
-                            Margin="0, 0, 2, 2"
+                            Margin="0,0,2,2"
                             VerticalAlignment="Center"
                             Symbol="Dismiss16">
                             <icons:FluentSymbolIcon.Foreground>
@@ -908,7 +908,7 @@
                             ContentTransitions="{TemplateBinding ContentTransitions}"
                             CornerRadius="4" />
                         <icons:FluentSymbolIcon
-                            Margin="0, 0, 2, 2"
+                            Margin="0,0,2,2"
                             VerticalAlignment="Center"
                             Symbol="Dismiss12">
                             <icons:FluentSymbolIcon.Foreground>

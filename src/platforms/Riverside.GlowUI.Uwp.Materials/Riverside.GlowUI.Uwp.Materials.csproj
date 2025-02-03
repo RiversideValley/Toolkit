@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Brushes\Riverside.Toolkit.Uwp.Brushes.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="Riverside.Toolkit.Uwp.Brushes" Version="$(Version)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Uwp.Helpers" Version="8.1.240916" />
+		<!--<PackageReference Include="TenMica" Version="1.0.0-beta" />-->
+	</ItemGroup>
+</Project>

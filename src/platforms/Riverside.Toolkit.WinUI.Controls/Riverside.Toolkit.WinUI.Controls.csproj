@@ -1,8 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
 	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
 		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Helpers\Riverside.Toolkit.WinUI.Helpers.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Animations\Riverside.Toolkit.WinUI.Animations.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
 		<PackageReference Include="Riverside.Toolkit.WinUI.Helpers" Version="$(Version)" />
+		<PackageReference Include="Riverside.Toolkit.WinUI.Animations" Version="$(Version)" />
 	</ItemGroup>
+	<Import Project="..\..\core\Riverside.Toolkit.UserControls\Riverside.Toolkit.UserControls.projitems" Label="Shared"/>
 </Project>

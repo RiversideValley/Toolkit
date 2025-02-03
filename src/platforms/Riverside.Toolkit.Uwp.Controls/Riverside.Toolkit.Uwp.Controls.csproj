@@ -1,2 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Helpers\Riverside.Toolkit.Uwp.Helpers.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="Riverside.Toolkit.Uwp.Helpers" Version="$(Version)" />
+	</ItemGroup>
+	<Import Project="..\..\core\Riverside.Toolkit.UserControls\Riverside.Toolkit.UserControls.projitems" Label="Shared" />
 </Project>
