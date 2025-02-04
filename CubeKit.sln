@@ -99,6 +99,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI.WinUI.Styl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.GlowUI.Uwp.Styles", "src\platforms\Riverside.GlowUI.Uwp.Styles\Riverside.GlowUI.Uwp.Styles.csproj", "{93845537-C77D-4617-A349-5EDC4F87600F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.WinUI.Converters", "src\platforms\Riverside.Toolkit.WinUI.Converters\Riverside.Toolkit.WinUI.Converters.csproj", "{4AD2946C-AD3B-4C67-8701-41A33DCF1758}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -211,6 +213,10 @@ Global
 		{93845537-C77D-4617-A349-5EDC4F87600F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93845537-C77D-4617-A349-5EDC4F87600F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93845537-C77D-4617-A349-5EDC4F87600F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AD2946C-AD3B-4C67-8701-41A33DCF1758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AD2946C-AD3B-4C67-8701-41A33DCF1758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AD2946C-AD3B-4C67-8701-41A33DCF1758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AD2946C-AD3B-4C67-8701-41A33DCF1758}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -256,6 +262,7 @@ Global
 		{75ABF994-1018-4314-B8CE-FC3FA9F136EC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{9D9EBE0A-19FD-4ECA-A7C2-DE22603C0706} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{93845537-C77D-4617-A349-5EDC4F87600F} = {AA619411-1D80-4167-9BB6-84534B676BEB}
+		{4AD2946C-AD3B-4C67-8701-41A33DCF1758} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {524016A6-E08B-4DAE-AE79-520996BA0E65}
@@ -268,6 +275,7 @@ Global
 		src\core\Riverside.Toolkit.Brushes\Riverside.Toolkit.Brushes.projitems*{3d089f33-fb4b-4ae4-8208-aa7813538b00}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.Icons\Riverside.Toolkit.Icons.projitems*{3e95bc91-1c4a-4f02-af75-6ab809fd8e8c}*SharedItemsImports = 5
 		src\core\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.projitems*{3f4d5a40-9934-4518-bab1-c3ebb1d434cb}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Converters\Riverside.Toolkit.Converters.projitems*{4ad2946c-ad3b-4c67-8701-41a33dcf1758}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.Converters\Riverside.Toolkit.Converters.projitems*{51a3ab3b-672d-40c3-9a4a-6bccdf0486a9}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.Services\Riverside.Toolkit.Services.projitems*{582d77aa-34b5-41dc-9fde-383d1ef5f1b0}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.UserControls\Riverside.Toolkit.UserControls.projitems*{58438e2a-f8d1-4d3f-be5a-5c46f01f5e18}*SharedItemsImports = 13
