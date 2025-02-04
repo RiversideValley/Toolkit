@@ -2,8 +2,6 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-#if WINDOWS10_0_22621_0_OR_GREATER
-
 using Riverside.Toolkit.Helpers;
 
 namespace Riverside.Toolkit.Controls;
@@ -245,5 +243,3 @@ public partial class DropShadowPanel
         }
     }
 }
-
-#endif

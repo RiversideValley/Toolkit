@@ -2,10 +2,11 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-#if WINDOWS10_0_22621_0_OR_GREATER
-
 using System.Numerics;
-using CommunityToolkit.WinUI.Helpers;
+using Riverside.Toolkit.Helpers; // This is being used instead of the Windows Community Toolkit version as using WCT here causes some issues.
+#if !WINDOWS10_0_19041_0
+using CommunityToolkit.WinUI;
+#endif
 
 namespace Riverside.Toolkit.Controls;
 
@@ -15,9 +16,11 @@ namespace Riverside.Toolkit.Controls;
 /// </summary>
 /// <remarks>
 /// This control was originally created by the Windows Community Toolkit and has been modified to work with the latest version of the Windows UI Library.
-/// It is available in CubeKit for reference purposes (including use in GlowUI controls), please use <see cref="CommunityToolkit.WinUI.AttachedDropShadow"/> or AttachedCardShadow instead.
+/// It is available in CubeKit for reference purposes (including use in GlowUI controls), please use <see cref="AttachedDropShadow"/> or AttachedCardShadow instead.
 /// </remarks>
-/// <seealso cref="CommunityToolkit.WinUI.AttachedDropShadow"/>
+#if !WINDOWS10_0_19041_0
+/// <seealso cref="AttachedDropShadow"/>
+#endif
 [Obsolete("DropShadowPanel will be removed in a future release, please use the AttachedDropShadow or AttachedCardShadow implementations instead.")]
 [TemplatePart(Name = PartShadow, Type = typeof(Border))]
 public partial class DropShadowPanel : ContentControl
@@ -235,4 +238,3 @@ public partial class DropShadowPanel : ContentControl
         }
     }
 }
-#endif
