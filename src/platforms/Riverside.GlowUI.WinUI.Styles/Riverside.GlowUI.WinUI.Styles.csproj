@@ -1,2 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Controls\Riverside.Toolkit.WinUI.Controls.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="Riverside.Toolkit.WinUI.Controls" Version="$(Version)" />
+	</ItemGroup>
 </Project>

@@ -1,10 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <UseUwp>true</UseUwp>
-    <UseUwpTools>true</UseUwpTools>
-    <IsAotCompatible>true</IsAotCompatible>
-    <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
-  </PropertyGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Controls\Riverside.Toolkit.Uwp.Controls.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="Riverside.Toolkit.Uwp.Controls" Version="$(Version)" />
+	</ItemGroup>
 </Project>
