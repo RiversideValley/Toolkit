@@ -1,5 +1,3 @@
-#if WinUI
-
 using Microsoft.Graphics.Canvas.Geometry;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -15,13 +13,13 @@ public sealed class RefreshAnimation : IAnimatedVisualSource
     // Animation duration: 1.000 seconds.
     internal const long c_durationTicks = 10000000;
 
-    public Microsoft.UI.Xaml.Controls.IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor)
+    public IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor)
     {
         object ignored = null;
         return TryCreateAnimatedVisual(compositor, out ignored);
     }
 
-    public Microsoft.UI.Xaml.Controls.IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor, out object diagnostics)
+    public IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor, out object diagnostics)
     {
         diagnostics = null;
 
@@ -267,5 +265,3 @@ public sealed class RefreshAnimation : IAnimatedVisualSource
         }
     }
 }
-
-#endif
