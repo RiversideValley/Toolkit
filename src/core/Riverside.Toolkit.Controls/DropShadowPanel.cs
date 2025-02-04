@@ -21,7 +21,7 @@ namespace Riverside.Toolkit.Controls;
 #if !WINDOWS10_0_19041_0
 /// <seealso cref="AttachedDropShadow"/>
 #endif
-[Obsolete("DropShadowPanel will be removed in a future release, please use the AttachedDropShadow or AttachedCardShadow implementations instead.")]
+[Obsolete("Please use the AttachedDropShadow or AttachedCardShadow implementations instead.")]
 [TemplatePart(Name = PartShadow, Type = typeof(Border))]
 public partial class DropShadowPanel : ContentControl
 {
