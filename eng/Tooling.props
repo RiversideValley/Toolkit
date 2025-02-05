@@ -5,6 +5,9 @@
 		<IsWinUIProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('WinUI')) ">true</IsWinUIProject>
 		<IsNetCoreProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('NETCore')) ">true</IsNetCoreProject>
 	</PropertyGroup>
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
 	<!-- AOT -->
 	<PropertyGroup Condition="'$(IsAotCompatible)' == 'true'">
