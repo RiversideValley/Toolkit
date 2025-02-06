@@ -8,8 +8,7 @@ namespace Riverside.Toolkit.Converters;
 /// </remarks>
 /// <typeparam name="TSource">The source type.</typeparam>
 /// <typeparam name="TTarget">The target type.</typeparam>
-public abstract class ValueConverter<TSource, TTarget>
-    : IValueConverter
+public abstract class ValueConverter<TSource, TTarget> : IValueConverter
 {
     /// <summary>
     /// Converts a source value to the target type.

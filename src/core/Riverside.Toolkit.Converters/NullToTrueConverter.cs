@@ -1,7 +1,9 @@
 namespace Riverside.Toolkit.Converters;
 
-public partial class NullToTrueConverter
-    : ValueConverter<object?, bool>
+/// <summary>
+/// A value converter that converts null values to true and non-null values to false.
+/// </summary>
+public partial class NullToTrueConverter : ValueConverter<object?, bool>
 {
     /// <summary>
     /// Determines whether an inverse conversion should take place.
@@ -16,7 +18,8 @@ public partial class NullToTrueConverter
     /// <param name="parameter"></param>
     /// <param name="language"></param>
     /// <returns></returns>
-    protected override bool Convert(object? value, object? parameter, string? language) => this.Inverse ? value != null : value == null;
+    protected override bool Convert(object? value, object? parameter, string? language)
+        => this.Inverse ? value != null : value == null;
 
     /// <summary>
     /// Converts a target value back to the source type.
@@ -25,5 +28,6 @@ public partial class NullToTrueConverter
     /// <param name="parameter"></param>
     /// <param name="language"></param>
     /// <returns></returns>
-    protected override object? ConvertBack(bool value, object? parameter, string? language) => null;
+    protected override object? ConvertBack(bool value, object? parameter, string? language)
+        => null;
 }

@@ -3,8 +3,7 @@ namespace Riverside.Toolkit.Converters;
 /// <summary>
 /// The base class for converting instances of type T to object and vice versa.
 /// </summary>
-public abstract class ToObjectConverter<T>
-    : ValueConverter<T?, object?>
+public abstract class ToObjectConverter<T> : ValueConverter<T?, object?>
 {
     /// <summary>
     /// Converts a source value to the target type.

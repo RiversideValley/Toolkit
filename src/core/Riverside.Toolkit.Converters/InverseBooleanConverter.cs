@@ -3,8 +3,7 @@ namespace Riverside.Toolkit.Converters;
 /// <summary>
 /// Converts a boolean to and from a visibility value.
 /// </summary>
-public partial class InverseBooleanConverter
-    : ValueConverter<bool, bool>
+public partial class InverseBooleanConverter : ValueConverter<bool, bool>
 {
     /// <summary>
     /// Converts a source value to the target type.
@@ -13,7 +12,8 @@ public partial class InverseBooleanConverter
     /// <param name="parameter"></param>
     /// <param name="language"></param>
     /// <returns></returns>
-    protected override bool Convert(bool value, object? parameter, string? language) => !value;
+    protected override bool Convert(bool value, object? parameter, string? language)
+        => !value;
 
     /// <summary>
     /// Converts a target value back to the source type.
@@ -22,5 +22,6 @@ public partial class InverseBooleanConverter
     /// <param name="parameter"></param>
     /// <param name="language"></param>
     /// <returns></returns>
-    protected override bool ConvertBack(bool value, object? parameter, string? language) => !value;
+    protected override bool ConvertBack(bool value, object? parameter, string? language)
+        => !value;
 }

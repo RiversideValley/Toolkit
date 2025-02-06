@@ -1,7 +1,9 @@
 ﻿namespace Riverside.Toolkit.Converters;
 
-public partial class StringNullOrWhiteSpaceToTrueConverter
-    : ValueConverter<string, bool>
+/// <summary>
+/// A value converter that converts null or whitespace strings to true and non-null, non-whitespace strings to false.
+/// </summary>
+public partial class StringNullOrWhiteSpaceToTrueConverter : ValueConverter<string, bool>
 {
     /// <summary>
     /// Determines whether an inverse conversion should take place.
@@ -16,7 +18,8 @@ public partial class StringNullOrWhiteSpaceToTrueConverter
     /// <param name="parameter"></param>
     /// <param name="language"></param>
     /// <returns></returns>
-    protected override bool Convert(string? value, object? parameter, string? language) => this.Inverse ? !string.IsNullOrWhiteSpace(value) : string.IsNullOrWhiteSpace(value);
+    protected override bool Convert(string? value, object? parameter, string? language)
+        => this.Inverse ? !string.IsNullOrWhiteSpace(value) : string.IsNullOrWhiteSpace(value);
 
     /// <summary>
     /// Converts a target value back to the source type.
@@ -25,5 +28,6 @@ public partial class StringNullOrWhiteSpaceToTrueConverter
     /// <param name="parameter"></param>
     /// <param name="language"></param>
     /// <returns></returns>
-    protected override string ConvertBack(bool value, object? parameter, string? language) => string.Empty;
+    protected override string ConvertBack(bool value, object? parameter, string? language)
+        => string.Empty;
 }
