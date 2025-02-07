@@ -18,10 +18,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)CommandLink.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DropShadowPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DropShadowPanel.Properties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Glow\GlowBall.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Glow\GlowLine.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IAlphaMaskProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OpacityMaskView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RedirectVisualView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Settings\Converters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\SettingsBlockControl.xaml.cs">
+      <DependentUpon>SettingsBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\SettingsDisplayControl.xaml.cs">
+      <DependentUpon>SettingsDisplayControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Buttons.cs" />
@@ -34,6 +41,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.WndProc.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Settings\SettingsBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Settings\SettingsDisplayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\AnimatedButton.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

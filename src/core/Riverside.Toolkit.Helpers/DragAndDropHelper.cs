@@ -3,9 +3,9 @@
 namespace Riverside.Toolkit.Helpers;
 
 /// <summary>
-/// Helper methods for adding seamless drag & drop support to different <see cref="ListViewBase"/>
+/// Helper methods for adding seamless drag &amp; drop support to different <see cref="ListViewBase"/>
 /// </summary>
-/// <typeparam name="T">The type of the dragged & dropped items</typeparam>
+/// <typeparam name="T">The type of the dragged &amp; dropped items</typeparam>
 public class DragDropHelper<T>
 {
     /// <summary> ID strings for data package</summary>

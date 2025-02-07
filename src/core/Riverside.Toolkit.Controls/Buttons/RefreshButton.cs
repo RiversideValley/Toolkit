@@ -1,6 +1,4 @@
-﻿#if WinUI
-
-using Riverside.Toolkit.Animations;
+﻿using Riverside.Toolkit.Animations;
 
 namespace Riverside.Toolkit.Controls.Buttons;
 
@@ -48,4 +46,3 @@ public partial class RefreshButton : AnimatedButton
         }
     }
 }
-#endif

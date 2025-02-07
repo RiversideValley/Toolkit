@@ -1,9 +1,7 @@
-﻿#if WinUI
-
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml.Controls;
 
 namespace Riverside.Toolkit.Controls.Buttons;
-
 [INotifyPropertyChanged]
 public partial class AnimatedButton : Button
 {
@@ -35,4 +33,3 @@ public partial class AnimatedButton : Button
             Player.Source = AnimatedIcon;
     }
 }
-#endif

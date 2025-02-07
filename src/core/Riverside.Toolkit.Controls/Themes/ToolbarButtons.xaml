@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ToolkitControls="using:Microsoft.Toolkit.Uwp.UI.Controls">
+    xmlns:ToolkitControls="using:Riverside.Toolkit.Controls">
     <Style x:Key="ToolbarButton" TargetType="Button">
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="{ThemeResource SplitButtonBorderThemeThickness}" />
@@ -252,7 +252,7 @@
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <ContentPresenter
                             x:Name="ContentPresenter"
-                            Margin="0, 0, 0, 2"
+                            Margin="0,0,0,2"
                             Padding="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"

@@ -11,7 +11,7 @@ using Windows.UI;
 
 namespace Riverside.Toolkit.Animations;
 
-public sealed class SketchAnimation : IAnimatedVisualSource2
+public sealed partial class SketchAnimation : IAnimatedVisualSource2
 {
     // Animation duration: 1.720 seconds.
     internal const long c_durationTicks = 17200000;
@@ -86,7 +86,7 @@ public sealed class SketchAnimation : IAnimatedVisualSource2
     {
     }
 
-    sealed class Data_AnimatedVisual : Microsoft.UI.Xaml.Controls.IAnimatedVisual
+    sealed class Data_AnimatedVisual : IAnimatedVisual
     {
         const long c_durationTicks = 17200000;
         readonly Compositor _c;
