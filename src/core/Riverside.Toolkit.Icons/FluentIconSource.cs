@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents an icon source that uses a Fluent System Icon as its content.
 /// </summary>
-public class FluentIconSource : PathIconSource
+public partial class FluentIconSource : PathIconSource
 {
     /// <summary>
     /// Constructs an empty <see cref="FluentIconSource"/>.
