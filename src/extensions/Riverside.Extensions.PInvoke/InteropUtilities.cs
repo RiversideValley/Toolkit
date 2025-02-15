@@ -1,5 +1,6 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Versioning;
 
 namespace Riverside.Extensions.PInvoke;
 
@@ -8,12 +9,15 @@ namespace Riverside.Extensions.PInvoke;
 /// </summary>
 public static class InteropUtilities
 {
-    private static readonly Dictionary<Delegate, int> EventHandlerCookies = new Dictionary<Delegate, int>();
+    private static readonly Dictionary<Delegate, int> EventHandlerCookies = [];
 
     /// <summary>
     /// Releases a COM object.
     /// </summary>
     /// <param name="comObject">The COM object to release.</param>
+#if !NETFRAMEWORK && !NETSTANDARD
+    [SupportedOSPlatform("windows")]
+#endif
     public static void ReleaseCOMObject(object comObject)
     {
         if (comObject != null && Marshal.IsComObject(comObject))
@@ -29,6 +33,9 @@ public static class InteropUtilities
     /// <param name="progId">The ProgID of the COM object.</param>
     /// <returns>The created COM object.</returns>
     /// <exception cref="ArgumentException">Thrown when the ProgID is not found.</exception>
+#if !NETFRAMEWORK && !NETSTANDARD
+    [SupportedOSPlatform("windows")]
+#endif
     public static T CreateCOMObject<T>(string progId) where T : class
     {
         Type comType = Type.GetTypeFromProgID(progId);
