@@ -11,6 +11,8 @@ using CommunityToolkit.WinUI;
 
 namespace Riverside.Toolkit.Controls;
 
+// TODO: Add XAML resource dictionary back when .NET SDK error is fixed.
+
 /// <summary>
 /// The <see cref="DropShadowPanel"/> control allows the creation of a DropShadow for any XAML <see cref="FrameworkElement"/> in markup
 /// making it easier to add shadows to XAML without having to directly drop down to composition APIs.
