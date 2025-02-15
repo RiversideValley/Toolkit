@@ -12,6 +12,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ChatBubble.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CommandLink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DropShadowPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DropShadowPanel.Properties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IAlphaMaskProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OpacityMaskView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RedirectVisualView.cs" />
