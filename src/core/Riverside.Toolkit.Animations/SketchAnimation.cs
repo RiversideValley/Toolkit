@@ -1,5 +1,3 @@
-#if WinUI
-
 using Microsoft.Graphics.Canvas.Geometry;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -13,18 +11,18 @@ using Windows.UI;
 
 namespace Riverside.Toolkit.Animations;
 
-public sealed class SketchAnimation : IAnimatedVisualSource2
+public sealed partial class SketchAnimation : IAnimatedVisualSource2
 {
     // Animation duration: 1.720 seconds.
     internal const long c_durationTicks = 17200000;
 
-    public Microsoft.UI.Xaml.Controls.IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor)
+    public IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor)
     {
         object ignored = null;
         return TryCreateAnimatedVisual(compositor, out ignored);
     }
 
-    public Microsoft.UI.Xaml.Controls.IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor, out object diagnostics)
+    public IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor, out object diagnostics)
     {
         diagnostics = null;
 
@@ -88,7 +86,7 @@ public sealed class SketchAnimation : IAnimatedVisualSource2
     {
     }
 
-    sealed class Data_AnimatedVisual : Microsoft.UI.Xaml.Controls.IAnimatedVisual
+    sealed class Data_AnimatedVisual : IAnimatedVisual
     {
         const long c_durationTicks = 17200000;
         readonly Compositor _c;
@@ -493,5 +491,3 @@ public sealed class SketchAnimation : IAnimatedVisualSource2
         }
     }
 }
-
-#endif

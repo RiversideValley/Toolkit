@@ -65,7 +65,7 @@
 	</PropertyGroup>
 	<ItemGroup Condition="'$(IsUwpProject)' == 'true' ">
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2957.106" />
-		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.6" />
+		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.7-prerelease.241119001" />
 		<PackageReference Include="Win2D.uwp" Version="1.28.1" />
 		<PackageReference Include="DependencyPropertyGenerator" Version="1.4.0">
 			<PrivateAssets>all</PrivateAssets>
