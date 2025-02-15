@@ -6,9 +6,9 @@
 		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Converters\Riverside.Toolkit.Uwp.Converters.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
-		<PackageReference Include="Riverside.Toolkit.Uwp.Helpers" Version="$(Version)" />
-		<PackageReference Include="Riverside.Toolkit.Uwp.Animations" Version="$(Version)" />
-		<PackageReference Include="Riverside.Toolkit.Uwp.Icons" Version="$(Version)" />
-		<PackageReference Include="Riverside.Toolkit.Uwp.Converters" Version="$(Version)" />
+		<PackageReference Include="$(PackagePrefix)Helpers" />
+		<PackageReference Include="$(PackagePrefix)Animations" />
+		<PackageReference Include="$(PackagePrefix)Icons" />
+		<PackageReference Include="$(PackagePrefix)Converters" />
 	</ItemGroup>
 </Project>

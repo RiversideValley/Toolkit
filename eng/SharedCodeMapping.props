@@ -7,7 +7,7 @@
     <BaseProjectName Condition="$(MSBuildProjectName.Contains('NETCore'))">$(MSBuildProjectName.Replace('.NETCore', ''))</BaseProjectName>
     <BaseProjectName Condition="$(MSBuildProjectName.Contains('WinUI'))">$(MSBuildProjectName.Replace('.WinUI', ''))</BaseProjectName>
     <BaseProjectName Condition="$(MSBuildProjectName.Contains('Uwp'))">$(MSBuildProjectName.Replace('.Uwp', ''))</BaseProjectName>
-	  <RootNamespace>$(BaseProjectName)</RootNamespace>
+    <RootNamespace>$(BaseProjectName)</RootNamespace>
   </PropertyGroup>
 
     <!-- Conditionally include shared project references based on the base project name -->
