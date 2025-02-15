@@ -28,10 +28,4 @@
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Window.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.WndProc.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)DropShadowPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
 </Project>
