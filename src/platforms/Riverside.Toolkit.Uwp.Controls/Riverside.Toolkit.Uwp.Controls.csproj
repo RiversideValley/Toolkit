@@ -1,4 +1,4 @@
-<Project>
+<Project Sdk="Microsoft.NET.Sdk">
 	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
 		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Helpers\Riverside.Toolkit.Uwp.Helpers.csproj" />
 		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Animations\Riverside.Toolkit.Uwp.Animations.csproj" />
