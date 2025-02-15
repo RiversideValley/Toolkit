@@ -1,2 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project>
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Helpers\Riverside.Toolkit.Uwp.Helpers.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Animations\Riverside.Toolkit.Uwp.Animations.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Icons\Riverside.Toolkit.Uwp.Icons.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Converters\Riverside.Toolkit.Uwp.Converters.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="Riverside.Toolkit.Uwp.Helpers" Version="$(Version)" />
+		<PackageReference Include="Riverside.Toolkit.Uwp.Animations" Version="$(Version)" />
+		<PackageReference Include="Riverside.Toolkit.Uwp.Icons" Version="$(Version)" />
+		<PackageReference Include="Riverside.Toolkit.Uwp.Converters" Version="$(Version)" />
+	</ItemGroup>
 </Project>
