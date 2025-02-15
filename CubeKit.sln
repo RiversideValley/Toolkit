@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eng", "eng", "{CED2FD51-11B
 		eng\AdditionalFiles.props = eng\AdditionalFiles.props
 		eng\CurrentVersion.props = eng\CurrentVersion.props
 		eng\GlobalUsings.cs = eng\GlobalUsings.cs
+		eng\InheritedDependencies.props = eng\InheritedDependencies.props
 		eng\PackageLogo.png = eng\PackageLogo.png
 		eng\PackageMetadata.props = eng\PackageMetadata.props
 		eng\SharedCodeMapping.props = eng\SharedCodeMapping.props

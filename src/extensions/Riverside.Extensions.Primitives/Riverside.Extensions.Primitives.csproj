@@ -4,7 +4,7 @@
 		<RootNamespace>Riverside.Extensions</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1' or '$(TargetFramework)' == 'net462'">
-		<PackageReference Include="System.Text.Json" Version="9.0.0" />
-		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+		<PackageReference Include="System.Text.Json" />
+		<PackageReference Include="System.Net.Http" />
 	</ItemGroup>
 </Project>

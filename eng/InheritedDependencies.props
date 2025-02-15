@@ -1,0 +1,31 @@
+<Project>
+	<!-- Dependencies -->
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" />
+		<ProjectReference Include="$(SourceDirectory)\extensions\Riverside.Extensions.PInvoke\Riverside.Extensions.PInvoke.csproj" Condition="'$(Configuration)' == 'Debug' and '$(MSBuildProjectName)' != 'Riverside.Extensions.PInvoke'" />
+		<PackageReference Include="Riverside.Extensions.PInvoke" Condition="'$(Configuration)' == 'Release'  and '$(MSBuildProjectName)' != 'Riverside.Extensions.PInvoke'"/>
+	</ItemGroup>
+
+	<!-- UWP or WinUI -->
+	<ItemGroup Condition="'$(IsUapProject)' == 'true'">
+		<PackageReference Include="DependencyPropertyGenerator">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<!-- UWP-->
+	<ItemGroup Condition="'$(IsUwpProject)' == 'true' ">
+		<PackageReference Include="Microsoft.UI.Xaml" />
+		<PackageReference Include="Win2D.uwp" />
+	</ItemGroup>
+
+	<!-- WinUI -->
+	<ItemGroup Condition="'$(IsWinUIProject)' == 'true'">
+		<PackageReference Include="Microsoft.Web.WebView2" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" />
+		<PackageReference Include="WinUIEx" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" />
+	</ItemGroup>
+</Project>

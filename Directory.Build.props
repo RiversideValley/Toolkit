@@ -5,6 +5,7 @@
 	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\Tooling.props"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\SharedCodeMapping.props"/>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\InheritedDependencies.props"/>
 	<PropertyGroup>
 		<RootDirectory Condition=" '$(RootDirectory)' == '' ">$(MSBuildThisFileDirectory)</RootDirectory>
 		<SourceDirectory Condition=" '$(SourceDirectory)' == '' ">$(MSBuildThisFileDirectory)src</SourceDirectory>
