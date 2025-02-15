@@ -15,7 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)IAlphaMaskProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OpacityMaskView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RedirectVisualView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Settings\Converters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Buttons.cs" />

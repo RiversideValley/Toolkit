@@ -11,6 +11,12 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BooleanToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringNullOrWhiteSpaceToTrueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InverseBooleanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NullToTrueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ToObjectConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Converters.xaml">
