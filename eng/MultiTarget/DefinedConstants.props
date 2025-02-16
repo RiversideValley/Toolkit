@@ -1,0 +1,8 @@
+<Project>
+	<PropertyGroup>
+		<DefineConstants Condition="'$(IsUnoProject)' == 'true'">$(DefineConstants);Uno</DefineConstants>
+		<DefineConstants Condition="'$(IsUwpProject)' == 'true'">$(DefineConstants);UAP;UWP;HAS_UWP</DefineConstants>
+		<DefineConstants Condition="'$(IsWinUIProject)' == 'true'">$(DefineConstants);UAP;WinUI;HAS_WINUI</DefineConstants>
+		<DefineConstants Condition="'$(IsNetStandardProject)' == 'true'">$(DefineConstants);NETCore</DefineConstants>
+	</PropertyGroup>
+</Project>

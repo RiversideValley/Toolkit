@@ -3,62 +3,32 @@
 		<!-- Check if the project name contains specific keywords -->
 		<IsUwpProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('Uwp')) ">true</IsUwpProject>
 		<IsWinUIProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('WinUI')) ">true</IsWinUIProject>
-		<IsNetCoreProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('NETCore')) ">true</IsNetCoreProject>
+		<IsUnoProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('Uno')) ">true</IsUnoProject>
+		<IsNetStandardProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('NETCore')) ">true</IsNetStandardProject>
 
-		<IsUapProject Condition=" '$(IsWinUIProject)' == 'true' or '$(IsUwpProject)' == 'true' ">true</IsUapProject>
+		<IsUapBased Condition=" '$(IsWinUIProject)' == 'true' or '$(IsUwpProject)' == 'true' ">true</IsUapBased>
+		<IsWinUIBased Condition=" '$(IsWinUIProject)' == 'true' or '$(IsUnoProject)' == 'true' ">true</IsWinUIBased>
 
 		<ProjectTarget Condition="'$(IsUwpProject)' == 'true'">Uwp</ProjectTarget>
 		<ProjectTarget Condition="'$(IsWinUIProject)' == 'true'">WinUI</ProjectTarget>
-		<ProjectTarget Condition="'$(IsNetCoreProject)' == 'true'">NetCore</ProjectTarget>
+		<ProjectTarget Condition="'$(IsUnoProject)' == 'true'">Uno</ProjectTarget>
+		<ProjectTarget Condition="'$(IsNetStandardProject)' == 'true'">NetStandard</ProjectTarget>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!-- Manually check if tooling is needed (TEMPORARY) -->
+		<NoTooling Condition="'$(MSBuildProjectName)' == 'Riverside.GlowUI' or '$(MSBuildProjectName)' == 'Riverside.GlowUI.Materials' or '$(MSBuildProjectName)' == 'Riverside.Toolkit.Flyouts' or '$(MSBuildProjectName)' == 'Riverside.Toolkit.UITests'">true</NoTooling>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<PackagePrefix>Riverside.Toolkit.$(ProjectTarget).</PackagePrefix>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<Nullable>enable</Nullable>
+	<PropertyGroup Condition="'$(ProjectTarget)' == ''">
+		<!-- Assume the project is .NET Core if tooling is unable to detect which framework it is by the name (works for Riverside.Extensions.* projects) -->
+		<IsNetStandardProject>true</IsNetStandardProject>
+		<ProjectTarget>NetStandard</ProjectTarget>
 	</PropertyGroup>
 
-	<!-- AOT -->
-	<PropertyGroup Condition="'$(IsAotCompatible)' == 'true'">
-		<!-- Literally always publish AOT -->
-		<PublishAot>true</PublishAot>
-		<PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
-		<PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
-	</PropertyGroup>
-
-	<!-- .NET Core specific properties -->
-	<PropertyGroup Condition="'$(IsNetCoreProject)' == 'true'">
-		<DefineConstants>$(DefineConstants);NETCore</DefineConstants>
-		
-		<!-- .NET Core project -->
-		<TargetFrameworks>net8.0;net9.0;netstandard2.1;netstandard2.0</TargetFrameworks>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-
-	<!-- WinUI specific properties -->
-	<PropertyGroup Condition="'$(IsWinUIProject)' == 'true'">
-		<DefineConstants>$(DefineConstants);UAP;WinUI;HAS_WINUI</DefineConstants>
-
-		<!-- WinUI project -->
-		<TargetFrameworks>net8.0-windows10.0.19041.0;net9.0-windows10.0.26100.0</TargetFrameworks>
-		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-		<UseWinUI>true</UseWinUI>
-		<IsAotCompatible>true</IsAotCompatible>
-	</PropertyGroup>
-
-	<!-- UWP specific properties -->
-	<PropertyGroup Condition="'$(IsUwpProject)' == 'true'">
-		<DefineConstants>$(DefineConstants);UAP;UWP;HAS_UWP</DefineConstants>
-
-		<!-- UWP project -->
-		<TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
-		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-		<UseUwp>true</UseUwp>
-		<UseUwpTools>true</UseUwpTools>
-		<DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
-		<IsAotCompatible>true</IsAotCompatible>
-	</PropertyGroup>
+	<Import Condition="'$(ProjectTarget)' != '' and '$(NoTooling)' != 'true'" Project="$(MSBuildThisFileDirectory)\MultiTarget\$(ProjectTarget)\Head.props"/>
 </Project>
