@@ -43,6 +43,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>12.0</LangVersion>
 		<Nullable>enable</Nullable>
+
+		<TargetsWindows Condition="$(TargetFramework.Contains('windows'))">true</TargetsWindows>
 	</PropertyGroup>
 
 	<!-- Deterministic build -->
