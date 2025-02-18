@@ -6,6 +6,9 @@
 	<Import Project="$(MSBuildThisFileDirectory)\eng\Tooling.props"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\SharedCodeMapping.props"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\InheritedDependencies.props"/>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\Aot.props"/>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\DefinedConstants.props"/>
+
 
 	<!-- Directories -->
 	<PropertyGroup>
