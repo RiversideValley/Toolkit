@@ -4,31 +4,45 @@
 	<Import Project="$(MSBuildThisFileDirectory)\eng\CurrentVersion.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\Tooling.props"/>
-	<Import Project="$(MSBuildThisFileDirectory)\eng\SharedCodeMapping.props"/>
-	<Import Project="$(MSBuildThisFileDirectory)\eng\InheritedDependencies.props"/>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\SharedCodeMapping.props"/>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\InheritedDependencies.props"/>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\Aot.props"/>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\DefinedConstants.props"/>
+
+
+	<!-- Directories -->
 	<PropertyGroup>
 		<RootDirectory Condition=" '$(RootDirectory)' == '' ">$(MSBuildThisFileDirectory)</RootDirectory>
 		<SourceDirectory Condition=" '$(SourceDirectory)' == '' ">$(MSBuildThisFileDirectory)src</SourceDirectory>
 		<BuildDirectory Condition=" '$(BuildDirectory)' == '' ">$(RootDirectory)eng</BuildDirectory>
+		<ToolingDirectory Condition=" '$(ToolingDirectory)' == '' ">$(BuildDirectory)\MultiTarget</ToolingDirectory>
 		<RepositoryFilesDirectory Condition=" '$(RepositoryFilesDirectory)' == '' ">$(RootDirectory).github</RepositoryFilesDirectory>
 		<ToolkitDirectory Condition=" '$(ToolkitDirectory)' == '' ">$(SourceDirectory)\platforms</ToolkitDirectory>
 		<SharedDirectory Condition=" '$(SharedDirectory)' == '' ">$(SourceDirectory)\core</SharedDirectory>
+		<ThisToolingDirectory Condition=" '$(ThisToolingDirectory)' == '' ">$(ToolingDirectory)\$(ProjectTarget)</ThisToolingDirectory>
+	</PropertyGroup>
 
+	<!-- Versioning -->
+	<PropertyGroup>
 		<Product>CubeKit</Product>
 		<Company>Riverside Valley Corporation</Company>
 		<AssemblyVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</AssemblyVersion>
 		<InformationalVersion>$(Product), Version=$(MajorVersion).$(MinorVersion).$(MicroVersion), Channel=$(ReleaseLevel)</InformationalVersion>
 
+		<DisplayVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</DisplayVersion>
+		<DisplayVersion Condition="'$(ReleaseLevel)' != 'final'">$(DisplayVersion)-$(ReleaseLevel)$(BetaVersion)</DisplayVersion>
+		<Version>$(DisplayVersion)</Version>
+	</PropertyGroup>
+
+	<!-- Generic properties -->
+	<PropertyGroup>
 		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 
-		<DisplayVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</DisplayVersion>
-		<DisplayVersion Condition="'$(ReleaseLevel)' != 'final'">$(DisplayVersion)-$(ReleaseLevel)$(BetaVersion)</DisplayVersion>
-		<Version>$(DisplayVersion)</Version>
-
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>12.0</LangVersion>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<!-- Deterministic build -->
@@ -37,6 +51,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="$(BuildDirectory)\GlobalUsings.cs" />
+		<Compile Include="$(ToolingDirectory)\GlobalUsings.cs" />
 	</ItemGroup>
 </Project>
