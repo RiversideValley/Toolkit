@@ -54,5 +54,8 @@
 
 	<ItemGroup>
 		<Compile Include="$(ToolingDirectory)\GlobalUsings.cs" />
+		<!--<Compile Include="$(ToolingDirectory)\AssemblyInfo.cs">
+			<Link>Properties\AssemblyInfo.cs</Link>
+		</Compile>-->
 	</ItemGroup>
 </Project>

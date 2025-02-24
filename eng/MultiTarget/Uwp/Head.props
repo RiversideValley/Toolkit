@@ -2,11 +2,15 @@
 	<!-- UWP specific properties -->
 	<PropertyGroup>
 		<!-- UWP project -->
-		<TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+		<TargetFrameworks>net9.0-windows10.0.26100.0;uap10.0.17763</TargetFrameworks>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net9.0-windows10.0.26100.0'">
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
 		<UseUwp>true</UseUwp>
 		<UseUwpTools>true</UseUwpTools>
 		<DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
 		<IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
+	<!-- UAP tooling is in another file -->
+	<Import Condition="'$(TargetFramework)' == 'uap10.0.17763'" Project="$(MSBuildThisFileDirectory)\NetNative.props" />
 </Project>

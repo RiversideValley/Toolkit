@@ -91,6 +91,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultiTarget", "MultiTarget", "{78BB65EA-AA93-4725-9985-FCA661A67521}"
 	ProjectSection(SolutionItems) = preProject
 		eng\MultiTarget\Aot.props = eng\MultiTarget\Aot.props
+		eng\MultiTarget\AssemblyInfo.cs = eng\MultiTarget\AssemblyInfo.cs
 		eng\MultiTarget\DefinedConstants.props = eng\MultiTarget\DefinedConstants.props
 		eng\MultiTarget\GlobalUsings.cs = eng\MultiTarget\GlobalUsings.cs
 		eng\MultiTarget\InheritedDependencies.props = eng\MultiTarget\InheritedDependencies.props
@@ -105,6 +106,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Uwp", "Uwp", "{016DAAA0-2931-4ED9-A13B-E8256B92347D}"
 	ProjectSection(SolutionItems) = preProject
 		eng\MultiTarget\Uwp\Head.props = eng\MultiTarget\Uwp\Head.props
+		eng\MultiTarget\Uwp\NetNative.props = eng\MultiTarget\Uwp\NetNative.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinUI", "WinUI", "{A1390F63-B9C5-4629-8C77-40E61B5530BC}"
@@ -116,6 +118,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetStandard", "NetStandard"
 	ProjectSection(SolutionItems) = preProject
 		eng\MultiTarget\NetStandard\Head.props = eng\MultiTarget\NetStandard\Head.props
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UwpClassLibrary", "dev\UwpClassLibrary\UwpClassLibrary.csproj", "{491C31CD-23CF-48EF-BE51-CA5CBA2071CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -221,6 +225,10 @@ Global
 		{922ADD1E-C50B-41CB-AE9B-6D07EC3608EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{922ADD1E-C50B-41CB-AE9B-6D07EC3608EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{922ADD1E-C50B-41CB-AE9B-6D07EC3608EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491C31CD-23CF-48EF-BE51-CA5CBA2071CA}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{491C31CD-23CF-48EF-BE51-CA5CBA2071CA}.Debug|Any CPU.Build.0 = Debug|x64
+		{491C31CD-23CF-48EF-BE51-CA5CBA2071CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491C31CD-23CF-48EF-BE51-CA5CBA2071CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -266,6 +274,7 @@ Global
 		{016DAAA0-2931-4ED9-A13B-E8256B92347D} = {78BB65EA-AA93-4725-9985-FCA661A67521}
 		{A1390F63-B9C5-4629-8C77-40E61B5530BC} = {78BB65EA-AA93-4725-9985-FCA661A67521}
 		{9F42BC89-7A8F-4E5C-BE13-D46D44131505} = {78BB65EA-AA93-4725-9985-FCA661A67521}
+		{491C31CD-23CF-48EF-BE51-CA5CBA2071CA} = {2E2D7A71-B62D-4EE3-AC3E-1AECF61D0583}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {524016A6-E08B-4DAE-AE79-520996BA0E65}

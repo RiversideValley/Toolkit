@@ -19,6 +19,7 @@
 		<PackageVersion Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
 		<PackageVersion Include="MSTest.TestAdapter" Version="3.7.0" />
 		<PackageVersion Include="MSTest.TestFramework" Version="3.7.0" />
+		<PackageVersion Include="NETStandard.Library" Version="2.0.3" Condition="'$(TargetFramework)' == 'uap10.0.17763'" />
 		<PackageVersion Include="Riverside.Extensions.PInvoke" Version="$(Version)" />
 		<PackageVersion Include="System.Text.Json" Version="9.0.0" />
 		<PackageVersion Include="System.Net.Http" Version="4.3.4" />

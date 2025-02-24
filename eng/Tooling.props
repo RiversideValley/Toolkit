@@ -17,7 +17,7 @@
 
 	<PropertyGroup>
 		<!-- Manually check if tooling is needed (TEMPORARY) -->
-		<NoTooling Condition="'$(MSBuildProjectName)' == 'Riverside.GlowUI' or '$(MSBuildProjectName)' == 'Riverside.GlowUI.Materials' or '$(MSBuildProjectName)' == 'Riverside.Toolkit.Flyouts' or '$(MSBuildProjectName)' == 'Riverside.Toolkit.UITests'">true</NoTooling>
+		<NoTooling Condition="'$(MSBuildProjectName)' == 'UwpClassLibrary' or '$(MSBuildProjectName)' == 'Riverside.GlowUI' or '$(MSBuildProjectName)' == 'Riverside.GlowUI.Materials' or '$(MSBuildProjectName)' == 'Riverside.Toolkit.Flyouts' or '$(MSBuildProjectName)' == 'Riverside.Toolkit.UITests'">true</NoTooling>
 	</PropertyGroup>
 
 	<PropertyGroup>
