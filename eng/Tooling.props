@@ -16,11 +16,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<!-- Manually check if tooling is needed (TEMPORARY) -->
-		<NoTooling Condition="'$(MSBuildProjectName)' == 'Riverside.GlowUI' or '$(MSBuildProjectName)' == 'Riverside.GlowUI.Materials' or '$(MSBuildProjectName)' == 'Riverside.Toolkit.Flyouts' or '$(MSBuildProjectName)' == 'Riverside.Toolkit.UITests'">true</NoTooling>
-	</PropertyGroup>
-
-	<PropertyGroup>
 		<PackagePrefix>Riverside.Toolkit.$(ProjectTarget).</PackagePrefix>
 	</PropertyGroup>
 
@@ -30,5 +25,5 @@
 		<ProjectTarget>NetStandard</ProjectTarget>
 	</PropertyGroup>
 
-	<Import Condition="'$(ProjectTarget)' != '' and '$(NoTooling)' != 'true'" Project="$(MSBuildThisFileDirectory)\MultiTarget\$(ProjectTarget)\Head.props"/>
+	<Import Condition="'$(ProjectTarget)' != ''" Project="$(MSBuildThisFileDirectory)\MultiTarget\$(ProjectTarget)\Head.props"/>
 </Project>
