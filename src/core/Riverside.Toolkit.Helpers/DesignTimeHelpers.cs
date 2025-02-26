@@ -1,9 +1,12 @@
-﻿namespace Riverside.Toolkit.Helpers;
+﻿#if !Wpf
+
+namespace Riverside.Toolkit.Helpers;
 
 /// <summary>
 /// Provides helper methods for design-time functionality.
 /// </summary>
 [Obsolete("Riverside.Toolkit.Helpers.DesignTimeHelpers is obsolete, use CommunityToolkit.WinUI.Helpers.DesignTimeHelpers instead.", UrlFormat = "https://github.com/CommunityToolkit/Windows/blob/main/components/Helpers/src/DesignTimeHelpers.cs")]
+// [Riverside.Tooling.SupportedTargetPlatformAttribute(Riverside.Tooling.Platform.Wpf, supported: false)]
 public static class DesignTimeHelpers
 {
     private static readonly Lazy<bool> designModeEnabled = new(InitializeDesignerMode);
@@ -46,3 +49,5 @@ public static class DesignTimeHelpers
     /// <returns>True if called from code running inside a XAML designer that targets the Windows 10 Fall Creators Update, or later; otherwise false.</returns>
     private static bool InitializeDesignMode2() => Windows.ApplicationModel.DesignMode.DesignMode2Enabled;
 }
+
+#endif

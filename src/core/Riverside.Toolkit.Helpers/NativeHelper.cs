@@ -1,8 +1,9 @@
 ﻿using Riverside.Extensions.PInvoke;
 using System.Runtime.InteropServices;
-using Windows.Foundation;
 
-#nullable enable
+#if !Wpf
+using Windows.Foundation;
+#endif
 
 namespace Riverside.Toolkit.Helpers;
 
@@ -65,6 +66,7 @@ public static class NativeHelper
     /// <returns>The Y-coordinate.</returns>
     public static int GetYFromLParam(IntPtr lParam) => unchecked((short)((long)lParam >> 16));
 
+#if !Wpf
     /// <summary>
     /// Provides methods for display-related operations.
     /// </summary>
@@ -150,4 +152,5 @@ public static class NativeHelper
             };
         }
     }
+#endif
 }

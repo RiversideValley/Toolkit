@@ -1,14 +1,17 @@
-﻿using Windows.ApplicationModel.DataTransfer;
+﻿#if !Wpf
+
+using Windows.ApplicationModel.DataTransfer;
 
 namespace Riverside.Toolkit.Helpers;
-
 /// <summary>
 /// Helper methods for adding seamless drag & drop support to different <see cref="ListViewBase"/>
 /// </summary>
 /// <typeparam name="T">The type of the dragged & dropped items</typeparam>
 public class DragDropHelper<T>
 {
-    /// <summary> ID strings for data package</summary>
+    /// <summary>
+    /// ID strings for data package
+    /// </summary>
     private const string Item = "CubeActionItem";
     private const string Source = "CubeActionList";
 
@@ -72,3 +75,5 @@ public class DragDropHelper<T>
         e.Handled = true; // Set drop operation as completed
     }
 }
+
+#endif
