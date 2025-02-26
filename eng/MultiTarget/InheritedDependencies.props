@@ -28,4 +28,10 @@
 		<PackageReference Include="WinUIEx" />
 		<PackageReference Include="Microsoft.Graphics.Win2D" />
 	</ItemGroup>
+	
+	<!-- Wpf -->
+	<ItemGroup Condition="'$(IsWpfProject)' == 'true'">
+		<PackageReference Include="iNKORE.UI.WPF.Modern" />
+		<PackageReference Include="iNKORE.UI.WPF" />
+	</ItemGroup>
 </Project>

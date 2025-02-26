@@ -1,6 +1,10 @@
 <Project>
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
+		<IsAotCompatible Condition="'$(TargetFramework)' != 'net462'">true</IsAotCompatible>
+
+		<TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
+		<TargetPlatformMinVersion>7.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 </Project>

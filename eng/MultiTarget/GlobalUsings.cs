@@ -1,4 +1,4 @@
-// System
+﻿// System
 global using global::System;
 global using global::System.Collections.Generic;
 global using global::System.Collections.ObjectModel;
@@ -54,6 +54,9 @@ global using global::System.Windows.Documents;
 global using global::System.Windows.Media.Animation;
 global using global::System.Windows.Shapes;
 global using global::System.Windows.Controls.Primitives;
+
+global using global::iNKORE.UI.WPF.Modern;
+global using global::iNKORE.UI.WPF.Modern.Controls;
 
 #endif
 
