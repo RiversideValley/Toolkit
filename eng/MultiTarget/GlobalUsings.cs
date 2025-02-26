@@ -57,7 +57,6 @@ global using global::System.Windows.Controls.Primitives;
 
 global using global::iNKORE.UI.WPF.Modern;
 global using global::iNKORE.UI.WPF.Modern.Controls;
-
 #endif
 
 // CommunityToolkit
