@@ -11,13 +11,23 @@ public partial class BooleanToVisibilityConverter : IValueConverter
     /// </summary>
     /// <param name="value">The <see langword="bool"/> value to convert.</param>
     /// <returns><see cref="Visibility.Visible"/> if the value is <see langword="true"/>; otherwise, <see cref="Visibility.Collapsed"/>.</returns>
-    public object Convert(object value, Type targetType, object parameter, string language) => (bool)value ? Visibility.Visible : Visibility.Collapsed;
+#if !Wpf
+	public object Convert(object value, Type targetType, object parameter, string language)
+#elif Wpf
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+#endif
+        => (bool)value ? Visibility.Visible : Visibility.Collapsed;
 
     /// <summary>
     /// Converts a <see cref="Visibility"/> value back to a <see langword="bool"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Visibility"/> value to convert.</param>
     /// <returns><see langword="true"/> if the value is <see cref="Visibility.Visible"/>; otherwise, <see langword="false"/>.</returns>
-    public object ConvertBack(object value, Type targetType, object parameter, string language) => (Visibility)value == Visibility.Visible;
+#if !Wpf
+	public object ConvertBack(object value, Type targetType, object parameter, string language)
+#elif Wpf
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+#endif
+        => (Visibility)value == Visibility.Visible;
 #pragma warning restore CS1573
 }
