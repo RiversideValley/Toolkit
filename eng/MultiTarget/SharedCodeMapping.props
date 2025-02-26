@@ -14,4 +14,5 @@
 
 	<!-- Conditionally include shared project references based on the base project name -->
 	<Import Project="$(MSBuildThisFileDirectory)\..\..\src\core\$(BaseProjectName)\$(BaseProjectName).projitems" Label="Shared" Condition="Exists('$(MSBuildThisFileDirectory)\..\..\src\core\$(BaseProjectName)\$(BaseProjectName).projitems')" />
+	<Import Project="$(MSBuildThisFileDirectory)\..\..\src\core\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.projitems" Label="Shared" Condition="'$(MSBuildProjectName)' == 'Riverside.Extensions.$(ProjectTarget)'" />
 </Project>

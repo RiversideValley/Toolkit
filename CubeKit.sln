@@ -328,6 +328,7 @@ Global
 		src\core\Riverside.Toolkit.Animations\Riverside.Toolkit.Animations.projitems*{737e04d9-8a42-4a00-b819-4fc537669077}*SharedItemsImports = 13
 		src\core\Riverside.Toolkit.Icons\Riverside.Toolkit.Icons.projitems*{7f5b70dd-156b-4126-9463-39ab04b696ea}*SharedItemsImports = 13
 		src\core\Riverside.Toolkit.Icons\Riverside.Toolkit.Icons.projitems*{81666f0e-d457-4634-84bb-20df6d4ccff4}*SharedItemsImports = 5
+		src\core\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.projitems*{8366d81c-8acd-419e-ad83-ac928cea082b}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.Converters\Riverside.Toolkit.Converters.projitems*{8dad09c9-fe74-41aa-8dfd-a0eef93469ad}*SharedItemsImports = 13
 		src\core\Riverside.Toolkit.Helpers\Riverside.Toolkit.Helpers.projitems*{8ebaea2a-405d-4f0f-adca-cea72d53a527}*SharedItemsImports = 13
 		src\core\Riverside.Toolkit.Converters\Riverside.Toolkit.Converters.projitems*{922add1e-c50b-41cb-ae9b-6d07ec3608ea}*SharedItemsImports = 5
