@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -17,7 +17,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)IAlphaMaskProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OpacityMaskView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RedirectVisualView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\ButtonsState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\SelectedCaptionButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Buttons.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.cs" />

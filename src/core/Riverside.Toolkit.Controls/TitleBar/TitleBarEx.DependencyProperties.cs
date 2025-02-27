@@ -1,12 +1,11 @@
 ﻿#if WinUI
+
 using DependencyPropertyGenerator;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using System;
 using Windows.UI;
 using WinUIEx;
-
-#nullable enable
 
 namespace Riverside.Toolkit.Controls.TitleBar;
 
@@ -88,4 +87,5 @@ public partial class TitleBarEx
         RestoreClick?.Invoke(sender, e);
     }
 }
+
 #endif
