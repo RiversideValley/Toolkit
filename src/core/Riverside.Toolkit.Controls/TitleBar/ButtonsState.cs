@@ -1,4 +1,6 @@
-﻿namespace Riverside.Toolkit.Controls.TitleBar;
+﻿#if WinUI
+
+namespace Riverside.Toolkit.Controls.TitleBar;
 
 /// <summary>
 /// Specifies the state of the caption buttons.
@@ -34,3 +36,5 @@ public enum ButtonsState
     /// </summary>
     ClosePressed
 }
+
+#endif

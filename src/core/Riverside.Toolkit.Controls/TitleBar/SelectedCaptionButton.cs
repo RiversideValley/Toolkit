@@ -1,4 +1,6 @@
-﻿namespace Riverside.Toolkit.Controls.TitleBar;
+﻿#if WinUI
+
+namespace Riverside.Toolkit.Controls.TitleBar;
 
 /// <summary>
 /// Specifies the selected caption button.
@@ -22,3 +24,5 @@ public enum SelectedCaptionButton
     /// </summary>
     Close = 3
 }
+
+#endif
