@@ -1,9 +1,8 @@
 ﻿#if WinUI
+
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.Storage;
 using System;
-
-#nullable enable
 
 namespace Riverside.Toolkit.Controls.TitleBar;
 
@@ -43,4 +42,5 @@ public partial class TitleBarEx
             : throw new InvalidOperationException($"The template child '{name}' is not of type {typeof(T).FullName}.");
     }
 }
+
 #endif

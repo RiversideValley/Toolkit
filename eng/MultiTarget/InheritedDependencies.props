@@ -7,7 +7,7 @@
 	</ItemGroup>
 
 	<!-- UWP or WinUI -->
-	<ItemGroup Condition="'$(IsUapProject)' == 'true'">
+	<ItemGroup Condition="'$(IsUapBased)' == 'true'">
 		<PackageReference Include="DependencyPropertyGenerator">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

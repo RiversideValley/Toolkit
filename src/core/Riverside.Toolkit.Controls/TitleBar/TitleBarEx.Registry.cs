@@ -1,4 +1,5 @@
 ﻿#if WinUI
+
 namespace Riverside.Toolkit.Controls.TitleBar;
 
 public partial class TitleBarEx
@@ -22,4 +23,5 @@ public partial class TitleBarEx
         }
     }
 }
+
 #endif
