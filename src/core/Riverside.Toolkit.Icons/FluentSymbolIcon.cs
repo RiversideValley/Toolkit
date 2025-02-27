@@ -1,4 +1,4 @@
-// The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
+﻿// The Templated Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234235
 
 namespace Riverside.Toolkit.Icons;
 
@@ -66,7 +66,11 @@ public partial class FluentSymbolIcon : Control
     {
         return new PathIcon
         {
+#if !Wpf
             Data = (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), GetPathData(symbol)),
+#elif Wpf
+            Data = GetPathData(symbol),
+#endif
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center
         };
@@ -84,7 +88,11 @@ public partial class FluentSymbolIcon : Control
     public static Geometry GetPathData(FluentSymbol symbol)
     {
         return AllFluentIcons.TryGetValue(symbol, out string pathData)
+#if !Wpf
             ? (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), pathData)
+#elif Wpf
+            ? Geometry.Parse(pathData)
+#endif
             : null;
     }
 }
