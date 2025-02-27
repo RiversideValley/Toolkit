@@ -117,6 +117,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetStandard", "NetStandard"
 		eng\MultiTarget\NetStandard\Head.props = eng\MultiTarget\NetStandard\Head.props
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{BE76DB87-9BCD-4A3A-A1AE-9E9336F0E90C}"
+	ProjectSection(SolutionItems) = preProject
+		eng\MultiTarget\Wpf\Head.props = eng\MultiTarget\Wpf\Head.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Wpf.Converters", "src\platforms\Riverside.Toolkit.Wpf.Converters\Riverside.Toolkit.Wpf.Converters.csproj", "{47643752-496D-4E9A-A86A-875E08D87633}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Extensions.Wpf", "src\platforms\Riverside.Extensions.Wpf\Riverside.Extensions.Wpf.csproj", "{8366D81C-8ACD-419E-AD83-AC928CEA082B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Wpf.Helpers", "src\platforms\Riverside.Toolkit.Wpf.Helpers\Riverside.Toolkit.Wpf.Helpers.csproj", "{B3E667D9-90BB-472C-91C8-9C66104CF3B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Wpf.Services", "src\platforms\Riverside.Toolkit.Wpf.Services\Riverside.Toolkit.Wpf.Services.csproj", "{DF79B7CC-0D88-44A7-969E-E8D1E9EA0930}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Wpf.Icons", "src\platforms\Riverside.Toolkit.Wpf.Icons\Riverside.Toolkit.Wpf.Icons.csproj", "{C348CA70-681E-4B99-BE32-0C6B5F5D136D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -221,6 +236,26 @@ Global
 		{922ADD1E-C50B-41CB-AE9B-6D07EC3608EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{922ADD1E-C50B-41CB-AE9B-6D07EC3608EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{922ADD1E-C50B-41CB-AE9B-6D07EC3608EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47643752-496D-4E9A-A86A-875E08D87633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47643752-496D-4E9A-A86A-875E08D87633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47643752-496D-4E9A-A86A-875E08D87633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47643752-496D-4E9A-A86A-875E08D87633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8366D81C-8ACD-419E-AD83-AC928CEA082B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8366D81C-8ACD-419E-AD83-AC928CEA082B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8366D81C-8ACD-419E-AD83-AC928CEA082B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8366D81C-8ACD-419E-AD83-AC928CEA082B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3E667D9-90BB-472C-91C8-9C66104CF3B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E667D9-90BB-472C-91C8-9C66104CF3B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E667D9-90BB-472C-91C8-9C66104CF3B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E667D9-90BB-472C-91C8-9C66104CF3B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF79B7CC-0D88-44A7-969E-E8D1E9EA0930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF79B7CC-0D88-44A7-969E-E8D1E9EA0930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF79B7CC-0D88-44A7-969E-E8D1E9EA0930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF79B7CC-0D88-44A7-969E-E8D1E9EA0930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C348CA70-681E-4B99-BE32-0C6B5F5D136D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C348CA70-681E-4B99-BE32-0C6B5F5D136D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C348CA70-681E-4B99-BE32-0C6B5F5D136D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C348CA70-681E-4B99-BE32-0C6B5F5D136D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -266,6 +301,12 @@ Global
 		{016DAAA0-2931-4ED9-A13B-E8256B92347D} = {78BB65EA-AA93-4725-9985-FCA661A67521}
 		{A1390F63-B9C5-4629-8C77-40E61B5530BC} = {78BB65EA-AA93-4725-9985-FCA661A67521}
 		{9F42BC89-7A8F-4E5C-BE13-D46D44131505} = {78BB65EA-AA93-4725-9985-FCA661A67521}
+		{BE76DB87-9BCD-4A3A-A1AE-9E9336F0E90C} = {78BB65EA-AA93-4725-9985-FCA661A67521}
+		{47643752-496D-4E9A-A86A-875E08D87633} = {AA619411-1D80-4167-9BB6-84534B676BEB}
+		{8366D81C-8ACD-419E-AD83-AC928CEA082B} = {AA619411-1D80-4167-9BB6-84534B676BEB}
+		{B3E667D9-90BB-472C-91C8-9C66104CF3B4} = {AA619411-1D80-4167-9BB6-84534B676BEB}
+		{DF79B7CC-0D88-44A7-969E-E8D1E9EA0930} = {AA619411-1D80-4167-9BB6-84534B676BEB}
+		{C348CA70-681E-4B99-BE32-0C6B5F5D136D} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {524016A6-E08B-4DAE-AE79-520996BA0E65}
@@ -273,13 +314,32 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\core\Riverside.Toolkit.Controls\Riverside.Toolkit.Controls.projitems*{19b394fa-b98d-48a5-8f1e-b26a9c8b5d02}*SharedItemsImports = 13
 		src\core\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.projitems*{1f1bab82-b6c3-46d1-920e-d41fd775d4c7}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Helpers\Riverside.Toolkit.Helpers.projitems*{245d1074-abd4-456c-95d8-6c5f06cb6c9e}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.Services\Riverside.Toolkit.Services.projitems*{3b5ea938-c616-4c16-9903-79496026c076}*SharedItemsImports = 13
+		src\core\Riverside.Toolkit.Brushes\Riverside.Toolkit.Brushes.projitems*{3d089f33-fb4b-4ae4-8208-aa7813538b00}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Icons\Riverside.Toolkit.Icons.projitems*{3e95bc91-1c4a-4f02-af75-6ab809fd8e8c}*SharedItemsImports = 5
 		src\core\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.projitems*{3f4d5a40-9934-4518-bab1-c3ebb1d434cb}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Converters\Riverside.Toolkit.Converters.projitems*{47643752-496d-4e9a-a86a-875e08d87633}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Converters\Riverside.Toolkit.Converters.projitems*{51a3ab3b-672d-40c3-9a4a-6bccdf0486a9}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Services\Riverside.Toolkit.Services.projitems*{582d77aa-34b5-41dc-9fde-383d1ef5f1b0}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Services\Riverside.Toolkit.Services.projitems*{5d3784a7-cc3b-43fe-8af3-8c996adbc4e1}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Helpers\Riverside.Toolkit.Helpers.projitems*{5f02e135-6996-4fea-b5c0-6632bb809d3d}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Controls\Riverside.Toolkit.Controls.projitems*{641d8078-40a5-4d8e-ba78-6fdfb29e4c65}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.Animations\Riverside.Toolkit.Animations.projitems*{737e04d9-8a42-4a00-b819-4fc537669077}*SharedItemsImports = 13
 		src\core\Riverside.Toolkit.Icons\Riverside.Toolkit.Icons.projitems*{7f5b70dd-156b-4126-9463-39ab04b696ea}*SharedItemsImports = 13
+		src\core\Riverside.Toolkit.Icons\Riverside.Toolkit.Icons.projitems*{81666f0e-d457-4634-84bb-20df6d4ccff4}*SharedItemsImports = 5
+		src\core\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.projitems*{8366d81c-8acd-419e-ad83-ac928cea082b}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.Converters\Riverside.Toolkit.Converters.projitems*{8dad09c9-fe74-41aa-8dfd-a0eef93469ad}*SharedItemsImports = 13
 		src\core\Riverside.Toolkit.Helpers\Riverside.Toolkit.Helpers.projitems*{8ebaea2a-405d-4f0f-adca-cea72d53a527}*SharedItemsImports = 13
+		src\core\Riverside.Toolkit.Converters\Riverside.Toolkit.Converters.projitems*{922add1e-c50b-41cb-ae9b-6d07ec3608ea}*SharedItemsImports = 5
 		src\core\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.projitems*{a33f78a1-9797-47f2-a93e-ba1963e3c0bd}*SharedItemsImports = 13
+		src\core\Riverside.Toolkit.Helpers\Riverside.Toolkit.Helpers.projitems*{b3e667d9-90bb-472c-91c8-9c66104cf3b4}*SharedItemsImports = 5
 		src\core\Riverside.Toolkit.Brushes\Riverside.Toolkit.Brushes.projitems*{bcdc11ec-a933-4b7b-829b-58af5aa5dd14}*SharedItemsImports = 13
+		src\core\Riverside.Toolkit.Icons\Riverside.Toolkit.Icons.projitems*{c348ca70-681e-4b99-be32-0c6b5f5d136d}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Animations\Riverside.Toolkit.Animations.projitems*{c51f5c87-f211-4072-b1f0-6c1367b31cdf}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Animations\Riverside.Toolkit.Animations.projitems*{c86be1ea-d056-442b-b09a-ed660763631b}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Services\Riverside.Toolkit.Services.projitems*{df79b7cc-0d88-44a7-969e-e8d1e9ea0930}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Controls\Riverside.Toolkit.Controls.projitems*{e0ea4ce1-6b70-40b3-a5de-8dafeae01fdc}*SharedItemsImports = 5
+		src\core\Riverside.Toolkit.Brushes\Riverside.Toolkit.Brushes.projitems*{f887f376-5221-4c82-9ded-0b991fb90d90}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

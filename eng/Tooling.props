@@ -5,14 +5,17 @@
 		<IsWinUIProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('WinUI')) ">true</IsWinUIProject>
 		<IsUnoProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('Uno')) ">true</IsUnoProject>
 		<IsNetStandardProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('NETCore')) ">true</IsNetStandardProject>
+		<IsWpfProject Condition=" '$(MSBuildProjectName)' != '' and $(MSBuildProjectName.Contains('Wpf')) ">true</IsWpfProject>
 
 		<IsUapBased Condition=" '$(IsWinUIProject)' == 'true' or '$(IsUwpProject)' == 'true' ">true</IsUapBased>
 		<IsWinUIBased Condition=" '$(IsWinUIProject)' == 'true' or '$(IsUnoProject)' == 'true' ">true</IsWinUIBased>
+		<IsWindowsBased Condition=" '$(IsUapBased)' == 'true' or '$(IsWinUIBased)' == 'true' or '$(IsWpfProject)' == 'true' ">true</IsWindowsBased>
 
 		<ProjectTarget Condition="'$(IsUwpProject)' == 'true'">Uwp</ProjectTarget>
 		<ProjectTarget Condition="'$(IsWinUIProject)' == 'true'">WinUI</ProjectTarget>
 		<ProjectTarget Condition="'$(IsUnoProject)' == 'true'">Uno</ProjectTarget>
 		<ProjectTarget Condition="'$(IsNetStandardProject)' == 'true'">NetStandard</ProjectTarget>
+		<ProjectTarget Condition="'$(IsWpfProject)' == 'true'">Wpf</ProjectTarget>
 	</PropertyGroup>
 
 	<PropertyGroup>

@@ -1,8 +1,9 @@
-// System
+﻿// System
 global using global::System;
 global using global::System.Collections.Generic;
 global using global::System.Collections.ObjectModel;
 global using global::System.ComponentModel;
+global using global::System.Globalization;
 global using global::System.Linq;
 global using global::System.Threading.Tasks;
 
@@ -25,8 +26,7 @@ global using global::Microsoft.UI.Xaml.Shapes;
 global using global::Microsoft.UI.Xaml.Controls.Primitives;
 
 global using global::Windows.UI;
-#endif
-#if UWP
+#elif UWP
 global using global::Windows;
 global using global::Windows.UI;
 global using global::Windows.UI.Xaml;
@@ -42,6 +42,22 @@ global using global::Windows.UI.Xaml.Hosting;
 global using global::Windows.UI.Xaml.Media.Animation;
 global using global::Windows.UI.Xaml.Shapes;
 global using global::Windows.UI.Xaml.Controls.Primitives;
+#elif Wpf
+global using global::System.Windows;
+global using global::System.Windows.Controls;
+global using global::System.Windows.Data;
+global using global::System.Windows.Input;
+global using global::System.Windows.Media;
+global using global::System.Windows.Markup;
+global using global::System.Windows.Navigation;
+global using global::System.Windows.Documents;
+global using global::System.Windows.Media.Animation;
+global using global::System.Windows.Shapes;
+global using global::System.Windows.Controls.Primitives;
+
+global using global::iNKORE.UI.WPF.Modern;
+global using global::iNKORE.UI.WPF.Modern.Controls;
+global using global::iNKORE.UI.WPF.Modern.Common;
 #endif
 
 // CommunityToolkit

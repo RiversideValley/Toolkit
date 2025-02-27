@@ -2,7 +2,17 @@
 
 public class ColorToSolidColorBrushConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, string language) => new SolidColorBrush((Color)value);
+#if !Wpf
+	public object Convert(object value, Type targetType, object parameter, string language)
+#elif Wpf
+	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+#endif
+		=> new SolidColorBrush((Color)value);
 
-    public object ConvertBack(object value, Type targetType, object parameter, string language) => ((SolidColorBrush)value).Color;
+#if !Wpf
+	public object ConvertBack(object value, Type targetType, object parameter, string language)
+#elif Wpf
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+#endif
+        => ((SolidColorBrush)value).Color;
 }

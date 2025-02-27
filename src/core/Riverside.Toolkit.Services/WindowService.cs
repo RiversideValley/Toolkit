@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.ViewManagement;
+using Thickness = Windows.UI.Xaml.Thickness;
 
 namespace Riverside.Toolkit.Services;
 

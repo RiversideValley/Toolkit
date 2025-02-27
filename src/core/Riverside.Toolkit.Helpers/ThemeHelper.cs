@@ -1,4 +1,6 @@
-﻿using Windows.Storage;
+﻿#if !Wpf
+
+using Windows.Storage;
 
 namespace Riverside.Toolkit.Helpers;
 
@@ -13,3 +15,5 @@ public class ThemeHelper
 
     public static void LoadTheme(string Theme) => Application.Current.Resources.MergedDictionaries.Add((ResourceDictionary)XamlReader.Load(Theme));
 }
+
+#endif

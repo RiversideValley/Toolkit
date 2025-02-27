@@ -1,3 +1,2 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<Import Project="..\..\core\Riverside.Extensions.WinUI\Riverside.Extensions.WinUI.projitems" Label="Shared" />
 </Project>
