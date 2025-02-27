@@ -1,4 +1,5 @@
 ﻿#if WinUI
+
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -12,8 +13,6 @@ using System.Threading.Tasks;
 using Windows.Graphics;
 using WinUIEx;
 using static Riverside.Toolkit.Helpers.NativeHelper;
-
-#nullable enable
 
 namespace Riverside.Toolkit.Controls.TitleBar;
 
@@ -337,4 +336,5 @@ public static class WindowExtensions
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 }
+
 #endif

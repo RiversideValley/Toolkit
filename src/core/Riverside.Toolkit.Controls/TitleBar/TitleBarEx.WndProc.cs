@@ -9,8 +9,6 @@ using WinUIEx;
 using WinUIEx.Messaging;
 using static Riverside.Toolkit.Helpers.NativeHelper;
 
-#nullable enable
-
 namespace Riverside.Toolkit.Controls.TitleBar;
 
 public partial class TitleBarEx : Control
@@ -410,4 +408,5 @@ public partial class TitleBarEx : Control
         void RespondToHitTest(int hitTest) => args.Result = new IntPtr(hitTest);
     }
 }
+
 #endif

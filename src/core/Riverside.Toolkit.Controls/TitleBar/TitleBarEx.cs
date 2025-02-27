@@ -1,12 +1,11 @@
 ﻿#if WinUI
+
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using WinUIEx;
 using WinUIEx.Messaging;
-
-#nullable enable
 
 namespace Riverside.Toolkit.Controls.TitleBar;
 
@@ -94,4 +93,5 @@ public partial class TitleBarEx : Control
         InvokeChecks();
     }
 }
+
 #endif

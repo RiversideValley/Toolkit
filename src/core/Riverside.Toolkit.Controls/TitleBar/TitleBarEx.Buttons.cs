@@ -1,8 +1,7 @@
 ﻿#if WinUI
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-
-#nullable enable
 
 namespace Riverside.Toolkit.Controls.TitleBar;
 
@@ -115,4 +114,5 @@ public partial class TitleBarEx
         _ = VisualStateManager.GoToState(this.CloseButton, closeState, true);
     }
 }
+
 #endif
