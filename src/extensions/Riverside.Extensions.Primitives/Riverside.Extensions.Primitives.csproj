@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<RootNamespace>Riverside.Extensions</RootNamespace>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1' or '$(TargetFramework)' == 'net462'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1' or '$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net481'">
 		<PackageReference Include="System.Text.Json" />
 		<PackageReference Include="System.Net.Http" />
 	</ItemGroup>
