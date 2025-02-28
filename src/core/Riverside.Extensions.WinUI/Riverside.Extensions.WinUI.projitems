@@ -9,5 +9,6 @@
     <Import_RootNamespace>Riverside.Extensions.WinUI</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)UnifiedApp.cs" />
   </ItemGroup>
 </Project>
