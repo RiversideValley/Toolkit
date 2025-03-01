@@ -1,6 +1,4 @@
-﻿using LicenseIdentifiers;
-
-namespace Riverside.Extensions.Accountability;
+﻿namespace Riverside.Extensions.Accountability;
 
 /// <summary>
 /// This attribute is used to indicate that the code is not owned by you.
@@ -25,6 +23,7 @@ public class NotMyCodeAttribute : Attribute
     /// </example>
     /// <seealso cref="NotMyCodeAttribute(Uri)"/>
     /// <seealso cref="NotMyCodeAttribute(string)"/>
+    /// <seealso cref="NotMyCodeAttribute(string, string)"/>
     public NotMyCodeAttribute()
     {
         License = null;
@@ -34,15 +33,15 @@ public class NotMyCodeAttribute : Attribute
     /// <summary>
     /// Indicates that the code is not owned by you.
     /// </summary>
-    /// <param name="license">The <see cref="LicenseIdentifier"/> of the license that the code associated with this attribute is licensed under.</param>
+    /// <param name="license">The SPDX expression of the license that the code associated with this attribute is licensed under.</param>
     /// <example>
-    /// [NotMyCode(LicenseIdentifier.MIT)]
+    /// [NotMyCode("MIT")]
     /// public struct HashCode
     /// </example>
-    public NotMyCodeAttribute(LicenseIdentifier license)
+    public NotMyCodeAttribute(string license)
     {
         License = license;
-        Permission = "This code is used legally as it is licensed under the " + license.Name + " license.";
+        Permission = "This code is used legally as it is licensed under the " + license + " license.";
     }
 
     /// <summary>
@@ -62,18 +61,19 @@ public class NotMyCodeAttribute : Attribute
     /// <summary>
     /// Indicates that the code is not owned by you.
     /// </summary>
-    /// <remarks>
-    /// If you want to get the license identifier from a string, do not use this constructor.
-    /// Instead, use the <see cref="NotMyCodeAttribute(LicenseIdentifier)"/> constructor and use the method <see cref="LicenseIdentifier.TryParse(string, out LicenseIdentifier)"/>.
-    /// </remarks>
     /// <param name="permissionMessage">The written permission the author of this software gave you to use the code associated with this attribute.</param>
+    /// <param name="license">The SPDX expression of the license that the code associated with this attribute is licensed under.</param>
     /// <example>
     /// [NotMyCode(".NET (including the runtime repo) is licensed under the MIT license.")]
     /// public struct HashCode
     /// </example>
-    public NotMyCodeAttribute(string permissionMessage)
+    /// <example>
+    /// [NotMyCode(".NET (including the runtime repo) is licensed under the MIT license.", "MIT")]
+    /// public struct HashCode
+    /// </example>
+    public NotMyCodeAttribute(string permissionMessage, string? license)
     {
-        License = null;
+        License = license;
         Permission = permissionMessage;
     }
 

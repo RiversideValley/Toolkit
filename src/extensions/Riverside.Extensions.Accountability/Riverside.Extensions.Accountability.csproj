@@ -1,5 +1,2 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<ItemGroup>
-		<PackageReference Include="LicenseIdentifiers" />
-	</ItemGroup>
 </Project>
