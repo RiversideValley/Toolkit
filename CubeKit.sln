@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35424.110
@@ -132,6 +132,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Wpf.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.Wpf.Icons", "src\platforms\Riverside.Toolkit.Wpf.Icons\Riverside.Toolkit.Wpf.Icons.csproj", "{C348CA70-681E-4B99-BE32-0C6B5F5D136D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Extensions.Accountability", "src\extensions\Riverside.Extensions.Accountability\Riverside.Extensions.Accountability.csproj", "{A9583B63-01B8-4BD0-9A47-2F58B2096E34}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.SPDX", "src\extensions\Riverside.SPDX\Riverside.SPDX.csproj", "{248B21A6-01B7-48EC-B4F6-380521295F0A}"
 EndProject
 Global
@@ -258,6 +260,10 @@ Global
 		{C348CA70-681E-4B99-BE32-0C6B5F5D136D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C348CA70-681E-4B99-BE32-0C6B5F5D136D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C348CA70-681E-4B99-BE32-0C6B5F5D136D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9583B63-01B8-4BD0-9A47-2F58B2096E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9583B63-01B8-4BD0-9A47-2F58B2096E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9583B63-01B8-4BD0-9A47-2F58B2096E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9583B63-01B8-4BD0-9A47-2F58B2096E34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{248B21A6-01B7-48EC-B4F6-380521295F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{248B21A6-01B7-48EC-B4F6-380521295F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{248B21A6-01B7-48EC-B4F6-380521295F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -313,6 +319,7 @@ Global
 		{B3E667D9-90BB-472C-91C8-9C66104CF3B4} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{DF79B7CC-0D88-44A7-969E-E8D1E9EA0930} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{C348CA70-681E-4B99-BE32-0C6B5F5D136D} = {AA619411-1D80-4167-9BB6-84534B676BEB}
+		{A9583B63-01B8-4BD0-9A47-2F58B2096E34} = {91BB25A0-AA77-4B6C-A101-2717467BA888}
 		{248B21A6-01B7-48EC-B4F6-380521295F0A} = {91BB25A0-AA77-4B6C-A101-2717467BA888}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
