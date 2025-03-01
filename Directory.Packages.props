@@ -21,13 +21,14 @@
 		<PackageVersion Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
 		<PackageVersion Include="MSTest.TestAdapter" Version="3.7.0" />
 		<PackageVersion Include="MSTest.TestFramework" Version="3.7.0" />
-		<PackageVersion Include="Riverside.Extensions.PInvoke" Version="$(Version)" />
 		<PackageVersion Include="System.Text.Json" Version="9.0.0" />
 		<PackageVersion Include="System.Net.Http" Version="4.3.4" />
 		<PackageVersion Include="Win2D.uwp" Version="1.28.1" />
 		<PackageVersion Include="WinUIEx" Version="2.5.1" />
 	</ItemGroup>
 	<ItemGroup>
+		<PackageVersion Include="Riverside.Extensions.PInvoke" Version="$(Version)" />
+		
 		<PackageVersion Include="$(PackagePrefix)Animations" Version="$(Version)" />
 		<PackageVersion Include="$(PackagePrefix)Brushes" Version="$(Version)" />
 		<PackageVersion Include="$(PackagePrefix)Controls" Version="$(Version)" />
