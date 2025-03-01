@@ -9,6 +9,8 @@ namespace Riverside.Extensions.WinUI;
 /// <seealso cref="Application"/>
 public abstract partial class UnifiedApp : Application
 {
+    private static CommandBarFlyout? _LastOpenedFlyout;
+
 #if !Wpf && !UWP
     /// <summary>
     /// Gets a dictionary of windows identified by a string key.
@@ -74,6 +76,20 @@ public abstract partial class UnifiedApp : Application
         Windows[windowKey] = newWindow;
     }
 #endif
+
+    /// <summary>
+    /// Gets or sets the last opened <see cref="CommandBarFlyout"/>.
+    /// </summary>
+    public static CommandBarFlyout? LastOpenedFlyout
+    {
+        set
+        {
+            _LastOpenedFlyout = value;
+
+            if (_LastOpenedFlyout is not null)
+                _LastOpenedFlyout.Closed += LastOpenedFlyout_Closed;
+        }
+    }
 
     /// <summary>
     /// Invoked when Navigation to a certain page fails
@@ -149,5 +165,18 @@ public abstract partial class UnifiedApp : Application
                 .ShowAsync();
         }
         catch { }
+    }
+
+    /// <summary>
+    /// Gets invoked when the last opened flyout is closed.
+    /// </summary>
+    private static void LastOpenedFlyout_Closed(object? sender, object e)
+    {
+        if (sender is not CommandBarFlyout commandBarFlyout)
+            return;
+
+        commandBarFlyout.Closed -= LastOpenedFlyout_Closed;
+        if (_LastOpenedFlyout == commandBarFlyout)
+            _LastOpenedFlyout = null;
     }
 }
