@@ -8,6 +8,14 @@ global using global::System.Linq;
 global using global::System.Threading.Tasks;
 
 // WinUI
+#if UAP
+global using global::Windows.ApplicationModel;
+global using global::Windows.ApplicationModel.Activation;
+global using global::Windows.Storage;
+global using global::Windows.UI;
+global using global::Windows.UI.WindowManagement;
+#endif
+
 #if WinUI
 global using global::Microsoft;
 global using global::Microsoft.UI;
@@ -24,11 +32,8 @@ global using global::Microsoft.UI.Xaml.Hosting;
 global using global::Microsoft.UI.Xaml.Media.Animation;
 global using global::Microsoft.UI.Xaml.Shapes;
 global using global::Microsoft.UI.Xaml.Controls.Primitives;
-
-global using global::Windows.UI;
 #elif UWP
 global using global::Windows;
-global using global::Windows.UI;
 global using global::Windows.UI.Xaml;
 global using global::Windows.UI.Xaml.Controls;
 global using global::Windows.UI.Xaml.Data;
@@ -58,6 +63,8 @@ global using global::System.Windows.Controls.Primitives;
 global using global::iNKORE.UI.WPF.Modern;
 global using global::iNKORE.UI.WPF.Modern.Controls;
 global using global::iNKORE.UI.WPF.Modern.Common;
+
+global using Frame = global::iNKORE.UI.WPF.Modern.Controls.Frame;
 #endif
 
 // CommunityToolkit
