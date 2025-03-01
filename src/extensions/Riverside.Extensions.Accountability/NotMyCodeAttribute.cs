@@ -6,8 +6,9 @@ public class NotMyCodeAttribute : Attribute
     /// <summary>
     /// Generic indication that the code is not owned by you.
     /// </summary>
-    public NotMyCodeAttribute()
+    public NotMyCodeAttribute(Riverside.SPDX.License license)
     {
+        
     }
 /*
     public NotMyCodeAttribute(Spdx license)
