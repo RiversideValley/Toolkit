@@ -1,3 +1,5 @@
+// This file contains portions of code from the Files App project, licensed under the MIT License.
+
 using System.Reflection;
 
 namespace Riverside.Extensions.WinUI;
