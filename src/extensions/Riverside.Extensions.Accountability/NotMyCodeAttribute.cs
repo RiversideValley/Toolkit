@@ -1,4 +1,6 @@
-﻿namespace Riverside.Extensions.Accountability;
+﻿using System.Text;
+
+namespace Riverside.Extensions.Accountability;
 
 /// <summary>
 /// This attribute is used to indicate that the code is not owned by you.
@@ -21,41 +23,39 @@ public class NotMyCodeAttribute : Attribute
     /// [NotMyCode()]
     /// public struct HashCode
     /// </example>
-    /// <seealso cref="NotMyCodeAttribute(Uri)"/>
-    /// <seealso cref="NotMyCodeAttribute(string)"/>
+    /// <seealso cref="NotMyCodeAttribute(string, string, string?, string?)"/>
     /// <seealso cref="NotMyCodeAttribute(string, string)"/>
     public NotMyCodeAttribute()
     {
-        License = null;
+        License = string.Empty;
         Permission = "This code is used legally under the terms of the original license.";
+        CopyrightYear = DateTime.Now.Year.ToString();
+        Copyright = GetCopyrightStatement(
+            string.Empty,
+            DateTime.Now.Year.ToString());
     }
 
     /// <summary>
     /// Indicates that the code is not owned by you.
     /// </summary>
     /// <param name="license">The SPDX expression of the license that the code associated with this attribute is licensed under.</param>
+    /// <param name="source">The source of the code associated with this attribute.</param>
+    /// <param name="holder"></param>
+    /// <param name="copyrightYear"></param>
     /// <example>
     /// [NotMyCode("MIT")]
     /// public struct HashCode
     /// </example>
-    public NotMyCodeAttribute(string license)
+    public NotMyCodeAttribute(string license, string source, string? holder, string? copyrightYear)
     {
         License = license;
         Permission = "This code is used legally as it is licensed under the " + license + " license.";
-    }
-
-    /// <summary>
-    /// Indicates that the code is not owned by you.
-    /// </summary>
-    /// <param name="license">A URI that points to the license file that the code associated with this attribute is licensed under.</param>
-    /// <example>
-    /// [NotMyCode(new("https://github.com/dotnet/runtime/blob/main/LICENSE.TXT"))]
-    /// public struct HashCode
-    /// </example>
-    public NotMyCodeAttribute(Uri license)
-    {
-        License = license;
-        Permission = "This code is used legally as the original author of this software has granted permission to use this software at " + license.ToString();
+        CopyrightYear = copyrightYear ?? DateTime.Now.Year.ToString();
+        CopyrightHolder = holder;
+        Copyright = GetCopyrightStatement(
+            license,
+            copyrightYear ?? DateTime.Now.Year.ToString(),
+            holder: holder);
     }
 
     /// <summary>
@@ -73,8 +73,12 @@ public class NotMyCodeAttribute : Attribute
     /// </example>
     public NotMyCodeAttribute(string permissionMessage, string? license)
     {
-        License = license;
+        License = license ?? string.Empty;
         Permission = permissionMessage;
+        CopyrightYear = DateTime.Now.Year.ToString();
+        Copyright = GetCopyrightStatement(
+            license ?? string.Empty,
+            DateTime.Now.Year.ToString());
     }
 
     /// <summary>
@@ -85,5 +89,27 @@ public class NotMyCodeAttribute : Attribute
     /// <summary>
     /// The license that the code associated with this attribute is licensed under.
     /// </summary>
-    public object? License;
+    public string License;
+
+    public string CopyrightYear;
+
+    public string? CopyrightHolder;
+
+    public string Copyright;
+
+    private static string GetCopyrightStatement(string license, string year, bool implicitAllRightsReserved = true, string? holder = null)
+    {
+        StringBuilder copyrightText = new();
+        copyrightText.Append($"Copyright (c) {year}");
+
+        if (holder is null)
+            copyrightText.Append('.');
+        else
+            copyrightText.Append($" {holder}.");
+
+        if (!implicitAllRightsReserved)
+            copyrightText.Append(" All rights reserved.");
+
+        return copyrightText.ToString();
+    }
 }
