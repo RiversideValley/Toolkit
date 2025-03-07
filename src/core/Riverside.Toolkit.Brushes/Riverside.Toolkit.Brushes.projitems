@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\SharedProject.props" />
   <PropertyGroup>
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
@@ -8,19 +9,4 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Riverside.Toolkit.Brushes</Import_RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)ApplicationBrushes.xaml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)MicaBrushes.xaml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)StyleBrushes.xaml">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)BackdropKind.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MicaAltBrush.cs" />
-  </ItemGroup>
 </Project>
