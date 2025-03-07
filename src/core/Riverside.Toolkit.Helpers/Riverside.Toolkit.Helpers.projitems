@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\SharedProject.props" />
   <PropertyGroup>
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
@@ -9,4 +8,11 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Riverside.Toolkit.Helpers</Import_RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ColorHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DesignTimeHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DragAndDropHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NativeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeHelper.cs" />
+  </ItemGroup>
 </Project>

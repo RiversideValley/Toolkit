@@ -1,9 +1,0 @@
-<Project>
-	<ItemGroup>
-    	<Compile Include="**\*.cs" Exclude="**\obj\**;**\bin\**" />
-		<Page Include="**\*.xaml" Exclude="**\obj\**;**\bin\**">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-    </ItemGroup>
-</Project>

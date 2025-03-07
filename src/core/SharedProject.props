@@ -1,3 +1,0 @@
-<Project>
-	<Import Project="$(MSBuildThisFileDirectory)\..\..\eng\SharedProjectIncludes.props" />
-</Project>
