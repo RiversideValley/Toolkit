@@ -8,25 +8,4 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Riverside.Toolkit.Controls</Import_RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Card.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ChatBubble.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CommandLink.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DropShadowPanel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DropShadowPanel.Properties.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)IAlphaMaskProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)OpacityMaskView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)RedirectVisualView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\ButtonsState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\SelectedCaptionButton.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.App.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Buttons.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.DependencyProperties.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.EventHandlers.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Native.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Registry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.Window.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.WndProc.cs" />
-  </ItemGroup>
 </Project>

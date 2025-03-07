@@ -8,11 +8,4 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Riverside.Toolkit.Icons</Import_RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)FluentIconElement.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FluentIconSource.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FluentSymbol.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FluentSymbolIcon.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FluentSymbolIcon.Icons.cs" />
-  </ItemGroup>
 </Project>
