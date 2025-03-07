@@ -28,6 +28,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageVersion Include="Riverside.Extensions.PInvoke" Version="$(Version)" />
+		<PackageVersion Include="Riverside.Extensions.Accountability" Version="$(Version)" />
 		
 		<PackageVersion Include="$(PackagePrefix)Animations" Version="$(Version)" />
 		<PackageVersion Include="$(PackagePrefix)Brushes" Version="$(Version)" />

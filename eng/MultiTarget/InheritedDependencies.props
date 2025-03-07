@@ -4,6 +4,8 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" />
 		<ProjectReference Include="$(SourceDirectory)\extensions\Riverside.Extensions.PInvoke\Riverside.Extensions.PInvoke.csproj" Condition="'$(Configuration)' == 'Debug' and '$(MSBuildProjectName)' != 'Riverside.Extensions.PInvoke'" />
 		<PackageReference Include="Riverside.Extensions.PInvoke" Condition="'$(Configuration)' == 'Release'  and '$(MSBuildProjectName)' != 'Riverside.Extensions.PInvoke'"/>
+		<ProjectReference Include="$(SourceDirectory)\extensions\Riverside.Extensions.Accountability\Riverside.Extensions.Accountability.csproj" Condition="'$(Configuration)' == 'Debug' and '$(MSBuildProjectName)' != 'Riverside.Extensions.Accountability'" />
+		<PackageReference Include="Riverside.Extensions.Accountability" Condition="'$(Configuration)' == 'Release'  and '$(MSBuildProjectName)' != 'Riverside.Extensions.Accountability'"/>
 	</ItemGroup>
 
 	<!-- UWP or WinUI -->
