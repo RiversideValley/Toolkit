@@ -1,7 +1,4 @@
 <Project>
-	<PropertyGroup>
-		<Platforms>AnyCPU;x64</Platforms>
-	</PropertyGroup>
 	<Sdk Condition="'$(TargetFramework)' == 'uap10.0.19041'" Name="MSBuild.Sdk.Extras" Version="3.0.44" />
 	<Sdk Condition="'$(TargetFramework)' == 'net9.0-windows10.0.26100.0'" Name="Microsoft.NET.Sdk" />
 </Project>
