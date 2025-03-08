@@ -5,7 +5,7 @@ namespace Riverside.Toolkit.Icons;
 /// <summary>
 /// Represents an icon that uses a <see cref="FluentSymbol"/> for its content.
 /// </summary>
-public sealed class FluentIconElement : PathIcon
+public sealed partial class FluentIconElement : PathIcon
 {
     /// <summary>
     /// Constructs an empty <see cref="FluentIconElement"/>.
