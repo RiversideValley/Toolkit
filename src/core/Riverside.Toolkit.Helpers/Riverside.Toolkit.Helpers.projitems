@@ -13,6 +13,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DragAndDropHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NativeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TextDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Win2DHelper.cs" />
   </ItemGroup>
 </Project>

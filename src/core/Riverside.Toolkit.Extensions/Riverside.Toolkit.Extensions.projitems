@@ -9,5 +9,6 @@
     <Import_RootNamespace>Riverside.Toolkit.Extensions</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ColorExtensions.cs" />
   </ItemGroup>
 </Project>
