@@ -158,7 +158,7 @@ public class MicaAltBrush : XamlCompositionBrushBase, INotifyPropertyChanged
         CompositionEffectBrush micaEffectBrush = compositor.CreateEffectFactory(colorBlendEffect).CreateBrush();
         //var blurredWallpaperBackdropBrush = (ICompositorWithBlurredWallpaperBackdropBrush)((object)compositor); // Code for < 22000 SDK
         //micaEffectBrush.SetSourceParameter("BlurredWallpaperBackdrop", blurredWallpaperBackdropBrush.TryCreateBlurredWallpaperBackdropBrush());
-#if Uwp
+#if Uwp && !NETNative // Introduced in Windows 11
         micaEffectBrush.SetSourceParameter("BlurredWallpaperBackdrop", compositor.TryCreateBlurredWallpaperBackdropBrush());
 #endif
 

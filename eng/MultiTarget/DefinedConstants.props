@@ -7,6 +7,7 @@
 		<DefineConstants Condition="'$(IsWpfProject)' == 'true'">$(DefineConstants);Wpf</DefineConstants>
 
 		<DefineConstants Condition="'$(IsNetStandardProject)' == 'true'">$(DefineConstants);NETCore</DefineConstants>
+		<DefineConstants Condition="'$(IsNetNativeBased)' == 'true'">$(DefineConstants);NETNative</DefineConstants>
 	</PropertyGroup>
 	
 	<!-- Platforms (Uno) -->
