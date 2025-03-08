@@ -29,10 +29,10 @@ public class NotMyCodeAttribute : Attribute
     {
         License = string.Empty;
         Permission = "This code is used legally under the terms of the original license.";
-        CopyrightYear = DateTime.Now.Year.ToString();
+        CopyrightYear = CurrentYear;
         Copyright = GetCopyrightStatement(
             string.Empty,
-            DateTime.Now.Year.ToString());
+            CurrentYear);
     }
 
     /// <summary>
@@ -40,21 +40,21 @@ public class NotMyCodeAttribute : Attribute
     /// </summary>
     /// <param name="license">The SPDX expression of the license that the code associated with this attribute is licensed under.</param>
     /// <param name="source">The source of the code associated with this attribute.</param>
-    /// <param name="holder"></param>
-    /// <param name="copyrightYear"></param>
+    /// <param name="holder">The holder of the copyright.</param>
+    /// <param name="copyrightYear">The year the copyright was established.</param>
     /// <example>
-    /// [NotMyCode("MIT")]
+    /// [NotMyCode("MIT", "https://github.com/dotnet/runtime", "Microsoft", "2023")]
     /// public struct HashCode
     /// </example>
     public NotMyCodeAttribute(string license, string source, string? holder, string? copyrightYear)
     {
         License = license;
         Permission = "This code is used legally as it is licensed under the " + license + " license.";
-        CopyrightYear = copyrightYear ?? DateTime.Now.Year.ToString();
+        CopyrightYear = copyrightYear ?? CurrentYear;
         CopyrightHolder = holder;
         Copyright = GetCopyrightStatement(
             license,
-            copyrightYear ?? DateTime.Now.Year.ToString(),
+            CopyrightYear,
             holder: holder);
     }
 
@@ -75,10 +75,10 @@ public class NotMyCodeAttribute : Attribute
     {
         License = license ?? string.Empty;
         Permission = permissionMessage;
-        CopyrightYear = DateTime.Now.Year.ToString();
+        CopyrightYear = CurrentYear;
         Copyright = GetCopyrightStatement(
-            license ?? string.Empty,
-            DateTime.Now.Year.ToString());
+            License,
+            CopyrightYear);
     }
 
     /// <summary>
@@ -91,12 +91,34 @@ public class NotMyCodeAttribute : Attribute
     /// </summary>
     public string License;
 
+    /// <summary>
+    /// The year the copyright was established.
+    /// </summary>
     public string CopyrightYear;
 
+    /// <summary>
+    /// The holder of the copyright.
+    /// </summary>
     public string? CopyrightHolder;
 
+    /// <summary>
+    /// The copyright statement.
+    /// </summary>
     public string Copyright;
 
+    /// <summary>
+    /// The current year.
+    /// </summary>
+    private static string CurrentYear => DateTime.Now.Year.ToString();
+
+    /// <summary>
+    /// Generates a copyright statement.
+    /// </summary>
+    /// <param name="license">The license under which the code is licensed.</param>
+    /// <param name="year">The year the copyright was established.</param>
+    /// <param name="implicitAllRightsReserved">Indicates whether "All rights reserved" is implied.</param>
+    /// <param name="holder">The holder of the copyright.</param>
+    /// <returns>A copyright statement.</returns>
     private static string GetCopyrightStatement(string license, string year, bool implicitAllRightsReserved = true, string? holder = null)
     {
         StringBuilder copyrightText = new();
