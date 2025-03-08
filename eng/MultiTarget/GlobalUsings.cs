@@ -7,6 +7,9 @@ global using global::System.Globalization;
 global using global::System.Linq;
 global using global::System.Threading.Tasks;
 
+// Riverside
+global using global::Riverside.Extensions.Accountability;
+
 // WinUI
 #if UAP
 global using global::Windows.ApplicationModel;

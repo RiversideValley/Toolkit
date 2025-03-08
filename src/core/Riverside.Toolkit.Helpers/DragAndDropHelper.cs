@@ -3,6 +3,7 @@
 using Windows.ApplicationModel.DataTransfer;
 
 namespace Riverside.Toolkit.Helpers;
+
 /// <summary>
 /// Helper methods for adding seamless drag & drop support to different <see cref="ListViewBase"/>
 /// </summary>
