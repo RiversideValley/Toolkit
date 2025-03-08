@@ -1,9 +1,10 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System.Numerics;
 using Riverside.Toolkit.Helpers; // This is being used instead of the Windows Community Toolkit version as using WCT here causes some issues.
+using System.Numerics;
+
 /* Not adding an entire new dependency just for a fancy XML comment.
 #if !WINDOWS10_0_19041_0
 using CommunityToolkit.WinUI;
@@ -19,7 +20,7 @@ namespace Riverside.Toolkit.Controls;
 /// </summary>
 /// <remarks>
 /// This control was originally created by the Windows Community Toolkit and has been modified to work with the latest version of the Windows UI Library.
-/// It is available in CubeKit for reference purposes (including use in GlowUI controls), please use <see cref="AttachedDropShadow"/> or AttachedCardShadow instead.
+/// It is available in CubeKit for reference purposes (including use in GlowUI controls), please use <c>AttachedDropShadow</c> or <c>AttachedCardShadow</c> instead.
 /// </remarks>
 [Obsolete("Please use the AttachedDropShadow or AttachedCardShadow implementations instead.")]
 [TemplatePart(Name = PartShadow, Type = typeof(Border))]

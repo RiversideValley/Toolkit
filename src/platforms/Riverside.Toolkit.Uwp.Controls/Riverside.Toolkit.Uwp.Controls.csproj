@@ -1,14 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
 		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Helpers\Riverside.Toolkit.Uwp.Helpers.csproj" />
-		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Animations\Riverside.Toolkit.Uwp.Animations.csproj" />
-		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Icons\Riverside.Toolkit.Uwp.Icons.csproj" />
-		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Converters\Riverside.Toolkit.Uwp.Converters.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
 		<PackageReference Include="$(PackagePrefix)Helpers" />
-		<PackageReference Include="$(PackagePrefix)Animations" />
-		<PackageReference Include="$(PackagePrefix)Icons" />
-		<PackageReference Include="$(PackagePrefix)Converters" />
 	</ItemGroup>
 </Project>

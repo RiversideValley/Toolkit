@@ -1,4 +1,4 @@
-﻿#if WinUI
+﻿#if WinAppSDK
 
 using Microsoft.UI;
 using Microsoft.UI.Windowing;

@@ -1,4 +1,4 @@
-﻿#if WinUI
+﻿#if WinAppSDK
 
 using Riverside.Extensions.PInvoke;
 using System;

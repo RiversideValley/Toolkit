@@ -3,7 +3,7 @@ namespace Riverside.Toolkit.Controls;
 /// <summary>
 /// Represents a custom ChatBubble control.
 /// </summary>
-public sealed class ChatBubble : Control
+public sealed partial class ChatBubble : Control
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ChatBubble"/> class.

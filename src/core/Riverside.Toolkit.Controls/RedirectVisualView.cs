@@ -1,5 +1,4 @@
-﻿// Totally not stolen from https://github.com/cnbluefire
-
+﻿using Riverside.Extensions.Accountability;
 using System.Numerics;
 
 namespace Riverside.Toolkit.Controls;
@@ -7,6 +6,7 @@ namespace Riverside.Toolkit.Controls;
 /// <summary>
 /// A custom control that redirects visual content.
 /// </summary>
+[NotMyCode("MIT", "https://github.com/cnbluefire/BlueFire.Toolkit.WinUI3", "cnbluefire", "2022")]
 [ContentProperty(Name = nameof(Child))]
 public partial class RedirectVisualView : Control
 {
