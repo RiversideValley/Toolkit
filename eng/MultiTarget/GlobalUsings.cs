@@ -8,7 +8,7 @@ global using global::System.Linq;
 global using global::System.Threading.Tasks;
 
 // WinUI
-#if UAP
+#if UAP || Uno
 global using global::Windows.ApplicationModel;
 global using global::Windows.ApplicationModel.Activation;
 global using global::Windows.Storage;
@@ -16,7 +16,7 @@ global using global::Windows.UI;
 global using global::Windows.UI.WindowManagement;
 #endif
 
-#if WinUI
+#if WinUI || Uno
 global using global::Microsoft;
 global using global::Microsoft.UI;
 global using global::Microsoft.UI.Xaml;
@@ -65,6 +65,8 @@ global using global::iNKORE.UI.WPF.Modern.Controls;
 global using global::iNKORE.UI.WPF.Modern.Common;
 
 global using Frame = global::iNKORE.UI.WPF.Modern.Controls.Frame;
+#elif Uno
+// TODO: Add Uno packages
 #endif
 
 // CommunityToolkit
