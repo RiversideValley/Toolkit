@@ -10,7 +10,8 @@
 		<IsUapBased Condition=" '$(IsWinUIProject)' == 'true' or '$(IsUwpProject)' == 'true' ">true</IsUapBased>
 		<IsWinUIBased Condition=" '$(IsWinUIProject)' == 'true' or '$(IsUnoProject)' == 'true' ">true</IsWinUIBased>
 		<IsWindowsBased Condition=" '$(IsUapBased)' == 'true' or '$(IsWinUIBased)' == 'true' or '$(IsWpfProject)' == 'true' ">true</IsWindowsBased>
-
+		<IsNetNativeBased Condition="'$(TargetFramework)' == 'uap10.0.19041'">true</IsNetNativeBased>
+		
 		<ProjectTarget Condition="'$(IsUwpProject)' == 'true'">Uwp</ProjectTarget>
 		<ProjectTarget Condition="'$(IsWinUIProject)' == 'true'">WinUI</ProjectTarget>
 		<ProjectTarget Condition="'$(IsUnoProject)' == 'true'">Uno</ProjectTarget>

@@ -5,7 +5,7 @@ namespace Riverside.Toolkit.Helpers;
 /// <summary>
 /// Provides helper methods for design-time functionality.
 /// </summary>
-[Obsolete("Riverside.Toolkit.Helpers.DesignTimeHelpers is obsolete, use CommunityToolkit.WinUI.Helpers.DesignTimeHelpers instead.", UrlFormat = "https://github.com/CommunityToolkit/Windows/blob/main/components/Helpers/src/DesignTimeHelpers.cs")]
+[Obsolete("Riverside.Toolkit.Helpers.DesignTimeHelpers is obsolete, use CommunityToolkit.WinUI.Helpers.DesignTimeHelpers instead.")]
 // [Riverside.Tooling.SupportedTargetPlatformAttribute(Riverside.Tooling.Platform.Wpf, supported: false)]
 public static class DesignTimeHelpers
 {

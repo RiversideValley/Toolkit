@@ -66,7 +66,7 @@ public static class NativeHelper
     /// <returns>The Y-coordinate.</returns>
     public static int GetYFromLParam(IntPtr lParam) => unchecked((short)((long)lParam >> 16));
 
-#if !Wpf
+#if !Wpf && !NETNative
     /// <summary>
     /// Provides methods for display-related operations.
     /// </summary>
