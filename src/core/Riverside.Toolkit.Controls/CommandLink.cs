@@ -3,7 +3,7 @@ namespace Riverside.Toolkit.Controls;
 /// <summary>
 /// Represents a custom CommandLink control.
 /// </summary>
-public sealed class CommandLink : Control
+public sealed partial class CommandLink : Control
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandLink"/> class.

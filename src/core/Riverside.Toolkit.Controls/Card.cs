@@ -3,7 +3,7 @@ namespace Riverside.Toolkit.Controls;
 /// <summary>
 /// Represents a custom Card control.
 /// </summary>
-public sealed class Card : Control
+public sealed partial class Card : Control
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Card"/> class.

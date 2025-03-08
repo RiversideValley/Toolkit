@@ -1,0 +1,17 @@
+﻿<Project Sdk="Uno.Sdk">
+	<PropertyGroup>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\Riverside.Toolkit.Uno.Helpers\Riverside.Toolkit.Uno.Helpers.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.Uno.Animations\Riverside.Toolkit.Uno.Animations.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.Uno.Icons\Riverside.Toolkit.Uno.Icons.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.Uno.Converters\Riverside.Toolkit.Uno.Converters.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="$(PackagePrefix)Helpers" />
+		<PackageReference Include="$(PackagePrefix)Animations" />
+		<PackageReference Include="$(PackagePrefix)Icons" />
+		<PackageReference Include="$(PackagePrefix)Converters" />
+	</ItemGroup>
+</Project>
