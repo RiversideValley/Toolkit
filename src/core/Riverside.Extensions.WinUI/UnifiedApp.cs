@@ -13,7 +13,7 @@ public abstract partial class UnifiedApp : Application
 {
     private static CommandBarFlyout? _LastOpenedFlyout;
 
-#if !Wpf && !UWP
+#if !Wpf && !Uwp
     /// <summary>
     /// Gets a dictionary of windows identified by a string key.
     /// </summary>
@@ -54,7 +54,7 @@ public abstract partial class UnifiedApp : Application
     public ApplicationDataContainer Settings = ApplicationData.Current.LocalSettings;
 #endif
 
-#if !Wpf && !UWP
+#if !Wpf && !Uwp
     /// <summary>
     /// Opens a new window with the specified key, page type, and optional parameter.
     /// </summary>
@@ -143,7 +143,7 @@ public abstract partial class UnifiedApp : Application
     /// <param name="sender">The source of the unhandled exception.</param>
     /// <param name="e">Details about the unhandled exception.</param>
     public async virtual void OnUnhandledException(object? sender,
-#if UWP
+#if Uwp
         Windows.UI.Xaml.UnhandledExceptionEventArgs e)
 #elif WinUI
         Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
@@ -157,7 +157,7 @@ public abstract partial class UnifiedApp : Application
             {
                 Title = "Unhandled exception",
                 Content =
-#if UWP
+#if Uwp
                 e.Message,
 #else
                 "An unhandled exception occured.",

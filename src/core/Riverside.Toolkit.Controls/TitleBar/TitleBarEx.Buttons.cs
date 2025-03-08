@@ -1,7 +1,4 @@
-﻿#if WinUI
-
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
+﻿#if WinAppSDK
 
 namespace Riverside.Toolkit.Controls.TitleBar;
 

@@ -1,7 +1,7 @@
-﻿#if WinUI
+#if WinAppSDK
 
 using Microsoft.UI.Xaml;
-using Microsoft.Windows.Storage;
+using ApplicationData = Microsoft.Windows.Storage.ApplicationData;
 using System;
 
 namespace Riverside.Toolkit.Controls.TitleBar;

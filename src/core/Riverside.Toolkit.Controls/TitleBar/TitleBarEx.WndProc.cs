@@ -1,4 +1,4 @@
-﻿#if WinUI
+﻿#if WinAppSDK
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

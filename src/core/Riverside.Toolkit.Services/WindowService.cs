@@ -1,4 +1,4 @@
-﻿#if UWP
+﻿#if Uwp
 
 using Microsoft.UI.Xaml;
 using System;

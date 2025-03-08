@@ -1,4 +1,4 @@
-﻿#if WinUI
+﻿#if WinAppSDK
 
 namespace Riverside.Toolkit.Controls.TitleBar;
 

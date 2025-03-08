@@ -1,4 +1,4 @@
-﻿#if WinUI
+﻿#if WinAppSDK
 
 using DependencyPropertyGenerator;
 using Microsoft.UI.Xaml;

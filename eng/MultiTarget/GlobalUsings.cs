@@ -8,7 +8,7 @@ global using global::System.Linq;
 global using global::System.Threading.Tasks;
 
 // WinUI
-#if UAP || Uno
+#if Uap || Uno
 global using global::Windows.ApplicationModel;
 global using global::Windows.ApplicationModel.Activation;
 global using global::Windows.Storage;
@@ -32,7 +32,7 @@ global using global::Microsoft.UI.Xaml.Hosting;
 global using global::Microsoft.UI.Xaml.Media.Animation;
 global using global::Microsoft.UI.Xaml.Shapes;
 global using global::Microsoft.UI.Xaml.Controls.Primitives;
-#elif UWP
+#elif Uwp
 global using global::Windows;
 global using global::Windows.UI.Xaml;
 global using global::Windows.UI.Xaml.Controls;
@@ -77,6 +77,6 @@ global using Frame = global::iNKORE.UI.WPF.Modern.Controls.Frame;
 
 // WinUIEx
 
-#if WinUI
+#if WinAppSDK
 global using global::WinUIEx;
 #endif
