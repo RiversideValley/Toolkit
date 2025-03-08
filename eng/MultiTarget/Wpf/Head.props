@@ -1,6 +1,6 @@
 <Project>
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-windows;net9.0-windows;net481;net462</TargetFrameworks>
+		<TargetFrameworks>net8.0-windows;net462</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<IsAotCompatible Condition="'$(TargetFramework)' != 'net481' and '$(TargetFramework)' != 'net462'">true</IsAotCompatible>
 
