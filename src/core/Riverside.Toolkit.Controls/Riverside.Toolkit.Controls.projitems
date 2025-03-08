@@ -17,6 +17,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)IAlphaMaskProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OpacityMaskView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RedirectVisualView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)textblockfx\DiffOperationType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TextBlockFX\GraphemeClusterDiff.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)textblockfx\RedrawState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TextBlockFX\TextDiffResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\ButtonsState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\SelectedCaptionButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TitleBar\TitleBarEx.App.cs" />
