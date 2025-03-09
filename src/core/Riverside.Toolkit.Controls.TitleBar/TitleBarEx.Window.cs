@@ -12,7 +12,7 @@ using Windows.Graphics;
 using WinUIEx;
 using static Riverside.Toolkit.Helpers.NativeHelper;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx
 {

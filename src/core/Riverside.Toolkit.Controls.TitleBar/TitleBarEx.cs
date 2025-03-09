@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using WinUIEx;
 using WinUIEx.Messaging;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx : Control
 {

@@ -5,7 +5,7 @@ using System;
 using Windows.UI;
 using WinUIEx;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 // Available properties
 [DependencyProperty<string>("Title", DefaultValue = "Window Title")]

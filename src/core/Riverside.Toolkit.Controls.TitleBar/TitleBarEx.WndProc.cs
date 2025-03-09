@@ -7,7 +7,7 @@ using WinUIEx;
 using WinUIEx.Messaging;
 using static Riverside.Toolkit.Helpers.NativeHelper;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx : Control
 {

@@ -2,7 +2,7 @@ using Microsoft.UI.Xaml;
 using ApplicationData = Microsoft.Windows.Storage.ApplicationData;
 using System;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx
 {
