@@ -4,10 +4,8 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" />
 	</ItemGroup>
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Riverside.Tooling')) != 'true'">
-		<ProjectReference Include="$(SourceDirectory)\extensions\Riverside.Extensions.PInvoke\Riverside.Extensions.PInvoke.csproj" Condition="'$(Configuration)' == 'Debug' and '$(MSBuildProjectName)' != 'Riverside.Extensions.PInvoke' and '$(MSBuildProjectName)' != 'Riverside.Extensions.Accountability'" />
-		<PackageReference Include="Riverside.Extensions.PInvoke" Condition="'$(Configuration)' == 'Release' and '$(MSBuildProjectName)' != 'Riverside.Extensions.PInvoke' and '$(MSBuildProjectName)' != 'Riverside.Extensions.Accountability'"/>
-		<ProjectReference Include="$(SourceDirectory)\extensions\Riverside.Extensions.Accountability\Riverside.Extensions.Accountability.csproj" Condition="'$(Configuration)' == 'Debug' and '$(MSBuildProjectName)' != 'Riverside.Extensions.Accountability'" />
-		<PackageReference Include="Riverside.Extensions.Accountability" Condition="'$(Configuration)' == 'Release' and '$(MSBuildProjectName)' != 'Riverside.Extensions.Accountability'"/>
+		<ProjectReference Include="$(SourceDirectory)\extensions\Riverside.Extensions.PInvoke\Riverside.Extensions.PInvoke.csproj" Condition="'$(MSBuildProjectName)' != 'Riverside.Extensions.PInvoke' and '$(MSBuildProjectName)' != 'Riverside.Extensions.Accountability'" />
+		<ProjectReference Include="$(SourceDirectory)\extensions\Riverside.Extensions.Accountability\Riverside.Extensions.Accountability.csproj" Condition="'$(MSBuildProjectName)' != 'Riverside.Extensions.Accountability'" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="$(BuildDirectory)\Riverside.Tooling.CsWin32\Riverside.Tooling.CsWin32.csproj" Condition="'$(MSBuildProjectName)' != 'Riverside.Tooling.CsWin32'" />

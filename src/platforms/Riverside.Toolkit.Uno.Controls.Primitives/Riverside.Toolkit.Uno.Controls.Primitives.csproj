@@ -2,10 +2,7 @@
 	<PropertyGroup>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+	<ItemGroup>
 		<ProjectReference Include="..\Riverside.Toolkit.Uno.Helpers\Riverside.Toolkit.Uno.Helpers.csproj" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(Configuration)' == 'Release'">
-		<PackageReference Include="$(PackagePrefix)Helpers" />
 	</ItemGroup>
 </Project>
