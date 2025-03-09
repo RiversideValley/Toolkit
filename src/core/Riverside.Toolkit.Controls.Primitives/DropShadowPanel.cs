@@ -1,7 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
-
+﻿using Riverside.Extensions.Accountability;
 using Riverside.Toolkit.Helpers; // This is being used instead of the Windows Community Toolkit version as using WCT here causes some issues.
 using System.Numerics;
 
@@ -22,6 +19,7 @@ namespace Riverside.Toolkit.Controls;
 /// This control was originally created by the Windows Community Toolkit and has been modified to work with the latest version of the Windows UI Library.
 /// It is available in CubeKit for reference purposes (including use in GlowUI controls), please use <c>AttachedDropShadow</c> or <c>AttachedCardShadow</c> instead.
 /// </remarks>
+[NotMyCode("The .NET Foundation licenses this file to you under the MIT license.", "MIT")]
 [Obsolete("Please use the AttachedDropShadow or AttachedCardShadow implementations instead.")]
 [TemplatePart(Name = PartShadow, Type = typeof(Border))]
 public partial class DropShadowPanel : ContentControl
