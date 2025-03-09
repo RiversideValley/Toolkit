@@ -1,10 +1,8 @@
-﻿#if WinAppSDK
-
-using Riverside.Extensions.PInvoke;
+﻿using Riverside.Extensions.PInvoke;
 using System;
 using System.Runtime.InteropServices;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx
 {
@@ -40,5 +38,3 @@ public partial class TitleBarEx
     [DllImport(Libraries.User32)]
     public static extern short GetAsyncKeyState(int vKey);
 }
-
-#endif

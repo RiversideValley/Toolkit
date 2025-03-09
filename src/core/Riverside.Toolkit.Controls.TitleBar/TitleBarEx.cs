@@ -1,13 +1,11 @@
-﻿#if WinAppSDK
-
-using Microsoft.UI.Windowing;
+﻿using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using WinUIEx;
 using WinUIEx.Messaging;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx : Control
 {
@@ -93,5 +91,3 @@ public partial class TitleBarEx : Control
         InvokeChecks();
     }
 }
-
-#endif

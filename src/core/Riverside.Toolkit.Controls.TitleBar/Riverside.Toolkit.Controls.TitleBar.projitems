@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a307a619-6d12-4c0a-817f-2a8772b4df1b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Riverside.Toolkit.Controls.TitleBar</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ButtonsState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SelectedCaptionButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.Buttons.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.DependencyProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.EventHandlers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.Native.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.Registry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.Window.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.WndProc.cs" />
+  </ItemGroup>
+</Project>

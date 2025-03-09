@@ -1,6 +1,4 @@
-﻿#if WinAppSDK
-
-namespace Riverside.Toolkit.Controls.TitleBar;
+﻿namespace Riverside.Toolkit.Controls;
 
 /// <summary>
 /// Specifies the state of the caption buttons.
@@ -42,5 +40,3 @@ public enum ButtonsState
     /// </summary>
     ClosePressed
 }
-
-#endif

@@ -1,13 +1,11 @@
-﻿#if WinAppSDK
-
-using DependencyPropertyGenerator;
+﻿using DependencyPropertyGenerator;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using System;
 using Windows.UI;
 using WinUIEx;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 // Available properties
 [DependencyProperty<string>("Title", DefaultValue = "Window Title")]
@@ -87,5 +85,3 @@ public partial class TitleBarEx
         RestoreClick?.Invoke(sender, e);
     }
 }
-
-#endif

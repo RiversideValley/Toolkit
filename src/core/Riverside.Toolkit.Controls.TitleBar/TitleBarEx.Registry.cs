@@ -1,6 +1,4 @@
-﻿#if WinAppSDK
-
-namespace Riverside.Toolkit.Controls.TitleBar;
+﻿namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx
 {
@@ -23,5 +21,3 @@ public partial class TitleBarEx
         }
     }
 }
-
-#endif

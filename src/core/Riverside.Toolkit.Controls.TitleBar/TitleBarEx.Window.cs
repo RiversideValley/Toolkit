@@ -1,6 +1,4 @@
-﻿#if WinAppSDK
-
-using Microsoft.UI;
+﻿using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
@@ -14,7 +12,7 @@ using Windows.Graphics;
 using WinUIEx;
 using static Riverside.Toolkit.Helpers.NativeHelper;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx
 {
@@ -336,5 +334,3 @@ public static class WindowExtensions
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 }
-
-#endif

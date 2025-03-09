@@ -1,8 +1,6 @@
-﻿#if WinAppSDK
+﻿using WinUIEx;
 
-using WinUIEx;
-
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx
 {
@@ -40,5 +38,3 @@ public partial class TitleBarEx
             this.CurrentCaption = SelectedCaptionButton.None;
     }
 }
-
-#endif

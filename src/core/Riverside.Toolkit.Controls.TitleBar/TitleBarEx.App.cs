@@ -1,10 +1,8 @@
-#if WinAppSDK
-
 using Microsoft.UI.Xaml;
 using ApplicationData = Microsoft.Windows.Storage.ApplicationData;
 using System;
 
-namespace Riverside.Toolkit.Controls.TitleBar;
+namespace Riverside.Toolkit.Controls;
 
 public partial class TitleBarEx
 {
@@ -42,5 +40,3 @@ public partial class TitleBarEx
             : throw new InvalidOperationException($"The template child '{name}' is not of type {typeof(T).FullName}.");
     }
 }
-
-#endif
