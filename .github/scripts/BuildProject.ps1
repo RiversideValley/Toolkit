@@ -18,13 +18,20 @@ $ProjectDirectory = Join-Path -Path $ProjectRoot -ChildPath "src\platforms\$Full
 
 # Check if the project directory exists
 if (-Not (Test-Path -Path $ProjectDirectory)) {
-    Write-Output "Project directory '$ProjectDirectory' does not exist, skipping build."
-    exit 0
+    # Check in src\extensions if not found in src\platforms
+    $ProjectDirectory = Join-Path -Path $ProjectRoot -ChildPath "src\extensions\$Project"
+    if (-Not (Test-Path -Path $ProjectDirectory)) {
+        Write-Output "Project directory '$ProjectDirectory' does not exist, skipping build."
+        exit 0
+    }
 }
 
-msbuild $ProjectDirectory /t:Restore /p:Configuration=$Configuration
+# Navigate to the project directory
+Set-Location -Path $ProjectDirectory
+
 # Run MSBuild
-msbuild $ProjectDirectory /t:Build /p:Configuration=$Configuration /p:Platform=x64
+msbuild /t:Restore /p:Configuration=$Configuration
+msbuild /t:Build /p:Configuration=$Configuration /p:Platform=x64
 
 # Return to the original location
 Pop-Location

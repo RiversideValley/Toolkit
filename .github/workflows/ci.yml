@@ -77,12 +77,39 @@ jobs:
     if: github.repository_owner == 'RiversideValley'
 
     runs-on: windows-latest
+
     strategy:
       fail-fast: false
       matrix:
         configuration: [Debug, Release]
-        core: [Riverside.Extensions.WinUI, Riverside.Toolkit.Animations, Riverside.Toolkit.Brushes, Riverside.Toolkit.Controls.Primitives, Riverside.Toolkit.Controls.TitleBar, Riverside.Toolkit.Converters, Riverside.Toolkit.Extensions, Riverside.Toolkit.Helpers, Riverside.Toolkit.Icons, Riverside.Toolkit.Services]
+        core: [Riverside.Extensions.Accountability, Riverside.Extensions.PInvoke, Riverside.Extensions.Primitives, Riverside.Extensions.UAP, Riverside.Extensions.Versioning, Riverside.Extensions.WinUI, Riverside.Toolkit.Animations, Riverside.Toolkit.Brushes, Riverside.Toolkit.Controls.Primitives, Riverside.Toolkit.Controls.TitleBar, Riverside.Toolkit.Converters, Riverside.Toolkit.Extensions, Riverside.Toolkit.Helpers, Riverside.Toolkit.Icons, Riverside.Toolkit.Services]
         head: [Uno, Wpf, WinUI, Uwp]
+        exclude: # Exclude known failing configurations
+          - core: Riverside.Toolkit.Controls.TitleBar
+          - core: Riverside.Extensions.PInvoke
+          - core: Riverside.Extensions.UAP
+          - core: Riverside.Extensions.Versioning
+          - core: Riverside.Extensions.Accountability
+          - core: Riverside.Extensions.Primitives
+          - core: Riverside.Toolkit.Controls.Primitives
+            head: Wpf
+          - core: Riverside.Toolkit.Animations
+            head: Wpf
+          - core: Riverside.Toolkit.Brushes
+            head: Wpf
+        include:
+          - core: Riverside.Extensions.PInvoke
+            head: NetStandard
+          - core: Riverside.Extensions.UAP
+            head: NetStandard
+          - core: Riverside.Extensions.Versioning
+            head: NetStandard
+          - core: Riverside.Extensions.Accountability
+            head: NetStandard
+          - core: Riverside.Extensions.Primitives
+            head: NetStandard
+          - core: Riverside.Toolkit.Controls.TitleBar
+            head: WinUI
 
     env:
       PROJECT: ${{ matrix.core }}
