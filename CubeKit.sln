@@ -159,6 +159,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Riverside.Toolkit.Controls.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Toolkit.WinUI.Controls.TitleBar", "src\platforms\Riverside.Toolkit.WinUI.Controls.TitleBar\Riverside.Toolkit.WinUI.Controls.TitleBar.csproj", "{3C890E4F-1E95-8787-7919-C7C53B2FEE4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riverside.Tooling.CsWin32", "eng\Riverside.Tooling.CsWin32\Riverside.Tooling.CsWin32.csproj", "{DD26CFB1-5681-4515-89E4-A9F0A0751901}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -331,6 +333,10 @@ Global
 		{3C890E4F-1E95-8787-7919-C7C53B2FEE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C890E4F-1E95-8787-7919-C7C53B2FEE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C890E4F-1E95-8787-7919-C7C53B2FEE4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD26CFB1-5681-4515-89E4-A9F0A0751901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD26CFB1-5681-4515-89E4-A9F0A0751901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD26CFB1-5681-4515-89E4-A9F0A0751901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD26CFB1-5681-4515-89E4-A9F0A0751901}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -396,6 +402,7 @@ Global
 		{0D955E0D-F3F1-4BD8-BA8F-5C366D1A1CAB} = {AA619411-1D80-4167-9BB6-84534B676BEB}
 		{A307A619-6D12-4C0A-817F-2A8772B4DF1B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{3C890E4F-1E95-8787-7919-C7C53B2FEE4E} = {AA619411-1D80-4167-9BB6-84534B676BEB}
+		{DD26CFB1-5681-4515-89E4-A9F0A0751901} = {CED2FD51-11BB-4E91-959E-47BF1B8C87FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {524016A6-E08B-4DAE-AE79-520996BA0E65}
