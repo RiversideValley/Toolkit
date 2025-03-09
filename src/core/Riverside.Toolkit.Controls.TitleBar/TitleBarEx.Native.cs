@@ -1,4 +1,5 @@
 ﻿using Riverside.Extensions.PInvoke;
+using Windows.Win32;
 using System;
 using System.Runtime.InteropServices;
 
@@ -31,10 +32,5 @@ public partial class TitleBarEx
 
     private static bool IsLeftMouseButtonDown() =>
         // The high-order bit indicates if the key is down
-        (GetAsyncKeyState(VK_LBUTTON) & 0x8000) != 0;
-
-    // Native methods
-
-    [DllImport(Libraries.User32)]
-    public static extern short GetAsyncKeyState(int vKey);
+        (PInvoke.GetAsyncKeyState(VK_LBUTTON) & 0x8000) != 0;
 }

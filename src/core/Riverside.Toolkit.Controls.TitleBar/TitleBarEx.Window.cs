@@ -1,5 +1,7 @@
 ﻿using Microsoft.UI;
 using Microsoft.UI.Windowing;
+using Windows.Win32;
+using Windows.Win32.Foundation;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
@@ -323,14 +325,7 @@ public static class WindowExtensions
         // Get the native window handle (HWND)
         WinRT.Interop.WindowNative.GetWindowHandle(windowEx);
 
-    public static void InvokeResize(this WindowEx windowEx) => PostMessage(windowEx.GetHwnd(), WM_SYSCOMMAND, SC_SIZE, IntPtr.Zero);
+    public static void InvokeResize(this WindowEx windowEx) => PInvoke.PostMessage((HWND)windowEx.GetHwnd(), WM_SYSCOMMAND, SC_SIZE, IntPtr.Zero);
 
-    public static void InvokeMove(this WindowEx windowEx) => PostMessage(windowEx.GetHwnd(), WM_SYSCOMMAND, SC_MOVE, IntPtr.Zero);
-
-    // Native methods
-
-    // Importing PostMessage from user32.dll to send a message to the specified window
-    [DllImport(Libraries.User32, SetLastError = true)]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+    public static void InvokeMove(this WindowEx windowEx) => PInvoke.PostMessage((HWND)windowEx.GetHwnd(), WM_SYSCOMMAND, SC_MOVE, IntPtr.Zero);
 }

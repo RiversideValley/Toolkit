@@ -1,4 +1,7 @@
-﻿using Riverside.Extensions.PInvoke;
+﻿using Windows.Win32;
+using Windows.Win32.Graphics.Gdi;
+using Windows.Win32.Foundation;
+using Riverside.Extensions.PInvoke;
 using System.Runtime.InteropServices;
 
 #if !Wpf
@@ -26,13 +29,15 @@ public static class NativeHelper
     public const int VERTRES = 10; // Vertical height of the display
     public const int LOGPIXELSX = 88; // Logical pixels/inch in X
 
+    // Do not add new P/Invoke methods here. Instead, use CsWin32 outside of CubeKit.
+    // These methods are kept here as aliases to CsWin32 generated code for reference purposes.
+
     /// <summary>
     /// Retrieves a handle to a device context (DC) for the client area of a specified window or for the entire screen.
     /// </summary>
     /// <param name="hWnd">A handle to the window whose DC is to be retrieved.</param>
     /// <returns>The handle to the DC for the specified window's client area.</returns>
-    [DllImport(Libraries.User32)]
-    public static extern IntPtr GetDC(IntPtr hWnd);
+    public static nint GetDC(nint hWnd) => PInvoke.GetDC(new(hWnd));
 
     /// <summary>
     /// Releases a device context (DC), freeing it for use by other applications.
@@ -40,8 +45,7 @@ public static class NativeHelper
     /// <param name="hWnd">A handle to the window whose DC is to be released.</param>
     /// <param name="hDC">A handle to the DC to be released.</param>
     /// <returns>The return value indicates whether the DC was released.</returns>
-    [DllImport(Libraries.User32)]
-    public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
+    public static int ReleaseDC(nint hWnd, nint hDC) => PInvoke.ReleaseDC((HWND)hWnd, (HDC)hDC);
 
     /// <summary>
     /// Retrieves device-specific information for the specified device.
@@ -49,22 +53,21 @@ public static class NativeHelper
     /// <param name="hdc">A handle to the DC.</param>
     /// <param name="nIndex">The item to be returned.</param>
     /// <returns>The value of the specified item.</returns>
-    [DllImport(Libraries.GraphicsDeviceInterface)]
-    public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
+    public static int GetDeviceCaps(nint hdc, int nIndex) => PInvoke.GetDeviceCaps((HDC)hdc, (GET_DEVICE_CAPS_INDEX)nIndex);
 
     /// <summary>
     /// Extracts the X-coordinate from the lParam parameter of a window message.
     /// </summary>
     /// <param name="lParam">The lParam parameter of a window message.</param>
     /// <returns>The X-coordinate.</returns>
-    public static int GetXFromLParam(IntPtr lParam) => unchecked((short)(long)lParam);
+    public static int GetXFromLParam(nint lParam) => unchecked((short)(long)lParam);
 
     /// <summary>
     /// Extracts the Y-coordinate from the lParam parameter of a window message.
     /// </summary>
     /// <param name="lParam">The lParam parameter of a window message.</param>
     /// <returns>The Y-coordinate.</returns>
-    public static int GetYFromLParam(IntPtr lParam) => unchecked((short)((long)lParam >> 16));
+    public static int GetYFromLParam(nint lParam) => unchecked((short)((long)lParam >> 16));
 
 #if !Wpf && !NETNative
     /// <summary>
