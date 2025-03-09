@@ -53,7 +53,7 @@
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(ContinuousIntegrationBuild)' == 'true' and '$(IsUwpProject)' == 'true'">
-		<PackageReference Include="Microsoft.Windows.SDK.CPP" Version="10.0.26100.2454" />
+		<PackageReference Include="Microsoft.Windows.SDK.CPP" />
 	</ItemGroup>
 
 	<ItemGroup>
