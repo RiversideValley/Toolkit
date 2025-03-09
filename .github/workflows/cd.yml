@@ -59,7 +59,7 @@ jobs:
             -p:PackageOutputPath="$env:WORKING_DIR\bin"
 
     - name: Publish packages to NuGet
-      run: dotnet nuget push ./bin/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push .\bin\*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 
     - name: Publish symbols to NuGet
-      run: dotnet nuget push ./bin/*.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push .\bin\*.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
