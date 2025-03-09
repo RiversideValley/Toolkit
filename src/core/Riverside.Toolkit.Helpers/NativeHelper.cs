@@ -37,6 +37,7 @@ public static class NativeHelper
     /// </summary>
     /// <param name="hWnd">A handle to the window whose DC is to be retrieved.</param>
     /// <returns>The handle to the DC for the specified window's client area.</returns>
+    [Obsolete("Use CsWin32 instead.")]
     public static nint GetDC(nint hWnd) => PInvoke.GetDC(new(hWnd));
 
     /// <summary>
@@ -45,6 +46,7 @@ public static class NativeHelper
     /// <param name="hWnd">A handle to the window whose DC is to be released.</param>
     /// <param name="hDC">A handle to the DC to be released.</param>
     /// <returns>The return value indicates whether the DC was released.</returns>
+    [Obsolete("Use CsWin32 instead.")]
     public static int ReleaseDC(nint hWnd, nint hDC) => PInvoke.ReleaseDC((HWND)hWnd, (HDC)hDC);
 
     /// <summary>
@@ -53,6 +55,7 @@ public static class NativeHelper
     /// <param name="hdc">A handle to the DC.</param>
     /// <param name="nIndex">The item to be returned.</param>
     /// <returns>The value of the specified item.</returns>
+    [Obsolete("Use CsWin32 instead.")]
     public static int GetDeviceCaps(nint hdc, int nIndex) => PInvoke.GetDeviceCaps((HDC)hdc, (GET_DEVICE_CAPS_INDEX)nIndex);
 
     /// <summary>
