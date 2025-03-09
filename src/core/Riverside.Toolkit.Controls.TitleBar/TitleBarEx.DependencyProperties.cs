@@ -1,6 +1,4 @@
-﻿#if WinAppSDK
-
-using DependencyPropertyGenerator;
+﻿using DependencyPropertyGenerator;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using System;
@@ -87,5 +85,3 @@ public partial class TitleBarEx
         RestoreClick?.Invoke(sender, e);
     }
 }
-
-#endif

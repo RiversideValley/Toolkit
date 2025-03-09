@@ -1,6 +1,4 @@
-﻿#if WinAppSDK
-
-namespace Riverside.Toolkit.Controls.TitleBar;
+﻿namespace Riverside.Toolkit.Controls.TitleBar;
 
 public partial class TitleBarEx
 {
@@ -111,5 +109,3 @@ public partial class TitleBarEx
         _ = VisualStateManager.GoToState(this.CloseButton, closeState, true);
     }
 }
-
-#endif

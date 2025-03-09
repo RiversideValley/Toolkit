@@ -1,6 +1,4 @@
-﻿#if WinAppSDK
-
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Threading.Tasks;
@@ -408,5 +406,3 @@ public partial class TitleBarEx : Control
         void RespondToHitTest(int hitTest) => args.Result = new IntPtr(hitTest);
     }
 }
-
-#endif

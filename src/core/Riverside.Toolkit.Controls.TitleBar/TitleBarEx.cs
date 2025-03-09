@@ -1,6 +1,4 @@
-﻿#if WinAppSDK
-
-using Microsoft.UI.Windowing;
+﻿using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -93,5 +91,3 @@ public partial class TitleBarEx : Control
         InvokeChecks();
     }
 }
-
-#endif
