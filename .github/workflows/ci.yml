@@ -98,42 +98,42 @@ jobs:
           - core: Riverside.Toolkit.Brushes
             head: Wpf
         include:
-          - core: Riverside.Extensions.PInvoke
+          - configuration: Debug
+            core: Riverside.Extensions.PInvoke
             head: NetStandard
-            configuration: Debug
-          - core: Riverside.Extensions.UAP
+          - configuration: Debug
+            core: Riverside.Extensions.UAP
             head: NetStandard
-            configuration: Debug
-          - core: Riverside.Extensions.Versioning
+          - configuration: Debug
+            core: Riverside.Extensions.Versioning
             head: NetStandard
-            configuration: Debug
-          - core: Riverside.Extensions.Accountability
+          - configuration: Debug
+            core: Riverside.Extensions.Accountability
             head: NetStandard
-            configuration: Debug
-          - core: Riverside.Extensions.Primitives
+          - configuration: Debug
+            core: Riverside.Extensions.Primitives
             head: NetStandard
-            configuration: Debug
-          - core: Riverside.Extensions.PInvoke
+          - configuration: Release
+            core: Riverside.Extensions.PInvoke
             head: NetStandard
-            configuration: Release
-          - core: Riverside.Extensions.UAP
+          - configuration: Release
+            core: Riverside.Extensions.UAP
             head: NetStandard
-            configuration: Release
-          - core: Riverside.Extensions.Versioning
+          - configuration: Release
+            core: Riverside.Extensions.Versioning
             head: NetStandard
-            configuration: Release
-          - core: Riverside.Extensions.Accountability
+          - configuration: Release
+            core: Riverside.Extensions.Accountability
             head: NetStandard
-            configuration: Release
-          - core: Riverside.Extensions.Primitives
+          - configuration: Release
+            core: Riverside.Extensions.Primitives
             head: NetStandard
-            configuration: Debug
-          - core: Riverside.Toolkit.Controls.TitleBar
+          - configuration: Debug
+            core: Riverside.Toolkit.Controls.TitleBar
             head: WinUI
-            configuration: Debug
-          - core: Riverside.Toolkit.Controls.TitleBar
+          - configuration: Release
+            core: Riverside.Toolkit.Controls.TitleBar
             head: WinUI
-            configuration: Release
 
     env:
       PROJECT: ${{ matrix.core }}
