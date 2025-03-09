@@ -2,13 +2,12 @@
 <Project>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\AdditionalFiles.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\CurrentVersion.props" />
-	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" />
+	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" Condition="'$(MSBuildProjectName)' != 'Riverside.Toolkit.UITests' and '$(MSBuildProjectName)' != 'Riverside.Tooling.CsWin32'"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\Tooling.props"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\SharedCodeMapping.props"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\InheritedDependencies.props"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\Aot.props"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\DefinedConstants.props"/>
-
 
 	<!-- Directories -->
 	<PropertyGroup>
@@ -29,6 +28,12 @@
 		<AssemblyVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</AssemblyVersion>
 		<InformationalVersion>$(Product), Version=$(MajorVersion).$(MinorVersion).$(MicroVersion), Channel=$(ReleaseLevel)</InformationalVersion>
 
+	    <!--<CurrentYear>$([System.DateTime]::Now.ToString("yy"))</CurrentYear>
+        <CurrentMonth>$([System.DateTime]::Now.ToString("MM"))</CurrentMonth>
+        <CurrentDay>$([System.DateTime]::Now.ToString("dd"))</CurrentDay>
+        <BuildDate>$(CurrentYear)$(CurrentMonth)$(CurrentDay)</BuildDate>
+
+		<DisplayVersion>$(MajorVersion).$(MinorVersion).$(BuildDate)</DisplayVersion>-->
 		<DisplayVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</DisplayVersion>
 		<DisplayVersion Condition="'$(ReleaseLevel)' != 'final'">$(DisplayVersion)-$(ReleaseLevel)$(BetaVersion)</DisplayVersion>
 		<Version>$(DisplayVersion)</Version>
@@ -52,6 +57,9 @@
 	<PropertyGroup Condition="'$(TF_BUILD)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
+	<ItemGroup Condition="'$(ContinuousIntegrationBuild)' == 'true' and '$(IsUwpProject)' == 'true'">
+		<PackageReference Include="Microsoft.Windows.SDK.CPP" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Include="$(ToolingDirectory)\GlobalUsings.cs" />

@@ -1,9 +1,6 @@
 <Project>
-	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+	<ItemGroup>
 		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Helpers\Riverside.Toolkit.Uwp.Helpers.csproj" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(Configuration)' == 'Release'">
-		<PackageReference Include="$(PackagePrefix)Helpers" />
 	</ItemGroup>
 
 	<Sdk Condition="'$(TargetFramework)' == 'uap10.0.17763'" Name="MSBuild.Sdk.Extras" Version="3.0.44" />

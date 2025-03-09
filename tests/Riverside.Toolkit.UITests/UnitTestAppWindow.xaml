@@ -6,19 +6,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Riverside.Toolkit.UITests"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:Riverside.Toolkit.Controls.TitleBar"
+    xmlns:toolkit="using:Riverside.Toolkit.Controls"
     xmlns:winuiex="using:WinUIEx"
     Title="CubeKit Tests"
     mc:Ignorable="d">
 
     <Grid Background="#00010101">
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <ToggleSwitch IsOn="{x:Bind TitleBar.IsMaximizable, Mode=TwoWay}" Header="Maximizable"/>
-            <ToggleSwitch IsOn="{x:Bind TitleBar.IsMinimizable, Mode=TwoWay}" Header="Minimizable"/>
-            <ToggleSwitch IsOn="{x:Bind TitleBar.IsClosable, Mode=TwoWay}" Header="Closable"/>
-            <ToggleSwitch IsOn="{x:Bind TitleBar.UseWinUIEverywhere, Mode=TwoWay}" Header="Always use WinUI"/>
-            <ToggleSwitch IsOn="{x:Bind TitleBar.IsAccentTitleBarEnabled, Mode=TwoWay}" Header="Allow accent title bar"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ToggleSwitch Header="Maximizable" IsOn="{x:Bind TitleBar.IsMaximizable, Mode=TwoWay}" />
+            <ToggleSwitch Header="Minimizable" IsOn="{x:Bind TitleBar.IsMinimizable, Mode=TwoWay}" />
+            <ToggleSwitch Header="Closable" IsOn="{x:Bind TitleBar.IsClosable, Mode=TwoWay}" />
+            <ToggleSwitch Header="Always use WinUI" IsOn="{x:Bind TitleBar.UseWinUIEverywhere, Mode=TwoWay}" />
+            <ToggleSwitch Header="Allow accent title bar" IsOn="{x:Bind TitleBar.IsAccentTitleBarEnabled, Mode=TwoWay}" />
         </StackPanel>
-        <toolkit:TitleBarEx x:Name="TitleBar" VerticalAlignment="Top" Title="Test app" MemorizeWindowPosition="True"/>
+        <toolkit:TitleBarEx
+            x:Name="TitleBar"
+            Title="Test app"
+            VerticalAlignment="Top"
+            MemorizeWindowPosition="True" />
     </Grid>
 </winuiex:WindowEx>

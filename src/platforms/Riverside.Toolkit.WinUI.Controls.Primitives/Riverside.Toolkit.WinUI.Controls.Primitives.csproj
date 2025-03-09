@@ -2,16 +2,10 @@
 	<PropertyGroup>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+	<ItemGroup>
 		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Helpers\Riverside.Toolkit.WinUI.Helpers.csproj" />
 		<!--<ProjectReference Include="..\Riverside.Toolkit.WinUI.Animations\Riverside.Toolkit.WinUI.Animations.csproj" />
 		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Icons\Riverside.Toolkit.WinUI.Icons.csproj" />
 		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Converters\Riverside.Toolkit.WinUI.Converters.csproj" />-->
-	</ItemGroup>
-	<ItemGroup Condition="'$(Configuration)' == 'Release'">
-		<PackageReference Include="$(PackagePrefix)Helpers" />
-		<!--<PackageReference Include="$(PackagePrefix)Animations" />
-		<PackageReference Include="$(PackagePrefix)Icons" />
-		<PackageReference Include="$(PackagePrefix)Converters" />-->
 	</ItemGroup>
 </Project>
