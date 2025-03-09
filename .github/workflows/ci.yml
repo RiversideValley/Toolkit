@@ -81,7 +81,6 @@ jobs:
       fail-fast: false
       matrix:
         configuration: [Debug, Release]
-        platform: [Any CPU]
         core: [Riverside.Extensions.WinUI, Riverside.Toolkit.Animations, Riverside.Toolkit.Brushes, Riverside.Toolkit.Controls.Primitives, Riverside.Toolkit.Controls.TitleBar, Riverside.Toolkit.Converters, Riverside.Toolkit.Extensions, Riverside.Toolkit.Helpers, Riverside.Toolkit.Icons, Riverside.Toolkit.Services]
         head: [Uno, Wpf, WinUI, Uwp]
 
@@ -89,8 +88,6 @@ jobs:
       PROJECT: ${{ matrix.core }}
       HEAD: ${{ matrix.head }}
       CONFIGURATION: ${{ matrix.configuration }}
-      ARCHITECTURE: ${{ matrix.platform }}
-      SLN_CONFIG_VALUE: ${{ matrix.configuration }}|${{ matrix.platform }}
 
     steps:
 

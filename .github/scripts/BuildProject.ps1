@@ -24,7 +24,7 @@ if (-Not (Test-Path -Path $ProjectDirectory)) {
 
 msbuild $ProjectDirectory /t:Restore /p:Configuration=$Configuration
 # Run MSBuild
-msbuild $ProjectDirectory /t:Build /p:Configuration=$Configuration
+msbuild $ProjectDirectory /t:Build /p:Configuration=$Configuration /p:Platform=x64
 
 # Return to the original location
 Pop-Location
