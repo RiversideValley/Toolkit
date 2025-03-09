@@ -17,7 +17,7 @@ run-name: ${{ github.event_name == 'pull_request' && 'CubeKit PR Validation' || 
 env:
   # MSBuild file locations
   WORKING_DIR: ${{ github.workspace }}
-  SOLUTION_PATH: '${{ github.workspace }}\CubeKit.sln'
+  SOLUTION_PATH: '${{ github.workspace }}\CubeKit.slnx'
   HEAD_PROJECTS_DIR: '${{ github.workspace }}\src\platforms'
   HEAD_EXTENSIONS_DIR: '${{ github.workspace }}\src\extensions'
   # Build configurations and tests

@@ -15,14 +15,13 @@ jobs:
       fail-fast: false
       matrix:
         configuration: [Release]
-        platform: [Any CPU]
     env:
         WORKING_DIR: ${{ github.workspace }}
-        SOLUTION_PATH: '${{ github.workspace }}\CubeKit.sln'
+        SOLUTION_PATH: '${{ github.workspace }}\CubeKit.slnx'
         HEAD_PROJECTS_DIR: '${{ github.workspace }}\src\platforms'
         HEAD_EXTENSIONS_DIR: '${{ github.workspace }}\src\extensions'
         CONFIGURATION: ${{ matrix.configuration }}
-        ARCHITECTURE: ${{ matrix.platform }}
+        ARCHITECTURE: 'Any CPU'
 
     steps:
     - name: Checkout the repository
@@ -46,14 +45,19 @@ jobs:
 
     - name: Build CubeKit
       run: |
-        msbuild "$env:SOLUTION_PATH" `
-        -t:Build `
-        -p:Platform=$env:ARCHITECTURE `
-        -p:Configuration=$env:CONFIGURATION
+          msbuild "$env:SOLUTION_PATH" `
+            -t:Build `
+            -p:Configuration=$env:CONFIGURATION
 
     - name: Package CubeKit
-      run: dotnet pack ${{ env.PACKAGE_PROJECT_PATH }} --configuration Release --no-build -o ./output
+      run: |
+          msbuild "$env:SOLUTION_PATH" `
+            -t:Build `
+            -p:Configuration=Release `
+            -p:PackageOutputPath="$env:WORKING_DIR\bin"
 
-    - name: Publish package to NuGet
-      run: dotnet nuget push ./output/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
-      # TODO: Publish symbols as well
+    - name: Publish packages to NuGet
+      run: dotnet nuget push ./bin/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+
+    - name: Publish symbols to NuGet
+      run: dotnet nuget push ./bin/*.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

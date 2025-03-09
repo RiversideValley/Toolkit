@@ -1,0 +1,110 @@
+<Solution>
+  <Folder Name="/eng/">
+    <File Path="eng/AdditionalFiles.props" />
+    <File Path="eng/CurrentVersion.props" />
+    <File Path="eng/PackageLogo.png" />
+    <File Path="eng/PackageMetadata.props" />
+    <File Path="eng/Tooling.props" />
+    <Project Path="eng/Riverside.Tooling.CsWin32/Riverside.Tooling.CsWin32.csproj" />
+  </Folder>
+  <Folder Name="/eng/MultiTarget/">
+    <File Path="eng/MultiTarget/Aot.props" />
+    <File Path="eng/MultiTarget/DefinedConstants.props" />
+    <File Path="eng/MultiTarget/GlobalUsings.cs" />
+    <File Path="eng/MultiTarget/InheritedDependencies.props" />
+    <File Path="eng/MultiTarget/SharedCodeMapping.props" />
+  </Folder>
+  <Folder Name="/eng/MultiTarget/NetStandard/">
+    <File Path="eng/MultiTarget/NetStandard/Head.props" />
+  </Folder>
+  <Folder Name="/eng/MultiTarget/Uno/">
+    <File Path="eng/MultiTarget/Uno/Head.props" />
+  </Folder>
+  <Folder Name="/eng/MultiTarget/Uwp/">
+    <File Path="eng/MultiTarget/Uwp/Head.props" />
+  </Folder>
+  <Folder Name="/eng/MultiTarget/WinUI/">
+    <File Path="eng/MultiTarget/WinUI/Head.props" />
+  </Folder>
+  <Folder Name="/eng/MultiTarget/Wpf/">
+    <File Path="eng/MultiTarget/Wpf/Head.props" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/core/">
+    <Project Path="src/core/Riverside.Extensions.WinUI/Riverside.Extensions.WinUI.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Animations/Riverside.Toolkit.Animations.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Brushes/Riverside.Toolkit.Brushes.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Controls.Primitives/Riverside.Toolkit.Controls.Primitives.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Controls.TitleBar/Riverside.Toolkit.Controls.TitleBar.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Converters/Riverside.Toolkit.Converters.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Extensions/Riverside.Toolkit.Extensions.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Helpers/Riverside.Toolkit.Helpers.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Icons/Riverside.Toolkit.Icons.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Services/Riverside.Toolkit.Services.shproj" />
+  </Folder>
+  <Folder Name="/src/extensions/">
+    <Project Path="src/extensions/Riverside.Extensions.Accountability/Riverside.Extensions.Accountability.csproj" />
+    <Project Path="src/extensions/Riverside.Extensions.PInvoke/Riverside.Extensions.PInvoke.csproj" />
+    <Project Path="src/extensions/Riverside.Extensions.Primitives/Riverside.Extensions.Primitives.csproj" />
+    <Project Path="src/extensions/Riverside.Extensions.UAP/Riverside.Extensions.UAP.csproj" />
+    <Project Path="src/extensions/Riverside.Extensions.Versioning/Riverside.Extensions.Versioning.csproj" />
+  </Folder>
+  <Folder Name="/src/platforms/">
+    <Project Path="src/platforms/Riverside.Extensions.Uno/Riverside.Extensions.Uno.csproj" />
+    <Project Path="src/platforms/Riverside.Extensions.Uwp/Riverside.Extensions.Uwp.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Extensions.WinUI/Riverside.Extensions.WinUI.csproj" />
+    <Project Path="src/platforms/Riverside.Extensions.Wpf/Riverside.Extensions.Wpf.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Uno.Controls.Primitives/Riverside.Toolkit.Uno.Controls.Primitives.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Uno.Converters/Riverside.Toolkit.Uno.Converters.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Uno.Extensions/Riverside.Toolkit.Uno.Extensions.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Uno.Helpers/Riverside.Toolkit.Uno.Helpers.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Uno.Icons/Riverside.Toolkit.Uno.Icons.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Uno.Services/Riverside.Toolkit.Uno.Services.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Animations/Riverside.Toolkit.Uwp.Animations.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Brushes/Riverside.Toolkit.Uwp.Brushes.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Controls.Primitives/Riverside.Toolkit.Uwp.Controls.Primitives.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Converters/Riverside.Toolkit.Uwp.Converters.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Extensions/Riverside.Toolkit.Uwp.Extensions.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Helpers/Riverside.Toolkit.Uwp.Helpers.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Icons/Riverside.Toolkit.Uwp.Icons.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Services/Riverside.Toolkit.Uwp.Services.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Animations/Riverside.Toolkit.WinUI.Animations.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Brushes/Riverside.Toolkit.WinUI.Brushes.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Controls.Primitives/Riverside.Toolkit.WinUI.Controls.Primitives.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Controls.TitleBar/Riverside.Toolkit.WinUI.Controls.TitleBar.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Converters/Riverside.Toolkit.WinUI.Converters.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Extensions/Riverside.Toolkit.WinUI.Extensions.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Helpers/Riverside.Toolkit.WinUI.Helpers.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Icons/Riverside.Toolkit.WinUI.Icons.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Services/Riverside.Toolkit.WinUI.Services.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Wpf.Converters/Riverside.Toolkit.Wpf.Converters.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Wpf.Extensions/Riverside.Toolkit.Wpf.Extensions.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Wpf.Helpers/Riverside.Toolkit.Wpf.Helpers.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Wpf.Icons/Riverside.Toolkit.Wpf.Icons.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Wpf.Services/Riverside.Toolkit.Wpf.Services.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Riverside.Toolkit.UITests/Riverside.Toolkit.UITests.csproj">
+      <Platform Project="x64" />
+      <Deploy />
+    </Project>
+  </Folder>
+</Solution>
