@@ -82,7 +82,12 @@ jobs:
       matrix:
         configuration: [Debug, Release]
         platform: [Any CPU]
+        core: [Riverside.Extensions.WinUI, Riverside.Toolkit.Animations, Riverside.Toolkit.Brushes, Riverside.Toolkit.Controls.Primitives, Riverside.Toolkit.Controls.TitleBar, Riverside.Toolkit.Converters, Riverside.Toolkit.Extensions, Riverside.Toolkit.Helpers, Riverside.Toolkit.Icons, Riverside.Toolkit.Services]
+        head: [Uno, Wpf, WinUI, Uwp]
+
     env:
+      PROJECT: ${{ matrix.core }}
+      HEAD: ${{ matrix.head }}
       CONFIGURATION: ${{ matrix.configuration }}
       ARCHITECTURE: ${{ matrix.platform }}
       SLN_CONFIG_VALUE: ${{ matrix.configuration }}|${{ matrix.platform }}
@@ -100,25 +105,6 @@ jobs:
       with:
         dotnet-version: 9.x
 
-    - name: Restore NuGet
+    - name: Build project
       shell: pwsh
-      run: 'nuget restore $env:SOLUTION_PATH'
-
-    - name: Restore project
-      shell: pwsh
-      run: |
-        msbuild $env:SOLUTION_PATH `
-          -t:Restore `
-          -p:Platform=$env:ARCHITECTURE `
-          -p:Configuration=$env:CONFIGURATION
-
-    - name: Build CubeKit
-      run: |
-        msbuild `
-          $env:SOLUTION_PATH `
-          -t:Build `
-          -clp:ErrorsOnly `
-          -p:Configuration=$env:CONFIGURATION `
-          -p:Platform=$env:ARCHITECTURE `
-          -p:GITHUB_ACTIONS=true `
-          -p:ExcludeProjects="Riverside.GlowUI*"
+      run: '.github\scripts\BuildProject.ps1 -Project $env:PROJECT -Head $env:HEAD -Configuration $env:CONFIGURATION'
