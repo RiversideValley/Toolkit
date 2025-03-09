@@ -28,6 +28,12 @@
 		<AssemblyVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</AssemblyVersion>
 		<InformationalVersion>$(Product), Version=$(MajorVersion).$(MinorVersion).$(MicroVersion), Channel=$(ReleaseLevel)</InformationalVersion>
 
+	    <!--<CurrentYear>$([System.DateTime]::Now.ToString("yy"))</CurrentYear>
+        <CurrentMonth>$([System.DateTime]::Now.ToString("MM"))</CurrentMonth>
+        <CurrentDay>$([System.DateTime]::Now.ToString("dd"))</CurrentDay>
+        <BuildDate>$(CurrentYear)$(CurrentMonth)$(CurrentDay)</BuildDate>
+
+		<DisplayVersion>$(MajorVersion).$(MinorVersion).$(BuildDate)</DisplayVersion>-->
 		<DisplayVersion>$(MajorVersion).$(MinorVersion).$(MicroVersion)</DisplayVersion>
 		<DisplayVersion Condition="'$(ReleaseLevel)' != 'final'">$(DisplayVersion)-$(ReleaseLevel)$(BetaVersion)</DisplayVersion>
 		<Version>$(DisplayVersion)</Version>

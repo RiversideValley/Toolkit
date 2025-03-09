@@ -2,9 +2,11 @@ name: CD
 
 on:
   workflow_dispatch:
-  pull_request:
+  push:
     branches:
       - main
+    paths:
+      - 'eng/CurrentVersion.props'
 
 jobs:
   build:
