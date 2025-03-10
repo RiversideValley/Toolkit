@@ -9,5 +9,11 @@
     <Import_RootNamespace>Riverside.Toolkit.Extensions</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\core\$(Import_RootNamespace)\**\*.cs" Exclude="obj\**;bin\**" />
+    <Page Include="..\..\core\$(Import_RootNamespace)\**\*.xaml" Exclude="obj\**;bin\**">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>
