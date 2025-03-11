@@ -108,7 +108,7 @@
                             ContentTransitions="{TemplateBinding ContentTransitions}"
                             CornerRadius="4" />
                         <icons:FluentSymbolIcon
-                            Margin="0, 0, 2, 2"
+                            Margin="0,0,2,2"
                             VerticalAlignment="Center"
                             Symbol="Dismiss16">
                             <icons:FluentSymbolIcon.Foreground>
@@ -236,7 +236,7 @@
                             ContentTransitions="{TemplateBinding ContentTransitions}"
                             CornerRadius="{TemplateBinding CornerRadius}" />
                         <icons:FluentSymbolIcon
-                            Margin="4, 2, 4, 4"
+                            Margin="4,2,4,4"
                             VerticalAlignment="Center"
                             Symbol="Power20">
                             <icons:FluentSymbolIcon.Foreground>
@@ -246,7 +246,7 @@
                         <ToolkitControls:DropShadowPanel
                             x:Name="Glow"
                             Grid.Row="0"
-                            Margin="2, 0, 0 ,0"
+                            Margin="2,0,0,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             CornerRadius="2"

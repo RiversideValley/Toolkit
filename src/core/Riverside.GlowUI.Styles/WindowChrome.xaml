@@ -153,7 +153,7 @@
                         <ContentPresenter
                             x:Name="ContentPresenter"
                             Height="32"
-                            Margin="0, 0, 3, 0"
+                            Margin="0,0,3,0"
                             Padding="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -169,7 +169,7 @@
                                 <ScaleTransform x:Name="ScaleA" ScaleX="0.9" ScaleY="0.9" />
                             </Grid.RenderTransform>
                             <icons:FluentSymbolIcon
-                                Margin="0, 0, 3, 2"
+                                Margin="0,0,3,2"
                                 VerticalAlignment="Center"
                                 Symbol="Dismiss16">
                                 <icons:FluentSymbolIcon.Foreground>
@@ -290,7 +290,7 @@
                         <ContentPresenter
                             x:Name="ContentPresenter"
                             Height="32"
-                            Margin="0, 0, 3, 0"
+                            Margin="0,0,3,0"
                             Padding="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -304,7 +304,7 @@
                         <Grid RenderTransformOrigin="0.5, 0.5">
                             <icons:FluentSymbolIcon
                                 x:Name="MaxButtonIcon"
-                                Margin="0, 0, 3, 2"
+                                Margin="0,0,3,2"
                                 VerticalAlignment="Center"
                                 Symbol="Maximize16">
                                 <icons:FluentSymbolIcon.Foreground>
@@ -437,7 +437,7 @@
                         <ContentPresenter
                             x:Name="ContentPresenter"
                             Height="32"
-                            Margin="0, 0, 3, 0"
+                            Margin="0,0,3,0"
                             Padding="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -453,7 +453,7 @@
                                 <ScaleTransform ScaleX="0.6" ScaleY="1" />
                             </Grid.RenderTransform>
                             <icons:FluentSymbolIcon
-                                Margin="0, 0, 3, 4"
+                                Margin="0,0,3,4"
                                 VerticalAlignment="Center"
                                 Symbol="LineHorizontal120">
                                 <icons:FluentSymbolIcon.Foreground>
