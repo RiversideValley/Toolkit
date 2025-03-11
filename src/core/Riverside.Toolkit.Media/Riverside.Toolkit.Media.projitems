@@ -16,4 +16,8 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Bloom.html" />
+    <Content Include="$(MSBuildThisFileDirectory)Windows11Danger.html" />
+  </ItemGroup>
 </Project>
