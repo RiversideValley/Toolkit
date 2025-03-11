@@ -1,2 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+		<Page Remove="..\..\core\$(BaseProjectName)\Themes\Generic.xaml" />
+	</ItemGroup>
 </Project>
