@@ -9,10 +9,11 @@
     <Import_RootNamespace>Riverside.Toolkit.Icons</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)FluentIconElement.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FluentIconSource.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FluentSymbol.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FluentSymbolIcon.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FluentSymbolIcon.Icons.cs" />
+    <Compile Include="..\..\core\$(Import_RootNamespace)\**\*.cs" Exclude="obj\**;bin\**" />
+    <Page Include="..\..\core\$(Import_RootNamespace)\**\*.xaml" Exclude="obj\**;bin\**">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

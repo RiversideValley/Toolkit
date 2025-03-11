@@ -9,18 +9,11 @@
     <Import_RootNamespace>Riverside.Toolkit.Brushes</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)ApplicationBrushes.xaml">
+    <Compile Include="..\..\core\$(Import_RootNamespace)\**\*.cs" Exclude="obj\**;bin\**" />
+    <Page Include="..\..\core\$(Import_RootNamespace)\**\*.xaml" Exclude="obj\**;bin\**">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)MicaBrushes.xaml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)StyleBrushes.xaml">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)BackdropKind.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MicaAltBrush.cs" />
+    </Page>
   </ItemGroup>
 </Project>

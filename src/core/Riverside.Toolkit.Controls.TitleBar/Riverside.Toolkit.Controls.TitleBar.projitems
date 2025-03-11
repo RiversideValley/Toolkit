@@ -9,16 +9,11 @@
     <Import_RootNamespace>Riverside.Toolkit.Controls.TitleBar</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ButtonsState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SelectedCaptionButton.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.App.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.Buttons.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.DependencyProperties.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.EventHandlers.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.Native.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.Registry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.Window.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TitleBarEx.WndProc.cs" />
+    <Compile Include="..\..\core\$(Import_RootNamespace)\**\*.cs" Exclude="obj\**;bin\**" />
+    <Page Include="..\..\core\$(Import_RootNamespace)\**\*.xaml" Exclude="obj\**;bin\**">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

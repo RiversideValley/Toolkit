@@ -7,30 +7,30 @@
     <File Path="eng/Tooling.props" />
     <Project Path="eng/Riverside.Tooling.CsWin32/Riverside.Tooling.CsWin32.csproj" />
   </Folder>
-  <Folder Name="/eng/MultiTarget/">
+  <Folder Name="/eng/MultiTarget/" Id="ba1e65d1-24fb-7f1d-b4ea-eb8c34edf438">
     <File Path="eng/MultiTarget/Aot.props" />
     <File Path="eng/MultiTarget/DefinedConstants.props" />
     <File Path="eng/MultiTarget/GlobalUsings.cs" />
     <File Path="eng/MultiTarget/InheritedDependencies.props" />
     <File Path="eng/MultiTarget/SharedCodeMapping.props" />
   </Folder>
-  <Folder Name="/eng/MultiTarget/NetStandard/">
+  <Folder Name="/eng/MultiTarget/NetStandard/" Id="46e0de49-939b-6a2d-2848-3f1e996c403c">
     <File Path="eng/MultiTarget/NetStandard/Head.props" />
   </Folder>
-  <Folder Name="/eng/MultiTarget/Uno/">
+  <Folder Name="/eng/MultiTarget/Uno/" Id="3fc0a880-83f6-547a-3b3b-a032ec6be6f2">
     <File Path="eng/MultiTarget/Uno/Head.props" />
   </Folder>
-  <Folder Name="/eng/MultiTarget/Uwp/">
+  <Folder Name="/eng/MultiTarget/Uwp/" Id="ae40b642-1bde-7677-33eb-99811ec32f57">
     <File Path="eng/MultiTarget/Uwp/Head.props" />
   </Folder>
-  <Folder Name="/eng/MultiTarget/WinUI/">
+  <Folder Name="/eng/MultiTarget/WinUI/" Id="bd0fe25f-e575-a0ca-5e89-90ad53c83774">
     <File Path="eng/MultiTarget/WinUI/Head.props" />
   </Folder>
-  <Folder Name="/eng/MultiTarget/Wpf/">
+  <Folder Name="/eng/MultiTarget/Wpf/" Id="9d73012f-2d76-e40b-3f6f-3576e71ac3c9">
     <File Path="eng/MultiTarget/Wpf/Head.props" />
   </Folder>
   <Folder Name="/src/" />
-  <Folder Name="/src/core/">
+  <Folder Name="/src/core/" Id="8d626ea8-cb54-bc41-363a-217881beba6e">
     <Project Path="src/core/Riverside.Extensions.WinUI/Riverside.Extensions.WinUI.shproj" />
     <Project Path="src/core/Riverside.Toolkit.Animations/Riverside.Toolkit.Animations.shproj" />
     <Project Path="src/core/Riverside.Toolkit.Brushes/Riverside.Toolkit.Brushes.shproj" />
@@ -42,14 +42,14 @@
     <Project Path="src/core/Riverside.Toolkit.Icons/Riverside.Toolkit.Icons.shproj" />
     <Project Path="src/core/Riverside.Toolkit.Services/Riverside.Toolkit.Services.shproj" />
   </Folder>
-  <Folder Name="/src/extensions/">
+  <Folder Name="/src/extensions/" Id="f23f25d0-9df9-18e8-03ac-e66b5ef618a6">
     <Project Path="src/extensions/Riverside.Extensions.Accountability/Riverside.Extensions.Accountability.csproj" />
     <Project Path="src/extensions/Riverside.Extensions.PInvoke/Riverside.Extensions.PInvoke.csproj" />
     <Project Path="src/extensions/Riverside.Extensions.Primitives/Riverside.Extensions.Primitives.csproj" />
     <Project Path="src/extensions/Riverside.Extensions.UAP/Riverside.Extensions.UAP.csproj" />
     <Project Path="src/extensions/Riverside.Extensions.Versioning/Riverside.Extensions.Versioning.csproj" />
   </Folder>
-  <Folder Name="/src/platforms/">
+  <Folder Name="/src/platforms/" Id="82099983-647e-f067-e69a-cd800643a918">
     <Project Path="src/platforms/Riverside.Extensions.Uno/Riverside.Extensions.Uno.csproj" />
     <Project Path="src/platforms/Riverside.Extensions.Uwp/Riverside.Extensions.Uwp.csproj">
       <Platform Solution="Release|*" Project="x64" />
