@@ -82,7 +82,7 @@ jobs:
       fail-fast: false
       matrix:
         configuration: [Debug, Release]
-        core: [Riverside.Extensions.Accountability, Riverside.Extensions.PInvoke, Riverside.Extensions.Primitives, Riverside.Extensions.UAP, Riverside.Extensions.Versioning, Riverside.Extensions.WinUI, Riverside.Toolkit.Animations, Riverside.Toolkit.Brushes, Riverside.Toolkit.Controls.Primitives, Riverside.Toolkit.Controls.TitleBar, Riverside.Toolkit.Converters, Riverside.Toolkit.Extensions, Riverside.Toolkit.Helpers, Riverside.Toolkit.Icons, Riverside.Toolkit.Services]
+        core: [Riverside.Extensions.Accountability, Riverside.Extensions.PInvoke, Riverside.Extensions.Primitives, Riverside.Extensions.UAP, Riverside.Extensions.Versioning, Riverside.GlowUI.Styles, Riverside.Extensions.WinUI, Riverside.Toolkit.Animations, Riverside.Toolkit.Media, Riverside.Toolkit.Controls.Primitives, Riverside.Toolkit.Controls.TitleBar, Riverside.Toolkit.Controls.Crimson, Riverside.Toolkit.Converters, Riverside.Toolkit.Extensions, Riverside.Toolkit.Helpers, Riverside.Toolkit.Icons, Riverside.Toolkit.Services]
         head: [Uno, Wpf, WinUI, Uwp]
         exclude: # Exclude known failing configurations
           - core: Riverside.Toolkit.Controls.TitleBar
