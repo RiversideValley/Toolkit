@@ -1,4 +1,4 @@
-namespace Riverside.Toolkit.Brushes;
+namespace Riverside.Toolkit.Media;
 
 public enum BackdropKind
 {

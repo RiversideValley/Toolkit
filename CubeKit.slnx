@@ -33,7 +33,7 @@
   <Folder Name="/src/core/" Id="8d626ea8-cb54-bc41-363a-217881beba6e">
     <Project Path="src/core/Riverside.Extensions.WinUI/Riverside.Extensions.WinUI.shproj" />
     <Project Path="src/core/Riverside.Toolkit.Animations/Riverside.Toolkit.Animations.shproj" />
-    <Project Path="src/core/Riverside.Toolkit.Brushes/Riverside.Toolkit.Brushes.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Media/Riverside.Toolkit.Media.shproj" Id="7917502f-95de-544f-61cd-fe140de8e83f" />
     <Project Path="src/core/Riverside.Toolkit.Controls.Primitives/Riverside.Toolkit.Controls.Primitives.shproj" />
     <Project Path="src/core/Riverside.Toolkit.Controls.TitleBar/Riverside.Toolkit.Controls.TitleBar.shproj" />
     <Project Path="src/core/Riverside.Toolkit.Converters/Riverside.Toolkit.Converters.shproj" />
@@ -65,7 +65,7 @@
     <Project Path="src/platforms/Riverside.Toolkit.Uwp.Animations/Riverside.Toolkit.Uwp.Animations.csproj">
       <Platform Solution="Release|*" Project="x64" />
     </Project>
-    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Brushes/Riverside.Toolkit.Uwp.Brushes.csproj">
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Media/Riverside.Toolkit.Uwp.Media.csproj" Id="fedd4b69-9f81-d25c-5cc0-abd4592fdb00">
       <Platform Solution="Release|*" Project="x64" />
     </Project>
     <Project Path="src/platforms/Riverside.Toolkit.Uwp.Controls.Primitives/Riverside.Toolkit.Uwp.Controls.Primitives.csproj">
@@ -87,7 +87,7 @@
       <Platform Solution="Release|*" Project="x64" />
     </Project>
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Animations/Riverside.Toolkit.WinUI.Animations.csproj" />
-    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Brushes/Riverside.Toolkit.WinUI.Brushes.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Media/Riverside.Toolkit.WinUI.Media.csproj" Id="7d45c125-262a-3434-6bd3-40e7731294f8" />
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Controls.Primitives/Riverside.Toolkit.WinUI.Controls.Primitives.csproj" />
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Controls.TitleBar/Riverside.Toolkit.WinUI.Controls.TitleBar.csproj" />
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Converters/Riverside.Toolkit.WinUI.Converters.csproj" />

@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using Windows.ApplicationModel;
 
-namespace Riverside.Toolkit.Brushes;
+namespace Riverside.Toolkit.Media;
 
 public class MicaAltBrush : XamlCompositionBrushBase, INotifyPropertyChanged
 {

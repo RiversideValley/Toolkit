@@ -6,7 +6,7 @@
     <SharedGUID>bcdc11ec-a933-4b7b-829b-58af5aa5dd14</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Riverside.Toolkit.Brushes</Import_RootNamespace>
+    <Import_RootNamespace>Riverside.Toolkit.Media</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\core\$(Import_RootNamespace)\**\*.cs" Exclude="obj\**;bin\**" />
