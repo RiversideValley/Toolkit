@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Controls.Primitives\Riverside.Toolkit.WinUI.Controls.Primitives.csproj" />
+	</ItemGroup>
+</Project>

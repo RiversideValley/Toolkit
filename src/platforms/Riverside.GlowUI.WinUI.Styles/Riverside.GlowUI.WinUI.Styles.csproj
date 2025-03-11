@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Controls.Primitives\Riverside.Toolkit.WinUI.Controls.Primitives.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Controls.Crimson\Riverside.Toolkit.WinUI.Controls.Crimson.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Converters\Riverside.Toolkit.WinUI.Converters.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Icons\Riverside.Toolkit.WinUI.Icons.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.WinUI.Media" />
+	</ItemGroup>
+</Project>
