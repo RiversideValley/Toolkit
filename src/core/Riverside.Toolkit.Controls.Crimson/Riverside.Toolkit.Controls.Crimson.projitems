@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>f2ca66e2-ab46-45c2-88f1-a2ad68cf8c66</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Riverside.Toolkit.Controls.Crimson</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\core\$(Import_RootNamespace)\**\*.cs" Exclude="obj\**;bin\**" />
+    <Page Include="..\..\core\$(Import_RootNamespace)\**\*.xaml" Exclude="obj\**;bin\**">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

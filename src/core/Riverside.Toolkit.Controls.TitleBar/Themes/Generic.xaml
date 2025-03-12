@@ -1,0 +1,148 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Riverside.Toolkit.Controls">
+    <Style TargetType="local:TitleBarEx">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TitleBarEx">
+                    <Grid
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Button Visibility="Collapsed">
+                            <Button.Flyout>
+                                <MenuFlyout x:Name="CustomRightClickFlyout">
+                                    <MenuFlyoutItem
+                                        x:Name="RestoreContextMenuItem"
+                                        IsEnabled="{TemplateBinding CanRestore}"
+                                        Text="Restore">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph=" &#xE923; " />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem
+                                        x:Name="MoveContextMenuItem"
+                                        IsEnabled="{TemplateBinding CanMove}"
+                                        Text="Move">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE7C2;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem
+                                        x:Name="SizeContextMenuItem"
+                                        IsEnabled="{TemplateBinding CanSize}"
+                                        Text="Size">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE740;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem
+                                        x:Name="MinimizeContextMenuItem"
+                                        IsEnabled="{TemplateBinding IsMinimizable}"
+                                        Text="Minimize">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph=" &#xE921; " />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem
+                                        x:Name="MaximizeContextMenuItem"
+                                        IsEnabled="{TemplateBinding CanMaximize}"
+                                        Text="Maximize">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph=" &#xE922; " />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutSeparator />
+                                    <MenuFlyoutItem
+                                        x:Name="CloseContextMenuItem"
+                                        IsEnabled="{TemplateBinding IsClosable}"
+                                        Text="Close">
+                                        <MenuFlyoutItem.KeyboardAccelerators>
+                                            <KeyboardAccelerator
+                                                Key="F4"
+                                                IsEnabled="False"
+                                                Modifiers="Menu" />
+                                        </MenuFlyoutItem.KeyboardAccelerators>
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph=" &#xE8BB; " />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                </MenuFlyout>
+                            </Button.Flyout>
+                        </Button>
+                        <Border
+                            x:Name="AccentStrip"
+                            Height="31"
+                            VerticalAlignment="Top"
+                            Background="{ThemeResource SystemAccentColor}"
+                            Visibility="Collapsed" />
+                        <Image
+                            x:Name="TitleBarIcon"
+                            Width="16"
+                            Margin="8,7"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            x:FieldModifier="public" />
+                        <StackPanel
+                            Margin="29,7,140,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <TextBlock
+                                x:Name="TitleTextBlock"
+                                FontFamily="Segoe UI"
+                                FontSize="12"
+                                FontWeight="Normal"
+                                Foreground="{TemplateBinding CurrentForeground}"
+                                Text="{TemplateBinding Title}"
+                                TextTrimming="CharacterEllipsis" />
+                            <TextBlock
+                                FontFamily="Segoe UI"
+                                FontSize="12"
+                                FontWeight="Normal"
+                                Foreground="{TemplateBinding CurrentForeground}"
+                                Opacity="0.5"
+                                Text="{TemplateBinding Subtitle}"
+                                TextTrimming="CharacterEllipsis" />
+                        </StackPanel>
+                        <StackPanel
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <Button
+                                x:Name="MinimizeButton"
+                                Foreground="{TemplateBinding CurrentForeground}"
+                                IsFocusEngagementEnabled="False"
+                                IsHitTestVisible="False"
+                                IsTabStop="False"
+                                Style="{StaticResource Minimize}">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="Minimize" Placement="Bottom" />
+                                </ToolTipService.ToolTip>
+                            </Button>
+                            <ToggleButton
+                                x:Name="MaximizeButton"
+                                Foreground="{TemplateBinding CurrentForeground}"
+                                IsFocusEngagementEnabled="False"
+                                IsHitTestVisible="False"
+                                IsTabStop="False"
+                                Style="{StaticResource MaxRes}" />
+                            <Button
+                                x:Name="CloseButton"
+                                Foreground="{TemplateBinding CurrentForeground}"
+                                IsFocusEngagementEnabled="False"
+                                IsHitTestVisible="False"
+                                IsTabStop="False"
+                                Style="{ThemeResource Close}">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="Close" Placement="Bottom" />
+                                </ToolTipService.ToolTip>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

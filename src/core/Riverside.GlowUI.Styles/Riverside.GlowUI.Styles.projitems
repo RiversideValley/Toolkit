@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0c0c40c2-ce7b-4478-a571-fd5595511996</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Riverside.GlowUI.Styles</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\core\$(Import_RootNamespace)\**\*.cs" Exclude="obj\**;bin\**" />
+    <Page Include="..\..\core\$(Import_RootNamespace)\**\*.xaml" Exclude="obj\**;bin\**">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

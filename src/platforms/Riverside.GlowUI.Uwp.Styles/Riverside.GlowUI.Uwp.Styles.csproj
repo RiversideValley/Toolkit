@@ -1,0 +1,13 @@
+﻿<Project>
+	<Sdk Condition="'$(TargetFramework)' == 'uap10.0.17763'" Name="MSBuild.Sdk.Extras" Version="3.0.44" />
+	<Sdk Condition="'$(TargetFramework)' == 'net9.0-windows10.0.26100.0'" Name="Microsoft.NET.Sdk" />
+	<ItemGroup>
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Controls.Primitives\Riverside.Toolkit.Uwp.Controls.Primitives.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Controls.Crimson\Riverside.Toolkit.Uwp.Controls.Crimson.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Converters\Riverside.Toolkit.Uwp.Converters.csproj" />
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Icons\Riverside.Toolkit.Uwp.Icons.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Uwp.Media" />
+	</ItemGroup>
+</Project>
