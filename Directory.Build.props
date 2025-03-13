@@ -2,7 +2,7 @@
 <Project>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\AdditionalFiles.props" />
 	<Import Project="$(MSBuildThisFileDirectory)\eng\CurrentVersion.props" />
-	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" Condition="'$(MSBuildProjectName)' != 'Riverside.Toolkit.UITests' and '$(MSBuildProjectName)' != 'Riverside.Tooling.CsWin32'"/>
+	<Import Project="$(MSBuildThisFileDirectory)\eng\PackageMetadata.props" Condition="'$(MSBuildProjectName)' != 'Riverside.Toolkit.UITests'"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\Tooling.props"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\SharedCodeMapping.props"/>
 	<Import Project="$(MSBuildThisFileDirectory)\eng\MultiTarget\InheritedDependencies.props"/>
