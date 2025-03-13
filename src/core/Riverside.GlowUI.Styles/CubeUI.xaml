@@ -3,9 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ToolkitControls="using:Riverside.Toolkit.Controls"
     xmlns:icons="using:Riverside.Toolkit.Icons">
-    <ResourceDictionary.MergedDictionaries>
+    <!--<ResourceDictionary.MergedDictionaries> There's positively no way to get this to work without using code-behind.
         <ResourceDictionary Source="ms-appx:///Riverside.Toolkit/Styles/CubeThemeDictionary.xaml" />
-    </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary.MergedDictionaries>-->
     <Style x:Key="MicaFlyoutStyle" TargetType="FlyoutPresenter">
         <Setter Property="Margin" Value="0" />
         <Setter Property="Opacity" Value="1" />
