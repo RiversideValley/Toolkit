@@ -36,6 +36,7 @@
     <Project Path="src/core/Riverside.Toolkit.Animations/Riverside.Toolkit.Animations.shproj" />
     <Project Path="src/core/Riverside.Toolkit.Controls.Crimson/Riverside.Toolkit.Controls.Crimson.shproj" Id="f2ca66e2-ab46-45c2-88f1-a2ad68cf8c66" />
     <Project Path="src/core/Riverside.Toolkit.Controls.Primitives/Riverside.Toolkit.Controls.Primitives.shproj" />
+    <Project Path="src/core/Riverside.Toolkit.Controls.Settings/Riverside.Toolkit.Controls.Settings.shproj" Id="d131c7fe-6aed-4515-8c28-17da95b09fea" />
     <Project Path="src/core/Riverside.Toolkit.Controls.TitleBar/Riverside.Toolkit.Controls.TitleBar.shproj" />
     <Project Path="src/core/Riverside.Toolkit.Converters/Riverside.Toolkit.Converters.shproj" />
     <Project Path="src/core/Riverside.Toolkit.Extensions/Riverside.Toolkit.Extensions.shproj" />
@@ -63,6 +64,7 @@
     </Project>
     <Project Path="src/platforms/Riverside.GlowUI.WinUI.Styles/Riverside.GlowUI.WinUI.Styles.csproj" Id="14a51f57-a0de-4539-aa52-53aad65380b5" />
     <Project Path="src/platforms/Riverside.Toolkit.Uno.Controls.Primitives/Riverside.Toolkit.Uno.Controls.Primitives.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.Uno.Controls.Settings/Riverside.Toolkit.Uno.Controls.Settings.csproj" Id="0a6ee9c5-b4ea-4b73-bc83-ce018881cc53" />
     <Project Path="src/platforms/Riverside.Toolkit.Uno.Converters/Riverside.Toolkit.Uno.Converters.csproj" />
     <Project Path="src/platforms/Riverside.Toolkit.Uno.Extensions/Riverside.Toolkit.Uno.Extensions.csproj" />
     <Project Path="src/platforms/Riverside.Toolkit.Uno.Helpers/Riverside.Toolkit.Uno.Helpers.csproj" />
@@ -75,6 +77,9 @@
       <Platform Solution="Release|*" Project="x64" />
     </Project>
     <Project Path="src/platforms/Riverside.Toolkit.Uwp.Controls.Primitives/Riverside.Toolkit.Uwp.Controls.Primitives.csproj">
+      <Platform Solution="Release|*" Project="x64" />
+    </Project>
+    <Project Path="src/platforms/Riverside.Toolkit.Uwp.Controls.Settings/Riverside.Toolkit.Uwp.Controls.Settings.csproj" Id="665b6b8f-808f-42cf-b85f-6e924bfe7e3a">
       <Platform Solution="Release|*" Project="x64" />
     </Project>
     <Project Path="src/platforms/Riverside.Toolkit.Uwp.Converters/Riverside.Toolkit.Uwp.Converters.csproj">
@@ -98,6 +103,7 @@
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Animations/Riverside.Toolkit.WinUI.Animations.csproj" />
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Controls.Crimson/Riverside.Toolkit.WinUI.Controls.Crimson.csproj" Id="e50ac24a-5e97-4309-9197-1a3bed5f0505" />
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Controls.Primitives/Riverside.Toolkit.WinUI.Controls.Primitives.csproj" />
+    <Project Path="src/platforms/Riverside.Toolkit.WinUI.Controls.Settings/Riverside.Toolkit.WinUI.Controls.Settings.csproj" Id="5536109a-3f16-4a88-a4e6-a8b6f070d877" />
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Controls.TitleBar/Riverside.Toolkit.WinUI.Controls.TitleBar.csproj" />
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Converters/Riverside.Toolkit.WinUI.Converters.csproj" />
     <Project Path="src/platforms/Riverside.Toolkit.WinUI.Extensions/Riverside.Toolkit.WinUI.Extensions.csproj" />

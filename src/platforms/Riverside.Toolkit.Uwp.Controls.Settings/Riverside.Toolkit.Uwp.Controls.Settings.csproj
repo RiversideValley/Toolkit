@@ -1,0 +1,7 @@
+<Project>
+	<Sdk Condition="'$(TargetFramework)' == 'uap10.0.17763'" Name="MSBuild.Sdk.Extras" Version="3.0.44" />
+	<Sdk Condition="'$(TargetFramework)' == 'net9.0-windows10.0.26100.0'" Name="Microsoft.NET.Sdk" />
+	<ItemGroup>
+		<ProjectReference Include="..\Riverside.Toolkit.Uwp.Converters\Riverside.Toolkit.Uwp.Converters.csproj" />
+	</ItemGroup>
+</Project>

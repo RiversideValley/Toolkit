@@ -1,0 +1,5 @@
+﻿<Project Sdk="Uno.Sdk">
+	<ItemGroup>
+		<ProjectReference Include="..\Riverside.Toolkit.Uno.Converters\Riverside.Toolkit.Uno.Converters.csproj" />
+	</ItemGroup>
+</Project>
