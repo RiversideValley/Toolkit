@@ -32,6 +32,7 @@ global using global::Microsoft.UI.Xaml.Hosting;
 global using global::Microsoft.UI.Xaml.Media.Animation;
 global using global::Microsoft.UI.Xaml.Shapes;
 global using global::Microsoft.UI.Xaml.Controls.Primitives;
+global using global::Microsoft.UI.Xaml.Automation;
 #elif Uwp
 global using global::Windows;
 global using global::Windows.UI.Xaml;
@@ -47,6 +48,7 @@ global using global::Windows.UI.Xaml.Hosting;
 global using global::Windows.UI.Xaml.Media.Animation;
 global using global::Windows.UI.Xaml.Shapes;
 global using global::Windows.UI.Xaml.Controls.Primitives;
+global using global::Windows.UI.Xaml.Automation;
 #elif Wpf
 global using global::System.Windows;
 global using global::System.Windows.Controls;
