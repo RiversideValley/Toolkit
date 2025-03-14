@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Riverside.Extensions.Accountability;
 using Path = System.IO.Path;
 
 namespace Riverside.Toolkit.Helpers;
@@ -9,6 +10,7 @@ namespace Riverside.Toolkit.Helpers;
 /// <summary>
 /// This class provides static helper methods for <see cref="StorageFile" />.
 /// </summary>
+[NotMyCode("MIT", "https://github.com/CommunityToolkit/WindowsCommunityToolkit", ".NET Foundation", null)]
 public static class StorageFileHelper
 {
 #if !Wpf

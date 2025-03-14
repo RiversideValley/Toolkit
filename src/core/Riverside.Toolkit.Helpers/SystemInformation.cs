@@ -3,6 +3,8 @@
 // See the LICENSE file in the project root for more information.
 
 using Riverside.Extensions.Versioning;
+using Riverside.Extensions.Accountability;
+
 
 #if !Wpf
 using CommunityToolkit.WinUI.Helpers;
@@ -14,6 +16,7 @@ namespace Riverside.Toolkit.Helpers;
 /// <summary>
 /// This class provides info about the app and the system.
 /// </summary>
+[NotMyCode("MIT", "https://github.com/CommunityToolkit/WindowsCommunityToolkit", ".NET Foundation", null)]
 public sealed class SystemInformation
 {
 #if !Wpf

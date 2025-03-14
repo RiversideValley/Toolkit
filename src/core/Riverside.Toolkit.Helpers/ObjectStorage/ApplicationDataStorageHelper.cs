@@ -6,6 +6,7 @@
 
 using CommunityToolkit.Common.Helpers;
 using CommunityToolkit.Helpers;
+using Riverside.Extensions.Accountability;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,7 @@ namespace Riverside.Toolkit.Helpers.ObjectStorage;
 /// </summary>
 /// <param name="appData">The data store to interact with.</param>
 /// <param name="objectSerializer">Serializer for converting stored values. Defaults to <see cref="SystemSerializer"/>.</param>
+[NotMyCode("MIT", "https://github.com/CommunityToolkit/WindowsCommunityToolkit", ".NET Foundation", null)]
 public partial class ApplicationDataStorageHelper(ApplicationData appData, IObjectSerializer? objectSerializer = null) : IFileStorageHelper, ISettingsStorageHelper<string>
 {
     /// <summary>
