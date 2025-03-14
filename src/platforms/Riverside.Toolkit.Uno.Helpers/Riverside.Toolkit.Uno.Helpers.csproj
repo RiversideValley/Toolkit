@@ -1,2 +1,7 @@
 ﻿<Project Sdk="Uno.Sdk">
+	<ItemGroup>
+		<ProjectReference Include="..\..\extensions\Riverside.Extensions.Versioning\Riverside.Extensions.Versioning.csproj" />
+		<PackageReference Include="CommunityToolkit.WinUI.Extensions" />
+		<PackageReference Include="CommunityToolkit.WinUI.Helpers" />
+	</ItemGroup>
 </Project>
