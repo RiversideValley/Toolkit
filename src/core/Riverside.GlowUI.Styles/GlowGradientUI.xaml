@@ -7,10 +7,10 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:muxcmedia="Microsoft.UI.Xaml.Media"
     xmlns:primitives="using:Microsoft.UI.Xaml.Controls.Primitives">
-    <ResourceDictionary.MergedDictionaries>
+    <!--<ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Riverside.Toolkit/Styles/CubeThemeDictionary.xaml" />
         <ResourceDictionary Source="ms-appx:///Riverside.Toolkit/Styles/CubeUI.xaml" />
-    </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary.MergedDictionaries>-->
     <Style x:Key="ToolbarButton" TargetType="Button">
         <Setter Property="Foreground" Value="{ThemeResource SplitButtonForeground}" />
         <Setter Property="Background" Value="Transparent" />

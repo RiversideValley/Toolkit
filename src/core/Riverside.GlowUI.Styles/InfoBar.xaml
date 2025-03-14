@@ -5,10 +5,10 @@
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     xmlns:glow="using:Riverside.Toolkit.Controls"
     xmlns:primitives="using:Microsoft.UI.Xaml.Controls.Primitives">
-    <ResourceDictionary.MergedDictionaries>
+    <!--<ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Riverside.Toolkit.Buttons/Buttons.xaml" />
         <ResourceDictionary Source="ms-appx:///Riverside.Toolkit.Brushes/MicaBrushes.xaml" />
-    </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary.MergedDictionaries>-->
     <Style TargetType="controls:InfoBar">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="IsClosable" Value="True" />
