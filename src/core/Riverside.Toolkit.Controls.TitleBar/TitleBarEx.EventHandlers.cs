@@ -1,4 +1,5 @@
 ﻿using WinUIEx;
+using WindowSizeChangedEventArgs = Microsoft.UI.Xaml.WindowSizeChangedEventArgs;
 
 namespace Riverside.Toolkit.Controls;
 
