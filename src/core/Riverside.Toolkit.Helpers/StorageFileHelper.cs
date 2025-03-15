@@ -1,7 +1,3 @@
-// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
-
 using Riverside.Extensions.Accountability;
 using Path = System.IO.Path;
 
@@ -699,7 +695,7 @@ public static class StorageFileHelper
         var options = new QueryOptions
         {
             FolderDepth = FolderDepth.Deep,
-            UserSearchFilter = $"filename:=\"{fileName}\"" // “:=” is the exact-match operator
+            UserSearchFilter = $"filename:=\"{fileName}\"" // ï¿½:=ï¿½ is the exact-match operator
         };
 
         var files = await rootFolder.CreateFileQueryWithOptions(options).GetFilesAsync().AsTask().ConfigureAwait(false);
