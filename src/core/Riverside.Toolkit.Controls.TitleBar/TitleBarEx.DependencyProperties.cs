@@ -22,8 +22,6 @@ namespace Riverside.Toolkit.Controls;
 // Required for style
 [DependencyProperty<Color>("CaptionForegroundInteract")]
 [DependencyProperty<SolidColorBrush>("CurrentForeground")]
-[DependencyProperty<string>("CloseButtonRegularStyleKey", DefaultValue = "Close")]
-[DependencyProperty<string>("CloseButtonSingularStyleKey", DefaultValue = "CloseSingular")]
 
 // Required for WinUI system menu
 [DependencyProperty<bool>("CanMaximize", IsReadOnly = true)]

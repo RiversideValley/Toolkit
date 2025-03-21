@@ -176,7 +176,7 @@ public partial class TitleBarEx
                 CheckMaximization();
 
                 // Update button visibility and styles
-                SetButtonVisibility(
+                /*SetButtonVisibility(
                     // Check if the buttons are both disabled
                     !this.IsMinimizable && !this.IsMaximizable ?
 
@@ -193,7 +193,7 @@ public partial class TitleBarEx
                     this.CloseButtonSingularStyleKey :
 
                     // If not, restore the original close button style
-                    this.CloseButtonRegularStyleKey);
+                    this.CloseButtonRegularStyleKey);*/
             }
         }
         catch
@@ -205,7 +205,6 @@ public partial class TitleBarEx
         void SetButtonVisibility(Visibility visibility, string? closeStyleKey)
         {
             this.MinimizeButton.Visibility = this.MaximizeRestoreButton.Visibility = visibility;
-            this.CloseButton.Style = Application.Current.Resources[closeStyleKey] as Style;
         }
     }
 
