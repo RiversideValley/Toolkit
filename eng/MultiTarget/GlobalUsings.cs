@@ -13,7 +13,13 @@ global using global::Windows.ApplicationModel;
 global using global::Windows.ApplicationModel.Activation;
 global using global::Windows.Storage;
 global using global::Windows.UI;
+global using global::Windows.UI.Core;
 global using global::Windows.UI.WindowManagement;
+global using global::Windows.System;
+global using global::Windows.System.UserProfile;
+global using global::Windows.System.Profile;
+global using global::Windows.Storage.Search;
+global using global::Windows.Storage.Streams;
 #endif
 
 #if WinUI || Uno
