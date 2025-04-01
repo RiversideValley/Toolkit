@@ -1,7 +1,3 @@
-> [!IMPORTANT]
-> CubeKit is a new era for the previous CrimsonUI, GlowUI and Toolkit options.
-> The second version of CubeKit (formerly Crimson Toolkit) brings together all your favourite toolkits into one repository, with styles from GlowUI and Crimson and useful controls and utilities.
-
 ![GlowUI Economy](https://github.com/user-attachments/assets/ed1298b0-03b6-4d2d-bf7d-abe5fcc4c039)
 
 <p align="center">
@@ -18,8 +14,7 @@
 Introducing **CubeKit**, the **ultimate** toolkit for building modern apps on .NET. **CubeKit** is a set of **versatile, platform-agnostic APIs** that enable you to build apps for **multiple platforms** using .NET.
 Using a custom multi-target solution called Alloy, it exposes APIs that are suited to the project you install the aggregate package on, allowing you to **build apps for UWP, WinUI and .NET Core.**
 
-**CubeKit** is the new name for its various predecessors including **CrimsonUI** (now merged with GlowUI), **GlowUI** (GlowUI is still used to refer to the styles, but it is included as part of CubeKit as a whole), **Crimson Toolkit** and **`Riverside.Toolkit`**.
-It is built using custom tooling to target all versions of .NET.
+**CubeKit** is a collaboration between [FireCube](https://github.com/firecubestudios), [Lamparter](https://github.com/lamparter), and [Ivirius](https://github.com/IviriusMain), combining the GlowUI, Ivirius.UI.Controls, CrimsonUI, and Riverside.Toolkit packages into one.
 
 ---
 
@@ -88,7 +83,7 @@ If you have a new idea for CubeKit, please write a [feature request](https://git
 
 ---
 
-CubeKit is used in many production apps, including **[United Sets](https://apps.microsoft.com/detail/9N7CWZ3L5RWL), [Protecc](https://apps.microsoft.com/detail/9PJX91M06TZS), [Clippy](https://apps.microsoft.com/detail/9NWK37S35V5T), [Flowboard](https://apps.microsoft.com/detail/9PB20HCH5XN2), [Darksky](https://apps.microsoft.com/detail/9NP22DTFSCTS) and way more!**
+CubeKit components are used in many production apps, including **[United Sets](https://apps.microsoft.com/detail/9N7CWZ3L5RWL), [Protecc](https://apps.microsoft.com/detail/9PJX91M06TZS), [Clippy](https://apps.microsoft.com/detail/9NWK37S35V5T), [Flowboard](https://apps.microsoft.com/detail/9PB20HCH5XN2), [Darksky](https://apps.microsoft.com/detail/9NP22DTFSCTS) and way more!**
 
 | United Sets | Protecc | Flowboard |
 |--------|--------|--------|
