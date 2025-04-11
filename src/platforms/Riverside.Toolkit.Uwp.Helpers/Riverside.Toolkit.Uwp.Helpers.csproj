@@ -1,9 +1,0 @@
-<Project>
-	<Sdk Condition="'$(TargetFramework)' == 'uap10.0.17763'" Name="MSBuild.Sdk.Extras" Version="3.0.44" />
-	<Sdk Condition="'$(TargetFramework)' == 'net9.0-windows10.0.26100.0'" Name="Microsoft.NET.Sdk" />
-	<ItemGroup>
-		<ProjectReference Include="..\..\extensions\Riverside.Extensions.Versioning\Riverside.Extensions.Versioning.csproj" />
-		<PackageReference Include="CommunityToolkit.Uwp.Extensions" />
-		<PackageReference Include="CommunityToolkit.Uwp.Helpers" />
-	</ItemGroup>
-</Project>

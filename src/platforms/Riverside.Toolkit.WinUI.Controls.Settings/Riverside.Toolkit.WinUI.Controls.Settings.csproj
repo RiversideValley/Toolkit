@@ -1,5 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-	<ItemGroup>
-		<ProjectReference Include="..\Riverside.Toolkit.WinUI.Converters\Riverside.Toolkit.WinUI.Converters.csproj" />
-	</ItemGroup>
-</Project>

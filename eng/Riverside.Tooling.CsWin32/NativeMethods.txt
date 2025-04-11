@@ -1,5 +1,0 @@
-GetDC
-ReleaseDC
-GetDeviceCaps
-PostMessage
-GetAsyncKeyState
